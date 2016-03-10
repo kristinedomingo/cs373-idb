@@ -28,7 +28,7 @@ html,
 body {
   height: 100%;
   background-color: #333;
-  background-image: url('../imgs/bg2.png');
+  background-image: url('../imgs/bg.png');
   font-family: 'Fira Sans', sans-serif;
 }
 body {
@@ -166,11 +166,29 @@ body {
 }
 
 h1 {
-  font-family: 'Lobster', cursive;
-  font-weight: 700;
-  font-size: 8rem;
+  margin: 0 auto;
 }
 
-#splash_img {
-  margin-bottom: 2rem;
+.title {
+  padding: 5px 0;
+  font-family: 'Lobster', cursive;
+  font-weight: 700;
+  font-size: 8.5rem;
+  display: inline-block;
+  border-bottom: 5px solid #c69c6c;
+  font-weight: bold;
+  position: relative;
+}
+
+.title:after {
+  content: '';
+  border-bottom: solid 7px #333333;
+  width: 100%;
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+}
+
+#smallText {
+  margin-top: 3rem;
 }
