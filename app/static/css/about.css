@@ -64,6 +64,10 @@ a:hover {
 html,
 body {
   height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
   background-color: #ddd;
   background-image: url('../imgs/bg.png');
   background-repeat: repeat-y;
@@ -206,10 +210,15 @@ body {
 .title {
   font-family: AmericanCaptain;
   letter-spacing: 1rem;
-  font-size: 8rem;
+  font-size: 6rem;
   display: inline-block;
   position: relative;
-  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 8rem;
+  }
 }
 
 .bodyText {
@@ -259,11 +268,23 @@ body {
 }
 
 .aboutSection {
-  margin-bottom: 10rem;
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 992px) {
+  .aboutSection {
+    margin-bottom: 12rem;
+  }
 }
 
 .innerRow {
-  margin-bottom: 4rem;
+  margin-bottom: 0rem;
+}
+
+@media (min-width: 992px) {
+  .innerRow {
+    margin-bottom: 4rem;
+  }
 }
 
 .clearBtn {
@@ -282,4 +303,10 @@ body {
   -moz-transition:.4s;
   -webkit-transition:.4s;
   transition:.4s;
+}
+
+@media (max-width: 991px) {
+  [class*="col-"]{
+      margin-bottom: 20px;
+  }
 }
