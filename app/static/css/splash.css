@@ -27,6 +27,10 @@ a:hover {
 html,
 body {
   height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
   background-color: #fff;
   background-image: url('../imgs/concert.jpg');
   background-size: cover;
@@ -197,6 +201,6 @@ h1 {
 
 @media (min-width: 992px) {
   #logo {
-    width: 650px;
+    width: 600px;
   }
 }
