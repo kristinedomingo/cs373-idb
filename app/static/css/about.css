@@ -6,14 +6,14 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #333;
 }
 
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #fff;
+  color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
   border: 1px solid #fff;
@@ -27,13 +27,11 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #fff;
-  background-image: url('../imgs/concert.jpg');
-  background-size: cover;
+  background-color: #ddd;
   font-family: 'Fira Sans', sans-serif;
 }
 body {
-  color: #fff;
+  color: #333;
   text-align: center;
   }
 
@@ -82,21 +80,21 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
+  color: #333; /* IE8 proofing */
+  color: rgba(51,51,51,.75);
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
   border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255, 255, 255,.25);
+  border-bottom-color: rgba(51, 51, 51,.25);
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #333;
+  border-bottom-color: #333;
 }
 
 @media (min-width: 768px) {
@@ -146,10 +144,6 @@ body {
     position: fixed;
     bottom: 0;
   }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
   /* Handle the widths */
   .masthead,
   .mastfoot,
@@ -174,17 +168,41 @@ h1 {
   padding: 5px 0;
   font-family: 'Lobster', cursive;
   font-weight: 700;
-  font-size: 9.5rem;
+  font-size: 6rem;
   display: inline-block;
   font-weight: bold;
   position: relative;
+  margin-bottom: 2rem;
 }
 
-#smallText {
-  margin-top: 2rem;
+.bodyText {
+  margin-top: 0rem;
+}
+
+@media (min-width: 768px) {
+  .bodyText {
+    margin-top: 12rem;
+  }
+}
+
+.headshot {
+  border-radius: 50%;
+  background-color: #43DAAD;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 2rem;
+}
+
+.name {
   font-weight: 700;
+  font-size: 1.75rem;
 }
 
-#headphones {
-  width: 425px;
+.profile {
+  text-align: center;
+}
+
+.statsList {
+  margin-top: 1rem;
+  text-align: left;
 }
