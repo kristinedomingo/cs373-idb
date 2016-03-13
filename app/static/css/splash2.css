@@ -185,6 +185,18 @@ h1 {
   font-weight: 700;
 }
 
-#headphones {
-  width: 425px;
+#logo {
+  width: 400px;
+}
+
+@media (min-width: 768px) {
+  #logo {
+    width: 550px;
+  }
+}
+
+@media (min-width: 992px) {
+  #logo {
+    width: 650px;
+  }
 }
