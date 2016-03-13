@@ -6,14 +6,14 @@
 a,
 a:focus,
 a:hover {
-  color: #333;
+  color: #fff;
 }
 
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #333;
+  color: #fff;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
   border: 1px solid #fff;
@@ -27,12 +27,13 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
-  background-image: url('../imgs/bg.png');
+  background-color: #fff;
+  background-image: url('../imgs/concert.jpg');
+  background-size: cover;
   font-family: 'Fira Sans', sans-serif;
 }
 body {
-  color: #333;
+  color: #fff;
   text-align: center;
   }
 
@@ -81,21 +82,21 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #333; /* IE8 proofing */
-  color: rgba(51,51,51,.75);
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
   border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(51, 51, 51,.25);
+  border-bottom-color: rgba(255, 255, 255,.25);
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #333;
-  border-bottom-color: #333;
+  color: #fff;
+  border-bottom-color: #fff;
 }
 
 @media (min-width: 768px) {
@@ -173,22 +174,29 @@ h1 {
   padding: 5px 0;
   font-family: 'Lobster', cursive;
   font-weight: 700;
-  font-size: 8.5rem;
+  font-size: 9.5rem;
   display: inline-block;
-  border-bottom: 5px solid #c69c6c;
   font-weight: bold;
   position: relative;
 }
 
-.title:after {
-  content: '';
-  border-bottom: solid 7px #333333;
-  width: 100%;
-  position: absolute;
-  bottom: -17px;
-  left: 0;
+#smallText {
+  margin-top: 2rem;
+  font-weight: 700;
 }
 
-#smallText {
-  margin-top: 3rem;
+#logo {
+  width: 400px;
+}
+
+@media (min-width: 768px) {
+  #logo {
+    width: 550px;
+  }
+}
+
+@media (min-width: 992px) {
+  #logo {
+    width: 650px;
+  }
 }
