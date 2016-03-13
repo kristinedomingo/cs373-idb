@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import jsonify
 import requests
 
@@ -8,6 +8,10 @@ app = Flask(__name__, static_url_path='')
 @app.route('/')
 def splash():
     return app.send_static_file('index.html')
+
+@app.route('/artists')
+def artists():
+    return render_template('artists.html')
 
 @app.route('/get_artists')
 def artist_ajax():
