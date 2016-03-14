@@ -4,9 +4,6 @@ import requests
 
 app = Flask(__name__, static_url_path='')
 
-echo_nest_api_key = "KY1N8FMAVNUGZY0WR"
-
-
 # ---------------
 # get_artist_data
 # ---------------
