@@ -58,27 +58,15 @@
               <th>Most Recent Album</th>
               <th>Top Track</th>
             </tr>
+            {% for artist in artists%}
             <tr>
-              <td>Name #1</td>
+              <td>{{artist.name}}</td>
               <td>Genre #1</td>
-              <td>xx</td>
-              <td>Album #1</td>
-              <td>Track #1
+              <td>{{artist.num_albums}}</td>
+              <td>{{artist.last_album}}</td>
+              <td>{{artist.top_track}}</td>
             </tr>
-            <tr>
-              <td>Name #2</td>
-              <td>Genre #2</td>
-              <td>xx</td>
-              <td>Album #2</td>
-              <td>Track #1
-            </tr>
-            <tr>
-              <td>Name #3</td>
-              <td>Genre #3</td>
-              <td>xx</td>
-              <td>Album #3</td>
-              <td>Track #1
-            </tr>
+            {% endfor %}
           </table>
         </div>
 
