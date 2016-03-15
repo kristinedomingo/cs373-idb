@@ -284,6 +284,10 @@ body {
   border-color: #6B158E;
 }
 
+th.artist-table-header{
+  text-align: center;
+}
+
 tr {
-  text-align: left;
+  text-align: center;
 }
