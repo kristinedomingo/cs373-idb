@@ -284,6 +284,24 @@ body {
   border-color: #6B158E;
 }
 
+.artist-img-small {
+  position: relative;
+}
+
+.artist-cover-sml{
+  position: absolute;
+  height: 64px;
+  width: 64px;
+}
+th.artist-table-header:first-child { 
+  border-top:none;
+}
+table.table{
+    border-radius: 25px;
+    color: purple;
+    background-color: white;
+}
+
 th.artist-table-header{
   text-align: center;
 }
