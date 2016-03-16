@@ -302,6 +302,11 @@ table.table{
     background-color: white;
 }
 
+/* Override */
+.artist.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
 th.artist-table-header{
   text-align: center;
 }
