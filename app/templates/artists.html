@@ -10,9 +10,8 @@
             <th class="artist-table-header">Number of Albums Released</th>
             <th class="artist-table-header">Most Recent Album</th>
             <th class="artist-table-header">Top Track</th>
-        </tr>
         {% raw %}
-        <tr ng-model="artist" ng-repeat="artist in artists">
+        <tr ng-repeat="artist in artists">
             <td><div class="artist-img-sml"><img class="artist-cover-sml" src="imgs/cover.png" height="64" width="64"><img src={{artist.col_img}} height="64" width="64"></div></td>
             <td>{{artist.name}}</td>
             <td>{{artist.num_albums}}</td>
