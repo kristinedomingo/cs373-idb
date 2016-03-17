@@ -8,7 +8,7 @@ app = Flask(__name__, static_url_path='')
 # get_artist_data
 # ---------------
 
-
+@app.route('/get_artists')
 def get_artist_data():
     """
     Calls the spotify three times for different sets of data to be passed to the front end
@@ -44,7 +44,7 @@ def get_artist_data():
         artist["num_albums"] = str(len(albums))
         artist["col_img"] = artist["images"][len(artist["images"]) - 1]["url"]
 
-    return artists
+    return jsonify(artists)
 
 
 @app.route('/')
@@ -55,7 +55,7 @@ def splash():
 @app.route('/artists')
 def artists():
     artist_data = get_artist_data()
-    return render_template('artists.html', artists=artist_data["artists"])
+    return render_template('artists.html')
 
 
 @app.route('/get_albums')
@@ -77,4 +77,4 @@ def about():
     return render_template('about.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)

@@ -1,0 +1,9 @@
+'use strict';
+
+/* Controllers */
+angular.module('controllers', [])
+	.controller('ArtistTableCtrl',['$scope', 'artistService', function($scope, artistService){
+		artistService.getArtists().then(function(data){
+			$scope.artists = data;
+		});
+}]);

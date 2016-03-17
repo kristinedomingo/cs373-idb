@@ -2,6 +2,7 @@
 <link href="css/artists.css" rel="stylesheet"> {% endblock %} {% block body %}
 <div class="bodyText">
     <span class="title">Artists</span>
+    <div class="artist-table-container" ng-controller="ArtistTableCtrl">
     <table class="table artist">
         <tr>
             <th class="artist-table-header"></th>
@@ -10,16 +11,17 @@
             <th class="artist-table-header">Most Recent Album</th>
             <th class="artist-table-header">Top Track</th>
         </tr>
-        {% for artist in artists%}
-        <tr>
+        {% raw %}
+        <tr ng-model="artist" ng-repeat="artist in artists">
             <td><div class="artist-img-sml"><img class="artist-cover-sml" src="imgs/cover.png" height="64" width="64"><img src={{artist.col_img}} height="64" width="64"></div></td>
             <td>{{artist.name}}</td>
             <td>{{artist.num_albums}}</td>
             <td>{{artist.last_album}}</td>
             <td>{{artist.top_track}}</td>
         </tr>
-        {% endfor %}
+        {% endraw %}
     </table>
+    </div>
 </div>
 <nav>
     <ul class="pagination pagination-lg">
