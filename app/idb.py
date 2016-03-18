@@ -41,7 +41,7 @@ def get_artist_data():
         # chronological order
         last_album = albums[0]["name"]
         artist["last_album"] = last_album
-        artist["num_albums"] = str(len(albums))
+        artist["num_albums"] = len(albums)
         artist["col_img"] = artist["images"][len(artist["images"]) - 1]["url"]
 
     return jsonify(artists)

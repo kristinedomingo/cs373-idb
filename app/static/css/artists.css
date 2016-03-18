@@ -311,6 +311,11 @@ th.artist-table-header{
   text-align: center;
 }
 
+/* Table header anchor */
+a.th {
+  color:purple;
+}
+
 tr {
   text-align: center;
 }

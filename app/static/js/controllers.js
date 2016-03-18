@@ -6,5 +6,7 @@ angular.module('controllers', [])
 		$scope.artists = []
 		artistService.getArtists().then(function(data){
 			$scope.artists = data.artists;
+			$scope.sortType = 'name';
+			$scope.sortReverse = false;
 		});
 }]);
