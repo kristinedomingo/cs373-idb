@@ -1,72 +1,91 @@
-{% extends "base.html" %} {% block head %}
-<link href="css/about.css" rel="stylesheet"> {% endblock %} {% block body %}
+{% extends "base.html" %}
+
+{% block head %}
+<link href="css/about.css" rel="stylesheet">
+{% endblock %}
+
+{% block nav %}
+<nav>
+    <ul class="nav masthead-nav">
+        <li class="active"><a href="/about">About</a></li>
+        <li><a href="/albums">Albums</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="/tracks">Tracks</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block body %}
 <div class="bodyText">
     <span class="title">Team Members</span>
     <div class="aboutSection">
-        <div class="row">
-            <div class="col-md-5ths profile">
+        <div class="row innerRow">
+            <div class="col-md-4 profile">
                 <img class="headshot" src="imgs/headshot.png">
                 <span class="name">Daniel Abrego</span>
-                <ul class="statsList list-unstyled">
+                <ul class="list-unstyled statsList">
                     <li>x commits</li>
                     <li>y issues</li>
                     <li>z unit tests</li>
-                    <li>
-                        <br>Responsibility 1, Responsibility 2, Responsibility 3</li>
-                    <li>
-                        <br>This is an example biography. Here is some more sample text for this person's biography.</li>
+                    <li><br>Responsibility 1, Responsibility 2, Responsibility 3</li>
+                    <li><br>This is an example biography. Here is some more sample text for this person's biography.</li>
                 </ul>
             </div>
-            <div class="col-md-5ths profile">
+            <div class="col-md-4 profile">
                 <img class="headshot" src="imgs/headshot.png">
                 <span class="name">Ragan Behrens</span>
-                <ul class="statsList list-unstyled">
+                <ul class="list-unstyled statsList">
                     <li>x commits</li>
                     <li>y issues</li>
                     <li>z unit tests</li>
-                    <li>
-                        <br>Responsibility 1, Responsibility 2, Responsibility 3</li>
-                    <li>
-                        <br>This is an example biography. Here is some more sample text for this person's biography.</li>
+                    <li><br>Responsibility 1, Responsibility 2, Responsibility 3</li>
+                    <li><br>This is an example biography. Here is some more sample text for this person's biography.</li>
                 </ul>
             </div>
-            <div class="col-md-5ths profile">
+            <div class="col-md-4 profile">
                 <img class="headshot" src="imgs/headshot.png">
                 <span class="name">Kristine Domingo</span>
-                <ul class="statsList list-unstyled">
+                <ul class="list-unstyled statsList">
                     <li>x commits</li>
                     <li>y issues</li>
                     <li>z unit tests</li>
-                    <li>
-                        <br>Responsibility 1, Responsibility 2, Responsibility 3</li>
-                    <li>
-                        <br>This is an example biography. Here is some more sample text for this person's biography.</li>
+                    <li><br>Responsibility 1, Responsibility 2, Responsibility 3</li>
+                    <li><br>This is an example biography. Here is some more sample text for this person's biography.</li>
                 </ul>
             </div>
-            <div class="col-md-5ths profile">
+        </div>
+        <div class="row innerRow">
+            <div class="col-md-4 profile">
                 <img class="headshot" src="imgs/headshot.png">
                 <span class="name">Jorge Munoz</span>
-                <ul class="statsList list-unstyled">
+                <ul class="list-unstyled statsList">
                     <li>x commits</li>
                     <li>y issues</li>
                     <li>z unit tests</li>
-                    <li>
-                        <br>Responsibility 1, Responsibility 2, Responsibility 3</li>
-                    <li>
-                        <br>This is an example biography. Here is some more sample text for this person's biography.</li>
+                    <li><br>Responsibility 1, Responsibility 2, Responsibility 3</li>
+                    <li><br>This is an example biography. Here is some more sample text for this person's biography.</li>
                 </ul>
             </div>
-            <div class="col-md-5ths profile">
+            <div class="col-md-4 profile">
                 <img class="headshot" src="imgs/headshot.png">
                 <span class="name">Micah Ramirez</span>
-                <ul class="statsList list-unstyled">
+                <ul class="list-unstyled statsList">
                     <li>x commits</li>
                     <li>y issues</li>
                     <li>z unit tests</li>
-                    <li>
-                        <br>Responsibility 1, Responsibility 2, Responsibility 3</li>
-                    <li>
-                        <br>This is an example biography. Here is some more sample text for this person's biography.</li>
+                    <li><br>Responsibility 1, Responsibility 2, Responsibility 3</li>
+                    <li><br>This is an example biography. Here is some more sample text for this person's biography.</li>
+                </ul>
+            </div>
+            <div class="col-md-4 profile">
+                <img class="headshot" src="imgs/headshot.png">
+                <span class="name">????????????</span>
+                <ul class="list-unstyled statsList">
+                    <li>x commits</li>
+                    <li>y issues</li>
+                    <li>z unit tests</li>
+                    <li><br>Responsibility 1, Responsibility 2, Responsibility 3</li>
+                    <li><br>This is an example biography. Here is some more sample text for this person's biography.</li>
                 </ul>
             </div>
         </div>
