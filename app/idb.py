@@ -14,7 +14,7 @@ def get_artist_data():
     Calls the spotify three times for different sets of data to be passed to the front end
     templating system.
 
-    returns a dictionary of modified Spotify Artist Objects
+    returns a response/json objects 
     More info on Spotify Artist Objects here : https://developer.spotify.com/web-api/object-model/#artist-object-full
     """
 

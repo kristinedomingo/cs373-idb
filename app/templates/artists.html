@@ -10,6 +10,7 @@
             <th class="artist-table-header"><a class="th" href="#" ng-click="sortType = 'num_albums'; sortReverse = !sortReverse">Number of Albums Released<span ng-show="sortType == 'num_albums'" class="fa fa-caret-down"></span></a></th>
             <th class="artist-table-header"><a class="th" href="#" ng-click="sortType = 'recent_album' ; sortReverse = !sortReverse">Most Recent Album<span ng-show="sortType == 'recent_album'" class="fa fa-caret-down"></span></a></th>
             <th class="artist-table-header"><a class="th" href="#" ng-click="sortType = 'top_track' ; sortReverse = !sortReverse">Top Track<span ng-show="sortType == 'top_track'" class="fa fa-caret-down"></span></a></th>
+            <th class="artist-table-header"><a class="th" href="#" ng-click="sortType = 'popularity' ; sortReverse = !sortReverse">Popularity<span ng-show="sortType == 'popularity'" class="fa fa-caret-down"></span></a></th>
         {% raw %}
         <tr ng-repeat="artist in artists | orderBy:sortType:sortReverse">
             <td><div class="artist-img-sml"><img class="artist-cover-sml" src="imgs/cover.png" height="64" width="64"><img src={{artist.col_img}} height="64" width="64"></div></td>
@@ -17,6 +18,7 @@
             <td>{{artist.num_albums}}</td>
             <td>{{artist.last_album}}</td>
             <td>{{artist.top_track}}</td>
+            <td>{{artist.popularity}}</td>
         </tr>
         {% endraw %}
     </table>
