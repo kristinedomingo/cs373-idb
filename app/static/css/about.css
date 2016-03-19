@@ -262,7 +262,6 @@ body {
 
 @media (min-width: 992px) {
   .statsList {
-    text-align: left;
     margin-bottom: 0rem;
   }
 }
