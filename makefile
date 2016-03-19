@@ -8,7 +8,7 @@ docker-build:
 	[ $$CONTINUE = "y" ] || [ $$CONTINUE = "Y" ] || (echo "Exiting."; exit 1;)
 	@echo "Building the images..."
 	docker login
-	export DOCKER_HUB_USERNAME=kristineadomingo
+	export DOCKER_HUB_USERNAME=swetifygroupmembers
 
 	docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME_APP} app
 	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME_APP}

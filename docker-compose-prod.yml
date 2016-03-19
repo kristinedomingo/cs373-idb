@@ -8,7 +8,7 @@ services:
       file: docker-compose-common.yml
       service: lb
     #TODO CHANGE IMAGE NAME
-    image: micahramirez/sweetmusic_lb
+    image: swetifygroupmembers/sweetmusic_lb
     environment:
       # Always deploy to n1 so the lb always has the same IP address. This is
       # just for convenience and isn't strictly necessary.
@@ -19,7 +19,7 @@ services:
       file: docker-compose-common.yml
       service: app
     #TODO CHANGE IMAGE NAME
-    image: micahramirez/sweetmusic_app
+    image: swetifygroupmembers/sweetmusic_app
     expose:
       # Expose port 8000 so it's only visibile on the container, not the host
       - "8000"
