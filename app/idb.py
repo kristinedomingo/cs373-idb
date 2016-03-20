@@ -74,15 +74,15 @@ def get_album_data():
         album["num_tracks"] = len(album["tracks"]["items"])
 
         # Get length (duration) of album
-        duration = 0
+        duration_ms = 0
         for track in album["tracks"]["items"]:
-            duration += track["duration_ms"]
-        s = duration / 1000
-        m, s = divmod(s, 60)
-        h, m = divmod(m, 60)
+            duration_ms += track["duration_ms"]
+        duration = timedelta(milliseconds = duration_ms)
 
         # Convert milliseconds to a human-readable time
-        album["length"] = str(int(h)) + ":" + str(int(m)) + ":" + str(int(s))
+        minutes = str(duration.seconds // 60)
+        seconds = str(duration.seconds % 60).zfill(2)
+        album["length"] = minutes + ":" + seconds
 
     return jsonify(albums)
 
