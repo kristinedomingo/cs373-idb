@@ -320,6 +320,7 @@ th.artist-table-header:nth-child(6) {
 }
 
 .artistTable th {
+    border: 0px !important;
     text-align: center;
 }
 

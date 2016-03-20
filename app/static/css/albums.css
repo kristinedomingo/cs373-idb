@@ -282,14 +282,15 @@ body {
 #albumTable {
   border-radius: 25px;
   color: #5B097D;
-  background-color: white;
+  background-color: #fff;
 }
 
-#albumTable th{
+#albumTable th {
+  border: 0px !important;
   text-align: center !important;
 }
 
-#albumTable th a{
+#albumTable th a {
   color: #5B097D;
 }
 
