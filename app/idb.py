@@ -29,15 +29,15 @@ def get_artist_data():
 
         # Request returns json in the form {"tracks":[{...}]}
         # https://developer.spotify.com/web-api/get-artists-top-tracks/
-        top_track = requests.get(
-            'https://api.spotify.com/v1/artists/' + artist["id"] + '/top-tracks?country=US').json()["tracks"][0]
+        top_track = requests.get(artist["href"] + '/top-tracks?country=US').json()["tracks"][0]
+
         # add a new K/V pair to artist dict
         artist["top_track"] = top_track["name"]
 
         # Request returns {"items" : [{...}]}
         # https://developer.spotify.com/web-api/get-artists-albums/
-        albums = requests.get(
-            'https://api.spotify.com/v1/artists/' + artist["id"] + '/albums').json()["items"]
+        albums = requests.get(artist["href"] + '/albums').json()["items"]
+
         # Assumming that spotify gives us the list of albums in reverse
         # chronological order
         last_album = albums[0]["name"]
@@ -94,6 +94,9 @@ def get_track_data():
 
     # Parse JSON information to append needed items
     for track in tracks["tracks"]:
+
+        # Get track album cover
+        track["col_img"] = track["album"]["images"][len(track["album"]["images"]) - 1]["url"]
 
         # Get artist(s)
         names = ""
