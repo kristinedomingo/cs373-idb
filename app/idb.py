@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 from flask import jsonify
 import requests
 
@@ -14,7 +14,7 @@ def get_artist_data():
     Calls the spotify three times for different sets of data to be passed to the front end
     templating system.
 
-    returns a dictionary of modified Spotify Artist Objects
+    returns a response/json objects 
     More info on Spotify Artist Objects here : https://developer.spotify.com/web-api/object-model/#artist-object-full
     """
 
@@ -49,13 +49,7 @@ def get_artist_data():
 
 @app.route('/')
 def splash():
-    return render_template('index.html')
-
-
-@app.route('/artists')
-def artists():
-    artist_data = get_artist_data()
-    return render_template('artists.html')
+    return send_file('index.html')
 
 
 @app.route('/get_albums')
@@ -71,10 +65,5 @@ def track_ajax():
         'https://api.spotify.com/v1/tracks/?ids=0LSl4lXvjrdGORyBGB2lNJ,6ZpR2XFuQJSHAQwg9495KZ,4URU1lRXhWwZIXuxKI1SuH')
     return jsonify(tracks.json())
 
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
