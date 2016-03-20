@@ -82,7 +82,7 @@ def album_ajax():
         h, m = divmod(m, 60)
 
         # Convert milliseconds to a human-readable time
-        album["length"] = ':'.join(map(str, [h, m, s]))
+        album["length"] = str(int(h)) + ":" + str(int(m)) + ":" + str(int(s))
 
     return jsonify(albums)
 
