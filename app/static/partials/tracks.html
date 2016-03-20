@@ -1,0 +1,63 @@
+<div class="bodyText">
+    <span class="title">Tracks</span>
+    <div ng-controller="TrackTableCtrl">
+        <table class="table" id="trackTable">
+            <tr>
+                <th id="trackCoverHeader"></th>
+                <th>
+                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Track Title</a>
+                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse">Artist Name</a>
+                    <span ng-show="sortType == 'artist_name' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'artist_name' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse">Release Date</a>
+                    <span ng-show="sortType == 'release_date' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'release_date' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'album_name' ; sortReverse = !sortReverse">Album</a>
+                    <span ng-show="sortType == 'album_name' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'album_name' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'duration' ; sortReverse = !sortReverse">Duration</a>
+                    <span ng-show="sortType == 'duration' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'duration' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+            </tr>
+            <tr ng-repeat="track in tracks | orderBy:sortType:sortReverse">
+                <td>
+                    <img class="trackCover" ng-src={{track.col_img}}></a></td>
+                <td>{{track.name}}</td>
+                <td>{{track.artist_name}}</td>
+                <td>{{track.release_date}}</td>
+                <td>{{track.album_name}}</td>
+                <td>{{track.duration}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<nav>
+    <ul class="pagination pagination-lg">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

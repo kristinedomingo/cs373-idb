@@ -29,6 +29,15 @@ angular.module('controllers', [])
             persistAlbum.set(data.albums);
         });
     }])
+    .controller('TrackTableCtrl',['$scope', 'trackService', 'persistTrack', function($scope, trackService, persistTrack) {
+        $scope.tracks = []
+        trackService.getTracks().then(function(data) {
+            $scope.tracks = data.tracks;
+            $scope.sortType = 'name';
+            $scope.sortReverse = false;
+            persistTrack.set(data.tracks);
+        });
+    }])
     .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
         $scope.isActive = function(viewLocation) {
             return $location.path().indexOf(viewLocation) == 0;

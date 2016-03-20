@@ -1,7 +1,7 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify
 import requests
-import datetime
+from datetime import timedelta
 
 app = Flask(__name__, static_url_path='')
 
@@ -54,7 +54,7 @@ def splash():
 
 
 @app.route('/get_albums')
-def album_ajax():
+def get_album_data():
     albums = requests.get(
         'https://api.spotify.com/v1/albums/?ids=6bfkwBrGYKJFk6Z4QVyjxd,28AwWnNskZq7zvJs5oEHGc,1zW59tdlltJgHOlqLbR1lN').json()
 
@@ -88,10 +88,34 @@ def album_ajax():
 
 
 @app.route('/get_tracks')
-def track_ajax():
+def get_track_data():
     tracks = requests.get(
-        'https://api.spotify.com/v1/tracks/?ids=0LSl4lXvjrdGORyBGB2lNJ,6ZpR2XFuQJSHAQwg9495KZ,4URU1lRXhWwZIXuxKI1SuH')
-    return jsonify(tracks.json())
+        'https://api.spotify.com/v1/tracks/?ids=0LSl4lXvjrdGORyBGB2lNJ,6ZpR2XFuQJSHAQwg9495KZ,4URU1lRXhWwZIXuxKI1SuH').json()
+
+    # Parse JSON information to append needed items
+    for track in tracks["tracks"]:
+
+        # Get artist(s)
+        names = ""
+        for artist in track["artists"]:
+            names += artist["name"] + ', '
+        track["artist_name"] = names.rstrip(', ')
+
+        # Get associated album
+        track["album_name"] = track["album"]["name"]
+
+        # Get release date from album
+        album_href = track["album"]["href"]
+        album_json = requests.get(album_href).json()
+        track["release_date"] = album_json["release_date"]
+
+        # Get track duration
+        duration = timedelta(milliseconds = track["duration_ms"])
+        minutes = str(duration.seconds // 60)
+        seconds = str(duration.seconds % 60).zfill(2)
+        track["duration"] = minutes + ":" + seconds
+
+    return jsonify(tracks)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

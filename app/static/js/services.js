@@ -54,4 +54,28 @@ angular.module('services',[])
             set:saveAlbums,
             get:getAlbums
         }
+    })
+    .factory('trackService', function($http) {
+        return {
+            getTracks: function() {
+                return $http.get('/get_tracks').then(function(result) {
+                    return result.data;
+                });
+            }
+        }
+    })
+    .factory('persistTrack', function() {
+        var savedTracks = {};
+        function saveTracks(data) {
+            savedTracks = data;
+        }
+
+        function getTracks() {
+            return savedTracks;
+        }
+
+        return {
+            set:saveTracks,
+            get:getTracks
+        }
     });
