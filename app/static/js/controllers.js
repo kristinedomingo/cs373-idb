@@ -11,7 +11,7 @@ angular.module('controllers', [])
             persistArtist.set(data.artists);
         });
     }])
-    .controller('ArtistDetailsCtrl', ['persistArtist', function($scope, persistArtist) {
+    .controller('ArtistDetailsCtrl', ['$scope','persistArtist', function($scope, persistArtist) {
         $scope.artists = persistArtist.get();
     }])
     .controller('SplashCtrl', ['$scope' , function($scope) {
