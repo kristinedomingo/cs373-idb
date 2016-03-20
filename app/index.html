@@ -29,12 +29,14 @@
                 <div class="masthead clearfix">
                     <div class="inner">
                         <h3 class="masthead-brand"><a href="#/">SWEet Music</a></h3>
-                        <nav>
+                        <nav ng-controller="NavCtrl">
                             <ul class="nav masthead-nav">
-                                <li><a href="#/about">About</a></li>
-                                <li><a href="#/albums">Albums</a></li>
-                                <li><a href="#/artists">Artists</a></li>
-                                <li><a href="#/tracks">Tracks</a></li>
+                                <!-- http://stackoverflow.com/questions/16199418/how-do-i-
+                                implement-the-bootstrap-navbar-active-class-with-angular-js-->
+                                <li ng-class="{ active : isActive('/about')}"><a href="#/about">About</a></li>
+                                <li ng-class="{ active : isActive('/albums')}"><a href="#/albums">Albums</a></li>
+                                <li ng-class="{ active : isActive('/artists')}"><a href="#/artists">Artists</a></li>
+                                <li ng-class="{ active : isActive('/tracks')}"><a href="#/tracks">Tracks</a></li>
                             </ul>
                         </nav>
                     </div>
