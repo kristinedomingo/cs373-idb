@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 from flask import jsonify
 import requests
 
@@ -49,13 +49,13 @@ def get_artist_data():
 
 @app.route('/')
 def splash():
-    return render_template('index.html')
+    return send_file('templates/base.html')
 
 
-@app.route('/artists')
-def artists():
-    artist_data = get_artist_data()
-    return render_template('artists.html')
+# @app.route('/artists')
+# def artists():
+#     artist_data = get_artist_data()
+#     return render_template('artists.html')
 
 
 @app.route('/get_albums')
@@ -77,4 +77,4 @@ def about():
     return render_template('about.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)

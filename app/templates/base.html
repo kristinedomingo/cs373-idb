@@ -17,8 +17,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    {% block head %} {% endblock %}
+    <!-- AngularCSS stylesheets will be added here -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,13 +32,22 @@
             <div class="cover-container">
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand"><a href="/">SWEet Music</a></h3>
-                        {% block nav %}{% endblock %}
+                        <h3 class="masthead-brand"><a href="#/">SWEet Music</a></h3>
+
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li><a href="#/about">About</a></li>
+                            <li><a href="#/albums">Albums</a></li>
+                            <li><a href="#/artists">Artists</a></li>
+                            <li><a href="#/tracks">Tracks</a></li>
+                        </ul>
+                    </nav>
                     </div>
                 </div>
 
+
                 <!-- Actual page content goes here -->
-                {% block body %}{% endblock %}
+                <div ng-view></div>
 
                 <div class="mastfoot">
                     <div class="inner">
@@ -49,14 +57,16 @@
         </div>
     </div>
     <!-- Scripts at the end so page loads faster! -->
-    <script src="js/angular.min.js"></script>
+    <script src="js/angularjs/angular.min.js"></script>
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- Angular scripts -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/filters.js"></script>
+    <script src="js/angularjs/app.js"></script>
+    <script src="js/angularjs/controllers.js"></script>
+    <script src="js/angularjs/services.js"></script>
+    <script src="js/angularjs/filters.js"></script>
+    <script src="js/angularjs/angular-route.js"></script>
+    <script src="js/angularjs/angular-css.js"></script>
 </body>
 
 </html>
