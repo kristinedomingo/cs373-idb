@@ -4,11 +4,31 @@
         <table class="table" id="albumTable">
             <tr>
                 <th id="albumCoverHeader"></th>
-                <th><a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Album Name<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span></a></th>
-                <th><a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse">Artist Name<span ng-show="sortType == 'artist_name'" class="fa fa-caret-down"></span></a></th>
-                <th><a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse">Release Date<span ng-show="sortType == 'release_date'" class="fa fa-caret-down"></span></a></th>
-                <th><a href="" ng-click="sortType = 'num_tracks' ; sortReverse = !sortReverse">Number of Tracks<span ng-show="sortType == 'num_tracks'" class="fa fa-caret-down"></span></a></th>
-                <th><a href="" ng-click="sortType = 'length' ; sortReverse = !sortReverse">Length<span ng-show="sortType == 'length'" class="fa fa-caret-down"></span></a></th>
+                <th>
+                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Album Name</a>
+                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse">Artist Name</a>
+                    <span ng-show="sortType == 'artist_name' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'artist_name' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse">Release Date</a>
+                    <span ng-show="sortType == 'release_date' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'release_date' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'num_tracks' ; sortReverse = !sortReverse">Number of Tracks</a>
+                    <span ng-show="sortType == 'num_tracks' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'num_tracks' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'length' ; sortReverse = !sortReverse">Length</a>
+                    <span ng-show="sortType == 'length' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'length' && !sortReverse" class="fa fa-caret-up"></span>
+                </th>
             </tr>
             <tr ng-repeat="album in albums | orderBy:sortType:sortReverse">
                 <td>
