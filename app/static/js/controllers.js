@@ -19,12 +19,49 @@ angular.module('controllers', [])
     }])
     .controller('AboutCtrl', ['$scope', function($scope) {
         // Team member information
-        $scope.teamMembers = [{name: "Daniel Abrego", commits: 99, issues: 99, unitTests: 99, responsibilities: "Responsibility1, Responsibility 2, Responsibility 3", bio: "This is an example biography. Here is some more sample text for this person's biography."},
-                              {name: "Ragan Behrens", commits: 99, issues: 99, unitTests: 99, responsibilities: "Responsibility1, Responsibility 2, Responsibility 3", bio: "This is an example biography. Here is some more sample text for this person's biography."},
-                              {name: "Kristine Domingo", commits: 99, issues: 99, unitTests: 99, responsibilities: "Responsibility1, Responsibility 2, Responsibility 3", bio: "This is an example biography. Here is some more sample text for this person's biography."},
-                              {name: "Jorge Munoz", commits: 99, issues: 99, unitTests: 99, responsibilities: "Responsibility1, Responsibility 2, Responsibility 3", bio: "This is an example biography. Here is some more sample text for this person's biography."},
-                              {name: "Micah Ramirez", commits: 99, issues: 99, unitTests: 99, responsibilities: "Responsibility1, Responsibility 2, Responsibility 3", bio: "This is an example biography. Here is some more sample text for this person's biography."},
-                              {name: "Firstname LastName", commits: 99, issues: 99, unitTests: 99, responsibilities: "Responsibility1, Responsibility 2, Responsibility 3", bio: "This is an example biography. Here is some more sample text for this person's biography."}];
+        $scope.teamMembers =
+         [{name: "Daniel Abrego",
+           commits: 99,
+           issues: 99,
+           unitTests: 99,
+           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
+           bio: "This is an example biography. Here is some more sample text for this person's biography."
+          },
+          {name: "Ragan Behrens",
+           commits: 99,
+           issues: 99,
+           unitTests: 99,
+           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
+           bio: "This is an example biography. Here is some more sample text for this person's biography."
+          },
+          {name: "Kristine Domingo",
+           commits: 99,
+           issues: 99,
+           unitTests: 99,
+           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
+           bio: "This is an example biography. Here is some more sample text for this person's biography."
+          },
+          {name: "Jorge Munoz",
+           commits: 99,
+           issues: 99,
+           unitTests: 99,
+           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
+           bio: "This is an example biography. Here is some more sample text for this person's biography."
+          },
+          {name: "Micah Ramirez",
+           commits: 99,
+           issues: 99,
+           unitTests: 99,
+           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
+           bio: "This is an example biography. Here is some more sample text for this person's biography."
+          },
+          {name: "Firstname LastName",
+           commits: 99,
+           issues: 99,
+           unitTests: 99,
+           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
+           bio: "This is an example biography. Here is some more sample text for this person's biography."
+          }];
 
         // Get the total number of commits, issues, and unit tests
         $scope.totalCommits = 0;
