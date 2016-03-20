@@ -1,6 +1,7 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify
 import requests
+import datetime
 
 app = Flask(__name__, static_url_path='')
 
@@ -55,8 +56,35 @@ def splash():
 @app.route('/get_albums')
 def album_ajax():
     albums = requests.get(
-        'https://api.spotify.com/v1/albums/?ids=6bfkwBrGYKJFk6Z4QVyjxd,28AwWnNskZq7zvJs5oEHGc,1zW59tdlltJgHOlqLbR1lN')
-    return jsonify(albums.json())
+        'https://api.spotify.com/v1/albums/?ids=6bfkwBrGYKJFk6Z4QVyjxd,28AwWnNskZq7zvJs5oEHGc,1zW59tdlltJgHOlqLbR1lN').json()
+
+    # Parse JSON information to append needed items
+    for album in albums["albums"]:
+
+        # Get album cover
+        album["col_img"] = album["images"][len(album["images"]) - 1]["url"]
+
+        # Get artist(s)
+        names = ""
+        for artist in album["artists"]:
+            names += artist["name"] + ', '
+        album["artist_name"] = names.rstrip(', ')
+
+        # Get number of tracks
+        album["num_tracks"] = len(album["tracks"]["items"])
+
+        # Get length (duration) of album
+        duration = 0
+        for track in album["tracks"]["items"]:
+            duration += track["duration_ms"]
+        s = duration / 1000
+        m, s = divmod(s, 60)
+        h, m = divmod(m, 60)
+
+        # Convert milliseconds to a human-readable time
+        album["length"] = ':'.join(map(str, [h, m, s]))
+
+    return jsonify(albums)
 
 
 @app.route('/get_tracks')

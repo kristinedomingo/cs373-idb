@@ -2,27 +2,27 @@
 
 /* Services */
 angular.module('services',[])
-    .factory('artistService', function($http){
+    .factory('artistService', function($http) {
         return {
-            getArtists: function(){
+            getArtists: function() {
                 //since $http.get returns a promise,
                 //and promise.then() also returns a promise
                 //that resolves to whatever value is returned in it's 
                 //callback argument, we can return that.
-                return $http.get('/get_artists').then(function(result){
+                return $http.get('/get_artists').then(function(result) {
                     return result.data;
                 });
             }
         }})
-    .factory('persistArtist', function(){
+    .factory('persistArtist', function() {
         //persist Artist data on routing so that we 
         //don't have to do another Http request
         var savedArtists = {};
-        function saveArtists(data){
+        function saveArtists(data) {
             savedArtists = data;
         }
 
-        function getArtists(){
+        function getArtists() {
             return savedArtists;
         }
 
@@ -30,5 +30,28 @@ angular.module('services',[])
             set:saveArtists,
             get:getArtists
         }
-    });
+    })
+    .factory('albumService', function($http) {
+        return {
+            getAlbums: function() {
+                return $http.get('/get_albums').then(function(result) {
+                    return result.data;
+                });
+            }
+        }
+    })
+    .factory('persistAlbum', function() {
+        var savedAlbums = {};
+        function saveAlbums(data) {
+            savedAlbums = data;
+        }
 
+        function getAlbums() {
+            return savedAlbums;
+        }
+
+        return {
+            set:saveAlbums,
+            get:getAlbums
+        }
+    });
