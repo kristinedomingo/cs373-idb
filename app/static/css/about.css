@@ -328,6 +328,10 @@ body {
     transition: .4s;
 }
 
+.col-margin {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 991px) {
     [class*="col-"] {
         margin-bottom: 20px;
