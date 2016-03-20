@@ -10,8 +10,6 @@ var sweetMusicApp = angular.module('sweetMusicApp', [
 
 sweetMusicApp.config(['$routeProvider',
     function($routeProvider){
-        console.log("trying to route");
-        console.log($routeProvider);
         $routeProvider.
             when('/', {
                 templateUrl : '/partials/splash.html',
@@ -45,8 +43,4 @@ sweetMusicApp.config(['$routeProvider',
             otherwise({
                 redirectTo: '/'
             });
-        console.log("trying to configure");
 }]);
-
-console.log("App loaded");
-console.log(sweetMusicApp);
