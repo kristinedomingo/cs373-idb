@@ -260,11 +260,6 @@ body {
   }
 }
 
-.albumCover {
-  margin-bottom: 20px;
-  /*border: 10px #fff solid;*/
-}
-
 .pagination > li > a {
   color: #5B097D;
 }
@@ -286,10 +281,23 @@ body {
 
 #albumTable {
   border-radius: 25px;
-  color: purple;
+  color: #5B097D;
   background-color: white;
+}
+
+#albumTable th{
+  text-align: center !important;
 }
 
 #albumTable th a{
   color: #5B097D;
+}
+
+#albumCoverHeader {
+  width: 64px;
+}
+
+.albumCover {
+  margin-left: 15px;
+  border-radius: 50%;
 }

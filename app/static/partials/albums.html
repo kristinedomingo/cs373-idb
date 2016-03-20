@@ -3,7 +3,7 @@
     <div ng-controller="AlbumTableCtrl">
         <table class="table" id="albumTable">
             <tr>
-                <th></th>
+                <th id="albumCoverHeader"></th>
                 <th><a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Album Name<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span></a></th>
                 <th><a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse">Artist Name<span ng-show="sortType == 'artist_name'" class="fa fa-caret-down"></span></a></th>
                 <th><a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse">Release Date<span ng-show="sortType == 'release_date'" class="fa fa-caret-down"></span></a></th>
@@ -12,8 +12,7 @@
             </tr>
             <tr ng-repeat="album in albums | orderBy:sortType:sortReverse">
                 <td>
-                    <img class="album-cover-sml" src="imgs/cover.png">
-                    <img ng-src={{album.col_img}}></a></td>
+                    <img class="albumCover" ng-src={{album.col_img}}></a></td>
                 <td>{{album.name}}</td>
                 <td>{{album.artist_name}}</td>
                 <td>{{album.release_date}}</td>
