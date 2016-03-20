@@ -2,58 +2,65 @@
  * Globals
  */
 
+
 /* Fifths */
+
 .col-xs-5ths,
 .col-sm-5ths,
 .col-md-5ths,
 .col-lg-5ths {
-  position: relative;
-  min-height: 1px;
-  padding-right: 10px;
-  padding-left: 10px;
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .col-xs-5ths {
-  width: 20%;
-  float: left;
+    width: 20%;
+    float: left;
 }
 
 @media (min-width: 768px) {
-  .col-sm-5ths {
-    width: 20%;
-    float: left;
-  }
+    .col-sm-5ths {
+        width: 20%;
+        float: left;
+    }
 }
 
 @media (min-width: 992px) {
-  .col-md-5ths {
-    width: 20%;
-    float: left;
-  }
+    .col-md-5ths {
+        width: 20%;
+        float: left;
+    }
 }
 
 @media (min-width: 1200px) {
-  .col-lg-5ths {
-    width: 20%;
-    float: left;
-  }
+    .col-lg-5ths {
+        width: 20%;
+        float: left;
+    }
 }
 
+
 /* Links */
+
 a,
 a:focus,
 a:hover {
-  color: #fff;
+    color: #fff;
 }
 
+
 /* Custom default button */
+
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #fff;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+    color: #fff;
+    text-shadow: none;
+    /* Prevent inheritence from `body` */
+    background-color: #fff;
+    border: 1px solid #fff;
 }
 
 
@@ -63,91 +70,105 @@ a:hover {
 
 html,
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-x: hidden;
-  background-color: #ddd;
-  background-image: url('../imgs/bg.png');
-  background-repeat: repeat-y;
-  background-size: 100%;
-  font-family: 'Fira Sans', sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    background-color: #ddd;
+    background-image: url('../imgs/bg.png');
+    background-repeat: repeat-y;
+    background-size: 100%;
+    font-family: 'Fira Sans', sans-serif;
 }
+
 body {
-  color: #fff;
-  text-align: center;
-  }
+    color: #fff;
+    text-align: center;
+}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
+
 .site-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%; /* For at least Firefox */
-  min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-}
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-}
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
+    display: table;
+    width: 100%;
+    height: 100%;
+    /* For at least Firefox */
+    min-height: 100%;
+    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 }
 
+.site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.cover-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
 /* Padding for spacing */
+
 .inner {
-  padding: 30px;
+    padding: 30px;
 }
 
 
 /*
  * Header
  */
+
 .masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-family: 'Roboto Slab', serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
 }
 
 .masthead-nav > li {
-  display: inline-block;
-  font-family: 'Roboto Slab', serif;
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
 }
+
 .masthead-nav > li + li {
-  margin-left: 20px;
+    margin-left: 20px;
 }
+
 .masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    /* IE8 proofing */
+    color: rgba(255, 255, 255, .75);
+    border-bottom: 2px solid transparent;
 }
+
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255, 255, 255,.25);
+    background-color: transparent;
+    border-bottom-color: #a9a9a9;
+    border-bottom-color: rgba(255, 255, 255, .25);
 }
+
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+    color: #fff;
+    border-bottom-color: #fff;
 }
 
 @media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
+    .masthead-brand {
+        float: left;
+    }
+    .masthead-nav {
+        float: right;
+    }
 }
 
 
@@ -156,11 +177,12 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+    padding: 0 20px;
 }
+
 .cover .btn-lg {
-  padding: 10px 20px;
-  font-weight: bold;
+    padding: 10px 20px;
+    font-weight: bold;
 }
 
 
@@ -169,8 +191,9 @@ body {
  */
 
 .mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+    color: #999;
+    /* IE8 proofing */
+    color: rgba(255, 255, 255, .5);
 }
 
 
@@ -179,144 +202,151 @@ body {
  */
 
 @media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    top: 0;
-  }
-  .mastfoot {
-    bottom: 0;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
+    /* Pull out the header and footer */
+    .masthead {
+        top: 0;
+    }
+    .mastfoot {
+        bottom: 0;
+    }
+    /* Handle the widths */
+    .masthead,
+    .mastfoot,
+    .cover-container {
+        width: 100%;
+        /* Must be percentage or pixels for horizontal alignment */
+    }
 }
 
 @media (min-width: 1100px) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 1100px;
-  }
+    .masthead,
+    .mastfoot,
+    .cover-container {
+        width: 1100px;
+    }
 }
 
 @font-face {
-  font-family: AmericanCaptain;
-  src: url('../other/americancaptain.ttf');
+    font-family: AmericanCaptain;
+    src: url('../other/americancaptain.ttf');
 }
 
 .title {
-  font-family: AmericanCaptain;
-  letter-spacing: 1rem;
-  font-size: 6rem;
-  display: inline-block;
-  position: relative;
+    font-family: AmericanCaptain;
+    letter-spacing: 1rem;
+    font-size: 6rem;
+    display: inline-block;
+    position: relative;
 }
 
 @media (min-width: 768px) {
-  .title {
-    font-size: 8rem;
-  }
+    .title {
+        font-size: 8rem;
+    }
 }
 
 .bodyText {
-  margin-top: 0rem;
-  font-size: 1.6rem;
+    margin-top: 0rem;
+    font-size: 1.6rem;
 }
 
 .bodyText a {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 @media (min-width: 768px) {
-  .bodyText {
-    margin-top: 3rem;
-  }
+    .bodyText {
+        margin-top: 3rem;
+    }
 }
 
 .clearBtn {
-  background-color: #6B158E;
-  border-color: #5B097D;
-  border-radius: 10px;
-  text-decoration: none !important;
+    background-color: #6B158E;
+    border-color: #5B097D;
+    border-radius: 10px;
+    text-decoration: none !important;
 }
 
 .clearBtn:hover {
-  background-color: #fff;
-  color: #6B158E;
-  text-decoration: none;
-  -o-transition:.4s;
-  -ms-transition:.4s;
-  -moz-transition:.4s;
-  -webkit-transition:.4s;
-  transition:.4s;
+    background-color: #fff;
+    color: #6B158E;
+    text-decoration: none;
+    -o-transition: .4s;
+    -ms-transition: .4s;
+    -moz-transition: .4s;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 @media (max-width: 991px) {
-  [class*="col-"]{
-      margin-bottom: 20px;
-  }
+    [class*="col-"] {
+        margin-bottom: 20px;
+    }
 }
 
 .albumCover {
-  margin-bottom: 20px;
-  /*border: 10px #fff solid;*/
+    margin-bottom: 20px;
+    /*border: 10px #fff solid;*/
 }
 
 .pagination > li > a {
-  color: #5B097D;
+    color: #5B097D;
 }
 
 .pagination > .active > a {
-  background-color: #5B097D;
-  border-color: #5B097D;
+    background-color: #5B097D;
+    border-color: #5B097D;
 }
 
 .pagination > .active > a:hover {
-  background-color: #6B158E;
-  border-color: #6B158E;
+    background-color: #6B158E;
+    border-color: #6B158E;
 }
 
 .pagination > .active > a:focus {
-  background-color: #6B158E;
-  border-color: #6B158E;
+    background-color: #6B158E;
+    border-color: #6B158E;
 }
 
 .artist-img-small {
-  position: relative;
+    position: relative;
 }
 
-.artist-cover-sml{
-  position: absolute;
-  height: 64px;
-  width: 64px;
+.artist-cover-sml {
+    position: absolute;
+    height: 64px;
+    width: 64px;
 }
+
 th.artist-table-header:nth-child(1),
-th.artist-table-header:nth-child(6) { 
-  border-top:none;
+th.artist-table-header:nth-child(6) {
+    border-top: none;
 }
-table.table{
+
+table.table {
     border-radius: 25px;
     color: purple;
     background-color: white;
 }
 
+
 /* Override */
+
 .artist.table > tbody > tr > td {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
-th.artist-table-header{
-  text-align: center;
+th.artist-table-header {
+    text-align: center;
 }
+
 
 /* Table header anchor */
+
 a.th {
-  color:purple;
+    color: purple;
 }
 
 tr {
-  text-align: center;
+    text-align: center;
 }
