@@ -13,10 +13,6 @@ angular.module('controllers', [])
     }])
     .controller('ArtistDetailsCtrl', ['persistArtist', function($scope, persistArtist) {
         $scope.artists = persistArtist.get();
-        console.log("Scope");
-        console.log($scope);
-        console.log("Scope artist data");
-        console.log($scope.artists);
     }])
     .controller('SplashCtrl', ['$scope' , function($scope) {
 
@@ -32,4 +28,9 @@ angular.module('controllers', [])
             $scope.sortReverse = false;
             persistAlbum.set(data.albums);
         });
+    }])
+    .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
+        $scope.isActive = function(viewLocation) {
+            return $location.path().indexOf(viewLocation) == 0;
+        }
     }]);
