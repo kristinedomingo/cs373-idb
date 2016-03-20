@@ -20,4 +20,7 @@ angular.module('controllers', [])
 	}])
 	.controller('SplashCtrl', ['$scope' , function($scope){
 
+	}])
+	.controller('AboutCtrl', ['$scope', function($scope){
+
 	}]);

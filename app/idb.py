@@ -49,13 +49,7 @@ def get_artist_data():
 
 @app.route('/')
 def splash():
-    return send_file('templates/base.html')
-
-
-# @app.route('/artists')
-# def artists():
-#     artist_data = get_artist_data()
-#     return render_template('artists.html')
+    return send_file('index.html')
 
 
 @app.route('/get_albums')
@@ -70,11 +64,6 @@ def track_ajax():
     tracks = requests.get(
         'https://api.spotify.com/v1/tracks/?ids=0LSl4lXvjrdGORyBGB2lNJ,6ZpR2XFuQJSHAQwg9495KZ,4URU1lRXhWwZIXuxKI1SuH')
     return jsonify(tracks.json())
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
