@@ -26,6 +26,11 @@ sweetMusicApp.config(['$routeProvider',
                 controller : 'AlbumTableCtrl',
                 css : 'css/albums.css'
             }).
+            when('/albums/:albumID', {
+                templateUrl : '/partials/album-details.html',
+                controller : 'AlbumDetailsCtrl',
+                css : 'css/album-details.css'
+            }).
             when('/tracks', {
                 templateUrl : '/partials/tracks.html',
                 controller : 'TrackTableCtrl',

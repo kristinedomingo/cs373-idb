@@ -40,21 +40,6 @@ angular.module('services',[])
             }
         }
     })
-    .factory('persistAlbum', function() {
-        var savedAlbums = {};
-        function saveAlbums(data) {
-            savedAlbums = data;
-        }
-
-        function getAlbums() {
-            return savedAlbums;
-        }
-
-        return {
-            set:saveAlbums,
-            get:getAlbums
-        }
-    })
     .factory('trackService', function($http) {
         return {
             getTracks: function() {

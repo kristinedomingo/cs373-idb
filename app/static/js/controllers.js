@@ -73,14 +73,31 @@ angular.module('controllers', [])
             $scope.totalUnitTests += member.unitTests;
         });
     }])
-    .controller('AlbumTableCtrl',['$scope', 'albumService', 'persistAlbum', function($scope, albumService, persistAlbum) {
+    .controller('AlbumTableCtrl',['$scope', 'albumService', function($scope, albumService) {
         $scope.albums = []
         albumService.getAlbums().then(function(data) {
             $scope.albums = data.albums;
             $scope.sortType = 'name';
             $scope.sortReverse = false;
-            persistAlbum.set(data.albums);
+            localStorage.setItem('albumTable', JSON.stringify(data.albums));
         });
+    }])
+    .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+        $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
+        console.log($scope.albums);
+        $scope.targetAlbum = $scope.albums.find(function(album) {
+            return album.id == $routeParams.albumID;
+        });
+
+        // Get data from already parsed JSON
+        $scope.albumTitle = $scope.targetAlbum.name;
+        $scope.artistName = $scope.targetAlbum.artist_name;
+        $scope.releaseDate = $scope.targetAlbum.release_date;
+        $scope.numTracks = $scope.targetAlbum.num_tracks;
+        $scope.length = $scope.targetAlbum.length;
+
+        // Get album cover
+        $scope.albumCover = $scope.targetAlbum.images[1].url;
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService', 'persistTrack', function($scope, trackService, persistTrack) {
         $scope.tracks = []
