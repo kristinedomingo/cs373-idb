@@ -14,23 +14,6 @@ angular.module('services',[])
                 });
             }
         }})
-    .factory('persistArtist', function() {
-        //persist Artist data on routing so that we 
-        //don't have to do another Http request
-        var savedArtists = {};
-        function saveArtists(data) {
-            savedArtists = data;
-        }
-
-        function getArtists() {
-            return savedArtists;
-        }
-
-        return {
-            set:saveArtists,
-            get:getArtists
-        }
-    })
     .factory('albumService', function($http) {
         return {
             getAlbums: function() {
