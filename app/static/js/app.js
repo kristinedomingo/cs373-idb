@@ -23,7 +23,8 @@ sweetMusicApp.config(['$routeProvider',
             }).
             when('/artists/:artistID', {
                 templateUrl : '/partials/artist-details.html',
-                controller : 'ArtistDetailsCtrl'
+                controller : 'ArtistDetailsCtrl',
+                css : 'css/artist-details.css'
             }).
             when('/albums', {
                 templateUrl : '/partials/albums.html',

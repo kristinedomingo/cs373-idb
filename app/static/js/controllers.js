@@ -14,9 +14,12 @@ angular.module('controllers', [])
     .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
         $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
         //finds the artist obj that was clicked on
-        var artistObj = $scope.artists.find(function(artist){
+        $scope.currentArtist = $scope.artists.find(function(artist){
             return artist.id == $routeParams.artistID;
         });
+        //grab the medium sized image
+        $scope.artistPhoto = $scope.currentArtist.images[1].url;
+        $scope.name = $scope.currentArtist.name;
 
     }])
     .controller('SplashCtrl', ['$scope' , function($scope) {

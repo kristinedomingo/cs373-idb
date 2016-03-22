@@ -31,7 +31,7 @@
                 </th>
                 <tr ng-repeat="artist in artists | orderBy:sortType:sortReverse">
                     <td>
-                        <a ng-href="#/test/{{artist.id}}"><img class="artistImg" ng-src={{artist.col_img}}></a>
+                        <a ng-href="#/artists/{{artist.id}}"><img class="artistImg" ng-src={{artist.col_img}}></a>
                     </td>
                     <td>{{artist.name}}</td>
                     <td>{{artist.num_albums}}</td>
