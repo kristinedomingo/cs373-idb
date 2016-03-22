@@ -68,6 +68,7 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* For native-style scrolling on iOS */
   background-color: #ddd;
   background-image: url('../imgs/bg.png');
   background-repeat: repeat-y;
