@@ -3,18 +3,28 @@
         <div class="row">
             <div id="artistDiv" class="boxSection col-sm-4 col-md-4">
                 <span id="artistTitle">{{name}}</span>
-                <img ng-src="{{artistPhoto}}">
+                <img id="artistCover" ng-src="{{artistPhoto}}">
             </div>
-            <div class="col-xs-6 col-md-8">
-                <div class="boxSection">
-                	<span id="artistTitle">Artist Info</span>
-                </div>
+            <div class="col-sm-1 col-md-1">
+            </div>
+            <div class="boxSection col-sm-8 col-md-7">
+                <span id="artistTitle">Artist Bio</span>
+                    <div ng-repeat="bio in bios | limitTo:1">
+                        <p> {{bio.text}}</p>
+                    </div>
             </div>
         </div>
         <div class="row">
-        	<div class="boxSection col-md-8 col-md-offset-4">
-        		<span id="artistTitle">Artist News</span>
-        	</div>
+        </div>
+        <div class="row">
+            <div class="boxSection col-md-7 col-md-offset-5">
+                <span id="artistTitle">Artist News</span>
+                <table>
+                    <tr ng-repeat="new in news">
+                        <td>test</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
