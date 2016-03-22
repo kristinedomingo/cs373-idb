@@ -17,7 +17,11 @@
                             <table>
                                 <tr>
                                     <td class="headerCol">By:</td>
-                                    <td>{{targetAlbum.artist_name}}</td>
+                                    <td>
+                                        <span ng-repeat="artist in artistIDs">
+                                            <a href="#/artists/{{artist.id}}">{{artist.name}}</a>
+                                        </span>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="headerCol">Release Date:</td>

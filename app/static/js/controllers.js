@@ -119,6 +119,12 @@ angular.module('controllers', [])
             var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
             track.duration_ms = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
         });
+
+        // Get individal artists and their ids
+        $scope.artistIDs = [];
+        $scope.targetAlbum.artists.forEach(function(artist) {
+            $scope.artistIDs.push({name: artist.name, id: artist.id});
+        });
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService', 'persistTrack', function($scope, trackService, persistTrack) {
         $scope.tracks = []
