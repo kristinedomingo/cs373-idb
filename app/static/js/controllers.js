@@ -11,11 +11,20 @@ angular.module('controllers', [])
             localStorage.setItem('artistTable', JSON.stringify(data.artists));
         });
     }])
-    .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService', function($scope, $routeParams, artistBioService, artistNewsService) {
         $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
         //finds the artist obj that was clicked on
         $scope.currentArtist = $scope.artists.find(function(artist){
             return artist.id == $routeParams.artistID;
+        });
+        artistBioService.getArtistDetails($scope.currentArtist.uri).then(function(data){
+          console.log(data.response.biography);
+          $scope.biography = data.response.biography;
+        });
+
+        artistNewsService.getArtistDetails($scope.currentArtist.uri).then(function(data){
+          console.log(data.response.news);
+          $scope.news = data.response.news;
         });
         //grab the medium sized image
         $scope.artistPhoto = $scope.currentArtist.images[1].url;
