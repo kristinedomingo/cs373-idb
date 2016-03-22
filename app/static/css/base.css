@@ -63,17 +63,18 @@ a:hover {
 
 html,
 body {
+  -webkit-overflow-scrolling: touch;
   height: 100%;
   width: 100%;
   margin: 0px;
   padding: 0px;
-  overflow-y: scroll;
   background-color: #ddd;
   background-image: url('../imgs/bg.png');
   background-repeat: repeat-y;
   background-size: 100%;
   font-family: 'Fira Sans', sans-serif;
 }
+
 body {
   color: #fff;
   text-align: center;
