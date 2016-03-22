@@ -1,48 +1,63 @@
 <div class="bodyText">
-    <div ng-controller="AlbumDetailsCtrl">
+    <div ng-controller="AlbumDetailsCtrl" class="container">
         <div class="row">
-            <div class="col-md-8">
-                <div class="boxSection">
-                    <span id="albumTitle">{{targetAlbum.name}}</span>
-                    <img id="albumCover" src="{{albumCover}}">
-                </div>
-            </div>
             <div class="col-md-4">
-                <div class="boxSection">
-                    <span class="boxTitle">Details</span>
-                    <table>
-                        <tr>
-                            <td class="headerCol">By:</td>
-                            <td>{{targetAlbum.artist_name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="headerCol">Release Date:</td>
-                            <td>{{targetAlbum.release_date}}</td>
-                        </tr>
-                        <tr>
-                            <td class="headerCol">Number of Tracks:</td>
-                            <td>{{targetAlbum.num_tracks}}</td>
-                        </tr>
-                        <tr>
-                            <td class="headerCol">Length:</td>
-                            <td>{{targetAlbum.length}}</td>
-                        </tr>
-                    </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="boxSection">
+                            <span id="albumTitle">{{targetAlbum.name}}</span>
+                            <img id="albumCover" src="{{albumCover}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="boxSection">
+                            <span class="boxTitle">Details</span>
+                            <table>
+                                <tr>
+                                    <td class="headerCol">By:</td>
+                                    <td>{{targetAlbum.artist_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Release Date:</td>
+                                    <td>{{targetAlbum.release_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Number of Tracks:</td>
+                                    <td>{{targetAlbum.num_tracks}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Length:</td>
+                                    <td>{{targetAlbum.length}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="boxSection">
-                    <span class="boxTitle">Track Listing</span>
-                    <table class="table">
-                        <tr>
-                            <th>Title</th>
-                            <th>Duration</th>
-                        </tr>
-                        <tr ng-repeat="track in tracks" class="trackListing">
-                            <td>{{track.name}}</td>
-                            <td>{{track.duration_ms}}</td>
-                        </tr>
-                    </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="boxSection">
+                            <span class="boxTitle">Description</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="boxSection">
+                            <span class="boxTitle">Track Listing</span>
+                            <table class="table">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Duration</th>
+                                </tr>
+                                <tr ng-repeat="track in tracks" class="trackListing">
+                                    <td>{{track.name}}</td>
+                                    <td>{{track.duration_ms}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

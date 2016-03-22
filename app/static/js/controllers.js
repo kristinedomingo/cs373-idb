@@ -91,6 +91,7 @@ angular.module('controllers', [])
         });
     }])
     .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+        // Find the correct album
         $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
         $scope.targetAlbum = $scope.albums.find(function(album) {
             return album.id == $routeParams.albumID;
