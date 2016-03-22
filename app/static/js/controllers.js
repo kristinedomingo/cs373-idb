@@ -129,7 +129,7 @@ angular.module('controllers', [])
         });
     }])
 
-    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', 'trackLyricsService', function($scope, $routeParams, trackLyricsService) {
+    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
         // Find the correct track
         $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
         $scope.targetTrack = $scope.tracks.find(function(track) {
