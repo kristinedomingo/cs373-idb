@@ -17,13 +17,17 @@
         <div class="row">
         </div>
         <div class="row">
-            <div class="boxSection col-md-7 col-md-offset-5">
+            <div class="boxSection col-md-4 col-sm-4">
+                <span id="artistTitle">Artist Details</span>
+            </div>
+            <div class="col-md-1 col-sm-1">
+            </div>
+            <div class="boxSection col-md-7">
                 <span id="artistTitle">Artist News</span>
-                <table>
-                    <tr ng-repeat="new in news">
-                        <td>test</td>
-                    </tr>
-                </table>
+                   <div class="newsSection" ng-repeat="new in news | limitTo:3">
+                        <span id="artistTitle">{{new.name}}</span>
+                        <p> {{new.summary}} </p>
+                    </div>
             </div>
         </div>
     </div>
