@@ -1,5 +1,59 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    background-color: #fff;
+    background-image: url('../imgs/concert.jpg');
+    background-size: cover;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+@media (min-width: 768px) {
+    /* Pull out the header and footer */
+    .masthead {
+        position: fixed;
+        top: 0;
+    }
+    .mastfoot {
+        position: fixed;
+        bottom: 0;
+    }
+    /* Start the vertical centering */
+    .site-wrapper-inner {
+        vertical-align: middle;
+    }
+    /* Handle the widths */
+    .masthead,
+    .mastfoot,
+    .cover-container {
+        width: 100%;
+        /* Must be percentage or pixels for horizontal alignment */
+    }
+}
+
+@media (min-width: 1100px) {
+    .masthead,
+    .mastfoot,
+    .cover-container {
+        width: 1100px;
+    }
+}
+
 h1 {
     margin: 0 auto;
+}
+
+.title {
+    padding: 5px 0;
+    font-family: 'Lobster', cursive;
+    font-weight: 700;
+    font-size: 9.5rem;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
 }
 
 #smallText {
