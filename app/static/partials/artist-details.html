@@ -9,9 +9,9 @@
             </div>
             <div class="boxSection col-sm-8 col-md-7">
                 <span id="artistTitle">Artist Bio</span>
-                    <div ng-repeat="bio in bios | limitTo:1">
-                        <p> {{bio.text}}</p>
-                    </div>
+                <div ng-repeat="bio in bios | limitTo:1">
+                    <p> {{bio.text}}</p>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -19,15 +19,37 @@
         <div class="row">
             <div class="boxSection col-md-4 col-sm-4">
                 <span id="artistTitle">Artist Details</span>
+                <table>
+                    <tr>
+                        <td class="headerCol">Albums Released:</td>
+                        <td>{{currentArtist.num_albums}}</td>
+                    </tr>
+                    <tr>
+                        <td class="headerCol">Most Recent Album:</td>
+                        <td>{{currentArtist.last_album}}</td>
+                    </tr>
+                    <tr>
+                        <td class="headerCol">Top Track:</td>
+                        <td>{{currentArtist.top_track}}</td>
+                    </tr>
+                    <tr>
+                        <td class="headerCol">Spotify Followers:</td>
+                        <td>{{currentArtist.followers.total}}</td>
+                    </tr>
+                    <tr>
+                        <td class="headerCol">Spotify Popularity:</td>
+                        <td>{{currentArtist.popularity}}</td>
+                    </tr>
+                </table>
             </div>
             <div class="col-md-1 col-sm-1">
             </div>
             <div class="boxSection col-md-7">
                 <span id="artistTitle">Artist News</span>
-                   <div class="newsSection" ng-repeat="new in news | limitTo:3">
-                        <span id="artistTitle">{{new.name}}</span>
-                        <p> {{new.summary}} </p>
-                    </div>
+                <div class="newsSection" ng-repeat="new in news | limitTo:3">
+                    <span id="artistTitle">{{new.name}}</span>
+                    <p> {{new.summary}} </p>
+                </div>
             </div>
         </div>
     </div>
