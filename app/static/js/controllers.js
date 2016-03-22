@@ -84,20 +84,22 @@ angular.module('controllers', [])
     }])
     .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
         $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
-        console.log($scope.albums);
         $scope.targetAlbum = $scope.albums.find(function(album) {
             return album.id == $routeParams.albumID;
         });
 
-        // Get data from already parsed JSON
-        $scope.albumTitle = $scope.targetAlbum.name;
-        $scope.artistName = $scope.targetAlbum.artist_name;
-        $scope.releaseDate = $scope.targetAlbum.release_date;
-        $scope.numTracks = $scope.targetAlbum.num_tracks;
-        $scope.length = $scope.targetAlbum.length;
-
         // Get album cover
         $scope.albumCover = $scope.targetAlbum.images[1].url;
+
+        // Get tracks
+        $scope.tracks = $scope.targetAlbum.tracks.items;
+
+        // Convert ms to minutes and seconds
+        $scope.tracks.forEach(function(track) {
+            var minutes = Math.floor(track.duration_ms / 60000);
+            var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
+            track.duration_ms = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        });
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService', 'persistTrack', function($scope, trackService, persistTrack) {
         $scope.tracks = []

@@ -282,7 +282,7 @@ body {
 .boxSection {
   background-color: #fff;
   border-radius: 25px;
-  padding: 10px 30px;
+  padding: 10px;
   color: #5B097D;
 }
 
@@ -311,6 +311,19 @@ body {
   text-align: left;
 }
 
+.trackListing {
+  text-align: left;
+}
+
+.headerCol {
+  font-weight: 700;
+  padding-right: 10px;
+}
+
 [class*="col-"] {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+tr {
+  text-align: left;
 }
