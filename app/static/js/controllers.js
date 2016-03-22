@@ -19,6 +19,9 @@ angular.module('controllers', [])
         });
         artistBioService.getArtistDetails($scope.currentArtist.uri).then(function(data){
           $scope.bios = data.response.biographies;
+          if(!$scope.bios[0]){
+            $scope.bios = {0:{text:"No data available!"}};
+          }
         });
 
         artistNewsService.getArtistDetails($scope.currentArtist.uri).then(function(data){
