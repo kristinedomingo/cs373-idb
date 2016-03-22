@@ -11,8 +11,13 @@ angular.module('controllers', [])
             persistArtist.set(data.artists);
         });
     }])
-    .controller('ArtistDetailsCtrl', ['$scope','persistArtist', function($scope, persistArtist) {
+    .controller('ArtistDetailsCtrl', ['$scope','persistArtist', '$routeParams', function($scope, persistArtist, $routeParams) {
         $scope.artists = persistArtist.get();
+        //finds the artist obj that was clicked on
+        var artistObj = $scope.artists.find(function(artist){
+            return artist.id == $routeParams.artistID;
+        });
+
     }])
     .controller('SplashCtrl', ['$scope' , function($scope) {
 
