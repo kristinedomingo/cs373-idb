@@ -2,17 +2,17 @@
 
 /* Controllers */
 angular.module('controllers', [])
-    .controller('ArtistTableCtrl',['$scope', 'artistService', 'persistArtist', function($scope, artistService, persistArtist) {
+    .controller('ArtistTableCtrl',['$scope', 'artistService', function($scope, artistService) {
         $scope.artists = []
         artistService.getArtists().then(function(data) {
             $scope.artists = data.artists;
             $scope.sortType = 'name';
             $scope.sortReverse = false;
-            persistArtist.set(data.artists);
+            localStorage.setItem('artistTable', JSON.stringify(data.artists));
         });
     }])
-    .controller('ArtistDetailsCtrl', ['$scope','persistArtist', '$routeParams', function($scope, persistArtist, $routeParams) {
-        $scope.artists = persistArtist.get();
+    .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+        $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
         //finds the artist obj that was clicked on
         var artistObj = $scope.artists.find(function(artist){
             return artist.id == $routeParams.artistID;
