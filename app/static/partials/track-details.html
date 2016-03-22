@@ -1,11 +1,11 @@
 <div class="bodyText">
-    <div ng-controller="AlbumDetailsCtrl" class="container">
+    <div ng-controller="TrackDetailsCtrl" class="container">
         <div class="row">
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="boxSection">
-                            <span id="albumTitle">{{targetAlbum.name}}</span>
+                            <span id="albumTitle">{{track.name}}</span>
                             <img id="albumCover" src="{{albumCover}}">
                         </div>
                     </div>
@@ -25,15 +25,15 @@
                                 </tr>
                                 <tr>
                                     <td class="headerCol">Release Date:</td>
-                                    <td>{{targetAlbum.release_date}}</td>
+                                    <td>{{track.release_date}}</td>
                                 </tr>
                                 <tr>
                                     <td class="headerCol">Number of Tracks:</td>
-                                    <td>{{targetAlbum.num_tracks}}</td>
+                                    <td>{{track.num_tracks}}</td>
                                 </tr>
                                 <tr>
                                     <td class="headerCol">Length:</td>
-                                    <td>{{targetAlbum.length}}</td>
+                                    <td>{{track.length}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -44,24 +44,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="boxSection">
-                            <span class="boxTitle">Description</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="boxSection">
-                            <span class="boxTitle">Track Listing</span>
-                            <table class="table">
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Duration</th>
-                                </tr>
-                                <tr ng-repeat="track in tracks" class="trackListing">
-                                    <td>
-                                        <a href="#/tracks/{{track.id}}">{{track.name}}</a>
-                                    </td>
-                                    <td>{{track.duration_ms}}</td>
-                                </tr>
-                            </table>
+                            <span class="boxTitle">SoundCloud Widget</span>
                         </div>
                     </div>
                 </div>

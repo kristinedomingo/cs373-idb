@@ -132,7 +132,15 @@ angular.module('controllers', [])
             $scope.tracks = data.tracks;
             $scope.sortType = 'name';
             $scope.sortReverse = false;
-            persistTrack.set(data.tracks);
+            localStorage.setItem('trackTable', JSON.stringify(data.tracks));
+        });
+    }])
+
+    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', 'trackLyricsService', function($scope, $routeParams, trackLyricsService) {
+        // Find the correct track
+        $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
+        $scope.targetTrack = $scope.tracks.find(function(track) {
+            return track.id == $routeParams.trackID;
         });
     }])
     .controller('NavCtrl', ['$scope', '$location', function($scope, $location){

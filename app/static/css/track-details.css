@@ -1,0 +1,52 @@
+.boxSection {
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 10px;
+  color: #5B097D;
+}
+
+#albumTitle {
+  font-size: 4rem;
+  font-family: AmericanCaptain;
+  letter-spacing: 0.5rem;
+  display: block;
+}
+
+#albumCover {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  background-color: #5B097D;
+}
+
+.boxTitle {
+  font-size: 4rem;
+  font-family: AmericanCaptain;
+  letter-spacing: 0.5rem;
+  display: block;
+}
+
+.albumDetails {
+  text-align: left;
+}
+
+.trackListing {
+  text-align: left;
+}
+
+.headerCol {
+  font-weight: 700;
+  padding-right: 10px;
+}
+
+[class*="col-"] {
+    margin-bottom: 30px;
+}
+
+tr {
+  text-align: left;
+}
+
+.boxSection a {
+  color: #5B097D;
+}

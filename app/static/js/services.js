@@ -32,21 +32,6 @@ angular.module('services',[])
             }
         }
     })
-    .factory('persistTrack', function() {
-        var savedTracks = {};
-        function saveTracks(data) {
-            savedTracks = data;
-        }
-
-        function getTracks() {
-            return savedTracks;
-        }
-
-        return {
-            set:saveTracks,
-            get:getTracks
-        }
-    })
     .factory('artistBioService', function($http) {
         return {
             getArtistDetails : function(artistURI){
