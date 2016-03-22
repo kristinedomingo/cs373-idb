@@ -32,7 +32,7 @@ def get_artist_data():
         top_track = requests.get(artist["href"] + '/top-tracks?country=US').json()["tracks"][0]
 
         # add a new K/V pair to artist dict
-        artist["top_track"] = top_track["name"]
+        artist["top_track"] = {"name" : top_track["name"], "id" : top_track["id"]}
 
         # Request returns {"items" : [{...}]}
         # https://developer.spotify.com/web-api/get-artists-albums/
@@ -41,7 +41,7 @@ def get_artist_data():
         # Assumming that spotify gives us the list of albums in reverse
         # chronological order
         last_album = albums[0]["name"]
-        artist["last_album"] = last_album
+        artist["last_album"] = {"name":last_album, "id": albums[0]["id"]}
         artist["num_albums"] = len(albums)
         artist["col_img"] = artist["images"][len(artist["images"]) - 1]["url"]
 
@@ -55,8 +55,11 @@ def splash():
 
 @app.route('/get_albums')
 def get_album_data():
+    #11wzEOXFI1wgBHxKcsbacJ Chet Faker 1998 Melbourne Edition 
+    #3vNsiDEAnZRleKelEgdet1 Atlast Bound Lullaby 
+    #6bfkwBrGYKJFk6Z4QVyjxd Jack U Skrillex and Diplo present Jack \u00dc
     albums = requests.get(
-        'https://api.spotify.com/v1/albums/?ids=6bfkwBrGYKJFk6Z4QVyjxd,28AwWnNskZq7zvJs5oEHGc,1zW59tdlltJgHOlqLbR1lN').json()
+        'https://api.spotify.com/v1/albums/?ids=11wzEOXFI1wgBHxKcsbacJ,3vNsiDEAnZRleKelEgdet1,6bfkwBrGYKJFk6Z4QVyjxd').json()
 
     # Parse JSON information to append needed items
     for album in albums["albums"]:
@@ -89,8 +92,12 @@ def get_album_data():
 
 @app.route('/get_tracks')
 def get_track_data():
+
+    #4KtrE35pTuqwNc22QP58RT Drop the Game Chet Faker
+    #6SXRLE3kFht3wi0glxDueW Landed on Mars Atlas Bound
+    #66hayvUbTotekKU3H4ta1f Where Are \u00dc Now (with Justin Bieber) Jack U
     tracks = requests.get(
-        'https://api.spotify.com/v1/tracks/?ids=0LSl4lXvjrdGORyBGB2lNJ,6ZpR2XFuQJSHAQwg9495KZ,4URU1lRXhWwZIXuxKI1SuH').json()
+        'https://api.spotify.com/v1/tracks/?ids=4KtrE35pTuqwNc22QP58RT,6SXRLE3kFht3wi0glxDueW,66hayvUbTotekKU3H4ta1f').json()
 
     # Parse JSON information to append needed items
     for track in tracks["tracks"]:

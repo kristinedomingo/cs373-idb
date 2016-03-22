@@ -72,13 +72,6 @@ angular.module('controllers', [])
            unitTests: 99,
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
-          },
-          {name: "Firstname LastName",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
           }];
 
         // Get the total number of commits, issues, and unit tests
@@ -126,7 +119,7 @@ angular.module('controllers', [])
             $scope.artistIDs.push({name: artist.name, id: artist.id});
         });
     }])
-    .controller('TrackTableCtrl',['$scope', 'trackService', 'persistTrack', function($scope, trackService, persistTrack) {
+    .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
         $scope.tracks = []
         trackService.getTracks().then(function(data) {
             $scope.tracks = data.tracks;

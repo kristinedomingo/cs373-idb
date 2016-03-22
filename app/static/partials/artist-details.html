@@ -26,11 +26,11 @@
                     </tr>
                     <tr>
                         <td class="headerCol">Most Recent Album:</td>
-                        <td>{{currentArtist.last_album}}</td>
+                        <td><a ng-href="#/albums/{{currentArtist.last_album.id}}">{{currentArtist.last_album.name}}</a></td>
                     </tr>
                     <tr>
                         <td class="headerCol">Top Track:</td>
-                        <td>{{currentArtist.top_track}}</td>
+                        <td><a ng-href="#/tracks/{{currentArtist.top_track.id}}">{{currentArtist.top_track.name}}</a></td>
                     </tr>
                     <tr>
                         <td class="headerCol">Spotify Followers:</td>
