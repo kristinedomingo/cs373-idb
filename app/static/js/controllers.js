@@ -18,12 +18,10 @@ angular.module('controllers', [])
             return artist.id == $routeParams.artistID;
         });
         artistBioService.getArtistDetails($scope.currentArtist.uri).then(function(data){
-          console.log(data.response.biography);
-          $scope.biography = data.response.biography;
+          $scope.bios = data.response.biographies;
         });
 
         artistNewsService.getArtistDetails($scope.currentArtist.uri).then(function(data){
-          console.log(data.response.news);
           $scope.news = data.response.news;
         });
         //grab the medium sized image
