@@ -31,8 +31,7 @@
                 </th>
             </tr>
             <tr ng-repeat="album in albums | orderBy:sortType:sortReverse">
-                <td>
-                    <img class="albumCover" ng-src={{album.col_img}}></a></td>
+                <td><a href="#/albums/{{album.id}}"><img class="albumCover" ng-src={{album.col_img}}></a></td>
                 <td>{{album.name}}</td>
                 <td>{{album.artist_name}}</td>
                 <td>{{album.release_date}}</td>

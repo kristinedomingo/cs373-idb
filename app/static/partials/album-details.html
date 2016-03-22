@@ -1,0 +1,22 @@
+<div class="bodyText">
+    <div ng-controller="AlbumDetailsCtrl">
+        <div class="row">
+            <div class="col-md-12 boxSection">
+                <span id="albumTitle">{{albumTitle}}</span>
+                <img id="albumCover" src="{{albumCover}}">
+            </div>
+            <div class="col-md-4 boxSection">
+                <span class="boxTitle">Details</span>
+                <ul class="list-unstyled albumDetails">
+                    <li><b>By: </b>{{artistName}}</li>
+                    <li><b>Release Date: </b>{{releaseDate}}</li>
+                    <li><b>Number of Tracks: </b>{{numTracks}}</li>
+                    <li><b>Length: </b>{{length}}</li>
+                </ul>
+            </div>
+            <div class="col-md-8 boxSection">
+                <span class="boxTitle">Track Listing</span>
+            </div>
+        </div>
+    </div>
+</div>
