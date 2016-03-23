@@ -118,6 +118,9 @@ angular.module('controllers', [])
         $scope.targetAlbum.artists.forEach(function(artist) {
             $scope.artistIDs.push({name: artist.name, id: artist.id});
         });
+
+        // Get iframe src
+        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetAlbum.uri;
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
         $scope.tracks = []
