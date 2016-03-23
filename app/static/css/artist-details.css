@@ -46,6 +46,9 @@
   padding-bottom: 20px;
   border-right-width: 5px;
 }
+a.tableAnchor {
+  color:#5b097d;
+}
 
 tr {
   text-align: left;
