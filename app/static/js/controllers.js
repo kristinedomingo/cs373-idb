@@ -100,7 +100,7 @@ angular.module('controllers', [])
             return album.id == $routeParams.albumID;
         });
 
-        // Get album cover
+        // Get 300px album cover
         $scope.albumCover = $scope.targetAlbum.images[1].url;
 
         // Get tracks
@@ -128,18 +128,18 @@ angular.module('controllers', [])
             localStorage.setItem('trackTable', JSON.stringify(data.tracks));
         });
     }])
-    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', 'trackMP3Service', function($scope, $routeParams, trackMP3Service) {
+    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', '$sce', function($scope, $routeParams, $sce) {
         // Find the correct track
         $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
         $scope.targetTrack = $scope.tracks.find(function(track) {
             return track.id == $routeParams.trackID;
         });
 
-        // Get MP3
-        trackMP3Service.getMP3($scope.targetTrack.uri).then(function(data) {
-            $scope.widget = data;
-            console.log("\n\n\n" + data + "\n\n\n");
-        });
+        // Get iframe src
+        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.uri;
+
+        // Get 300px album cover
+        $scope.albumCover = $scope.targetTrack.album.images[1].url;
     }])
     .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
         $scope.isActive = function(viewLocation) {

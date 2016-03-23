@@ -32,15 +32,6 @@ angular.module('services',[])
             }
         }
     })
-    .factory('trackMP3Service', function($http) {
-        return {
-            getMP3: function(trackURI) {
-                return $http.get('http://developer.echonest.com/api/v4/track/profile?api_key=KY1N8FMAVNUGZY0WR&format=json&id=' + trackURI).then(function(result) {
-                    return result.data;
-                });
-            }
-        }
-    })
     .factory('artistBioService', function($http) {
         return {
             getArtistDetails : function(artistURI){

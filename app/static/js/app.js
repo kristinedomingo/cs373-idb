@@ -8,7 +8,8 @@ var sweetMusicApp = angular.module('sweetMusicApp', [
     'door3.css'
 ]);
 
-sweetMusicApp.config(['$routeProvider',
+sweetMusicApp
+.config(['$routeProvider',
     function($routeProvider){
         $routeProvider.
             when('/', {
@@ -55,4 +56,12 @@ sweetMusicApp.config(['$routeProvider',
             otherwise({
                 redirectTo: '/'
             });
+}])
+.config(['$sceDelegateProvider',
+    function($sceDelegateProvider) {
+        $sceDelegateProvider.
+            resourceUrlWhitelist(
+                ['self',
+                 'https://*.spotify.com/**'
+                ]);
 }]);

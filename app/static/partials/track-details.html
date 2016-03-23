@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="boxSection">
-                            <span id="albumTitle">{{track.name}}</span>
+                            <span id="albumTitle">{{targetTrack.name}}</span>
                             <img id="albumCover" src="{{albumCover}}">
                         </div>
                     </div>
@@ -18,22 +18,18 @@
                                 <tr>
                                     <td class="headerCol">By:</td>
                                     <td>
-                                        <span ng-repeat="artist in artistIDs">
+                                        <span ng-repeat="artist in targetTrack.artists">
                                             <a href="#/artists/{{artist.id}}">{{artist.name}}</a>
                                         </span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="headerCol">Release Date:</td>
-                                    <td>{{track.release_date}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="headerCol">Number of Tracks:</td>
-                                    <td>{{track.num_tracks}}</td>
+                                    <td>{{targetTrack.release_date}}</td>
                                 </tr>
                                 <tr>
                                     <td class="headerCol">Length:</td>
-                                    <td>{{track.length}}</td>
+                                    <td>{{targetTrack.duration}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -43,9 +39,9 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="boxSection">
-                            <span class="boxTitle">SoundCloud Widget</span>
-                            {{widget}}
+                        <div class="boxSection" id="widgetSection">
+                            <span class="boxTitle">Play on Spotify</span>
+                            <iframe ng-src="{{widget}}" id="spotifyWidget"></iframe>
                         </div>
                     </div>
                 </div>

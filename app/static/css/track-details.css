@@ -37,6 +37,7 @@
 .headerCol {
   font-weight: 700;
   padding-right: 10px;
+  white-space: nowrap;
 }
 
 [class*="col-"] {
@@ -49,4 +50,14 @@ tr {
 
 .boxSection a {
   color: #5B097D;
+}
+
+#spotifyWidget {
+  width: 550px;
+  border: 0;
+}
+
+#widgetSection {
+  height: 175px;
+  overflow: hidden;
 }
