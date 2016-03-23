@@ -128,12 +128,17 @@ angular.module('controllers', [])
             localStorage.setItem('trackTable', JSON.stringify(data.tracks));
         });
     }])
-
-    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', 'trackMP3Service', function($scope, $routeParams, trackMP3Service) {
         // Find the correct track
         $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
         $scope.targetTrack = $scope.tracks.find(function(track) {
             return track.id == $routeParams.trackID;
+        });
+
+        // Get MP3
+        trackMP3Service.getMP3($scope.targetTrack.uri).then(function(data) {
+            $scope.widget = data;
+            console.log("\n\n\n" + data + "\n\n\n");
         });
     }])
     .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
