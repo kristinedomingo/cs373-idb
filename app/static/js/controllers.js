@@ -84,7 +84,7 @@ angular.module('controllers', [])
            commits: 44,
            issues: 99,
            unitTests: 0,
-           imgSrc: "imgs/micah.png",
+           imgSrc: "imgs/micah.jpg",
            responsibilities: "Full Stack, AngularJS, Wiki",
            bio: "Austin Native who enjoys good coffee and great IPAs."
           }];
