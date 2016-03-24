@@ -67,7 +67,7 @@ angular.module('controllers', [])
           {name: "Kristine Domingo",
            commits: 99,
            issues: 99,
-           unitTests: 99,
+           unitTests: 28,
            imgSrc: "imgs/headshot.png",
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
@@ -82,7 +82,7 @@ angular.module('controllers', [])
           },
           {name: "Micah Ramirez",
            commits: 44,
-           issues: 99,
+           issues: 10,
            unitTests: 0,
            imgSrc: "imgs/micah.jpg",
            responsibilities: "Full Stack, AngularJS, Wiki",
