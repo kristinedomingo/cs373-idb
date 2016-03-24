@@ -36,6 +36,7 @@ Request a list of artists for display
         {
             "artists": [
                 {
+                    "id": "2Q0MyH5YMI5HPQjFjlq5g3",
                     "name": "Atlas Bound",
                     "numAlbums": 8,
                     "mostRecentAlbum": "Lullaby",
@@ -43,6 +44,7 @@ Request a list of artists for display
                     "popularity": 42
                 },
                 {
+                    "id": "6107PIkQDuEUcdpZqSzQsu",
                     "name": "Chet Faker",
                     "numAlbums": 20,
                     "mostRecentAlbum": "1998 Melbourne Edition",
@@ -50,6 +52,7 @@ Request a list of artists for display
                     "popularity": 76
                 },
                 {
+                    "id": "1HxJeLhIuegM3KgvPn8sT",
                     "name": "Jack U",
                     "numAlbums": 14,
                     "mostRecentAlbum": "Skrillex and Diplo present Jack U",
@@ -68,6 +71,7 @@ Request all information regarding specific artists related to **ids**
         {
             "artists": [
                 {
+                    "id": "2Q0MyH5YMI5HPQjFjlq5g3",
                     "name": "Atlas Bound",
                     "numAlbums": 8,
                     "mostRecentAlbum": "Lullaby",
@@ -75,6 +79,7 @@ Request all information regarding specific artists related to **ids**
                     "popularity": 42
                 },
                 {
+                    "id": "6107PIkQDuEUcdpZqSzQsu",
                     "name": "Chet Faker",
                     "numAlbums": 20,
                     "mostRecentAlbum": "1998 Melbourne Edition",
@@ -82,6 +87,7 @@ Request all information regarding specific artists related to **ids**
                     "popularity": 76
                 },
                 {
+                    "id": "1HxJeLhIuegM3KgvPn8sT",
                     "name": "Jack U",
                     "numAlbums": 14,
                     "mostRecentAlbum": "Skrillex and Diplo present Jack U",
@@ -102,6 +108,7 @@ Request a list of albums for display
         {
             "albums": [
                 {
+                    "id": "11wzEOXFI1wgBHxKcsbacJ",
                     "album_name": "Skrillex and Diplo present Jack U",
                     "artist_name": "Jack U, Skrillex, Diplo",
                     "release_date": "2015-02-24",
@@ -109,6 +116,7 @@ Request a list of albums for display
                     "length": "35:25"
                 },
                 {
+                    "id": "3vNsiDEAnZRleKelEgdet1",
                     "album_name": "Talk",
                     "artist_name": "Atlas Bound", 
                     "release_date": "2015-04-18",
@@ -116,6 +124,7 @@ Request a list of albums for display
                     "length": "4:53"
                 },
                 {
+                    "id": "6bfkwBrGYKJFk6Z4QVyjxd",
                     "album_name": "Thinking in textures",
                     "artist_name": "Chet Faker",
                     "release_date": "2012-05-22",
@@ -125,8 +134,8 @@ Request a list of albums for display
             ]
         }
 
-## Album [/album?ids={album_ids}]
-**/album?ids={album_ids}/**<br>
+## Album [/albums?ids={album_ids}]
+**/albums?ids={album_ids}/**<br>
 Request all information regarding specific albums related to **ids**
 ### GET Album [GET]
 + Response 200 (application/json)
@@ -134,6 +143,7 @@ Request all information regarding specific albums related to **ids**
         {
             "albums": [
                 {
+                    "id": "11wzEOXFI1wgBHxKcsbacJ",
                     "album_name": "Skrillex and Diplo present Jack U",
                     "artist_name": "Jack U, Skrillex, Diplo",
                     "release_date": "2015-02-24",
@@ -141,6 +151,7 @@ Request all information regarding specific albums related to **ids**
                     "length": "35:25"
                 },
                 {
+                    "id": "3vNsiDEAnZRleKelEgdet1",
                     "album_name": "Talk",
                     "artist_name": "Atlas Bound", 
                     "release_date": "2015-04-18",
@@ -148,6 +159,7 @@ Request all information regarding specific albums related to **ids**
                     "length": "4:53"
                 },
                 {
+                    "id": "6bfkwBrGYKJFk6Z4QVyjxd",
                     "album_name": "Thinking in textures",
                     "artist_name": "Chet Faker",
                     "release_date": "2012-05-22",
@@ -167,6 +179,7 @@ Request a list of albums for display
         {
             "tracks": [
                 {
+                    "id": "4KtrE35pTuqwNc22QP58RT",
                     "title": "Drop the Game", 
                     "artist_name": "Flume, Chet Faker",
                     "release_date": "2013-11-22",
@@ -174,6 +187,7 @@ Request a list of albums for display
                     "length": 0
                 },
                 {
+                    "id": "6SXRLE3kFht3wi0glxDueW",
                     "title": "Landed on Mars",
                     "artist_name": "Atlas Bound",
                     "release_date": "2015-05-17",
@@ -181,6 +195,7 @@ Request a list of albums for display
                     "length": 0
                 },
                 {
+                    "id": "66hayvUbTotekKU3H4ta1f",
                     "title": "Where Are U Now (with Justin Bieber)",
                     "artist_name": "Jack U, Skrillex, Diplo, Justin Bieber",
                     "release_date": "2015-02-24", 
@@ -190,8 +205,8 @@ Request a list of albums for display
             ]
         }
 
-## Track [/track?ids={track_ids}]
-**/track?ids={track_ids}**
+## Track [/tracks?ids={track_ids}]
+**/tracks?ids={track_ids}**
 Request all information regarding specific tracks related to **ids**
 ### GET Track [GET]
 + Response 200 (application/json)
@@ -199,6 +214,7 @@ Request all information regarding specific tracks related to **ids**
         {
             "tracks": [
                 {
+                    "ids": "4KtrE35pTuqwNc22QP58RT",
                     "title": "Drop the Game", 
                     "artist_name": "Flume, Chet Faker",
                     "release_date": "2013-11-22",
@@ -206,6 +222,7 @@ Request all information regarding specific tracks related to **ids**
                     "length": 0
                 },
                 {
+                    "id": "6SXRLE3kFht3wi0glxDueW",
                     "title": "Landed on Mars",
                     "artist_name": "Atlas Bound",
                     "release_date": "2015-05-17",
@@ -213,6 +230,7 @@ Request all information regarding specific tracks related to **ids**
                     "length": 0
                 },
                 {
+                    "id": "66hayvUbTotekKU3H4ta1f",
                     "title": "Where Are U Now (with Justin Bieber)",
                     "artist_name": "Jack U, Skrillex, Diplo, Justin Bieber",
                     "release_date": "2015-02-24", 
