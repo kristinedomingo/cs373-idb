@@ -1,5 +1,5 @@
 from flask import Flask, render_template, send_file
-from flask import jsonify
+from flask import jsonify, request
 import requests
 from datetime import timedelta
 
@@ -126,6 +126,40 @@ def get_track_data():
         track["duration"] = minutes + ":" + seconds
 
     return jsonify(tracks)
+
+# -----------------
+# Mock up API stubs
+# -----------------
+
+@app.route('/artists')
+def artists():
+    # Get specified artists by their ids
+    if 'ids' in request.args:
+        ids = request.args.get('ids').split(',')
+        return jsonify({"ids": ids})
+    # Get arbitrary artists
+    else:
+        return jsonify({"artists": [{},{},{}]})
+
+@app.route('/albums')
+def albums():
+    # Get specified albums by their ids
+    if 'ids' in request.args:
+        ids = request.args.get('ids').split(',')
+        return jsonify({"ids": ids})
+    # Get arbitrary albums if none specified
+    else:
+        return jsonify({"albums": [{},{},{}]})
+
+@app.route('/tracks')
+def tracks():
+    # Get specified tracks by their ids
+    if 'ids' in request.args:
+        ids = request.args.get('ids').split(',')
+        return jsonify({"ids": ids})
+    # Get arbitrary tracks if none specified
+    else:
+        return jsonify({"tracks": [{},{},{}]})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
