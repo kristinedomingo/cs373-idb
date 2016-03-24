@@ -3,13 +3,15 @@
 /* Controllers */
 angular.module('controllers', [])
     .controller('ArtistTableCtrl',['$scope', 'artistService', function($scope, artistService) {
-        $scope.artists = []
-        artistService.getArtists().then(function(data) {
-            $scope.artists = data.artists;
-            $scope.sortType = 'name';
-            $scope.sortReverse = false;
-            localStorage.setItem('artistTable', JSON.stringify(data.artists));
-        });
+        $scope.sortType = 'name';
+        $scope.sortReverse = false;
+        $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
+        if($scope.artists == null) {
+            artistService.getArtists().then(function(data) {
+                $scope.artists = data.artists;
+                localStorage.setItem('artistTable', JSON.stringify(data.artists));
+            });
+        }
     }])
     .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService', function($scope, $routeParams, artistBioService, artistNewsService) {
         $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
@@ -93,13 +95,15 @@ angular.module('controllers', [])
         });
     }])
     .controller('AlbumTableCtrl',['$scope', 'albumService', function($scope, albumService) {
-        $scope.albums = []
-        albumService.getAlbums().then(function(data) {
-            $scope.albums = data.albums;
-            $scope.sortType = 'name';
-            $scope.sortReverse = false;
-            localStorage.setItem('albumTable', JSON.stringify(data.albums));
-        });
+        $scope.sortType = 'name';
+        $scope.sortReverse = false;
+        $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
+        if($scope.albums == null) {
+            albumService.getAlbums().then(function(data) {
+                $scope.albums = data.albums;
+                localStorage.setItem('albumTable', JSON.stringify(data.albums));
+            });
+        }
     }])
     .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
         // Find the correct album
@@ -131,13 +135,15 @@ angular.module('controllers', [])
         $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetAlbum.uri;
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
-        $scope.tracks = []
-        trackService.getTracks().then(function(data) {
-            $scope.tracks = data.tracks;
-            $scope.sortType = 'name';
-            $scope.sortReverse = false;
-            localStorage.setItem('trackTable', JSON.stringify(data.tracks));
-        });
+        $scope.sortType = 'name';
+        $scope.sortReverse = false;
+        $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
+        if($scope.tracks == null) {
+            trackService.getTracks().then(function(data) {
+                $scope.tracks = data.tracks;
+                localStorage.setItem('trackTable', JSON.stringify(data.tracks));
+            });
+        }
     }])
     .controller('TrackDetailsCtrl', ['$scope', '$routeParams', '$sce', function($scope, $routeParams, $sce) {
         // Find the correct track

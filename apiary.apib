@@ -1,0 +1,241 @@
+FORMAT: 1A
+HOST: http://sweetmusic.me/
+
+# SweetMusic
+Simple API for retrieving information regarding Artists, Albums and Tracks
+
+# Group Static Content
+This section was used in Part 1 of the Project using known id's for specific Artists, Albums and Tracks<br>
+Use Production Server to see Spotify's response and data structures for each request.
+
+## Spotify Artists [/get_artists]
+**/get_artists**<br>
+Uses request to Spotify's Web API to pull information about three specific artists
+### GET Artists [GET]
++ Response 200 (application/json)
+
+## Spotify Albums [/get_albums]
+**/get_albums**<br>
+Uses request to Spotify's Web API to pull information about three specific albums
+### GET Albums [GET]
++ Response 200 (application/json)
+
+## Spotify Tracks [/get_tracks]
+**/get_tracks**<br>
+Uses request to Spotify's Web API to pull information about three specific tracks 
+### GET Tracks [GET]
++ Response 200 (application/json)
+
+# Group Artists
+## Artists [/artists]
+**/artists**<br>
+Request a list of artists for display
+### GET Artists [GET]
++ Response 200 (application/json)
+
+        {
+            "artists": [
+                {
+                    "id": "2Q0MyH5YMI5HPQjFjlq5g3",
+                    "name": "Atlas Bound",
+                    "numAlbums": 8,
+                    "mostRecentAlbum": "Lullaby",
+                    "topTrack": "Landed on Mars",
+                    "popularity": 42
+                },
+                {
+                    "id": "6107PIkQDuEUcdpZqSzQsu",
+                    "name": "Chet Faker",
+                    "numAlbums": 20,
+                    "mostRecentAlbum": "1998 Melbourne Edition",
+                    "topTrack": "Drop the Game",
+                    "popularity": 76
+                },
+                {
+                    "id": "1HxJeLhIuegM3KgvPn8sT",
+                    "name": "Jack U",
+                    "numAlbums": 14,
+                    "mostRecentAlbum": "Skrillex and Diplo present Jack U",
+                    "topTrack": "Where Are U Now (with Justin Bieber)",
+                    "popularity": 82
+                }
+            ]
+        }
+
+## Artist [/artist?ids={artists_ids}]
+**/artists?ids={artists_ids}**<br>
+Request all information regarding specific artists related to **ids**
+### GET Artist [GET]
++ Response 200 (application/json)
+
+        {
+            "artists": [
+                {
+                    "id": "2Q0MyH5YMI5HPQjFjlq5g3",
+                    "name": "Atlas Bound",
+                    "numAlbums": 8,
+                    "mostRecentAlbum": "Lullaby",
+                    "topTrack": "Landed on Mars",
+                    "popularity": 42
+                },
+                {
+                    "id": "6107PIkQDuEUcdpZqSzQsu",
+                    "name": "Chet Faker",
+                    "numAlbums": 20,
+                    "mostRecentAlbum": "1998 Melbourne Edition",
+                    "topTrack": "Drop the Game",
+                    "popularity": 76
+                },
+                {
+                    "id": "1HxJeLhIuegM3KgvPn8sT",
+                    "name": "Jack U",
+                    "numAlbums": 14,
+                    "mostRecentAlbum": "Skrillex and Diplo present Jack U",
+                    "topTrack": "Where Are U Now (with Justin Bieber)",
+                    "popularity": 82
+                }
+            ]
+        }
+
+# Group Albums
+## Albums [/albums]
+**/albums**<br>
+Request a list of albums for display
+
+### Get Albums [GET]
++ Response 200 (application/json)
+
+        {
+            "albums": [
+                {
+                    "id": "11wzEOXFI1wgBHxKcsbacJ",
+                    "album_name": "Skrillex and Diplo present Jack U",
+                    "artist_name": "Jack U, Skrillex, Diplo",
+                    "release_date": "2015-02-24",
+                    "numTracks": 10,
+                    "length": "35:25"
+                },
+                {
+                    "id": "3vNsiDEAnZRleKelEgdet1",
+                    "album_name": "Talk",
+                    "artist_name": "Atlas Bound", 
+                    "release_date": "2015-04-18",
+                    "numTracks": 1,
+                    "length": "4:53"
+                },
+                {
+                    "id": "6bfkwBrGYKJFk6Z4QVyjxd",
+                    "album_name": "Thinking in textures",
+                    "artist_name": "Chet Faker",
+                    "release_date": "2012-05-22",
+                    "numTracks": 7,
+                    "length": "28:49"
+                }
+            ]
+        }
+
+## Album [/albums?ids={album_ids}]
+**/albums?ids={album_ids}/**<br>
+Request all information regarding specific albums related to **ids**
+### GET Album [GET]
++ Response 200 (application/json)
+
+        {
+            "albums": [
+                {
+                    "id": "11wzEOXFI1wgBHxKcsbacJ",
+                    "album_name": "Skrillex and Diplo present Jack U",
+                    "artist_name": "Jack U, Skrillex, Diplo",
+                    "release_date": "2015-02-24",
+                    "numTracks": 10,
+                    "length": "35:25"
+                },
+                {
+                    "id": "3vNsiDEAnZRleKelEgdet1",
+                    "album_name": "Talk",
+                    "artist_name": "Atlas Bound", 
+                    "release_date": "2015-04-18",
+                    "numTracks": 1,
+                    "length": "4:53"
+                },
+                {
+                    "id": "6bfkwBrGYKJFk6Z4QVyjxd",
+                    "album_name": "Thinking in textures",
+                    "artist_name": "Chet Faker",
+                    "release_date": "2012-05-22",
+                    "numTracks": 7,
+                    "length": "28:49"
+                }
+            ]
+        }
+        
+# Group Tracks
+## Tracks [/tracks]
+**/tracks**<br>
+Request a list of albums for display
+### GET Tracks [GET]
++ Response 200 (application/json)
+
+        {
+            "tracks": [
+                {
+                    "id": "4KtrE35pTuqwNc22QP58RT",
+                    "title": "Drop the Game", 
+                    "artist_name": "Flume, Chet Faker",
+                    "release_date": "2013-11-22",
+                    "album": "Lockjaw"
+                    "length": 0
+                },
+                {
+                    "id": "6SXRLE3kFht3wi0glxDueW",
+                    "title": "Landed on Mars",
+                    "artist_name": "Atlas Bound",
+                    "release_date": "2015-05-17",
+                    "album": "Landed on Mars"
+                    "length": 0
+                },
+                {
+                    "id": "66hayvUbTotekKU3H4ta1f",
+                    "title": "Where Are U Now (with Justin Bieber)",
+                    "artist_name": "Jack U, Skrillex, Diplo, Justin Bieber",
+                    "release_date": "2015-02-24", 
+                    "album": "Skrillex and Diplo present Jack U",
+                    "length": 0
+                }
+            ]
+        }
+
+## Track [/tracks?ids={track_ids}]
+**/tracks?ids={track_ids}**
+Request all information regarding specific tracks related to **ids**
+### GET Track [GET]
++ Response 200 (application/json)
+
+        {
+            "tracks": [
+                {
+                    "ids": "4KtrE35pTuqwNc22QP58RT",
+                    "title": "Drop the Game", 
+                    "artist_name": "Flume, Chet Faker",
+                    "release_date": "2013-11-22",
+                    "album": "Lockjaw"
+                    "length": 0
+                },
+                {
+                    "id": "6SXRLE3kFht3wi0glxDueW",
+                    "title": "Landed on Mars",
+                    "artist_name": "Atlas Bound",
+                    "release_date": "2015-05-17",
+                    "album": "Landed on Mars"
+                    "length": 0
+                },
+                {
+                    "id": "66hayvUbTotekKU3H4ta1f",
+                    "title": "Where Are U Now (with Justin Bieber)",
+                    "artist_name": "Jack U, Skrillex, Diplo, Justin Bieber",
+                    "release_date": "2015-02-24", 
+                    "album": "Skrillex and Diplo present Jack U",
+                    "length": 0
+                }
+            ]
+        }
