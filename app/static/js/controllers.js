@@ -81,12 +81,12 @@ angular.module('controllers', [])
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
           {name: "Micah Ramirez",
-           commits: 99,
+           commits: 44,
            issues: 99,
-           unitTests: 99,
-           imgSrc: "imgs/headshot.png",
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
+           unitTests: 0,
+           imgSrc: "imgs/micah.png",
+           responsibilities: "Full Stack, AngularJS, Wiki",
+           bio: "Austin Native who enjoys good coffee and great IPAs."
           }];
 
         // Get the total number of commits, issues, and unit tests
