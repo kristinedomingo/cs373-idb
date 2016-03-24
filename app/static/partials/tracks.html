@@ -32,7 +32,10 @@
             </tr>
             <tr ng-repeat="track in tracks | orderBy:sortType:sortReverse">
                 <td>
-                    <a href="#/tracks/{{track.id}}"><img class="trackCover" ng-src={{track.col_img}}></a>
+                    <a href="#/tracks/{{track.id}}">
+                        <img class="trackCover" ng-src={{track.col_img}}>
+                        <span class="detailsLink">Details</span>
+                    </a>
                 </td>
                 <td>{{track.name}}</td>
                 <td>{{track.artist_name}}</td>
