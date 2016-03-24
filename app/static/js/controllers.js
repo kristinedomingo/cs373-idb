@@ -32,8 +32,16 @@ angular.module('controllers', [])
         $scope.name = $scope.currentArtist.name;
 
     }])
-    .controller('SplashCtrl', ['$scope' , function($scope) {
-
+    .controller('SplashCtrl', ['$scope', 'artistService', 'albumService', 'trackService', function($scope, artistService, albumService, trackService) {
+        artistService.getArtists().then(function(data) {
+            localStorage.setItem('artistTable', JSON.stringify(data.artists));
+        });
+        albumService.getAlbums().then(function(data) {
+            localStorage.setItem('albumTable', JSON.stringify(data.albums));
+        });
+        trackService.getTracks().then(function(data) {
+            localStorage.setItem('trackTable', JSON.stringify(data.tracks));
+        });
     }])
     .controller('AboutCtrl', ['$scope', function($scope) {
         // Team member information
