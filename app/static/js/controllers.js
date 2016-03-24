@@ -52,6 +52,7 @@ angular.module('controllers', [])
            commits: 99,
            issues: 99,
            unitTests: 99,
+           imgSrc: "imgs/headshot.png",
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
@@ -59,6 +60,7 @@ angular.module('controllers', [])
            commits: 99,
            issues: 99,
            unitTests: 99,
+           imgSrc: "imgs/headshot.png",
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
@@ -66,6 +68,7 @@ angular.module('controllers', [])
            commits: 99,
            issues: 99,
            unitTests: 99,
+           imgSrc: "imgs/headshot.png",
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
@@ -73,6 +76,7 @@ angular.module('controllers', [])
            commits: 99,
            issues: 99,
            unitTests: 99,
+           imgSrc: "imgs/headshot.png",
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
@@ -80,6 +84,7 @@ angular.module('controllers', [])
            commits: 99,
            issues: 99,
            unitTests: 99,
+           imgSrc: "imgs/headshot.png",
            responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           }];

@@ -3,7 +3,7 @@
     <div class="aboutSection" ng-controller="AboutCtrl">
         <div class="row innerRow">
             <div ng-repeat="member in teamMembers" class="col-md-5ths profile col-margin">
-                <img class="headshot" src="imgs/headshot.png">
+                <img class="headshot" ng-src="{{member.imgSrc}}">
                 <span class="name">{{member.name}}</span>
                 <ul class="list-unstyled statsList">
                     <li>{{member.commits}} commits</li>
