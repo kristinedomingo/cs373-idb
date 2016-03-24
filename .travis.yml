@@ -13,7 +13,6 @@ install:
     - pip install Flask
     - pip install Flask-Script
     - pip install Flask-SQLAlchemy
-    - pip install pymssql
     - pip install gunicorn
     - pip install requests
 

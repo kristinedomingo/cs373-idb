@@ -1,5 +1,7 @@
 
-
+#The data table for the many to many relationships we have#
+#Many to many relationships artists and tracks.
+#many to many relationships between artist and album 
 artists = db.Table('artists',
     db.Column('artist_id', db.Integer, db.ForeignKey('artist.id')),
     db.Column('album_id', db.Integer, db.ForeignKey('album.id')))
@@ -7,6 +9,8 @@ artists = db.Table('artists',
 artists2= db.Table('artists2',
     db.Column('artist_id', db.Integer, db.ForeignKey('artist.id')),
     db.Column('track_id', db.Integer, db.ForeignKey('track.id')))
+
+#Class model album has an id, name, date, length, num_tracks, artist
 
 class Album(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
@@ -28,6 +32,7 @@ class Album(db.Model) :
 	def __repr__(self):
         return '<User %r>' % self.username
 
+#Class model Artist has id, name, num_albums.
 class Artist(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
@@ -46,7 +51,7 @@ class Artist(db.Model) :
     def __repr__(self):
         return '<User %r>' % self.name
 
-
+#Class model Track has id, name, num_albums.
 class Track(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))

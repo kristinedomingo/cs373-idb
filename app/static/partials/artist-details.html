@@ -1,54 +1,62 @@
 <div class="bodyText">
-    <div ng-controller="ArtistDetailsCtrl">
+    <div ng-controller="ArtistDetailsCtrl" class="container">
         <div class="row">
-            <div id="artistDiv" class="boxSection col-sm-4 col-md-4">
-                <span id="artistTitle">{{name}}</span>
-                <img id="artistCover" ng-src="{{artistPhoto}}">
-            </div>
-            <div class="col-sm-1 col-md-1">
-            </div>
-            <div class="boxSection col-sm-8 col-md-7">
-                <span id="artistTitle">Artist Bio</span>
-                <div ng-repeat="bio in bios | limitTo:1">
-                    <p> {{bio.text}}</p>
+            <div class="col-sm-4 col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="boxSection">
+                            <span id="artistTitle">{{name}}</span>
+                            <img id="artistCover" ng-src="{{artistPhoto}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="boxSection">
+                            <span id="artistTitle">Artist Details</span>
+                            <table>
+                                <tr>
+                                    <td class="headerCol">Albums Released:</td>
+                                    <td>{{currentArtist.num_albums}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Most Recent Album:</td>
+                                    <td><a class="tableAnchor" ng-href="#/albums/{{currentArtist.last_album.id}}">{{currentArtist.last_album.name}}</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Top Track:</td>
+                                    <td><a class="tableAnchor" ng-href="#/tracks/{{currentArtist.top_track.id}}">{{currentArtist.top_track.name}}</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Spotify Followers:</td>
+                                    <td>{{currentArtist.followers.total}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="headerCol">Spotify Popularity:</td>
+                                    <td>{{currentArtist.popularity}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-        </div>
-        <div class="row">
-            <div class="boxSection col-md-4 col-sm-4">
-                <span id="artistTitle">Artist Details</span>
-                <table>
-                    <tr>
-                        <td class="headerCol">Albums Released:</td>
-                        <td>{{currentArtist.num_albums}}</td>
-                    </tr>
-                    <tr>
-                        <td class="headerCol">Most Recent Album:</td>
-                        <td><a class="tableAnchor" ng-href="#/albums/{{currentArtist.last_album.id}}">{{currentArtist.last_album.name}}</a></td>
-                    </tr>
-                    <tr>
-                        <td class="headerCol">Top Track:</td>
-                        <td><a class="tableAnchor" ng-href="#/tracks/{{currentArtist.top_track.id}}">{{currentArtist.top_track.name}}</a></td>
-                    </tr>
-                    <tr>
-                        <td class="headerCol">Spotify Followers:</td>
-                        <td>{{currentArtist.followers.total}}</td>
-                    </tr>
-                    <tr>
-                        <td class="headerCol">Spotify Popularity:</td>
-                        <td>{{currentArtist.popularity}}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-1 col-sm-1">
-            </div>
-            <div class="boxSection col-md-7">
-                <span id="artistTitle">Artist News</span>
-                <div class="newsSection" ng-repeat="new in news | limitTo:3">
-                    <span id="artistTitle">{{new.name}}</span>
-                    <p> {{new.summary}} </p>
+            <div class="col-sm-8 col-md-8">
+                <div class="row">
+                    <div class="boxSection col-sm-12 col-md-12">
+                        <span id="artistTitle">Artist Bio</span>
+                        <div ng-repeat="bio in bios | limitTo:1">
+                            <p> {{bio.text}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="boxSection col-sm-12 col-md-12">
+                        <span id="artistTitle">Artist News</span>
+                        <div class="newsSection" ng-repeat="new in news | limitTo:3">
+                            <span id="artistTitle">{{new.name}}</span>
+                            <p> {{new.summary}} </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
