@@ -11,25 +11,25 @@ angular.module('controllers', [])
             localStorage.setItem('artistTable', JSON.stringify(data.artists));
         });
     }])
-    .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistDetailsService', 'artistBioService','artistNewsService', function($scope, $routeParams, artistDetailsService, artistBioService, artistNewsService) {
-        // Find the correct artist
-        artistDetailsService.getArtistDetails($routeParams.artistID).then(function(data) {
-            $scope.currentArtist = data;
-            artistBioService.getArtistDetails($scope.currentArtist.uri).then(function(data) {
-                $scope.bios = data.response.biographies;
-                if(!$scope.bios[0]) {
-                    $scope.bios = {0:{text:"No data available!"}};
-                }
-            });
-
-            artistNewsService.getArtistDetails($scope.currentArtist.uri).then(function(data) {
-                $scope.news = data.response.news;
-            });
-
-            // Grab the medium sized image
-            $scope.artistPhoto = $scope.currentArtist.images[1].url;
-            $scope.name = $scope.currentArtist.name;
+    .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService', function($scope, $routeParams, artistBioService, artistNewsService) {
+        $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
+        //finds the artist obj that was clicked on
+        $scope.currentArtist = $scope.artists.find(function(artist){
+            return artist.id == $routeParams.artistID;
         });
+        artistBioService.getArtistDetails($scope.currentArtist.uri).then(function(data){
+          $scope.bios = data.response.biographies;
+          if(!$scope.bios[0]){
+            $scope.bios = {0:{text:"No data available!"}};
+          }
+        });
+
+        artistNewsService.getArtistDetails($scope.currentArtist.uri).then(function(data){
+          $scope.news = data.response.news;
+        });
+        //grab the medium sized image
+        $scope.artistPhoto = $scope.currentArtist.images[1].url;
+        $scope.name = $scope.currentArtist.name;
 
     }])
     .controller('SplashCtrl', ['$scope' , function($scope) {
@@ -93,33 +93,34 @@ angular.module('controllers', [])
             localStorage.setItem('albumTable', JSON.stringify(data.albums));
         });
     }])
-    .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', 'albumDetailsService', function($scope, $routeParams, albumDetailsService) {
+    .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
         // Find the correct album
-        albumDetailsService.getAlbumDetails($routeParams.albumID).then(function(data) {
-            $scope.targetAlbum = data;
-
-            // Get 300px album cover
-            $scope.albumCover = $scope.targetAlbum.images[1].url;
-
-            // Get tracks
-            $scope.tracks = $scope.targetAlbum.tracks.items;
-
-            // Convert ms to minutes and seconds
-            $scope.tracks.forEach(function(track) {
-                var minutes = Math.floor(track.duration_ms / 60000);
-                var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
-                track.duration_ms = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-            });
-
-            // Get individal artists and their ids
-            $scope.artistIDs = [];
-            $scope.targetAlbum.artists.forEach(function(artist) {
-                $scope.artistIDs.push({name: artist.name, id: artist.id});
-            });
-
-            // Get iframe src
-            $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetAlbum.uri;
+        $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
+        $scope.targetAlbum = $scope.albums.find(function(album) {
+            return album.id == $routeParams.albumID;
         });
+
+        // Get 300px album cover
+        $scope.albumCover = $scope.targetAlbum.images[1].url;
+
+        // Get tracks
+        $scope.tracks = $scope.targetAlbum.tracks.items;
+
+        // Convert ms to minutes and seconds
+        $scope.tracks.forEach(function(track) {
+            var minutes = Math.floor(track.duration_ms / 60000);
+            var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
+            track.duration_ms = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        });
+
+        // Get individal artists and their ids
+        $scope.artistIDs = [];
+        $scope.targetAlbum.artists.forEach(function(artist) {
+            $scope.artistIDs.push({name: artist.name, id: artist.id});
+        });
+
+        // Get iframe src
+        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetAlbum.uri;
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
         $scope.tracks = []
@@ -130,17 +131,18 @@ angular.module('controllers', [])
             localStorage.setItem('trackTable', JSON.stringify(data.tracks));
         });
     }])
-    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', '$sce', 'trackDetailsService', function($scope, $routeParams, $sce, trackDetailsService) {
+    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', '$sce', function($scope, $routeParams, $sce) {
         // Find the correct track
-        trackDetailsService.getTrackDetails($routeParams.trackID).then(function(data) {
-            $scope.targetTrack = data;
-
-            // Get iframe src
-            $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.uri;
-
-            // Get 300px album cover
-            $scope.albumCover = $scope.targetTrack.album.images[1].url;
+        $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
+        $scope.targetTrack = $scope.tracks.find(function(track) {
+            return track.id == $routeParams.trackID;
         });
+
+        // Get iframe src
+        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.uri;
+
+        // Get 300px album cover
+        $scope.albumCover = $scope.targetTrack.album.images[1].url;
     }])
     .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
         $scope.isActive = function(viewLocation) {

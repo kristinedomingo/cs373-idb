@@ -13,30 +13,11 @@ angular.module('services',[])
                     return result.data;
                 });
             }
-        }
-    })
-    .factory('artistDetailsService', function($http) {
-        return {
-            getArtistDetails: function(id) {
-                return $http.get('https://api.spotify.com/v1/artists/' + id).then(function(result) {
-                    return result.data;
-                });
-            }
-        }
-    })
+        }})
     .factory('albumService', function($http) {
         return {
             getAlbums: function() {
                 return $http.get('/get_albums').then(function(result) {
-                    return result.data;
-                });
-            }
-        }
-    })
-    .factory('albumDetailsService', function($http) {
-        return {
-            getAlbumDetails: function(id) {
-                return $http.get('https://api.spotify.com/v1/albums/' + id).then(function(result) {
                     return result.data;
                 });
             }
@@ -55,15 +36,6 @@ angular.module('services',[])
         return {
             getArtistDetails : function(artistURI){
                 return $http.get('http://developer.echonest.com/api/v4/artist/biographies?api_key=KY1N8FMAVNUGZY0WR&id=' + artistURI + '&format=json').then(function(result){
-                    return result.data;
-                });
-            }
-        }
-    })
-    .factory('trackDetailsService', function($http) {
-        return {
-            getTrackDetails: function(id) {
-                return $http.get('https://api.spotify.com/v1/tracks/' + id).then(function(result) {
                     return result.data;
                 });
             }
