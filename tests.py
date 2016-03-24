@@ -19,10 +19,12 @@ class TestArtist(TestCase):
         db.session.remove()
         db.drop_all()
 
+    # Tests that the total # of artists is equal to 2 (created at SetUp)
     def test_get_all_artist(self):
         artists = Artist.query.all()
         assert len(artists) == 2
 
+    # Tests simple selections from the table match expected values
     def test_filtering_artist(self):   
         artists = Artist.query.filter_by(category == 'Lullaby').first()
         assert artist.name == "Atlas Bound" and artist.popularity  == 42
@@ -30,6 +32,7 @@ class TestArtist(TestCase):
         artists = Artist.query.filter_by(popularity < 47).first()
         assert artist.name == 'Chet Faker' and artist.recent_album == 'Drop the Game'   
 
+    # Tests adding a new artist and removing that artist from the db
     def test_add_delete_artist(self):
         artists = Artist("Jack U", 14, "Skrillex and Diplo present Jack U", "Where Are U Now ( with Justin Bieber )", 42, "asldfjalieiuyhak", "http")
         db.session.add()
@@ -58,10 +61,12 @@ class TestAlbum(TestCase):
         db.session.remove()
         db.drop_all()
 
+    # Tests that the total # of albums is equal to 2 (created at SetUp)
     def test_get_all_albums(self):
         album = Album.query.all()
         assert len(album) == 2
 
+    # Tests simple selections from the db match expected values
     def test_filtering_album(self):   
         album = Album.query.filter_by(name == 'Lullaby').first()
         assert album.artist_name == "Atlas Bound" and album.num_tracks  == 1
@@ -69,6 +74,7 @@ class TestAlbum(TestCase):
         album = Artist.query.filter_by(num_tracks > 2).first()
         assert album.artist_name == 'Chet Faker' and album.name == '1998 Melbou Edition'   
 
+    # Tests adding a new album to the table and removing it
     def test_add_delete_album(self):
         album = Album( "Skrillex and Diplo present Jack U", "2015-02-24", 2125000, 10, "abnoioighkjkcjkh", "http")
         db.session.add()
@@ -98,10 +104,12 @@ class TestTrack(TestCase):
         db.session.remove()
         db.drop_all()
 
+    # Tests that the total # of tracks is equal to 2 (created at SetUp)
     def test_get_all_tracks(self):
         tracks = Track.query.all()
         assert len(tracks) == 2
 
+    # Tests simple selections from the db match expected values
     def test_filtering_tracks(self):   
         track = Track.query.filter_by(name == 'Landed on Mars').first()
         assert track.artist_name == "Atlas Bound" and track.album  == "Landed on Mars"
@@ -109,6 +117,7 @@ class TestTrack(TestCase):
         track = Track.query.filter_by(duration > 300000).first()
         assert track.artist_name == 'Flume, Chet Faker' and track.name == 'Drop the Game'   
 
+    # Tests adding a new track to the table and then removing it
     def test_add_delete_tracks(self):
         track = Track("Where are U Now", "Jack U ,Skrillex, Diplo, Justin Bieber", "2015-02-24", "Skrillex and Diplo present Jack U","2015-02-24", 250000, "igsjdfkjh", "http")
         db.session.add()
