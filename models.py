@@ -1,4 +1,4 @@
-
+from app import db
 #The data table for the many to many relationships we have#
 #Many to many relationships artists and tracks.
 #many to many relationships between artist and album 
@@ -10,29 +10,38 @@ artists2= db.Table('artists2',
     db.Column('artist_id', db.Integer, db.ForeignKey('artist.id')),
     db.Column('track_id', db.Integer, db.ForeignKey('track.id')))
 
-#Class model album has an id, name, date, length, num_tracks, artist
-
+#Class model album has an id, name, date, length, number of tracks, artist
 class Album(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String(100))
     length = db.Column(db.Integer)
     num_tracks = db.Column(db.Integer)
+    spotify_uri= db.Column(String(100))
+    spotify_id = db.Column(String(100))
+
+    #This is the many to many relationship between artist and album connect to the table
     artists = db.relationship('Artist', secondary=artists,
         backref=db.backref('albums', lazy='dynamic'))
-    tracks= db.relationships('Track','album', lazy='dynamic')
 
-    def __init__(self, name, date, length, num_tracks ):
+    #This is the one to many relationship for album and track.
+    tracks= db.relationships('Track','album', lazy='dynamic')
+    
+
+    def __init__(self, name, artist_name , date, length, num_tracks, spotify_uri, spotify_id):
         self.name = name
+        self.artist_name= artist_name
         self.date = date
         self.length= length
-        self.num_tracks=num_tracks
+        self.num_tracks= num_tracks
+        self.spotify_uri= spotify_uri
+        self.spotify_id= spotify_id
 
 
 	def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.name
 
-#Class model Artist has id, name, num_albums.
+#Class model Artist has id, name, num_albums, recent albums, top track, popularity, Spotify uri, Spotify id.
 class Artist(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
@@ -40,33 +49,46 @@ class Artist(db.Model) :
     recent_album= db.Column(db.String(100))
     top_track = db.Column(db.String(100))
     popularity = db.Column(db.Integer)
+    spotify_uri= db.Column(String(100))
+    spotify_id = db.Column(String(100))
     
-    def __init__(self, name, num_albums, recent_album, top_track, popularity ):
+    def __init__(self, name, num_albums, recent_album, top_track, popularity, spotify_uri, spotify_id):
         self.name = name
         self.num_albums = num_albums
         self.recent_album= recent_album
         self.top_track = top_track
         self.popularity = popularity
+        self.spotify_uri= spotify_uri
+        self.spotify_id= spotify_id
 
     def __repr__(self):
         return '<User %r>' % self.name
 
-#Class model Track has id, name, num_albums.
+#Class model Track has id, name, artist name, release, album, duration, and etc.
 class Track(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
-    release_date = db.Column(db.Date)
+    artist_name= db.Column(db.String(100))
+    release_date = db.Column(db.String(100))
     album = db.Column(db.String(100))
-    duration = db.Column(db.Time)
+    duration = db.Column(db.Integer)
+    spotify_uri= db.Column(String(100))
+    spotify_id = db.Column(String(100))
+
+    # This is the link between the table that connects many to many relationships.
     artists2 = db.relationship('Artist', secondary=artists2,
         backref=db.backref('tracks', lazy='dynamic'))
+    #This is what connects the one to many relationship between tracks and album id.
     album_id = db.Column(db.Integer, db.ForeignKey('album.id'))
 
-    def __init__(self, title, release, album, duration ):
+    def __init__(self, title, artist_name, release, album, duration, spotify_uri, spotify_id):
+        id = db.Column(db.Integer, primary_key=True)
         self.title = title
+        aelf.artist_name= artist_name
         self.release_date = release
         self.album = album
         self.duration = duration
-
+        self.spotify_uri= spotify_uri
+        self.spotify_id= spotify_id
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<User %r>' % self.title
