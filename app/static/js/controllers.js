@@ -76,7 +76,7 @@ angular.module('controllers', [])
            commits: 7,
            issues: 4,
            unitTests: 5,
-           imgSrc: "imgs/jorge_munoz.png",
+           imgSrc: "imgs/jorge_munoz.jpg",
            responsibilities: "Back end, SQLAcademy, Database",
            bio: "Take everything into moderation including Burrito Factory."
           },
