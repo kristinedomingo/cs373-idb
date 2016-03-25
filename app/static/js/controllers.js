@@ -65,12 +65,12 @@ angular.module('controllers', [])
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
           {name: "Kristine Domingo",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
-           imgSrc: "imgs/headshot.png",
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
+           commits: 88,
+           issues: 28,
+           unitTests: 0,
+           imgSrc: "imgs/kristine.jpg",
+           responsibilities: "Front-end, AngularJS, Wiki",
+           bio: "Third-year CS major who enjoys good food and cute puppies."
           },
           {name: "Jorge Munoz",
            commits: 99,
