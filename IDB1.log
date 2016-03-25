@@ -1,3 +1,17 @@
+commit ae96e3e7fdd2767c4a39f78eefc744b6a6b0801c
+Merge: 0799c93 38b8176
+Author: Xavier Ramirez <alpha@wireless-10-147-125-187.public.utexas.edu>
+Date:   Thu Mar 24 19:58:13 2016 -0500
+
+    Merge branch 'dev'
+    big merge
+
+commit 38b8176c48622ee8ad085e712f11cd23f1bdec90
+Author: Xavier Ramirez <alpha@wireless-10-147-125-187.public.utexas.edu>
+Date:   Thu Mar 24 19:57:43 2016 -0500
+
+    added log
+
 commit fad3743fb370551c20ece77b7c7aa23206cca21b
 Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
 Date:   Thu Mar 24 19:54:34 2016 -0500
@@ -22,6 +36,13 @@ Author: Daniel Abrego <danielabrego@utexas.edu>
 Date:   Thu Mar 24 19:32:50 2016 -0500
 
     updated my information
+
+commit 0799c933d3f8941d55de39b50b9e42fbefdc1c32
+Merge: 5d5d2c3 6f88a40
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Mar 24 19:31:19 2016 -0500
+
+    Merge branch 'master' of github.com:kristinedomingo/cs373-idb
 
 commit 5d5d2c30c4276ba8da4f75602ddb9f8bb8f5d301
 Author: Kristine Domingo <kristine@cs.utexas.edu>
@@ -188,6 +209,12 @@ Author: Kristine Domingo <kristine@cs.utexas.edu>
 Date:   Thu Mar 24 17:21:16 2016 -0500
 
     Added make check to travis
+
+commit 6f88a4065e7c27cb1e35d8998d839759c75aa67f
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Mar 24 17:12:52 2016 -0500
+
+    added missing break line
 
 commit 3ca30ba40b0ab6aa93ef9c75ccf5215b53f7956c
 Merge: abcfa36 ab2a1a2
