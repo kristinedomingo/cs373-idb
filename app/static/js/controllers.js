@@ -49,20 +49,20 @@ angular.module('controllers', [])
         // Team member information
         $scope.teamMembers =
          [{name: "Daniel Abrego",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
+           commits: 13,
+           issues: 0,
+           unitTests: 4,
            imgSrc: "imgs/dabrego-headshot.png",
            responsibilities: "Designed RESTful API, Documentation",
            bio: "Avid swimmer and social video gamer"
           },
           {name: "Ragan Behrens",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
-           imgSrc: "imgs/headshot.png",
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
+           commits: 0,
+           issues: 0,
+           unitTests: 0,
+           imgSrc: "imgs/ragan_behrens.jpg",
+           responsibilities: "Back End",
+           bio: "Fourth year computer science student. I'm from South Padre Island. Avid gamer, and moderate car enthusiast."
           },
           {name: "Kristine Domingo",
            commits: 88,
@@ -73,7 +73,7 @@ angular.module('controllers', [])
            bio: "Third-year CS major who enjoys good food and cute puppies."
           },
           {name: "Jorge Munoz",
-           commits: 7,
+           commits: 13,
            issues: 4,
            unitTests: 5,
            imgSrc: "imgs/jorge_munoz.jpg",
