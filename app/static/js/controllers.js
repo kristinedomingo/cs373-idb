@@ -49,9 +49,9 @@ angular.module('controllers', [])
         // Team member information
         $scope.teamMembers =
          [{name: "Daniel Abrego",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
+           commits: 13,
+           issues: 0,
+           unitTests: 4,
            imgSrc: "imgs/dabrego-headshot.png",
            responsibilities: "Designed RESTful API, Documentation",
            bio: "Avid swimmer and social video gamer"
@@ -73,7 +73,7 @@ angular.module('controllers', [])
            bio: "Third-year CS major who enjoys good food and cute puppies."
           },
           {name: "Jorge Munoz",
-           commits: 7,
+           commits: 13,
            issues: 4,
            unitTests: 5,
            imgSrc: "imgs/jorge_munoz.jpg",
