@@ -1,9 +1,12 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify, request
+from flask_sqlalchemy import SQLAlchemy
 import requests
 from datetime import timedelta
 
 app = Flask(__name__, static_url_path='')
+
+db = SQLAlchemy(app)
 
 # ---------------
 # get_artist_data

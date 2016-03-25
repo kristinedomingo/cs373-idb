@@ -1,4 +1,5 @@
-from app import db
+from sqlalchemy import *
+from app.idb import db
 #The data table for the many to many relationships we have#
 #Many to many relationships artists and tracks.
 #many to many relationships between artist and album 
@@ -10,8 +11,11 @@ artists2= db.Table('artists2',
     db.Column('artist_id', db.Integer, db.ForeignKey('artist.id')),
     db.Column('track_id', db.Integer, db.ForeignKey('track.id')))
 
-#Class model album has an id, name, date, length, number of tracks, artist
 class Album(db.Model) :
+    """
+    Album Model
+    Has an id, name, date, length, number of tracks, artist
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     date = db.Column(db.String(100))
@@ -25,7 +29,7 @@ class Album(db.Model) :
         backref=db.backref('albums', lazy='dynamic'))
 
     #This is the one to many relationship for album and track.
-    tracks= db.relationships('Track','album', lazy='dynamic')
+    tracks= db.relationship('Track','album', lazy='dynamic')
     
 
     def __init__(self, name, artist_name , date, length, num_tracks, spotify_uri, spotify_id):
@@ -38,11 +42,14 @@ class Album(db.Model) :
         self.spotify_id= spotify_id
 
 
-	def __repr__(self):
+    def __repr__(self):
         return '<User %r>' % self.name
 
-#Class model Artist has id, name, num_albums, recent albums, top track, popularity, Spotify uri, Spotify id.
 class Artist(db.Model) :
+    """
+    Artist Model
+    Has id, name, num_albums, recent albums, top track, popularity, Spotify uri, Spotify id
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     num_albums = db.Column(db.Integer)
@@ -64,8 +71,11 @@ class Artist(db.Model) :
     def __repr__(self):
         return '<User %r>' % self.name
 
-#Class model Track has id, name, artist name, release, album, duration, and etc.
 class Track(db.Model) :
+    """
+    Track Model
+    Has id, name, artist name, release, album, duration, and etc.
+    """
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
     artist_name= db.Column(db.String(100))
