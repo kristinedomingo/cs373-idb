@@ -73,12 +73,12 @@ angular.module('controllers', [])
            bio: "This is an example biography. Here is some more sample text for this person's biography."
           },
           {name: "Jorge Munoz",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
-           imgSrc: "imgs/headshot.png",
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
+           commits: 7,
+           issues: 4,
+           unitTests: 5,
+           imgSrc: "imgs/jorge_munoz.png",
+           responsibilities: "Back end, SQLAcademy, Database",
+           bio: "Take everything into moderation including Burrito Factory."
           },
           {name: "Micah Ramirez",
            commits: 44,
