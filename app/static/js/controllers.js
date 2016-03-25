@@ -52,9 +52,9 @@ angular.module('controllers', [])
            commits: 99,
            issues: 99,
            unitTests: 99,
-           imgSrc: "imgs/headshot.png",
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
+           imgSrc: "imgs/dabrego-headshot.png",
+           responsibilities: "Designed RESTful API, Documentation",
+           bio: "Avid swimmer and social video gamer"
           },
           {name: "Ragan Behrens",
            commits: 99,
@@ -73,16 +73,16 @@ angular.module('controllers', [])
            bio: "Third-year CS major who enjoys good food and cute puppies."
           },
           {name: "Jorge Munoz",
-           commits: 99,
-           issues: 99,
-           unitTests: 99,
-           imgSrc: "imgs/headshot.png",
-           responsibilities: "Responsibility1, Responsibility 2, Responsibility 3",
-           bio: "This is an example biography. Here is some more sample text for this person's biography."
+           commits: 7,
+           issues: 4,
+           unitTests: 5,
+           imgSrc: "imgs/jorge_munoz.png",
+           responsibilities: "Back end, SQLAcademy, Database",
+           bio: "Take everything into moderation including Burrito Factory."
           },
           {name: "Micah Ramirez",
            commits: 44,
-           issues: 99,
+           issues: 10,
            unitTests: 0,
            imgSrc: "imgs/micah.jpg",
            responsibilities: "Full Stack, AngularJS, Wiki",
