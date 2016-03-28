@@ -2,6 +2,8 @@ from flask import Flask, render_template, send_file
 from flask import jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 import requests
+import subprocess, os
+import json
 from datetime import timedelta
 
 app = Flask(__name__, static_url_path='')
@@ -51,10 +53,9 @@ def get_artist_data():
     return jsonify(artists)
 
 
-@app.route('/')
-def splash():
-    return send_file('index.html')
-
+# --------------
+# get_album_data
+# --------------
 
 @app.route('/get_albums')
 def get_album_data():
@@ -93,6 +94,10 @@ def get_album_data():
     return jsonify(albums)
 
 
+# --------------
+# get_track_data
+# --------------
+
 @app.route('/get_tracks')
 def get_track_data():
 
@@ -130,6 +135,7 @@ def get_track_data():
 
     return jsonify(tracks)
 
+
 # -----------------
 # Mock up API stubs
 # -----------------
@@ -163,6 +169,22 @@ def tracks():
     # Get arbitrary tracks if none specified
     else:
         return jsonify({"tracks": [{},{},{}]})
+
+
+# ---------
+# run_tests
+# ---------
+
+@app.route('/run_tests')
+def run_tests():
+    dummy_output = "Here is some test output.\n" * 30
+    return json.dumps({'output': dummy_output})
+
+
+@app.route('/')
+def splash():
+    return send_file('index.html')
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

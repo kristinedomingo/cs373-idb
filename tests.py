@@ -1,6 +1,6 @@
 import unittest
 from flask.ext.testing import TestCase
-from app import db
+from app.idb import db
 class TestArtist(TestCase):
 
     def create_app(self):

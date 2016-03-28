@@ -45,7 +45,7 @@ angular.module('controllers', [])
             localStorage.setItem('trackTable', JSON.stringify(data.tracks));
         });
     }])
-    .controller('AboutCtrl', ['$scope', function($scope) {
+    .controller('AboutCtrl', ['$scope', 'unitTestService', function($scope, unitTestService) {
         // Team member information
         $scope.teamMembers =
          [{name: "Daniel Abrego",
@@ -98,6 +98,13 @@ angular.module('controllers', [])
             $scope.totalIssues += member.issues;
             $scope.totalUnitTests += member.unitTests;
         });
+
+        // Run unit tests
+        $scope.runTests = function() {
+            unitTestService.runUnitTests().then(function(output) {
+                $scope.testOutput = output.output;
+            });
+        }
     }])
     .controller('AlbumTableCtrl',['$scope', 'albumService', function($scope, albumService) {
         $scope.sortType = 'name';
