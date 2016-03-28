@@ -49,4 +49,13 @@ angular.module('services',[])
                 });
             }
         }
+    })
+    .factory('unitTestService', function($http) {
+        return {
+            runUnitTests : function(artistURI){
+                return $http.get('/run_tests').then(function(result){
+                    return result.data;
+                });
+            }
+        }
     });
