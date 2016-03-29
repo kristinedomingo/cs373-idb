@@ -6,7 +6,7 @@ import subprocess, os
 import json
 from datetime import timedelta
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@127.0.0.1/sweetmusic'
 db = SQLAlchemy(app)
 
