@@ -10,6 +10,8 @@ app = Flask(__name__, static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@127.0.0.1/sweetmusic'
 db = SQLAlchemy(app)
 
+DEFAULT_PAGE_SIZE = 10
+
 # ---------------
 # get_artist_data
 # ---------------
@@ -140,15 +142,49 @@ def get_track_data():
 # Mock up API stubs
 # -----------------
 
+# This references data base e
+@app.route('/artists/<int:page>')
+def artist_table(page):
+    json = {'page': page}
+    json['artists'] = []
+
+    psize = DEFAULT_PAGE_SIZE
+    if 'psize' in request.args:
+        psize = int(request.args['psize'])
+        json['psize'] = psize
+
+    i = 0
+    while i < psize:
+        json['artists'].append({'id': i, 'name': 'artist ' + str(i)})
+        i += 1
+    return jsonify(json)
+
 @app.route('/artists')
 def artists():
     # Get specified artists by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
         return jsonify({"ids": ids})
+    
     # Get arbitrary artists
     else:
         return jsonify({"artists": [{},{},{}]})
+
+@app.route('/albums/<int:page>')
+def album_table(page):
+    json = {'page': page}
+    json['albums'] = []
+
+    psize = DEFAULT_PAGE_SIZE
+    if 'psize' in request.args:
+        psize = int(request.args['psize'])
+        json['psize'] = psize
+
+    i = 0
+    while i < psize:
+        json['albums'].append({'id': i, 'name': 'album ' + str(i)})
+        i += 1
+    return jsonify(json)
 
 @app.route('/albums')
 def albums():
@@ -159,6 +195,22 @@ def albums():
     # Get arbitrary albums if none specified
     else:
         return jsonify({"albums": [{},{},{}]})
+
+@app.route('/tracks/<int:page>')
+def track_table(page):
+    json = {'page': page}
+    json['tracks'] = []
+
+    psize = DEFAULT_PAGE_SIZE
+    if 'psize' in request.args:
+        psize = int(request.args['psize'])
+        json['psize'] = psize
+
+    i = 0
+    while i < psize:
+        json['tracks'].append({'id': i, 'name': 'track ' + str(i)})
+        i += 1
+    return jsonify(json)
 
 @app.route('/tracks')
 def tracks():
