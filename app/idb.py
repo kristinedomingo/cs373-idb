@@ -1,7 +1,7 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify, request
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.script import Manager
+from flask.ext.script import Manager, Server
 import requests
 import subprocess, os
 import json
@@ -21,7 +21,9 @@ app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 manager = Manager(app)
-db = SQLAlchemy(app
+server = Server(host="0.0.0.0", use_debugger=True)
+manager.add_command("runserver", server)
+db = SQLAlchemy(app)
 
 DEFAULT_PAGE_SIZE = 10
 
@@ -246,6 +248,7 @@ def drop_db():
     logger.debug("drop_db")
     app.config['SQLALCHEMY_ECHO'] = True
     db.drop_all()
+
 
 # ---------
 # run_tests
