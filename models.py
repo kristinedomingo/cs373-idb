@@ -29,7 +29,7 @@ class Album(db.Model) :
         backref=db.backref('albums', lazy='dynamic'))
 
     #This is the one to many relationship for album and track.
-    tracks= db.relationship('Track','album', lazy='dynamic')
+    tracks= db.relationship('Track',backref='my_album', lazy='dynamic')
     
 
     def __init__(self, name, artist_name , date, length, num_tracks, spotify_uri, spotify_id):
@@ -71,6 +71,7 @@ class Artist(db.Model) :
     def __repr__(self):
         return '<User %r>' % self.name
 
+
 class Track(db.Model) :
     """
     Track Model
@@ -94,7 +95,7 @@ class Track(db.Model) :
     def __init__(self, title, artist_name, release, album, duration, spotify_uri, spotify_id):
         id = db.Column(db.Integer, primary_key=True)
         self.title = title
-        aelf.artist_name= artist_name
+        self.artist_name= artist_name
         self.release_date = release
         self.album = album
         self.duration = duration
