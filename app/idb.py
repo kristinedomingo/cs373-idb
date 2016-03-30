@@ -1,28 +1,14 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify, request
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.script import Manager, Server
+from dbi.db import db, app , manager
 import requests
-import subprocess, os
 import json
 from datetime import timedelta
+from dbi.initializing_db import create_sweetmusic_db
 
-SQLALCHEMY_DATABASE_URI = \
-    '{engine}://{username}:{password}@{hostname}/{database}'.format(
-        engine='mysql+pymysql',
-        username=os.getenv('MYSQL_USER'),
-        password=os.getenv('MYSQL_PASSWORD'),
-        hostname=os.getenv('MYSQL_HOST'),
-        database=os.getenv('MYSQL_DATABASE'))
 
-app = Flask(__name__, static_url_path='')
-app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-manager = Manager(app)
-manager.add_command("runserver", Server(host="0.0.0.0", use_debugger=True))
-db = SQLAlchemy(app)
 
 DEFAULT_PAGE_SIZE = 10
 
@@ -238,9 +224,9 @@ def tracks():
 
 @manager.command
 def create_db():
-    logger.debug("create_db")
+    #logger.debug("create_db")
     app.config['SQLALCHEMY_ECHO'] = True
-    db.create_all()
+    create_sweetmusic_db()
 
 @manager.command
 def drop_db():
