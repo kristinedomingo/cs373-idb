@@ -1,14 +1,27 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify, request
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.script import Manager
 import requests
 import subprocess, os
 import json
 from datetime import timedelta
 
+SQLALCHEMY_DATABASE_URI = \
+    '{engine}://{username}:{password}@{hostname}/{database}'.format(
+        engine='mysql+pymysql',
+        username=os.getenv('MYSQL_USER'),
+        password=os.getenv('MYSQL_PASSWORD'),
+        hostname=os.getenv('MYSQL_HOST'),
+        database=os.getenv('MYSQL_DATABASE'))
+
 app = Flask(__name__, static_url_path='')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@127.0.0.1/sweetmusic'
-db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+manager = Manager(app)
+db = SQLAlchemy(app
 
 # ---------------
 # get_artist_data
@@ -170,6 +183,17 @@ def tracks():
     else:
         return jsonify({"tracks": [{},{},{}]})
 
+@manager.command
+def create_db():
+    logger.debug("create_db")
+    app.config['SQLALCHEMY_ECHO'] = True
+    db.create_all()
+
+@manager.command
+def drop_db():
+    logger.debug("drop_db")
+    app.config['SQLALCHEMY_ECHO'] = True
+    db.drop_all()
 
 # ---------
 # run_tests
@@ -187,4 +211,7 @@ def splash():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    manager.run()
+    #Commenting out this for now based on what
+    # was in the Carina tutorial
+    # app.run(host='0.0.0.0', debug=True)

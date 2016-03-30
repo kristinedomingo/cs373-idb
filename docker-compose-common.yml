@@ -22,26 +22,29 @@ services:
         aliases:
           # All app servers be referred to by this alias with the backend network
           - apps
-    # environment:
+    environment:
+      # Environment variables to configure the app on startup.
+      - MYSQL_DATABASE=music_db
+      - MYSQL_HOST=sweetmusic_db
 
-  # db:
-  #   # The database container. Built from the db/Dockerfile.
-  #   container_name: pythonwebapp_db
-  #   build: db
-  #   restart: unless-stopped
-  #   networks:
-  #     - backend
-  #   environment:
-  #     # Environment variables to configure MySQL on startup.
-  #     - MYSQL_DATABASE=guestbook
+  db:
+    # The database container. Built from the db/Dockerfile.
+    container_name: sweetmusic_db
+    build: db
+    restart: unless-stopped
+    networks:
+      - backend
+    environment:
+      # Environment variables to configure MySQL on startup.
+      - MYSQL_DATABASE=music_db
 
-  # data:
-  #   container_name: pythonwebapp_db_data
-  #   # The Data Volume Container used to mount a volume to store our persistent data
-  #   # https://getcarina.com/docs/tutorials/data-volume-containers/
-  #   image: cirros
-  #   volumes:
-  #     # Mount this path as a volume to store our MySQL files
-  #     - /var/lib/mysql
-  #   command: /bin/true
-  #     Run a trivial command to exit quickly. Volumes don't need a running container.
+  data:
+    container_name: sweetmusic_db_data
+    # The Data Volume Container used to mount a volume to store our persistent data
+    # https://getcarina.com/docs/tutorials/data-volume-containers/
+    image: cirros
+    volumes:
+      # Mount this path as a volume to store our MySQL files
+      - /var/lib/mysql
+    command: /bin/true
+      # Run a trivial command to exit quickly. Volumes don't need a running container.

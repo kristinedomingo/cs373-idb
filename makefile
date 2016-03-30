@@ -1,5 +1,6 @@
 IMAGE_NAME_APP := sweetmusic_app
 IMAGE_NAME_LB := sweetmusic_lb
+IMAGE_NAME_DB := sweetmusic_db
 DOCKER_HUB_USERNAME := swetifygroupmembers
 FILES :=        \
     .gitignore  \
@@ -36,7 +37,7 @@ clean:
 
 docker-build:
 	@if [ -z "$$CONTINUE" ]; then \
-		read -r -p "Have you sourced the docker.env file for our Carina cluster? (y/n): " CONTINUE; \
+		read -r -p "Have you sourced the !!!! DEV !!!! docker.env file for our Carina cluster? (y/n): " CONTINUE; \
 	fi ; \
 	[ $$CONTINUE = "y" ] || [ $$CONTINUE = "Y" ] || (echo "Exiting."; exit 1;)
 	@echo "Building the images..."
@@ -47,6 +48,17 @@ docker-build:
 
 	docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME_LB} lb
 	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME_LB}
+
+	docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME_DB} db 
+	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME_DB}
+
+set-db-env:
+	echo "MYSQL_USER=music-db-admin" > sweetmusic-mysql-prod.env
+	echo "MYSQL_PASSWORD=music-db-admin-pw" >> sweetmusic-mysql-prod.env
+	echo "MYSQL_ROOT_PASSWORD=root-password" > sweetmusic-mysql-root-prod.env
+
+init-db:
+	docker-compose --file docker-compose-prod.yml run -d --rm --no-deps app python idb.py create_db
 
 docker-push:
 	 docker-compose --file docker-compose-prod.yml up -d
