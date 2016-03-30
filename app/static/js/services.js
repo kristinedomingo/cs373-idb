@@ -43,7 +43,7 @@ angular.module('services',[])
     })
     .factory('artistNewsService', function($http) {
         return {
-            getArtistDetails : function(artistURI){
+            getArtistDetails : function(artistURI) {
                 return $http.get('http://developer.echonest.com/api/v4/artist/news?api_key=KY1N8FMAVNUGZY0WR&id=' + artistURI + '&format=json').then(function(result){
                     return result.data;
                 });
@@ -52,7 +52,7 @@ angular.module('services',[])
     })
     .factory('unitTestService', function($http) {
         return {
-            runUnitTests : function(artistURI){
+            runUnitTests : function() {
                 return $http.get('/run_tests').then(function(result){
                     return result.data;
                 });
