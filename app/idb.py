@@ -21,8 +21,7 @@ app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 manager = Manager(app)
-server = Server(host="0.0.0.0", use_debugger=True)
-manager.add_command("runserver", server)
+manager.add_command("runserver", Server(host="0.0.0.0", use_debugger=True))
 db = SQLAlchemy(app)
 
 DEFAULT_PAGE_SIZE = 10
