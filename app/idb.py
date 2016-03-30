@@ -241,8 +241,8 @@ def drop_db():
 
 @app.route('/run_tests')
 def run_tests():
-    dummy_output = "Here is some test output.\n" * 30
-    return json.dumps({'output': dummy_output})
+    output = subprocess.getoutput("make test")
+    return json.dumps({'output': str(output)})
 
 
 @app.route('/')

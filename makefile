@@ -34,6 +34,10 @@ check:
 
 clean:
 	rm -rf app/__pycache__
+	rm -rf __pycache__
+
+test:
+	python3 tests.py
 
 docker-build:
 	@if [ -z "$$CONTINUE" ]; then \

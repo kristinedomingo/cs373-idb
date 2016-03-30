@@ -101,6 +101,7 @@ angular.module('controllers', [])
 
         // Run unit tests
         $scope.runTests = function() {
+            $scope.testOutput = "Running tests..."
             unitTestService.runUnitTests().then(function(output) {
                 $scope.testOutput = output.output;
             });
