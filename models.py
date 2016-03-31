@@ -1,5 +1,5 @@
 from sqlalchemy import *
-from app.idb import db
+from app.db import db
 #The data table for the many to many relationships we have#
 #Many to many relationships artists and tracks.
 #many to many relationships between artist and album 
