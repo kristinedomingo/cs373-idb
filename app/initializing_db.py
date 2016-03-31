@@ -1,11 +1,10 @@
 #!flask/bin/python
-from idb import db
 from models import Artist, Track, Album
 import requests
-
-import sys
 import spotipy
 import spotipy.util as util
+from db import db 
+
 
 client_id = '41cc5ad7bb2d44eb8151a17990f1e2ae'
 client_secret = 'b1e8450ed87643fe824a25ab2eef358a'

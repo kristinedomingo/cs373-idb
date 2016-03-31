@@ -1,11 +1,11 @@
 from flask import Flask, render_template, send_file
 from flask import jsonify, request
 from flask.ext.sqlalchemy import SQLAlchemy
-from dbi.db import db, app , manager
+from db import db, app , manager
 import requests
 import json
 from datetime import timedelta
-from dbi.initializing_db import create_sweetmusic_db
+from initializing_db import create_sweetmusic_db
 
 
 
