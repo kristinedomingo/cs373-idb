@@ -12,6 +12,17 @@ artists2= db.Table('artists2',
     db.Column('artist_id', db.Integer, db.ForeignKey('artist.id')),
     db.Column('track_id', db.Integer, db.ForeignKey('track.id')))
 
+"""
+Albums:
+   - name
+   - release_date
+   - length
+   - col_img
+   - num_tracks
+   - uri
+   - id
+   - images
+"""
 class Album(db.Model) :
     """
     Album Model
@@ -21,11 +32,13 @@ class Album(db.Model) :
     name = db.Column(db.String(80))
     artist_name = db.Column(db.String(80))
     date = db.Column(db.String(100))
-    length = db.Column(db.Integer)
+    length = db.Column(db.String(100))
     num_tracks = db.Column(db.Integer)
     spotify_uri= db.Column(String(100))
     spotify_id = db.Column(String(100))
-    
+    images = db.Column(String(250))
+    col_img = db.Column(String(250))
+
     #This is the many to many relationship between artist and album connect to the table
     artists = db.relationship('Artist', secondary=artists,
         backref=db.backref('albums', lazy='dynamic'))
@@ -34,14 +47,16 @@ class Album(db.Model) :
     tracks= db.relationship('Track',backref='my_album', lazy='dynamic')
     
 
-    def __init__(self, name, artist_name , date, length, num_tracks, spotify_uri, spotify_id):
+    def __init__(self, name, artist_name , release_date, length, num_tracks, spotify_uri, spotify_id, images, col_img):
         self.name = name
         self.artist_name= artist_name
-        self.date = date
+        self.release_date = release_date
         self.length= length
         self.num_tracks= num_tracks
         self.spotify_uri= spotify_uri
         self.spotify_id= spotify_id
+        self.images= images
+        self.col_img=col_img
 
 
     def __repr__(self):
@@ -72,7 +87,21 @@ class Artist(db.Model) :
 
     def __repr__(self):
         return '<User %r>' % self.name
-
+"""
+Tracks:
+   - name
+   - release_date
+   - uri
+   - duration_ms
+   - id
+   - duration
+   - artists
+   - album
+   - col_img
+   - href
+   - album_name
+   - artist_name
+"""
 
 class Track(db.Model) :
     """
@@ -87,6 +116,9 @@ class Track(db.Model) :
     duration = db.Column(db.Integer)
     spotify_uri= db.Column(String(100))
     spotify_id = db.Column(String(100))
+    col_img = db.Column(String(250))
+    href = db.Column(String(250))
+
 
     # This is the link between the table that connects many to many relationships.
     artists2 = db.relationship('Artist', secondary=artists2,
@@ -94,7 +126,7 @@ class Track(db.Model) :
     #This is what connects the one to many relationship between tracks and album id.
     album_id = db.Column(db.Integer, db.ForeignKey('album.id'))
 
-    def __init__(self, title, artist_name, release, album, duration, spotify_uri, spotify_id, album_id):
+    def __init__(self, title, artist_name, release, album, duration, spotify_uri, spotify_id, album_id, col_img, href):
         id = db.Column(db.Integer, primary_key=True)
         self.title = title
         self.artist_name= artist_name
@@ -104,5 +136,7 @@ class Track(db.Model) :
         self.spotify_uri= spotify_uri
         self.spotify_id= spotify_id
         self.album_id=album_id
+        self.col_img=col_img
+        self.href=href
     def __repr__(self):
         return '<User %r>' % self.title
