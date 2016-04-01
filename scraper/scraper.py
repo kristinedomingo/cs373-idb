@@ -15,7 +15,15 @@ scraped_artists = []
 scraped_albums = []
 scraped_tracks = []
 
-ARTIST_IDS = ["4dpARuHxo51G3z768sgnrY"]
+ARTIST_IDS = ["26T3LtbuGT1Fu9m0eRq5X3", # Cage the Elephant
+              "4dpARuHxo51G3z768sgnrY", # Adele
+              "25u4wHJWxCA9vO0CzxAbK7", # Lukas Graham
+              "5ZsFI1h6hIdQRw2ti0hz81", # ZAYN
+              "3YQKmKGau1PzlVlkL1iodx", # Twenty One Pilots
+              "5WUlDfRSoLAfcVSX1WnrxN", # Sia
+              "69GGBxA162lTqCwzJG5jLp", # The Chainsmokers
+              "66CXWjxzNUsdJxJ2JdwvnR", # Ariana Grande
+              "1uNFoZAHBGtllmzznpCI3s"] # Justin Bieber
 
 def scrape(ids):
     global artists_queue
@@ -49,7 +57,7 @@ def scrape_artist():
         top_tracks = requests.get(this_artist["href"] + '/top-tracks?country=US').json()["tracks"]
         if top_tracks:
             this_artist["top_track"] = {"name" : top_tracks[0]["name"], "id" : top_tracks[0]["id"]}
-            if top_tracks[0]["id"] not in scraped_tracks and len(scraped_tracks) < 250:
+            if top_tracks[0]["id"] not in scraped_tracks and len(scraped_tracks) < 350:
                 scraped_tracks.append(top_tracks[0]["id"])
                 tracks_queue.append(top_tracks[0]["id"])
 
@@ -57,7 +65,7 @@ def scrape_artist():
         albums = requests.get(this_artist["href"] + '/albums').json()["items"]
         last_album = albums[0]["name"]
         this_artist["last_album"] = {"name":last_album, "id": albums[0]["id"]}
-        if albums[0]["id"] not in scraped_albums and len(scraped_albums) < 100:
+        if albums[0]["id"] not in scraped_albums and len(scraped_albums) < 250:
             scraped_albums.append(albums[0]["id"])
             albums_queue.append(albums[0]["id"])
 
@@ -93,7 +101,7 @@ def scrape_tracks():
         names = ""
         for artist in this_track["artists"]:
             names += artist["name"] + ', '
-            if artist["id"] not in scraped_artists and len(scraped_artists) < 100:
+            if artist["id"] not in scraped_artists and len(scraped_artists) < 200:
                 scraped_artists.append(artist["id"])
                 artists_queue.append(artist["id"])
         this_track["artist_name"] = names.rstrip(', ')
@@ -140,7 +148,7 @@ def scrape_albums():
         names = ""
         for artist in this_album["artists"]:
             names += artist["name"] + ', '
-            if artist["id"] not in scraped_artists and len(scraped_artists) < 100:
+            if artist["id"] not in scraped_artists and len(scraped_artists) < 200:
                 scraped_artists.append(artist["id"])
                 artists_queue.append(artist["id"])
         this_album["artist_name"] = names.rstrip(', ')
@@ -161,7 +169,7 @@ def scrape_albums():
 
         # Add tracks to tracks queue
         for track in this_album["tracks"]["items"]:
-            if track["id"] not in scraped_tracks and len(scraped_tracks) < 250:
+            if track["id"] not in scraped_tracks and len(scraped_tracks) < 350:
                 scraped_tracks.append(track["id"])
                 tracks_queue.append(track["id"])
 
