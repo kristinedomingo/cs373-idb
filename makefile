@@ -41,7 +41,7 @@ test:
 
 docker-build:
 	@if [ -z "$$CONTINUE" ]; then \
-		read -r -p "Have you sourced the !!!! DEV !!!! docker.env file for our Carina cluster? (y/n): " CONTINUE; \
+		read -r -p "Have you sourced the !!!! MAIN !!!! docker.env file for our Carina cluster? (y/n): " CONTINUE; \
 	fi ; \
 	[ $$CONTINUE = "y" ] || [ $$CONTINUE = "Y" ] || (echo "Exiting."; exit 1;)
 	@echo "Building the images..."
