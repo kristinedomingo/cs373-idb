@@ -23,7 +23,7 @@ services:
     expose:
       # Expose port 8000 so it's only visibile on the container, not the host
       - "8000"
-    # env_file: pythonwebapp-mysql-prod.env
+    env_file: sweetmusic-mysql-prod.env
     command: gunicorn idb:app --bind 0.0.0.0:8000
       # Run Gunicorn to serve app requests
 
