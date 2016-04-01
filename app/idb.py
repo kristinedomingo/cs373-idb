@@ -7,9 +7,8 @@ import requests
 import json
 from datetime import timedelta
 from initializing_db import create_sweetmusic_db
-
-
-
+from models import Artist, Album, Track
+import sys
 
 DEFAULT_PAGE_SIZE = 10
 
@@ -154,10 +153,21 @@ def artist_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
+    artists_q = Artist.query.limit(psize).all()
     i = 0
-    while i < psize:
-        json['artists'].append({'id': i, 'name': 'artist ' + str(i)})
+    while i < len(artists_q):
+        json['artists'].append({
+                'id': artists_q[i].spotify_id,
+                'name': artists_q[i].name,
+                'num_albums': artists_q[i].num_albums,
+                'recent_album': artists_q[i].recent_album,
+                'top_track': artists_q[i].top_track,
+                'popularity': artists_q[i].popularity,
+                'spotify_uri': artists_q[i].spotify_uri,
+                'db_id': artists_q[i].id
+            })
         i += 1
+
     return jsonify(json)
 
 @app.route('/artists')
@@ -181,10 +191,33 @@ def album_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
+    albums_q = Album.query.limit(psize).all()
+    
+    print (Album.__dict__.keys(), file=sys.stderr)
     i = 0
-    while i < psize:
-        json['albums'].append({'id': i, 'name': 'album ' + str(i)})
+    while i < len(albums_q):
+        # Convert milliseconds to a human-readable time
+        duration = timedelta(milliseconds = albums_q[i].length)
+        minutes = str(duration.seconds // 60)
+        seconds = str(duration.seconds % 60).zfill(2)
+
+        json['albums'].append({
+                'id': albums_q[i].spotify_id,
+                'name': albums_q[i].name,
+                # 'release_date': albums_q[i].release_date,
+                'length': minutes + ':' + seconds,
+                # 'col_img': albums_q[i].col_img,
+                'num_tracks': albums_q[i].num_tracks,
+                'spotify_uri': albums_q[i].spotify_uri,
+                # 'spotify_id': albums_q[i].spotify_id,
+                # 'images': albums_q[i].images,
+                # 'href': albums_q[i].href,
+                'artist_name': albums_q[i].artist_name#,
+                # 'artists': albums_q[i].artists,
+                # 'tracks': albums_q[i].tracks
+            })
         i += 1
+
     return jsonify(json)
 
 @app.route('/albums')
@@ -208,9 +241,30 @@ def track_table(page):
         json['psize'] = psize
 
     i = 0
-    while i < psize:
-        json['tracks'].append({'id': i, 'name': 'track ' + str(i)})
+    tracks_q = Track.query.limit(psize).all()
+    while i < len(tracks_q):
+        duration = timedelta(milliseconds = tracks_q[i].duration)
+        minutes = str(duration.seconds // 60)
+        seconds = str(duration.seconds % 60).zfill(2)
+
+        json['tracks'].append({
+                'id': tracks_q[i].spotify_id,
+                'name': tracks_q[i].title,
+                'release_date': tracks_q[i].release_date,
+                'spotify_uri': tracks_q[i].spotify_uri,
+                'duration_ms': tracks_q[i].duration,
+                'spotify_id': tracks_q[i].spotify_id,
+                'duration': minutes + ':' + seconds,         #duplicate?
+                # 'artists': tracks_q[i].artists,
+                'album': tracks_q[i].album,
+                # 'col_img': tracks_q[i].col_img,
+                # 'href': tracks_q[i].spotify_uri,        #different from uri?
+                'album_name': tracks_q[i].album,
+                'artist_name': tracks_q[i].artist_name,
+                'db_id': tracks_q[i].id
+            })
         i += 1
+
     return jsonify(json)
 
 @app.route('/tracks')
