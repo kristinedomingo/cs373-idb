@@ -153,18 +153,21 @@ def artist_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
-    artists_q = Artist.query.limit(psize).all()
+    # Query database for a specific number of artists
+    artists = Artist.query.limit(psize).all()
     i = 0
-    while i < len(artists_q):
+
+    # From the returned artists format the data for the front-end
+    for artist in artists:
         json['artists'].append({
-                'id': artists_q[i].spotify_id,
-                'name': artists_q[i].name,
-                'num_albums': artists_q[i].num_albums,
-                'recent_album': artists_q[i].recent_album,
-                'top_track': artists_q[i].top_track,
-                'popularity': artists_q[i].popularity,
-                'spotify_uri': artists_q[i].spotify_uri,
-                'db_id': artists_q[i].id
+                'id': artist.spotify_id,
+                'name': artist.name,
+                'num_albums': artist.num_albums,
+                'recent_album': artist.recent_album,
+                'top_track': artist.top_track,
+                'popularity': artist.popularity,
+                'spotify_uri': artist.spotify_uri,
+                'db_id': artist.id
             })
         i += 1
 
@@ -176,10 +179,30 @@ def artists():
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
         return jsonify({"ids": ids})
+        
+        # Query the database for artists that match the list of ids provided
+        # artists_q = Artist.query.filter(_or(*[Artist.spotify_id.like(i) for i in request.args['ids']]))
+        # json = {'artists': []}
+
+        # # From the returned artists format the data for the front-end
+        # for artist in artists_q:
+        #     artist_q.query.like()
+        #     json['artists'].append({
+        #             'id': artist.spotify_id,
+        #             'name': artist.name,
+        #             'num_albums': artist.num_albums,
+        #             'recent_album': artist.recent_album,
+        #             'top_track': artist.top_track,
+        #             'popularity': artist.popularity,
+        #             'spotify_uri': artist.spotify_uri,
+        #             'db_id': artist.id
+        #         })
+        # return jsonify(json)
+
     
     # Get arbitrary artists
     else:
-        return jsonify({"artists": [{},{},{}]})
+        return jsonify({"artists": []})
 
 @app.route('/albums/<int:page>')
 def album_table(page):
@@ -191,30 +214,31 @@ def album_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
-    albums_q = Album.query.limit(psize).all()
-    
-    print (Album.__dict__.keys(), file=sys.stderr)
+    # Query database for a specific number of albums
+    albums = Album.query.limit(psize).all()
     i = 0
-    while i < len(albums_q):
+
+    # From the returned albums format the data for the front-end
+    for album in albums:
         # Convert milliseconds to a human-readable time
-        duration = timedelta(milliseconds = albums_q[i].length)
+        duration = timedelta(milliseconds = album.length)
         minutes = str(duration.seconds // 60)
         seconds = str(duration.seconds % 60).zfill(2)
 
         json['albums'].append({
-                'id': albums_q[i].spotify_id,
-                'name': albums_q[i].name,
-                # 'release_date': albums_q[i].release_date,
+                'id': album.spotify_id,
+                'name': album.name,
+                # 'release_date': album.release_date,
                 'length': minutes + ':' + seconds,
-                # 'col_img': albums_q[i].col_img,
-                'num_tracks': albums_q[i].num_tracks,
-                'spotify_uri': albums_q[i].spotify_uri,
-                # 'spotify_id': albums_q[i].spotify_id,
-                # 'images': albums_q[i].images,
-                # 'href': albums_q[i].href,
-                'artist_name': albums_q[i].artist_name#,
-                # 'artists': albums_q[i].artists,
-                # 'tracks': albums_q[i].tracks
+                # 'col_img': album.col_img,
+                'num_tracks': album.num_tracks,
+                'spotify_uri': album.spotify_uri,
+                # 'spotify_id': album.spotify_id,
+                # 'images': album.images,
+                # 'href': album.href,
+                'artist_name': album.artist_name#,
+                # 'artists': album.artists,
+                # 'tracks': album.tracks
             })
         i += 1
 
@@ -228,7 +252,7 @@ def albums():
         return jsonify({"ids": ids})
     # Get arbitrary albums if none specified
     else:
-        return jsonify({"albums": [{},{},{}]})
+        return jsonify({"albums": []})
 
 @app.route('/tracks/<int:page>')
 def track_table(page):
@@ -241,27 +265,30 @@ def track_table(page):
         json['psize'] = psize
 
     i = 0
-    tracks_q = Track.query.limit(psize).all()
-    while i < len(tracks_q):
-        duration = timedelta(milliseconds = tracks_q[i].duration)
+    # Query database for a specific number of tracks
+    tracks = Track.query.limit(psize).all()
+    
+    # From the returned tracks format the data for the front-end
+    for track in tracks:
+        duration = timedelta(milliseconds = track.duration)
         minutes = str(duration.seconds // 60)
         seconds = str(duration.seconds % 60).zfill(2)
 
         json['tracks'].append({
-                'id': tracks_q[i].spotify_id,
-                'name': tracks_q[i].title,
-                'release_date': tracks_q[i].release_date,
-                'spotify_uri': tracks_q[i].spotify_uri,
-                'duration_ms': tracks_q[i].duration,
-                'spotify_id': tracks_q[i].spotify_id,
+                'id': track.spotify_id,
+                'name': track.title,
+                'release_date': track.release_date,
+                'spotify_uri': track.spotify_uri,
+                'duration_ms': track.duration,
+                'spotify_id': track.spotify_id,
                 'duration': minutes + ':' + seconds,         #duplicate?
-                # 'artists': tracks_q[i].artists,
-                'album': tracks_q[i].album,
-                # 'col_img': tracks_q[i].col_img,
-                # 'href': tracks_q[i].spotify_uri,        #different from uri?
-                'album_name': tracks_q[i].album,
-                'artist_name': tracks_q[i].artist_name,
-                'db_id': tracks_q[i].id
+                # 'artists': track.artists,
+                'album': track.album,
+                # 'col_img': track.col_img,
+                # 'href': track\.spotify_uri,        #different from uri?
+                'album_name': track.album,
+                'artist_name': track.artist_name,
+                'db_id': track.id
             })
         i += 1
 
@@ -275,7 +302,7 @@ def tracks():
         return jsonify({"ids": ids})
     # Get arbitrary tracks if none specified
     else:
-        return jsonify({"tracks": [{},{},{}]})
+        return jsonify({"tracks": []})
 
 @manager.command
 def create_db():
