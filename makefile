@@ -61,3 +61,13 @@ init-db:
 
 docker-push:
 	 docker-compose --file docker-compose-prod.yml up -d
+
+docker-proxy:
+	docker run -it --rm \
+	--name temp-proxy \
+	--net cs373idb_backend \
+	--publish 3306:3306 \
+	--env PROTOCOL=TCP \
+	--env UPSTREAM=sweetmusic_db \
+	--env UPSTREAM_PORT=3306 \
+	carinamarina/nginx-proxy
