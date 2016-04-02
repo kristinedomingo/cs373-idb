@@ -29,19 +29,35 @@ def create_artist(artist_json):
 def create_album(album_json):
 	for album in album_json['albums']:
 		#print(album['name'])
-		album_model= Album(album['name'],album['artist_name'], album['release_date'],album['length'],album['num_tracks'],album['uri'],album['id'],album['images'][1]['url'],album['col_img'])
-		db.session.add(album_model)
-		db.session.commit()
+		artist=Artist.query.filter(Artist.name==album['artist_name']).first()
+		if artist ==None:
+			i=0
+		else:
+			album_model= Album(album['name'],album['artist_name'], album['release_date'],album['length'],album['num_tracks'],album['uri'],album['id'],album['images'][1]['url'],album['col_img'])
+		
+			album_model.artists.append(artist)
+			db.session.add(album_model)
+			db.session.commit()
 def create_tracks(track_json):
 	
 	for track in track_json['tracks']:
 		#print(track['name'])
-
+		album_id=None
 		album= Album.query.filter(Album.name ==track['album_name']).first()
-		print(Album.query.all())
-		tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['duration_ms'],track['uri'],track['id'],1,track['col_img'],track['href'])
-		db.session.add(tracks_model)
-		db.session.commit()
+		artist= Artist.query.filter(Artist.name == track['artist_name']).first()
+		if artist== None:
+			i=1
+		else:
+			if album == None:
+				album_id=None
+			else:
+				album_id=album.id
+		#print(Album.query.all())
+			
+			tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
+			tracks_model.artists2.append(artist)
+			db.session.add(tracks_model)
+			db.session.commit()
 
 def create_sweetmusic_db():
 	db.drop_all()
