@@ -1,6 +1,6 @@
 import unittest
 from flask.ext.testing import TestCase
-from app.db import db, app
+from db import db, app
 from models import Album, Artist, Track
 class TestArtist(TestCase):
 
