@@ -169,7 +169,8 @@ def artist_table(page):
                 'top_track': artist.top_track,
                 'popularity': artist.popularity,
                 'spotify_uri': artist.spotify_uri,
-                'db_id': artist.id
+                'db_id': artist.id,
+                'col_img': {'url': artist.col_img}
             })
         i += 1
 
@@ -209,10 +210,6 @@ def artists():
                         })
             else:
                 ids_not_in_db.append(i)
-                # spotify_data = pull_spotify_artist(i)
-                # if spotify_data is not None:
-                #     json['artists'].append(spotify_data)
-                # print ('Need to pull from Spotify the id ' + i, sys.stderr)
         # Now that we have gone through each id looking through out database, let's search spotify for ids that had no match
         if len(ids_not_in_db) > 0:
             spotify_data = pull_spotify_artists(ids_not_in_db)
