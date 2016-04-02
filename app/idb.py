@@ -171,11 +171,8 @@ def artists_route():
     # Get specified artists by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
-        # return jsonify({"ids": ids})
         
         # Query the database for artists that match the list of ids provided
-        # artists = Artist.query.filter(Artist.spotify_id.like())
-        # artists = Artist.query.filter(Artist.spotify_id.like(ids[0]))
         json = {'artists': []}
 
         ids_not_in_db = []
@@ -309,16 +306,6 @@ def album_table(page):
 
     # From the returned albums format the data for the front-end
     for album in albums:
-        # Need to pull associated artists from db
-        #album_artists = Album.query.join(Album.artists).all()#.filter_by(id=album.id).all()
-        album_artists = Album.query.filter(Album.artists.any(id=album.id)).all()
-        #print (album_artists[0].artists, file=sys.stderr)
-        # print(album_artists, file=sys.stderr)
-        print('Album artists: ' + str(album.artists), file=sys.stderr)
-        print('Album first artist name: ' + str(album.artists[0].name), file=sys.stderr)
-        #userList = users.query.join(friendships, users.id==friendships.user_id).add_columns(users.userId, users.name, users.email, friends.userId, friendId).filter(users.id == friendships.friend_id).filter(friendships.user_id == userID).paginate(page, 1, False)
-
-        # Need to pull associated tracks from db
         json['albums'].append(album_json(album))
         i += 1
 
