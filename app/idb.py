@@ -153,8 +153,10 @@ def artist_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
+    offset = (page - 1) * psize
     # Query database for a specific number of artists
-    artists = Artist.query.limit(psize).all()
+    artists = Artist.query.offset(offset).limit(psize).all()
+    # artists = Artist.query.limit(psize).all()
     i = 0
 
     # From the returned artists format the data for the front-end
@@ -178,31 +180,68 @@ def artists():
     # Get specified artists by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
-        return jsonify({"ids": ids})
+        # return jsonify({"ids": ids})
         
         # Query the database for artists that match the list of ids provided
-        # artists_q = Artist.query.filter(_or(*[Artist.spotify_id.like(i) for i in request.args['ids']]))
-        # json = {'artists': []}
+        # artists = Artist.query.filter(Artist.spotify_id.like())
+        # artists = Artist.query.filter(Artist.spotify_id.like(ids[0]))
+        json = {'artists': []}
 
-        # # From the returned artists format the data for the front-end
-        # for artist in artists_q:
-        #     artist_q.query.like()
-        #     json['artists'].append({
-        #             'id': artist.spotify_id,
-        #             'name': artist.name,
-        #             'num_albums': artist.num_albums,
-        #             'recent_album': artist.recent_album,
-        #             'top_track': artist.top_track,
-        #             'popularity': artist.popularity,
-        #             'spotify_uri': artist.spotify_uri,
-        #             'db_id': artist.id
-        #         })
-        # return jsonify(json)
+        ids_not_in_db = []
+        # From the returned artists format the data for the front-end
+        for i in ids:
+            # json['artists'].append({'id': i})
+            artists = Artist.query.filter(Artist.spotify_id.like(i)).all()
+            
+            print (artists, file=sys.stderr)
+            # Should only return one artist per id but just in case
+            if len(artists) > 0:
+                for artist in artists:
+                    json['artists'].append({
+                            'id': artist.spotify_id,
+                            'name': artist.name,
+                            'num_albums': artist.num_albums,
+                            'recent_album': artist.recent_album,
+                            'top_track': artist.top_track,
+                            'popularity': artist.popularity,
+                            'spotify_uri': artist.spotify_uri,
+                            'db_id': artist.id
+                        })
+            else:
+                ids_not_in_db.append(i)
+                # spotify_data = pull_spotify_artist(i)
+                # if spotify_data is not None:
+                #     json['artists'].append(spotify_data)
+                # print ('Need to pull from Spotify the id ' + i, sys.stderr)
+        # Now that we have gone through each id looking through out database, let's search spotify for ids that had no match
+        if len(ids_not_in_db) > 0:
+            spotify_data = pull_spotify_artists(ids_not_in_db)
+
+        return jsonify(json)
 
     
     # Get arbitrary artists
     else:
         return jsonify({"artists": []})
+
+
+# ----------------
+# HELPER FUNCTIONS
+# ----------------
+
+def pull_spotify_artists(spotify_ids):
+    
+    # artist = requests.get(
+    #     'https://api.spotify.com/v1/artists/?ids=' + spotify_id).json()
+    return None
+
+def pull_spotify_albums(spotify_ids):
+    return None
+
+def pull_spotify_tracks(spotify_ids):
+    return None
+
+# --------------------------------------
 
 @app.route('/albums/<int:page>')
 def album_table(page):
@@ -214,22 +253,20 @@ def album_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
+    offset = (page - 1) * psize
     # Query database for a specific number of albums
-    albums = Album.query.limit(psize).all()
+    albums = Album.query.offset(offset).limit(psize).all()
+    # albums = Album.query.limit(psize).all()
     i = 0
 
     # From the returned albums format the data for the front-end
     for album in albums:
-        # Convert milliseconds to a human-readable time
-        duration = timedelta(milliseconds = album.length)
-        minutes = str(duration.seconds // 60)
-        seconds = str(duration.seconds % 60).zfill(2)
 
         json['albums'].append({
                 'id': album.spotify_id,
                 'name': album.name,
                 # 'release_date': album.release_date,
-                'length': minutes + ':' + seconds,
+                'length': album.length,
                 # 'col_img': album.col_img,
                 'num_tracks': album.num_tracks,
                 'spotify_uri': album.spotify_uri,
@@ -264,9 +301,11 @@ def track_table(page):
         psize = int(request.args['psize'])
         json['psize'] = psize
 
+    offset = (page - 1) * psize
     i = 0
     # Query database for a specific number of tracks
-    tracks = Track.query.limit(psize).all()
+    tracks = Track.query.offset(offset).limit(psize).all()
+    # tracks = Track.query.limit(psize).all()
     
     # From the returned tracks format the data for the front-end
     for track in tracks:
