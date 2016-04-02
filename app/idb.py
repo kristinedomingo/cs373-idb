@@ -323,7 +323,7 @@ def drop_db():
 
 @app.route('/run_tests')
 def run_tests():
-    output = subprocess.getoutput("make test")
+    output = subprocess.getoutput("python3 tests.py")
     return json.dumps({'output': str(output)})
 
 
