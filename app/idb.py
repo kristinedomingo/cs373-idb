@@ -270,9 +270,10 @@ def album_table(page):
                 # 'spotify_id': album.spotify_id,
                 # 'images': album.images,
                 # 'href': album.href,
-                'artist_name': album.artist_name#,
+                'artist_name': album.artist_name,
                 # 'artists': album.artists,
                 # 'tracks': album.tracks
+                'col_img': {'url': album.col_img}
             })
         i += 1
 
@@ -324,7 +325,8 @@ def track_table(page):
                 # 'href': track\.spotify_uri,        #different from uri?
                 'album_name': track.album,
                 'artist_name': track.artist_name,
-                'db_id': track.id
+                'db_id': track.id,
+                'col_img': {'url': track.col_img}
             })
         i += 1
 
