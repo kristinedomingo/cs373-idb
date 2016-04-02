@@ -7,7 +7,7 @@ import requests
 import json
 from datetime import timedelta
 from initializing_db import create_sweetmusic_db
-from models import Artist, Album, Track
+from models import Artist, Album, Track, artists, artists2
 import sys
 
 DEFAULT_PAGE_SIZE = 10
@@ -161,23 +161,13 @@ def artist_table(page):
 
     # From the returned artists format the data for the front-end
     for artist in artists:
-        json['artists'].append({
-                'id': artist.spotify_id,
-                'name': artist.name,
-                'num_albums': artist.num_albums,
-                'recent_album': artist.recent_album,
-                'top_track': artist.top_track,
-                'popularity': artist.popularity,
-                'spotify_uri': artist.spotify_uri,
-                'db_id': artist.id,
-                'col_img': {'url': artist.col_img}
-            })
+        json['artists'].append(artist_json(artist))
         i += 1
 
     return jsonify(json)
 
 @app.route('/artists')
-def artists():
+def artists_route():
     # Get specified artists by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
@@ -198,16 +188,7 @@ def artists():
             # Should only return one artist per id but just in case
             if len(artists) > 0:
                 for artist in artists:
-                    json['artists'].append({
-                            'id': artist.spotify_id,
-                            'name': artist.name,
-                            'num_albums': artist.num_albums,
-                            'recent_album': artist.recent_album,
-                            'top_track': artist.top_track,
-                            'popularity': artist.popularity,
-                            'spotify_uri': artist.spotify_uri,
-                            'db_id': artist.id
-                        })
+                    json['artists'].append(artist_json(artist))
             else:
                 ids_not_in_db.append(i)
         # Now that we have gone through each id looking through out database, let's search spotify for ids that had no match
@@ -227,7 +208,7 @@ def artists():
 # ----------------
 
 def pull_spotify_artists(spotify_ids):
-    
+        
     # artist = requests.get(
     #     'https://api.spotify.com/v1/artists/?ids=' + spotify_id).json()
     return None
@@ -237,6 +218,76 @@ def pull_spotify_albums(spotify_ids):
 
 def pull_spotify_tracks(spotify_ids):
     return None
+
+def artist_json(artist):
+    artist_json = {
+        'id': artist.spotify_id,
+        'name': artist.name,
+        'num_albums': artist.num_albums,
+        'recent_album': artist.recent_album,
+        'top_track': artist.top_track,
+        'popularity': artist.popularity,
+        'spotify_uri': artist.spotify_uri,
+        'db_id': artist.id,
+        'col_img': {'url': artist.col_img}
+    }
+
+    return artist_json
+
+def album_json(album):
+    album_artists = []
+    for artist in album.artists:
+        album_artists.append(artist_json(artist))
+
+    album_tracks = []
+    for track in album.tracks:
+        album_artists.append(track_json(track))
+
+    album_json = {
+        'id': album.spotify_id,
+        'name': album.name,
+        # 'release_date': album.release_date,
+        'length': album.length,
+        # 'col_img': album.col_img,
+        'num_tracks': album.num_tracks,
+        'spotify_uri': album.spotify_uri,
+        # 'spotify_id': album.spotify_id,
+        # 'images': album.images,
+        # 'href': album.href,
+        'artist_name': album.artist_name,
+        'col_img': {'url': album.col_img},
+        'artists': album_artists,
+        'tracks': album_tracks,
+        'db_id': album.id
+    }
+
+    return album_json
+
+def track_json(track):
+    duration = timedelta(milliseconds = track.duration)
+    minutes = str(duration.seconds // 60)
+    seconds = str(duration.seconds % 60).zfill(2)
+
+
+    track_json = {
+        'id': track.spotify_id,
+        'name': track.title,
+        'release_date': track.release_date,
+        'spotify_uri': track.spotify_uri,
+        'duration_ms': track.duration,
+        'spotify_id': track.spotify_id,
+        'duration': minutes + ':' + seconds,         #duplicate?
+        # 'artists': track.artists,
+        'album': track.album,
+        # 'col_img': track.col_img,
+        # 'href': track\.spotify_uri,        #different from uri?
+        'album_name': track.album,
+        'artist_name': track.artist_name,
+        'db_id': track.id,
+        'col_img': {'url': track.col_img}
+    }
+
+    return track_json
 
 # --------------------------------------
 
@@ -258,29 +309,23 @@ def album_table(page):
 
     # From the returned albums format the data for the front-end
     for album in albums:
+        # Need to pull associated artists from db
+        #album_artists = Album.query.join(Album.artists).all()#.filter_by(id=album.id).all()
+        album_artists = Album.query.filter(Album.artists.any(id=album.id)).all()
+        #print (album_artists[0].artists, file=sys.stderr)
+        # print(album_artists, file=sys.stderr)
+        print('Album artists: ' + str(album.artists), file=sys.stderr)
+        print('Album first artist name: ' + str(album.artists[0].name), file=sys.stderr)
+        #userList = users.query.join(friendships, users.id==friendships.user_id).add_columns(users.userId, users.name, users.email, friends.userId, friendId).filter(users.id == friendships.friend_id).filter(friendships.user_id == userID).paginate(page, 1, False)
 
-        json['albums'].append({
-                'id': album.spotify_id,
-                'name': album.name,
-                # 'release_date': album.release_date,
-                'length': album.length,
-                # 'col_img': album.col_img,
-                'num_tracks': album.num_tracks,
-                'spotify_uri': album.spotify_uri,
-                # 'spotify_id': album.spotify_id,
-                # 'images': album.images,
-                # 'href': album.href,
-                'artist_name': album.artist_name,
-                # 'artists': album.artists,
-                # 'tracks': album.tracks
-                'col_img': {'url': album.col_img}
-            })
+        # Need to pull associated tracks from db
+        json['albums'].append(album_json(album))
         i += 1
 
     return jsonify(json)
 
 @app.route('/albums')
-def albums():
+def albums_route():
     # Get specified albums by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
@@ -307,33 +352,14 @@ def track_table(page):
     
     # From the returned tracks format the data for the front-end
     for track in tracks:
-        duration = timedelta(milliseconds = track.duration)
-        minutes = str(duration.seconds // 60)
-        seconds = str(duration.seconds % 60).zfill(2)
 
-        json['tracks'].append({
-                'id': track.spotify_id,
-                'name': track.title,
-                'release_date': track.release_date,
-                'spotify_uri': track.spotify_uri,
-                'duration_ms': track.duration,
-                'spotify_id': track.spotify_id,
-                'duration': minutes + ':' + seconds,         #duplicate?
-                # 'artists': track.artists,
-                'album': track.album,
-                # 'col_img': track.col_img,
-                # 'href': track\.spotify_uri,        #different from uri?
-                'album_name': track.album,
-                'artist_name': track.artist_name,
-                'db_id': track.id,
-                'col_img': {'url': track.col_img}
-            })
+        json['tracks'].append(track_json(track))
         i += 1
 
     return jsonify(json)
 
 @app.route('/tracks')
-def tracks():
+def tracks_route():
     # Get specified tracks by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
@@ -350,7 +376,7 @@ def create_db():
 
 @manager.command
 def drop_db():
-    logger.debug("drop_db")
+    # logger.debug("drop_db")
     app.config['SQLALCHEMY_ECHO'] = True
     db.drop_all()
 
