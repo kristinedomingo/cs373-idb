@@ -33,7 +33,7 @@ def create_album(album_json):
 		if artist ==None:
 			i=0
 		else:
-			album_model= Album(album['name'],album['artist_name'], album['release_date'],album['length'],album['num_tracks'],album['uri'],album['id'],album['images'][1]['url'],album['col_img'])
+			album_model= Album(album['name'],album['artist_name'], album['release_date'],album['length'],album['num_tracks'],album['uri'],album['id'],album['images'][1]['url'],album['col_img'], album['href'])
 		
 			album_model.artists.append(artist)
 			db.session.add(album_model)

@@ -38,6 +38,7 @@ class Album(db.Model) :
     spotify_id = db.Column(String(100))
     images = db.Column(String(250))
     col_img = db.Column(String(250))
+    href=db.Column(String(250))
 
     #This is the many to many relationship between artist and album connect to the table
     artists = db.relationship('Artist', secondary=artists,
@@ -47,7 +48,7 @@ class Album(db.Model) :
     tracks= db.relationship('Track',backref='my_album', lazy='dynamic')
     
 
-    def __init__(self, name, artist_name , release_date, length, num_tracks, spotify_uri, spotify_id, images, col_img):
+    def __init__(self, name, artist_name , release_date, length, num_tracks, spotify_uri, spotify_id, images, col_img,href):
         self.name = name
         self.artist_name= artist_name
         self.release_date = release_date
@@ -57,6 +58,7 @@ class Album(db.Model) :
         self.spotify_id= spotify_id
         self.images= images
         self.col_img=col_img
+        self.href= href
 
 
     def __repr__(self):

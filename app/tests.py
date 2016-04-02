@@ -52,8 +52,8 @@ class TestAlbum(TestCase):
 
     def setUp(self):
         db.create_all()
-        album = Album("1998 Melbourne Edition", "Chet Faker", "2015-05-18", 1923800, 5, "asdfasdf", "http","http:yayay.com","http:hey.com")
-        album2 = Album("Lullaby", "Atlas Bound", "2016-03-18", 220000, 1, "oiuohkjt", "http","http://yahoo.com","http://aol.com")
+        album = Album("1998 Melbourne Edition", "Chet Faker", "2015-05-18", 1923800, 5, "asdfasdf", "http","http:yayay.com","http:hey.com","hasdfasf")
+        album2 = Album("Lullaby", "Atlas Bound", "2016-03-18", 220000, 1, "oiuohkjt", "http","http://yahoo.com","http://aol.com",'hadfasdf')
         db.session.add(album)
         db.session.add(album2)
         db.session.commit()
@@ -77,7 +77,7 @@ class TestAlbum(TestCase):
 
     # Tests adding a new album to the table and removing it
     def test_add_delete_album(self):
-        album = Album( "Skrillex and Diplo present Jack U", "Jack U, Skrillex, Diplo", "2015-02-24", 2125000, 10, "abnoioighkjkcjkh", "http","https","https://")
+        album = Album( "Skrillex and Diplo present Jack U", "Jack U, Skrillex, Diplo", "2015-02-24", 2125000, 10, "abnoioighkjkcjkh", "http","https","https://",'hasdfasdfasdf')
         db.session.add(album)
         db.session.commit()
         assert len(Album.query.all()) == 3
