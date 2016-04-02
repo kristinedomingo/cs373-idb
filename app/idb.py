@@ -187,6 +187,7 @@ def artists():
         # artists = Artist.query.filter(Artist.spotify_id.like(ids[0]))
         json = {'artists': []}
 
+        ids_not_in_db = []
         # From the returned artists format the data for the front-end
         for i in ids:
             # json['artists'].append({'id': i})
@@ -194,8 +195,8 @@ def artists():
             
             print (artists, file=sys.stderr)
             # Should only return one artist per id but just in case
-            for artist in artists:
-                if artist is not None:
+            if len(artists) > 0:
+                for artist in artists:
                     json['artists'].append({
                             'id': artist.spotify_id,
                             'name': artist.name,
@@ -206,9 +207,16 @@ def artists():
                             'spotify_uri': artist.spotify_uri,
                             'db_id': artist.id
                         })
-                else:
-                    pull_spotify_artist(i)
-                    print ('Need to pull from Spotify the id ' + i, sys.stderr)
+            else:
+                ids_not_in_db.append(i)
+                # spotify_data = pull_spotify_artist(i)
+                # if spotify_data is not None:
+                #     json['artists'].append(spotify_data)
+                # print ('Need to pull from Spotify the id ' + i, sys.stderr)
+        # Now that we have gone through each id looking through out database, let's search spotify for ids that had no match
+        if len(ids_not_in_db) > 0:
+            spotify_data = pull_spotify_artists(ids_not_in_db)
+
         return jsonify(json)
 
     
@@ -221,15 +229,16 @@ def artists():
 # HELPER FUNCTIONS
 # ----------------
 
-def pull_spotify_artist(spotify_id):
-    tracks = requests.get(
-        'https://api.spotify.com/v1/artists/?ids=' + spotify_id).json()
+def pull_spotify_artists(spotify_ids):
+    
+    # artist = requests.get(
+    #     'https://api.spotify.com/v1/artists/?ids=' + spotify_id).json()
     return None
 
-def pull_spotify_albums(spotify_id):
+def pull_spotify_albums(spotify_ids):
     return None
 
-def pull_spotify_tracks(spotify_id):
+def pull_spotify_tracks(spotify_ids):
     return None
 
 # --------------------------------------
