@@ -189,22 +189,26 @@ def artists():
 
         # From the returned artists format the data for the front-end
         for i in ids:
-            json['artists'].append({'id': i})
-            # artist = Artist.query.filter(Artist.spotify_id.like(i))
-            # if artist is not None:
-            #     json['artists'].append({
-            #             'id': artist.spotify_id,
-            #             'name': artist.name,
-            #             'num_albums': artist.num_albums,
-            #             'recent_album': artist.recent_album,
-            #             'top_track': artist.top_track,
-            #             'popularity': artist.popularity,
-            #             'spotify_uri': artist.spotify_uri,
-            #             'db_id': artist.id
-            #         })
-            # else:
-            #     pull_spotify_artist(i)
-            #     print ('Need to pull from Spotify the id ' + i, sys.stderr)
+            # json['artists'].append({'id': i})
+            artists = Artist.query.filter(Artist.spotify_id.like(i)).all()
+            
+            print (artists, file=sys.stderr)
+            # Should only return one artist per id but just in case
+            for artist in artists:
+                if artist is not None:
+                    json['artists'].append({
+                            'id': artist.spotify_id,
+                            'name': artist.name,
+                            'num_albums': artist.num_albums,
+                            'recent_album': artist.recent_album,
+                            'top_track': artist.top_track,
+                            'popularity': artist.popularity,
+                            'spotify_uri': artist.spotify_uri,
+                            'db_id': artist.id
+                        })
+                else:
+                    pull_spotify_artist(i)
+                    print ('Need to pull from Spotify the id ' + i, sys.stderr)
         return jsonify(json)
 
     
