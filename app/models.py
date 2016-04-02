@@ -61,7 +61,19 @@ class Album(db.Model) :
 
     def __repr__(self):
         return '<User %r>' % self.name
-
+"""
+Artist:
+   - id
+   - popularity (int)
+   - col_img
+   - name
+   - uri
+   - last_album
+   - num_albums
+   - images
+   - followers (int)
+   - top_track
+"""
 class Artist(db.Model) :
     """
     Artist Model
@@ -75,8 +87,11 @@ class Artist(db.Model) :
     popularity = db.Column(db.Integer)
     spotify_uri= db.Column(String(100))
     spotify_id = db.Column(String(100))
+    images = db.Column(String(250))
+    col_img =db.Column(String(250))
+    followers = db.Column(Integer)
     
-    def __init__(self, name, num_albums, recent_album, top_track, popularity, spotify_uri, spotify_id):
+    def __init__(self, name, num_albums, recent_album, top_track, popularity, spotify_uri, spotify_id,images, col_img, followers):
         self.name = name
         self.num_albums = num_albums
         self.recent_album= recent_album
@@ -84,6 +99,9 @@ class Artist(db.Model) :
         self.popularity = popularity
         self.spotify_uri= spotify_uri
         self.spotify_id= spotify_id
+        self.images=images
+        self.col_img= col_img
+        self.followers= followers
 
     def __repr__(self):
         return '<User %r>' % self.name
