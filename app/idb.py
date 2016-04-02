@@ -238,7 +238,7 @@ def album_json(album):
 
     album_tracks = []
     for track in album.tracks:
-        album_artists.append(track_json(track))
+        album_tracks.append(track_json(track))
 
     album_json = {
         'id': album.spotify_id,
