@@ -6,7 +6,7 @@ import spotipy.util as util
 from db import db 
 import json
 import os.path
-from scraper import scrappy, get_artist_scrape, get_album_scrape, get_tracks_scrape
+# from scraper import scrappy, get_artist_scrape, get_album_scrape, get_tracks_scrape
 
 
 def create_artist(artist_json):
@@ -62,28 +62,25 @@ def create_tracks(track_json):
 def create_sweetmusic_db():
 	db.drop_all()
 	db.create_all()
-	scrappy()
-	artist_data=get_artist_scrape()
-	"""
-	scriptpath = os.path.dirname(__file__)
-	filename = os.path.join(scriptpath, 'artists_json.json')
-	artist_data= open(filename)
-	"""
+	# scrappy()
+
+	# artist_data=get_artist_scrape()
+	with open("artists_json.json") as json_file:
+		artist_data = json.load(json_file)
+
 	artist_json= artist_data
 	create_artist(artist_json)
-	album_data= get_album_scrape()
-	"""
-	scriptpath = os.path.dirname(__file__)
-	filename = os.path.join(scriptpath, 'albums_json.json')
-	album_data= open(filename)
-	"""
+
+	# album_data= get_album_scrape()
+	with open("albums_json.json") as json_file:
+		album_data = json.load(json_file)
+
 	album_json= album_data
 	create_album(album_json)
-	"""
-	scriptpath = os.path.dirname(__file__)
-	filename = os.path.join(scriptpath, 'tracks_json.json')
-	tracks_data= open(filename)
-	"""
-	tracks_data= get_tracks_scrape()
-	tracks_json= tracks_data
+
+	# tracks_data= get_tracks_scrape()
+	with open("tracks_json.json") as json_file:
+		track_data = json.load(json_file)
+
+	tracks_json= track_data
 	create_tracks(tracks_json)

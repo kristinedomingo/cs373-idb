@@ -187,14 +187,15 @@ def get_album_scrape():
 def get_tracks_scrape():
     return tracks_json
 
-"""
+
 # Write to files
 
+scrappy()
 artist_file = open('artists_json.json', 'w+')
-artist_file.write()
+artist_file.write(json.dumps(artists_json, indent = 2))
 
 album_file = open('albums_json.json', 'w+')
-album_file.write()
+album_file.write(json.dumps(albums_json, indent = 2))
 
 track_file = open('tracks_json.json', 'w+')
 track_file.write(json.dumps(tracks_json, indent = 2))
@@ -203,4 +204,3 @@ track_file.write(json.dumps(tracks_json, indent = 2))
 print(str(len(artists_json["artists"])) + " artists scraped")
 print(str(len(tracks_json["tracks"])) + " tracks scraped")
 print(str(len(albums_json["albums"])) + " albums scraped")
-"""
