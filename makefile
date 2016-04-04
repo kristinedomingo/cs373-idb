@@ -9,8 +9,8 @@ FILES :=        \
     apiary.apib \
     IDB1.log    \
     models.html \
-    models.py   \
-    tests.py    \
+    app/models.py   \
+    app/tests.py    \
     UML.pdf
 
 check:
@@ -37,7 +37,7 @@ clean:
 	rm -rf __pycache__
 
 test:
-	python3 tests.py
+	python3 app/tests.py
 
 docker-build:
 	@if [ -z "$$CONTINUE" ]; then \

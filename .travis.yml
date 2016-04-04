@@ -13,6 +13,7 @@ install:
     - pip install Flask
     - pip install Flask-Script
     - pip install Flask-SQLAlchemy
+    - pip install Flask-Testing
     - pip install gunicorn
     - pip install requests
 
@@ -25,3 +26,4 @@ script:
     - date
     - ls -al
     - make check
+    - make test
