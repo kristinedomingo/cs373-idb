@@ -10,8 +10,8 @@ class TestArtist(TestCase):
 
     def setUp(self):
         db.create_all()
-        artist = Artist("Atlas Bound", 8, "Lullaby", "Landed on Mars", 42, "alsjdflkasjd", "http","http://www.google.com","http://yo.com",1)
-        artist2 = Artist("Chet Faker", 20, "1998 Melbourne Edition", "Drop the Game",76, "asffagd", "http","http://imgur.com","http:lol",100)
+        artist = Artist("Atlas Bound", 8, "Lullaby", "Landed on Mars", 42, "alsjdflkasjd", "http")
+        artist2 = Artist("Chet Faker", 20, "1998 Melbourne Edition", "Drop the Game",76, "asffagd", "http")
         db.session.add(artist)
         db.session.add(artist2)
         db.session.commit()
@@ -35,7 +35,7 @@ class TestArtist(TestCase):
 
     # Tests adding a new artist and removing that artist from the db
     def test_add_delete_artist(self):
-        artists = Artist("Jack U", 14, "Skrillex and Diplo present Jack U", "Where Are U Now ( with Justin Bieber )", 42, "asldfjalieiuyhak", "http","hahah.com","http:whynot",14)
+        artists = Artist("Jack U", 14, "Skrillex and Diplo present Jack U", "Where Are U Now ( with Justin Bieber )", 42, "asldfjalieiuyhak", "http")
         db.session.add(artists)
         db.session.commit()
         assert len(Artist.query.all()) == 3
@@ -52,8 +52,8 @@ class TestAlbum(TestCase):
 
     def setUp(self):
         db.create_all()
-        album = Album("1998 Melbourne Edition", "Chet Faker", "2015-05-18", 1923800, 5, "asdfasdf", "http","http:yayay.com","http:hey.com","hasdfasf")
-        album2 = Album("Lullaby", "Atlas Bound", "2016-03-18", 220000, 1, "oiuohkjt", "http","http://yahoo.com","http://aol.com",'hadfasdf')
+        album = Album("1998 Melbourne Edition", "Chet Faker", "2015-05-18", 1923800, 5, "asdfasdf", "http")
+        album2 = Album("Lullaby", "Atlas Bound", "2016-03-18", 220000, 1, "oiuohkjt", "http")
         db.session.add(album)
         db.session.add(album2)
         db.session.commit()
@@ -77,7 +77,7 @@ class TestAlbum(TestCase):
 
     # Tests adding a new album to the table and removing it
     def test_add_delete_album(self):
-        album = Album( "Skrillex and Diplo present Jack U", "Jack U, Skrillex, Diplo", "2015-02-24", 2125000, 10, "abnoioighkjkcjkh", "http","https","https://",'hasdfasdfasdf')
+        album = Album( "Skrillex and Diplo present Jack U", "Jack U, Skrillex, Diplo", "2015-02-24", 2125000, 10, "abnoioighkjkcjkh", "http")
         db.session.add(album)
         db.session.commit()
         assert len(Album.query.all()) == 3
@@ -95,8 +95,8 @@ class TestTrack(TestCase):
 
     def setUp(self):
         db.create_all()
-        track = Track("Drop the Game", "Flume, Chet Faker", "2013-11-12", "Lockjaw", 1923800, "asjklgmbn", "http", "id",1,"https:yes","http:whynot")
-        track2 = Track("Landed on Mars", "Atlas Bound", "2015-03-18", "Landed on Mars",224000, "iuhmfgakuek", "http", "id",2,"http:no","http:why")
+        track = Track("Drop the Game", "Flume, Chet Faker", "2013-11-12", "Lockjaw", 1923800, "asjklgmbn", "http", "id")
+        track2 = Track("Landed on Mars", "Atlas Bound", "2015-03-18", "Landed on Mars",224000, "iuhmfgakuek", "http", "id")
         db.session.add(track)
         db.session.add(track2)
         db.session.commit()
@@ -120,7 +120,7 @@ class TestTrack(TestCase):
 
     # Tests adding a new track to the table and then removing it
     def test_add_delete_tracks(self):
-        track = Track("Where are U Now", "Jack U ,Skrillex, Diplo, Justin Bieber", "2015-02-24", "Skrillex and Diplo present Jack U", 250000, "igsjdfkjh", "http", "id",3,"http:keniew.com","http://belieber.com")
+        track = Track("Where are U Now", "Jack U ,Skrillex, Diplo, Justin Bieber", "2015-02-24", "Skrillex and Diplo present Jack U", 250000, "igsjdfkjh", "http", "id")
         db.session.add(track)
         db.session.commit()
         assert len(Track.query.all()) == 3
@@ -131,4 +131,4 @@ class TestTrack(TestCase):
 
 
 if __name__ == '__main__':
-	unittest.main(verbosity = 2)
+    unittest.main(verbosity = 2)
