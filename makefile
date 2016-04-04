@@ -37,7 +37,7 @@ clean:
 	rm -rf __pycache__
 
 test:
-	python3 tests.py
+	python3 app/tests.py
 
 docker-build:
 	@if [ -z "$$CONTINUE" ]; then \
