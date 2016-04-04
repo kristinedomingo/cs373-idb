@@ -9,8 +9,8 @@ FILES :=        \
     apiary.apib \
     IDB1.log    \
     models.html \
-    models.py   \
-    tests.py    \
+    app/models.py   \
+    app/tests.py    \
     UML.pdf
 
 check:
