@@ -59,41 +59,9 @@ def get_artist_data():
 # get_album_data
 # --------------
 
-@app.route('/get_albums')
-def get_album_data():
-    #11wzEOXFI1wgBHxKcsbacJ Chet Faker 1998 Melbourne Edition 
-    #3vNsiDEAnZRleKelEgdet1 Atlast Bound Lullaby 
-    #6bfkwBrGYKJFk6Z4QVyjxd Jack U Skrillex and Diplo present Jack \u00dc
-    albums = requests.get(
-        'https://api.spotify.com/v1/albums/?ids=11wzEOXFI1wgBHxKcsbacJ,3vNsiDEAnZRleKelEgdet1,6bfkwBrGYKJFk6Z4QVyjxd').json()
-
-    # Parse JSON information to append needed items
-    for album in albums["albums"]:
-
-        # Get album cover
-        album["col_img"] = album["images"][len(album["images"]) - 1]["url"]
-
-        # Get artist(s)
-        names = ""
-        for artist in album["artists"]:
-            names += artist["name"] + ', '
-        album["artist_name"] = names.rstrip(', ')
-
-        # Get number of tracks
-        album["num_tracks"] = len(album["tracks"]["items"])
-
-        # Get length (duration) of album
-        duration_ms = 0
-        for track in album["tracks"]["items"]:
-            duration_ms += track["duration_ms"]
-        duration = timedelta(milliseconds = duration_ms)
-
-        # Convert milliseconds to a human-readable time
-        minutes = str(duration.seconds // 60)
-        seconds = str(duration.seconds % 60).zfill(2)
-        album["length"] = minutes + ":" + seconds
-
-    return jsonify(albums)
+@app.route('/get_albums/<int:page>')
+def get_album_data(page):
+    return album_table(page)
 
 
 # --------------
@@ -243,7 +211,7 @@ def album_json(album):
     album_json = {
         'id': album.spotify_id,
         'name': album.name,
-        # 'release_date': album.release_date,
+        'release_date': album.release_date,
         'length': album.length,
         # 'col_img': album.col_img,
         'num_tracks': album.num_tracks,

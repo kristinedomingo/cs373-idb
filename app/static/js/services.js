@@ -16,8 +16,8 @@ angular.module('services',[])
         }})
     .factory('albumService', function($http) {
         return {
-            getAlbums: function() {
-                return $http.get('/get_albums').then(function(result) {
+            getAlbums: function(page) {
+                return $http.get('/get_albums/' + page).then(function(result) {
                     return result.data;
                 });
             }

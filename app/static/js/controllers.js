@@ -35,15 +35,6 @@ angular.module('controllers', [])
 
     }])
     .controller('SplashCtrl', ['$scope', 'artistService', 'albumService', 'trackService', function($scope, artistService, albumService, trackService) {
-        artistService.getArtists().then(function(data) {
-            localStorage.setItem('artistTable', JSON.stringify(data.artists));
-        });
-        albumService.getAlbums().then(function(data) {
-            localStorage.setItem('albumTable', JSON.stringify(data.albums));
-        });
-        trackService.getTracks().then(function(data) {
-            localStorage.setItem('trackTable', JSON.stringify(data.tracks));
-        });
     }])
     .controller('AboutCtrl', ['$scope', 'unitTestService', function($scope, unitTestService) {
         // Team member information
@@ -110,13 +101,25 @@ angular.module('controllers', [])
     .controller('AlbumTableCtrl',['$scope', 'albumService', function($scope, albumService) {
         $scope.sortType = 'name';
         $scope.sortReverse = false;
-        $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
-        if($scope.albums == null) {
-            albumService.getAlbums().then(function(data) {
+
+        // Change the page number if a new page is clicked
+        $scope.changePage = function(newPageNumber) {
+            $scope.pageNumber = newPageNumber;
+            albumService.getAlbums($scope.pageNumber).then(function(data) {
                 $scope.albums = data.albums;
-                localStorage.setItem('albumTable', JSON.stringify(data.albums));
+                // localStorage.setItem('albumTable', JSON.stringify(data.albums));
             });
         }
+
+        // Handle case where user just clicks on "Albums"
+        if(!$scope.pageNumber) {
+            $scope.pageNumber = 1;
+        }
+
+        albumService.getAlbums($scope.pageNumber).then(function(data) {
+            $scope.albums = data.albums;
+            // localStorage.setItem('albumTable', JSON.stringify(data.albums));
+        });
     }])
     .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
         // Find the correct album
