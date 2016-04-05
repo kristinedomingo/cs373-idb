@@ -25,8 +25,8 @@ angular.module('services',[])
     })
     .factory('trackService', function($http) {
         return {
-            getTracks: function() {
-                return $http.get('/get_tracks').then(function(result) {
+            getTracks: function(page) {
+                return $http.get('/get_tracks/' + page).then(function(result) {
                     return result.data;
                 });
             }

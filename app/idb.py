@@ -68,42 +68,9 @@ def get_album_data(page):
 # get_track_data
 # --------------
 
-@app.route('/get_tracks')
-def get_track_data():
-
-    #4KtrE35pTuqwNc22QP58RT Drop the Game Chet Faker
-    #6SXRLE3kFht3wi0glxDueW Landed on Mars Atlas Bound
-    #66hayvUbTotekKU3H4ta1f Where Are \u00dc Now (with Justin Bieber) Jack U
-    tracks = requests.get(
-        'https://api.spotify.com/v1/tracks/?ids=4KtrE35pTuqwNc22QP58RT,6SXRLE3kFht3wi0glxDueW,66hayvUbTotekKU3H4ta1f').json()
-
-    # Parse JSON information to append needed items
-    for track in tracks["tracks"]:
-
-        # Get track album cover
-        track["col_img"] = track["album"]["images"][len(track["album"]["images"]) - 1]["url"]
-
-        # Get artist(s)
-        names = ""
-        for artist in track["artists"]:
-            names += artist["name"] + ', '
-        track["artist_name"] = names.rstrip(', ')
-
-        # Get associated album
-        track["album_name"] = track["album"]["name"]
-
-        # Get release date from album
-        album_href = track["album"]["href"]
-        album_json = requests.get(album_href).json()
-        track["release_date"] = album_json["release_date"]
-
-        # Get track duration
-        duration = timedelta(milliseconds = track["duration_ms"])
-        minutes = str(duration.seconds // 60)
-        seconds = str(duration.seconds % 60).zfill(2)
-        track["duration"] = minutes + ":" + seconds
-
-    return jsonify(tracks)
+@app.route('/get_tracks/<int:page>')
+def get_track_data(page):
+    return track_table(page)
 
 
 # -----------------

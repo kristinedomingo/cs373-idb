@@ -153,13 +153,23 @@ angular.module('controllers', [])
     .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
         $scope.sortType = 'name';
         $scope.sortReverse = false;
-        $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
-        if($scope.tracks == null) {
-            trackService.getTracks().then(function(data) {
+
+        // Change the page number if a new page is clicked
+        $scope.changePage = function(newPageNumber) {
+            $scope.pageNumber = newPageNumber;
+            trackService.getTracks($scope.pageNumber).then(function(data) {
                 $scope.tracks = data.tracks;
-                localStorage.setItem('trackTable', JSON.stringify(data.tracks));
             });
         }
+
+        // Handle case where user just clicks on "Tracks"
+        if(!$scope.pageNumber) {
+            $scope.pageNumber = 1;
+        }
+
+        trackService.getTracks($scope.pageNumber).then(function(data) {
+            $scope.tracks = data.tracks;
+        });
     }])
     .controller('TrackDetailsCtrl', ['$scope', '$routeParams', '$sce', function($scope, $routeParams, $sce) {
         // Find the correct track
