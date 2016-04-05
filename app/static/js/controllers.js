@@ -7,7 +7,6 @@ angular.module('controllers', ['ui.bootstrap'])
         $scope.sortType = 'name';
         $scope.sortReverse = false;
         $scope.maxSize = 5;
-        $scope.totalArtists = 200;
 
         // Retrieve rows for the new page number
         $scope.changePage = function(){
@@ -25,6 +24,7 @@ angular.module('controllers', ['ui.bootstrap'])
         //for the first page case
         artistService.getArtists($scope.pageNumber).then(function(data){
             $scope.artists = data.artists;
+            $scope.totalArtists = data.total_artists;
         });
     }])
     .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService', function($scope, $routeParams, artistBioService, artistNewsService) {
@@ -116,7 +116,6 @@ angular.module('controllers', ['ui.bootstrap'])
         $scope.sortType = 'name';
         $scope.sortReverse = false;
         $scope.maxSize = 5;
-        $scope.totalAlbums = 200;
 
         // Change the page number if a new page is clicked
         $scope.changePage = function() {
@@ -133,6 +132,7 @@ angular.module('controllers', ['ui.bootstrap'])
         // Get albums upon page load
         albumService.getAlbums($scope.pageNumber).then(function(data) {
             $scope.albums = data.albums;
+            $scope.totalAlbums = data.total_albums;
         });
     }])
     .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', 'albumDetailsService', function($scope, $routeParams, albumDetailsService) {
@@ -165,7 +165,6 @@ angular.module('controllers', ['ui.bootstrap'])
         $scope.sortType = 'name';
         $scope.sortReverse = false;
         $scope.maxSize = 5;
-        $scope.totalTracks = 200;
 
         // Change the page number if a new page is clicked
         $scope.changePage = function() {
@@ -182,6 +181,7 @@ angular.module('controllers', ['ui.bootstrap'])
         // Get tracks upon page load
         trackService.getTracks($scope.pageNumber).then(function(data) {
             $scope.tracks = data.tracks;
+            $scope.totalTracks = data.total_count;
         });
     }])
     .controller('TrackDetailsCtrl', ['$scope', '$routeParams', 'trackDetailsService', function($scope, $routeParams, trackDetailsService) {
