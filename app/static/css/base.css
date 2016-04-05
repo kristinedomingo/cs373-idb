@@ -73,6 +73,7 @@ body {
   background-repeat: repeat-y;
   background-size: 100%;
   font-family: 'Fira Sans', sans-serif;
+  overflow-x: hidden;
 }
 
 body {
