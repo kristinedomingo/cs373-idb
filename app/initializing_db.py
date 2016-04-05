@@ -6,6 +6,7 @@ import spotipy.util as util
 from db import db 
 import json
 import os.path
+import re
 # from scraper import scrappy, get_artist_scrape, get_album_scrape, get_tracks_scrape
 
 
@@ -44,20 +45,26 @@ def create_tracks(track_json):
 		#print(track['name'])
 		album_id=None
 		album= Album.query.filter(Album.name ==track['album_name']).first()
-		artist= Artist.query.filter(Artist.name == track['artist_name']).first()
-		if artist== None:
-			i=1
+		artist_in_track= re.split(',',track['album_name'])
+		
+		if album == None:
+			album_id=None
 		else:
-			if album == None:
-				album_id=None
-			else:
-				album_id=album.id
+			album_id=album.id
 		#print(Album.query.all())
 			
-			tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['album']['images'][1]['url'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
-			tracks_model.artists2.append(artist)
-			db.session.add(tracks_model)
-			db.session.commit()
+		tracks_model= tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['album']['images'][1]['url'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
+		
+		for art_tr in artist_in_track:
+			
+				artist= Artist.query.filter(Artist.name == art_tr).first()
+				if(artist== None):
+					i=1
+				else:	
+					tracks_model.artists2.append(artist)
+		db.session.add(tracks_model)
+		db.session.commit()
+
 
 def create_sweetmusic_db():
 	db.drop_all()
