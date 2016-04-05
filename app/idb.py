@@ -63,6 +63,9 @@ def artist_table(page):
         json['psize'] = psize
 
     offset = (page - 1) * psize
+    # Query database for total artists
+    artists_count = Artist.query.count()
+    json['total_artists'] = artists_count
     # Query database for a specific number of artists
     artists = Artist.query.offset(offset).limit(psize).all()
     # artists = Artist.query.limit(psize).all()
@@ -213,6 +216,9 @@ def album_table(page):
         json['psize'] = psize
 
     offset = (page - 1) * psize
+    # Query for total number of albums in database
+    album_count = Album.query.count()
+    json['total_albums'] = album_count
     # Query database for a specific number of albums
     albums = Album.query.offset(offset).limit(psize).all()
     # albums = Album.query.limit(psize).all()
@@ -255,6 +261,9 @@ def track_table(page):
 
     offset = (page - 1) * psize
     i = 0
+    # Query database for total tracks
+    track_count = Track.query.count()
+    json['total_count'] = track_count
     # Query database for a specific number of tracks
     tracks = Track.query.offset(offset).limit(psize).all()
     # tracks = Track.query.limit(psize).all()
