@@ -164,10 +164,11 @@ angular.module('controllers', ['ui.bootstrap'])
     .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
         $scope.sortType = 'name';
         $scope.sortReverse = false;
+        $scope.maxSize = 5;
+        $scope.totalTracks = 200;
 
         // Change the page number if a new page is clicked
-        $scope.changePage = function(newPageNumber) {
-            $scope.pageNumber = newPageNumber;
+        $scope.changePage = function() {
             trackService.getTracks($scope.pageNumber).then(function(data) {
                 $scope.tracks = data.tracks;
             });
@@ -178,6 +179,7 @@ angular.module('controllers', ['ui.bootstrap'])
             $scope.pageNumber = 1;
         }
 
+        // Get tracks upon page load
         trackService.getTracks($scope.pageNumber).then(function(data) {
             $scope.tracks = data.tracks;
         });
