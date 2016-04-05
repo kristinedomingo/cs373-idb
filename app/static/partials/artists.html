@@ -7,60 +7,60 @@
                 <th>
                     <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Artist Name</a>
                     <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"</span>
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up" </span>
                 </th>
                 <th>
                     <a href="" ng-click="sortType = 'num_albums'; sortReverse = !sortReverse">Number of Albums Released</a>
                     <span ng-show="sortType == 'num_albums' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'num_albums' && !sortReverse" class="fa fa-caret-up"</span>
+                    <span ng-show="sortType == 'num_albums' && !sortReverse" class="fa fa-caret-up" </span>
                 </th>
                 <th>
                     <a href="" ng-click="sortType = 'recent_album' ; sortReverse = !sortReverse">Most Recent Album</a>
                     <span ng-show="sortType == 'recent_album' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'recent_album' && !sortReverse" class="fa fa-caret-up"</span>
+                    <span ng-show="sortType == 'recent_album' && !sortReverse" class="fa fa-caret-up" </span>
                 </th>
                 <th>
                     <a href="" ng-click="sortType = 'top_track' ; sortReverse = !sortReverse">Top Track</a>
                     <span ng-show="sortType == 'top_track' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'top_track' && !sortReverse" class="fa fa-caret-up"</span>
+                    <span ng-show="sortType == 'top_track' && !sortReverse" class="fa fa-caret-up" </span>
                 </th>
                 <th>
                     <a href="" ng-click="sortType = 'popularity' ; sortReverse = !sortReverse">Popularity</a>
                     <span ng-show="sortType == 'popularity' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'popularity' && !sortReverse" class="fa fa-caret-up"</span>
+                    <span ng-show="sortType == 'popularity' && !sortReverse" class="fa fa-caret-up" </span>
                 </th>
                 <tr ng-repeat="artist in artists | orderBy:sortType:sortReverse">
                     <td>
                         <a ng-href="#/artists/{{artist.id}}">
-                            <img class="artistImg" ng-src={{artist.col_img}}>
+                            <img class="artistImg" ng-src={{artist.col_img.url}}>
                             <span class="detailsLink">Details</span>
                         </a>
                     </td>
                     <td>{{artist.name}}</td>
                     <td>{{artist.num_albums}}</td>
-                    <td>{{artist.last_album.name}}</td>
-                    <td>{{artist.top_track.name}}</td>
+                    <td>{{artist.recent_album}}</td>
+                    <td>{{artist.top_track}}</td>
                     <td>{{artist.popularity}}</td>
                 </tr>
         </table>
+        <nav>
+            <ul class="pagination pagination-lg">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li ng-class="{'active' : pageNumber == 1}"><a href="" ng-click="changePage(1)">1</a></li>
+                <li ng-class="{'active' : pageNumber == 2}"><a href="" ng-click="changePage(2)">2</a></li>
+                <li ng-class="{'active' : pageNumber == 3}"><a href="" ng-click="changePage(3)">3</a></li>
+                <li ng-class="{'active' : pageNumber == 4}"><a href="" ng-click="changePage(4)">4</a></li>
+                <li ng-class="{'active' : pageNumber == 5}"><a href="" ng-click="changePage(5)">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
-<nav>
-    <ul class="pagination pagination-lg">
-        <li>
-            <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-            <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>

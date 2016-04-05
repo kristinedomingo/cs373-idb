@@ -3,15 +3,29 @@
 /* Controllers */
 angular.module('controllers', ['ui.bootstrap'])
     .controller('ArtistTableCtrl',['$scope', 'artistService', function($scope, artistService) {
+        //sorting by the name
         $scope.sortType = 'name';
         $scope.sortReverse = false;
-        $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
-        if($scope.artists == null) {
-            artistService.getArtists().then(function(data) {
-                $scope.artists = data.artists;
-                localStorage.setItem('artistTable', JSON.stringify(data.artists));
+
+        //assigning a function to scope to be utilized by ng-click
+        //changePage changes the page on click of one of the pagination anchors
+        $scope.changePage = function(newPageNumber){
+            $scope.pageNumber = newPageNumber;
+            artistService.getArtists($scope.pageNumber).then(function(data){
+              $scope.artists = data.artists;
             });
         }
+
+        //when just clicking albums nav anchor page number does not exist yet
+        if(!$scope.pageNumber){
+            //instantiate pageNumber with default of 1
+            $scope.pageNumber = 1;
+        }
+
+        //for the first page case
+        artistService.getArtists($scope.pageNumber).then(function(data){
+            $scope.artists = data.artists;
+        });
     }])
     .controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService', function($scope, $routeParams, artistBioService, artistNewsService) {
         $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
