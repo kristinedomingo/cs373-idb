@@ -6,7 +6,7 @@ angular.module('controllers', ['ui.bootstrap'])
 /**
  * Splash Page Controller
  */
-.controller('SplashCtrl', ['$scope', 'artistService', 'albumService', 'trackService', function($scope, artistService, albumService, trackService) {
+.controller('SplashCtrl', ['$scope', function($scope) {
 }])
 
 /**
