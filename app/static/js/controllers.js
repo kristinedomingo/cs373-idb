@@ -6,11 +6,11 @@ angular.module('controllers', ['ui.bootstrap'])
         //sorting by the name
         $scope.sortType = 'name';
         $scope.sortReverse = false;
+        $scope.maxSize = 5;
+        $scope.totalArtists = 200;
 
-        //assigning a function to scope to be utilized by ng-click
-        //changePage changes the page on click of one of the pagination anchors
-        $scope.changePage = function(newPageNumber){
-            $scope.pageNumber = newPageNumber;
+        // Retrieve rows for the new page number
+        $scope.changePage = function(){
             artistService.getArtists($scope.pageNumber).then(function(data){
               $scope.artists = data.artists;
             });
