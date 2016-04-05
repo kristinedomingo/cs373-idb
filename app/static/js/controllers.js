@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-angular.module('controllers', [])
+angular.module('controllers', ['ui.bootstrap'])
     .controller('ArtistTableCtrl',['$scope', 'artistService', function($scope, artistService) {
         $scope.sortType = 'name';
         $scope.sortReverse = false;
@@ -101,13 +101,13 @@ angular.module('controllers', [])
     .controller('AlbumTableCtrl',['$scope', 'albumService', function($scope, albumService) {
         $scope.sortType = 'name';
         $scope.sortReverse = false;
+        $scope.maxSize = 5;
+        $scope.totalAlbums = 200;
 
         // Change the page number if a new page is clicked
-        $scope.changePage = function(newPageNumber) {
-            $scope.pageNumber = newPageNumber;
+        $scope.changePage = function() {
             albumService.getAlbums($scope.pageNumber).then(function(data) {
                 $scope.albums = data.albums;
-                // localStorage.setItem('albumTable', JSON.stringify(data.albums));
             });
         }
 
@@ -116,15 +116,16 @@ angular.module('controllers', [])
             $scope.pageNumber = 1;
         }
 
+        // Get albums upon page load
         albumService.getAlbums($scope.pageNumber).then(function(data) {
             $scope.albums = data.albums;
-            // localStorage.setItem('albumTable', JSON.stringify(data.albums));
         });
     }])
     .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', 'albumDetailsService', function($scope, $routeParams, albumDetailsService) {
         // Find the correct album
         albumDetailsService.getAlbumDetails($routeParams.albumID).then(function(data) {
             $scope.targetAlbum = data.albums[0];
+            console.log($scope.targetAlbum);
 
             // Get 300px album cover
             $scope.albumCover = $scope.targetAlbum.images;
@@ -171,7 +172,6 @@ angular.module('controllers', [])
         // Find the correct track
         trackDetailsService.getTrackDetails($routeParams.trackID).then(function(data) {
             $scope.targetTrack = data.tracks[0];
-            console.log($scope.targetTrack.artists);
 
             // Get iframe src
             $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.spotify_uri;
