@@ -126,7 +126,56 @@ def pull_spotify_albums(spotify_ids):
     return None
 
 def pull_spotify_tracks(spotify_ids):
-    return None
+    # List of track dicts that will be returned
+    tracks = []
+
+    # combine ids into string for spotify request
+    ids = ""
+    for i in spotify_ids:
+        ids += i + ', '
+    ids = ids.rstrip(', ')
+
+    # Contact spotify will all unstored ids and return 
+    spot_tracks = requests.get(
+            'https://api.spotify.com/v1/tracks?ids=' + ids).json()
+    
+    print (spot_tracks, file=sys.stderr)
+
+    # go through returned tracks from spotify and make database objects for them
+    for t in spot_tracks['tracks']:
+        # if t != null
+        album_id = None
+        album = Album.query.filter(Album.name == t['album']['name']).first()
+        artists_in_track = []
+        for artist in t['artists']:
+            artists_in_track.append(artist['name'])
+
+        # combine artist names into a comma separated list
+        artist_names = ""
+        for i in t['artists']:
+            artist_names += i['name'] + ', '
+        artist_names = artist_names.rstrip(', ')
+
+        if album == None:
+            album_id = None
+        else:
+            album_id = album.id
+
+        track = Track(t['name'], artist_names, None, t['album']['name'], t['album']['images'][1]['url'], t['duration_ms'], t['uri'], t['id'], album_id, t['album']['images'][2]['url'], t['href'])
+
+
+        for art_tr in artists_in_track:
+            artist = Artist.query.filter(Artist.name == art_tr).first()
+            if artist == None:
+                i = 1
+            else:
+                track.artists2.append(artist)
+        db.session.add(track)
+        # db.session.commit()
+
+        # Add track json to list
+        tracks.append(track)
+    return tracks
 
 def artist_json(artist):
     artist_json = {
@@ -280,13 +329,26 @@ def tracks_route():
     # Get specified tracks by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
-        tracks = Track.query.filter(Track.spotify_id.in_(ids))
 
-        json = {"ids": ids}
-        json['tracks'] = []
+        json = {'tracks': []}
 
-        for track in tracks:
-            json['tracks'].append(track_json(track))
+        ids_not_in_db = []
+        for i in ids:
+            tracks = Track.query.filter(Track.spotify_id.like(i)).all()
+
+            if len(tracks) > 0:
+                for track in tracks:
+                    json['tracks'].append(track_json(track))
+
+            else:
+                ids_not_in_db.append(i)
+        # Now that we have gone through each id looking through out database, let's search spotify for ids that had no match
+        if len(ids_not_in_db) > 0:
+            spotify_tracks = pull_spotify_tracks(ids_not_in_db)
+            # append found tracks to returning data
+            for spot_track in spotify_tracks:
+                json['tracks'].append(track_json(spot_track))
+            # json['tracks'].append(spotify_tracks['tracks'])
 
         return jsonify(json)
     # Get arbitrary tracks if none specified
