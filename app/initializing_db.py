@@ -45,7 +45,7 @@ def create_tracks(track_json):
 		#print(track['name'])
 		album_id=None
 		album= Album.query.filter(Album.name ==track['album_name']).first()
-		artist_in_track= re.split(',',track['album_name'])
+		artist_in_track= re.split(', ',track['artist_name'])
 		
 		if album == None:
 			album_id=None
@@ -58,7 +58,7 @@ def create_tracks(track_json):
 		for art_tr in artist_in_track:
 			
 				artist= Artist.query.filter(Artist.name == art_tr).first()
-				if(artist== None):
+				if artist== None:
 					i=1
 				else:	
 					tracks_model.artists2.append(artist)
