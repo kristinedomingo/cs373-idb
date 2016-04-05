@@ -23,6 +23,15 @@ angular.module('services',[])
             }
         }
     })
+    .factory('albumDetailsService', function($http) {
+        return {
+            getAlbumDetails: function(album_id) {
+                return $http.get('/albums?ids=' + album_id).then(function(result) {
+                    return result.data;
+                });
+            }
+        }
+    })
     .factory('trackService', function($http) {
         return {
             getTracks: function(page) {

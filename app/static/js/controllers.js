@@ -121,34 +121,30 @@ angular.module('controllers', [])
             // localStorage.setItem('albumTable', JSON.stringify(data.albums));
         });
     }])
-    .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    .controller('AlbumDetailsCtrl', ['$scope', '$routeParams', 'albumDetailsService', function($scope, $routeParams, albumDetailsService) {
         // Find the correct album
-        $scope.albums = JSON.parse(localStorage.getItem('albumTable'));
-        $scope.targetAlbum = $scope.albums.find(function(album) {
-            return album.id == $routeParams.albumID;
+        albumDetailsService.getAlbumDetails($routeParams.albumID).then(function(data) {
+            $scope.targetAlbum = data.albums[0];
+
+            // Get 300px album cover
+            $scope.albumCover = $scope.targetAlbum.images;
+
+            // Get tracks
+            $scope.tracks = $scope.targetAlbum.tracks;
+
+            // Get artist IDs
+            $scope.artists = $scope.targetAlbum.artists;
+
+            // Convert ms to minutes and seconds
+            $scope.tracks.forEach(function(track) {
+                var minutes = Math.floor(track.duration_ms / 60000);
+                var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
+                track.duration_ms = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+            });
+
+            // Get iframe src
+            $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetAlbum.spotify_uri;
         });
-
-        // Get 300px album cover
-        $scope.albumCover = $scope.targetAlbum.images[1].url;
-
-        // Get tracks
-        $scope.tracks = $scope.targetAlbum.tracks.items;
-
-        // Convert ms to minutes and seconds
-        $scope.tracks.forEach(function(track) {
-            var minutes = Math.floor(track.duration_ms / 60000);
-            var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
-            track.duration_ms = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        });
-
-        // Get individal artists and their ids
-        $scope.artistIDs = [];
-        $scope.targetAlbum.artists.forEach(function(artist) {
-            $scope.artistIDs.push({name: artist.name, id: artist.id});
-        });
-
-        // Get iframe src
-        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetAlbum.uri;
     }])
     .controller('TrackTableCtrl',['$scope', 'trackService',  function($scope, trackService) {
         $scope.sortType = 'name';

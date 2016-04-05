@@ -184,7 +184,7 @@ def album_json(album):
         'num_tracks': album.num_tracks,
         'spotify_uri': album.spotify_uri,
         # 'spotify_id': album.spotify_id,
-        # 'images': album.images,
+        'images': album.images,
         # 'href': album.href,
         'artist_name': album.artist_name,
         'col_img': {'url': album.col_img},
@@ -251,7 +251,15 @@ def albums_route():
     # Get specified albums by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
-        return jsonify({"ids": ids})
+        albums = Album.query.filter(Album.spotify_id.in_(ids))
+
+        json = {"ids": ids}
+        json['albums'] = []
+
+        for album in albums:
+            json['albums'].append(album_json(album))
+
+        return jsonify(json)
     # Get arbitrary albums if none specified
     else:
         return jsonify({"albums": []})
