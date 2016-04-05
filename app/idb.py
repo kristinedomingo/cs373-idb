@@ -16,8 +16,8 @@ DEFAULT_PAGE_SIZE = 10
 # get_artist_data
 # ---------------
 
-@app.route('/get_artists')
-def get_artist_data():
+@app.route('/get_artists/<int:page>')
+def get_artist_data(page):
     """
     Calls the spotify three times for different sets of data to be passed to the front end
     templating system.
@@ -26,33 +26,7 @@ def get_artist_data():
     More info on Spotify Artist Objects here : https://developer.spotify.com/web-api/object-model/#artist-object-full
     """
 
-    # returns json in the form {"artists": [artistobj1,...artistobjN]}
-    artists = requests.get(
-        'https://api.spotify.com/v1/artists?ids=2Q0MyH5YMI5HPQjFjlq5g3,6107PIkQDuEUcdpZqSzQsu,1HxJeLhIuegM3KgvPn8sTa').json()
-
-    # run through each artist and append items to the respective artists in
-    # the artist obj
-    for artist in artists["artists"]:
-
-        # Request returns json in the form {"tracks":[{...}]}
-        # https://developer.spotify.com/web-api/get-artists-top-tracks/
-        top_track = requests.get(artist["href"] + '/top-tracks?country=US').json()["tracks"][0]
-
-        # add a new K/V pair to artist dict
-        artist["top_track"] = {"name" : top_track["name"], "id" : top_track["id"]}
-
-        # Request returns {"items" : [{...}]}
-        # https://developer.spotify.com/web-api/get-artists-albums/
-        albums = requests.get(artist["href"] + '/albums').json()["items"]
-
-        # Assumming that spotify gives us the list of albums in reverse
-        # chronological order
-        last_album = albums[0]["name"]
-        artist["last_album"] = {"name":last_album, "id": albums[0]["id"]}
-        artist["num_albums"] = len(albums)
-        artist["col_img"] = artist["images"][len(artist["images"]) - 1]["url"]
-
-    return jsonify(artists)
+    return artist_table(page)
 
 
 # --------------
