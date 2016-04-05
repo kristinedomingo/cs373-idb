@@ -200,6 +200,9 @@ def track_json(track):
     minutes = str(duration.seconds // 60)
     seconds = str(duration.seconds % 60).zfill(2)
 
+    artists_array = []
+    for artist in track.artists2:
+        artists_array.append({'artist_name': artist.name, 'artist_id': artist.spotify_id})
 
     track_json = {
         'id': track.spotify_id,
@@ -211,12 +214,14 @@ def track_json(track):
         'duration': minutes + ':' + seconds,         #duplicate?
         # 'artists': track.artists,
         'album': track.album,
+        'album_cover_url': track.album_cover_url,
         # 'col_img': track.col_img,
         # 'href': track\.spotify_uri,        #different from uri?
         'album_name': track.album,
         'artist_name': track.artist_name,
         'db_id': track.id,
-        'col_img': {'url': track.col_img}
+        'col_img': {'url': track.col_img},
+        'artists': artists_array
     }
 
     return track_json
@@ -282,7 +287,6 @@ def track_table(page):
     
     # From the returned tracks format the data for the front-end
     for track in tracks:
-
         json['tracks'].append(track_json(track))
         i += 1
 
@@ -293,7 +297,15 @@ def tracks_route():
     # Get specified tracks by their ids
     if 'ids' in request.args:
         ids = request.args.get('ids').split(',')
-        return jsonify({"ids": ids})
+        tracks = Track.query.filter(Track.spotify_id.in_(ids))
+
+        json = {"ids": ids}
+        json['tracks'] = []
+
+        for track in tracks:
+            json['tracks'].append(track_json(track))
+
+        return jsonify(json)
     # Get arbitrary tracks if none specified
     else:
         return jsonify({"tracks": []})

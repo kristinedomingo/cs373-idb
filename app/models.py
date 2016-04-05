@@ -134,6 +134,7 @@ class Track(db.Model) :
     artist_name= db.Column(db.String(100))
     release_date = db.Column(db.String(100))
     album = db.Column(db.String(100))
+    album_cover_url = db.Column(db.String(100))
     duration = db.Column(db.Integer)
     spotify_uri= db.Column(String(100))
     spotify_id = db.Column(String(100))
@@ -147,12 +148,13 @@ class Track(db.Model) :
     #This is what connects the one to many relationship between tracks and album id.
     album_id = db.Column(db.Integer, db.ForeignKey('album.id'))
 
-    def __init__(self, title, artist_name, release, album, duration, spotify_uri, spotify_id, album_id, col_img, href):
+    def __init__(self, title, artist_name, release, album, album_cover_url, duration, spotify_uri, spotify_id, album_id, col_img, href):
         id = db.Column(db.Integer, primary_key=True)
         self.title = title
         self.artist_name= artist_name
         self.release_date = release
         self.album = album
+        self.album_cover_url = album_cover_url
         self.duration = duration
         self.spotify_uri= spotify_uri
         self.spotify_id= spotify_id

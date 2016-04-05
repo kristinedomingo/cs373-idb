@@ -167,18 +167,18 @@ angular.module('controllers', [])
             $scope.tracks = data.tracks;
         });
     }])
-    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', '$sce', function($scope, $routeParams, $sce) {
+    .controller('TrackDetailsCtrl', ['$scope', '$routeParams', 'trackDetailsService', function($scope, $routeParams, trackDetailsService) {
         // Find the correct track
-        $scope.tracks = JSON.parse(localStorage.getItem('trackTable'));
-        $scope.targetTrack = $scope.tracks.find(function(track) {
-            return track.id == $routeParams.trackID;
+        trackDetailsService.getTrackDetails($routeParams.trackID).then(function(data) {
+            $scope.targetTrack = data.tracks[0];
+            console.log($scope.targetTrack.artists);
+
+            // Get iframe src
+            $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.spotify_uri;
+
+            // Get 300px album cover
+            $scope.albumCover = $scope.targetTrack.album_cover_url;
         });
-
-        // Get iframe src
-        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.uri;
-
-        // Get 300px album cover
-        $scope.albumCover = $scope.targetTrack.album.images[1].url;
     }])
     .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
         $scope.isActive = function(viewLocation) {

@@ -41,6 +41,15 @@ angular.module('services',[])
             }
         }
     })
+    .factory('trackDetailsService', function($http) {
+        return {
+            getTrackDetails: function(track_id) {
+                return $http.get('/tracks?ids=' + track_id).then(function(result) {
+                    return result.data;
+                });
+            }
+        }
+    })
     .factory('artistBioService', function($http) {
         return {
             getArtistDetails : function(artistURI){

@@ -54,7 +54,7 @@ def create_tracks(track_json):
 				album_id=album.id
 		#print(Album.query.all())
 			
-			tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
+			tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['album']['images'][1]['url'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
 			tracks_model.artists2.append(artist)
 			db.session.add(tracks_model)
 			db.session.commit()
