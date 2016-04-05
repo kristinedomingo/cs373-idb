@@ -95,8 +95,8 @@ class TestTrack(TestCase):
 
     def setUp(self):
         db.create_all()
-        track = Track("Drop the Game", "Flume, Chet Faker", "2013-11-12", "Lockjaw", 1923800, "asjklgmbn", "id",1,"https:yes","http:whynot")
-        track2 = Track("Landed on Mars", "Atlas Bound", "2015-03-18", "Landed on Mars",224000, "iuhmfgakuek", "id",2,"http:no","http:why")
+        track = Track("Drop the Game", "Flume, Chet Faker", "2013-11-12", "Lockjaw", "cover_url", 1923800, "asjklgmbn", "id",1,"https:yes","http:whynot")
+        track2 = Track("Landed on Mars", "Atlas Bound", "2015-03-18", "Landed on Mars", "cover_url_2", 224000, "iuhmfgakuek", "id",2,"http:no","http:why")
         db.session.add(track)
         db.session.add(track2)
         db.session.commit()
@@ -120,7 +120,7 @@ class TestTrack(TestCase):
 
     # Tests adding a new track to the table and then removing it
     def test_add_delete_tracks(self):
-        track = Track("Where are U Now", "Jack U ,Skrillex, Diplo, Justin Bieber", "2015-02-24", "Skrillex and Diplo present Jack U", 250000, "igsjdfkjh", "id",3,"http:keniew.com","http://belieber.com")
+        track = Track("Where are U Now", "Jack U ,Skrillex, Diplo, Justin Bieber", "2015-02-24", "Skrillex and Diplo present Jack U", "cover_url_3", 250000, "igsjdfkjh", "id",3,"http:keniew.com","http://belieber.com")
         db.session.add(track)
         db.session.commit()
         assert len(Track.query.all()) == 3
