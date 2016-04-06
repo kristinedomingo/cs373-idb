@@ -145,6 +145,7 @@ def pull_spotify_tracks(spotify_ids):
     for t in spot_tracks['tracks']:
         # if t != null
         album_id = None
+        release_date = None
         album = Album.query.filter(Album.name == t['album']['name']).first()
         artists_in_track = []
         for artist in t['artists']:
@@ -160,8 +161,9 @@ def pull_spotify_tracks(spotify_ids):
             album_id = None
         else:
             album_id = album.id
+            release_date = album.release_date
 
-        track = Track(t['name'], artist_names, None, t['album']['name'], t['album']['images'][1]['url'], t['duration_ms'], t['uri'], t['id'], album_id, t['album']['images'][2]['url'], t['href'])
+        track = Track(t['name'], artist_names, release_date, t['album']['name'], t['album']['images'][1]['url'], t['duration_ms'], t['uri'], t['id'], album_id, t['album']['images'][2]['url'], t['href'])
 
 
         for art_tr in artists_in_track:
@@ -171,7 +173,7 @@ def pull_spotify_tracks(spotify_ids):
             else:
                 track.artists2.append(artist)
         db.session.add(track)
-        # db.session.commit()
+        db.session.commit()
 
         # Add track json to list
         tracks.append(track)
