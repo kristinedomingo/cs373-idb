@@ -27,6 +27,8 @@ def create_artist(artist_json):
 	print(count)
 	print('\nartist')
 	print(count2)
+
+
 def create_album(album_json):
 	for album in album_json['albums']:
 		#print(album['name'])
@@ -39,6 +41,7 @@ def create_album(album_json):
 			album_model.artists.append(artist)
 			db.session.add(album_model)
 			db.session.commit()
+
 def create_tracks(track_json):
 	
 	for track in track_json['tracks']:
@@ -53,7 +56,7 @@ def create_tracks(track_json):
 			album_id=album.id
 		#print(Album.query.all())
 			
-		tracks_model= tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['album']['images'][1]['url'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
+		tracks_model= Track(track['name'],track['artist_name'],track['release_date'],track['album_name'],track['album']['images'][1]['url'],track['duration_ms'],track['uri'],track['id'],album_id,track['col_img'],track['href'])
 		
 		for art_tr in artist_in_track:
 			
@@ -65,6 +68,35 @@ def create_tracks(track_json):
 		db.session.add(tracks_model)
 		db.session.commit()
 
+def create_tracks_album(album_json):
+	for album in album_json['albums']:
+		album_db= Album.query.filter(Album.name== album['name']).first()
+		if album_db == None:
+			i=1
+		else:
+			for track in album['tracks']['items']:
+				artist_name=''
+				count=0
+				for artist in track['artists']:
+					if count >=1:
+						artist_name+=', '
+					artist_name+=artist['name']
+					count=count+1
+				track_exist= Track.query.filter(Track.title == track['name']).first()
+				if track_exist ==None:
+					track['name']
+					tracks_model=Track(track['name'],artist_name,album_db.release_date,album_db.name,album_db.images,track['duration_ms'],track['uri'],track['id'],album_db.id,album_db.col_img,track['href'])
+					artist_in_track= re.split(', ', artist_name)
+					for art_tr in artist_in_track:
+						artist= Artist.query.filter(Artist.name == art_tr).first()
+						if artist ==None:
+							i=1
+						else:
+							tracks_model.artists2.append(artist)
+					db.session.add(tracks_model)
+					db.session.commit()
+				
+				
 
 def create_sweetmusic_db():
 	db.drop_all()
@@ -91,3 +123,4 @@ def create_sweetmusic_db():
 
 	tracks_json= track_data
 	create_tracks(tracks_json)
+	create_tracks_album(album_json)
