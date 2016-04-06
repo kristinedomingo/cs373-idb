@@ -10,7 +10,7 @@ from initializing_db import create_sweetmusic_db
 from models import Artist, Album, Track, artists, artists2
 import sys
 
-DEFAULT_PAGE_SIZE = 10
+DEFAULT_PAGE_SIZE = 1000000000
 
 # ---------------
 # get_artist_data
