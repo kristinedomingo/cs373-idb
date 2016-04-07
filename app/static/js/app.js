@@ -16,43 +16,67 @@ sweetMusicApp
             when('/', {
                 templateUrl : '/partials/splash.html',
                 controller : 'SplashCtrl',
-                css : 'css/splash.css'
+                css : {
+                    href: 'css/splash.css',
+                    bustCache: true
+                }
             }).
             when('/artists', {
                 templateUrl : '/partials/artists.html',
                 controller : 'ArtistTableCtrl',
-                css : 'css/artists.css'
+                css : {
+                    href: 'css/artists.css',
+                    bustCache: true
+                }
             }).
             when('/artists/:artistID', {
                 templateUrl : '/partials/artist-details.html',
                 controller : 'ArtistDetailsCtrl',
-                css : 'css/artist-details.css'
+                css : {
+                    href: 'css/artist-details.css',
+                    bustCache: true
+                }
             }).
             when('/albums', {
                 templateUrl : '/partials/albums.html',
                 controller : 'AlbumTableCtrl',
-                css : 'css/albums.css'
+                css : {
+                    href: 'css/albums.css',
+                    bustCache: true
+                }
             }).
             when('/albums/:albumID', {
                 templateUrl : '/partials/album-details.html',
                 controller : 'AlbumDetailsCtrl',
-                css : 'css/album-details.css'
+                css : {
+                    href: 'css/album-details.css',
+                    bustCache: true
+                }
             }).
             when('/tracks', {
                 templateUrl : '/partials/tracks.html',
                 controller : 'TrackTableCtrl',
-                css : 'css/tracks.css'
+                css : {
+                    href: 'css/tracks.css',
+                    bustCache: true
+                }
             }).
 
             when('/tracks/:trackID', {
                 templateUrl : '/partials/track-details.html',
                 controller : 'TrackDetailsCtrl',
-                css : 'css/track-details.css'
+                css : {
+                    href: 'css/track-details.css',
+                    bustCache: true
+                }
             }).
             when('/about', {
                 templateUrl : 'partials/about.html',
                 controller : 'AboutCtrl',
-                css : 'css/about.css'
+                css : {
+                    href: 'css/about.css',
+                    bustCache: true
+                }
             }).
             otherwise({
                 redirectTo: '/'
