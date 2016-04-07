@@ -19,8 +19,8 @@ angular.module('controllers', ['ui.bootstrap'])
     // Team member information
     $scope.teamMembers =
      [{name: "Daniel Abrego",
-       commits: 13,
-       issues: 0,
+       commits: 44,
+       issues: 1,
        unitTests: 4,
        imgSrc: "imgs/dabrego-headshot.png",
        responsibilities: "Designed RESTful API, Documentation",
@@ -35,8 +35,8 @@ angular.module('controllers', ['ui.bootstrap'])
        bio: "Fourth year computer science student. I'm from South Padre Island. Avid gamer, and moderate car enthusiast."
       },
       {name: "Kristine Domingo",
-       commits: 88,
-       issues: 28,
+       commits: 145,
+       issues: 26,
        unitTests: 0,
        imgSrc: "imgs/kristine.jpg",
        responsibilities: "Front-end, AngularJS, Wiki",
@@ -51,8 +51,8 @@ angular.module('controllers', ['ui.bootstrap'])
        bio: "Take everything into moderation including Burrito Factory."
       },
       {name: "Micah Ramirez",
-       commits: 44,
-       issues: 10,
+       commits: 63,
+       issues: 47,
        unitTests: 0,
        imgSrc: "imgs/micah.jpg",
        responsibilities: "Full Stack, AngularJS, Wiki",
@@ -240,7 +240,6 @@ angular.module('controllers', ['ui.bootstrap'])
     // Find the correct album
     albumDetailsService.getAlbumDetails($routeParams.albumID).then(function(data) {
         $scope.targetAlbum = data.albums[0];
-        console.log($scope.targetAlbum);
 
         // Get 300px album cover
         $scope.albumCover = $scope.targetAlbum.images;
@@ -327,7 +326,7 @@ angular.module('controllers', ['ui.bootstrap'])
         $scope.targetTrack = data.tracks[0];
 
         // Get iframe src
-        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.spotify_uri;
+        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.spotify_uri + "&view=coverart";
 
         // Get 300px album cover
         $scope.albumCover = $scope.targetTrack.album_cover_url;

@@ -68,7 +68,7 @@ def artist_table(page):
     artists_count = Artist.query.count()
     json['total_artists'] = artists_count
 
-    # Query database for a specific number of artists
+    # Query database for a specific number of artists and sort and order them if provided arguments
     if 'sort' in request.args:
         if request.args['sort'] == 'artist_name':
             if 'order' in request.args and request.args['order'] == 'desc':
@@ -227,7 +227,7 @@ def track_table(page):
     # Query database for total tracks
     track_count = Track.query.count()
     json['total_count'] = track_count
-    # Query database for a specific number of tracks
+    # Query database for a specific number of tracks and sort and order them if given appropriate arguments
     if 'sort' in request.args:
         if request.args['sort'] == 'track_title':
             if 'order' in request.args and request.args['order'] == 'desc':
@@ -314,7 +314,7 @@ def drop_db():
 
 @app.route('/run_tests')
 def run_tests():
-    output = subprocess.getoutput("python3 tests.py")
+    output = subprocess.getoutput("python tests.py")
     return json.dumps({'output': str(output)})
 
 
