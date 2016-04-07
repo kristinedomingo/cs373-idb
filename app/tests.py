@@ -132,3 +132,15 @@ class TestTrack(TestCase):
 
 if __name__ == '__main__':
 	unittest.main(verbosity = 2)
+
+
+"""
+Name        Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------
+db.py          12      0      0      0   100%   
+models.py      85      3      0      0    96%   65, 109, 164
+tests.py       96      0      2      1    99%   133->-1
+-------------------------------------------------------
+TOTAL         193      3      2      1    98%   
+
+"""
