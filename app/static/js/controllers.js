@@ -51,8 +51,8 @@ angular.module('controllers', ['ui.bootstrap'])
        bio: "Take everything into moderation including Burrito Factory."
       },
       {name: "Micah Ramirez",
-       commits: 44,
-       issues: 10,
+       commits: 63,
+       issues: 47,
        unitTests: 0,
        imgSrc: "imgs/micah.jpg",
        responsibilities: "Full Stack, AngularJS, Wiki",
