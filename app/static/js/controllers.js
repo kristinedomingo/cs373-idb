@@ -40,7 +40,7 @@ angular.module('controllers', ['ui.bootstrap'])
        unitTests: 0,
        imgSrc: "imgs/kristine.jpg",
        responsibilities: "Front-end, AngularJS, Wiki",
-       bio: "Third-year CS major who enjoys good food and cute puppies."
+       bio: "Get schwifty"
       },
       {name: "Jorge Munoz",
        commits: 13,
@@ -254,15 +254,8 @@ angular.module('controllers', ['ui.bootstrap'])
     // Sort based on sortType
     $scope.sort = function() {
       $scope.all_tracks.sort(function(x, y) {
-          // If the sortType is number of tracks, don't sort using string
-          // comparison, parse to integers and compare those instead
-          if(false) {
-              return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
-          }
           // Case-insensitive string comparison
-          else {
-              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
-          }
+          return x[$scope.sortType].localeCompare(y[$scope.sortType]);
       });
 
       // If reverse, reverse the rows
