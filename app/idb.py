@@ -67,9 +67,37 @@ def artist_table(page):
     # Query database for total artists
     artists_count = Artist.query.count()
     json['total_artists'] = artists_count
+
     # Query database for a specific number of artists
-    artists = Artist.query.offset(offset).limit(psize).all()
-    # artists = Artist.query.limit(psize).all()
+    if 'sort' in request.args:
+        if request.args['sort'] == 'artist_name':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                artists = Artist.query.order_by(Artist.name.desc()).offset(offset).limit(psize).all()
+            else:
+                artists = Artist.query.order_by(Artist.name).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'num_albums':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                artists = Artist.query.order_by(Artist.num_albums.desc()).offset(offset).limit(psize).all()
+            else:
+                artists = Artist.query.order_by(Artist.num_albums).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'recent_album':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                artists = Artist.query.order_by(Artist.recent_album.desc()).offset(offset).limit(psize).all()
+            else:
+                artists = Artist.query.order_by(Artist.recent_album).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'top_track':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                artists = Artist.query.order_by(Artist.top_track.desc()).offset(offset).limit(psize).all()
+            else:
+                artists = Artist.query.order_by(Artist.top_track).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'popularity':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                artists = Artist.query.order_by(Artist.popularity.desc()).offset(offset).limit(psize).all()
+            else:
+                artists = Artist.query.order_by(Artist.popularity).offset(offset).limit(psize).all()
+    else:
+        artists = Artist.query.offset(offset).limit(psize).all()
+
     i = 0
 
     # From the returned artists format the data for the front-end
@@ -126,9 +154,37 @@ def album_table(page):
     # Query for total number of albums in database
     album_count = Album.query.count()
     json['total_albums'] = album_count
-    # Query database for a specific number of albums
-    albums = Album.query.offset(offset).limit(psize).all()
-    # albums = Album.query.limit(psize).all()
+
+    # Query database for a specific number of albums and sort if given appropriate arguments
+    if 'sort' in request.args:
+        if request.args['sort'] == 'album_name':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                albums = Album.query.order_by(Album.name.desc()).offset(offset).limit(psize).all()
+            else:
+                albums = Album.query.order_by(Album.name).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'artist_name':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                albums = Album.query.order_by(Album.artist_name.desc()).offset(offset).limit(psize).all()
+            else:
+                albums = Album.query.order_by(Album.artist_name).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'release_date':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                albums = Album.query.order_by(Album.release_date.desc()).offset(offset).limit(psize).all()
+            else:
+                albums = Album.query.order_by(Album.release_date).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'num_tracks':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                albums = Album.query.order_by(Album.num_tracks.desc()).offset(offset).limit(psize).all()
+            else:
+                albums = Album.query.order_by(Album.num_tracks).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'artist_name':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                albums = Album.query.order_by(Album.artist_name.desc()).offset(offset).limit(psize).all()
+            else:
+                albums = Album.query.order_by(Album.artist_name).offset(offset).limit(psize).all()
+    else:
+        albums = Album.query.offset(offset).limit(psize).all()
+
     i = 0
 
     # From the returned albums format the data for the front-end
@@ -172,8 +228,34 @@ def track_table(page):
     track_count = Track.query.count()
     json['total_count'] = track_count
     # Query database for a specific number of tracks
-    tracks = Track.query.offset(offset).limit(psize).all()
-    # tracks = Track.query.limit(psize).all()
+    if 'sort' in request.args:
+        if request.args['sort'] == 'track_title':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                tracks = Track.query.order_by(Track.title.desc()).offset(offset).limit(psize).all()
+            else:
+                tracks = Track.query.order_by(Track.title).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'artist_name':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                tracks = Track.query.order_by(Track.artist_name.desc()).offset(offset).limit(psize).all()
+            else:
+                tracks = Track.query.order_by(Track.artist_name).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'release_date':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                tracks = Track.query.order_by(Track.release_date.desc()).offset(offset).limit(psize).all()
+            else:
+                tracks = Track.query.order_by(Track.release_date).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'album_name':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                tracks = Track.query.order_by(Track.album_name.desc()).offset(offset).limit(psize).all()
+            else:
+                tracks = Track.query.order_by(Track.album_name).offset(offset).limit(psize).all()
+        elif request.args['sort'] == 'duration':
+            if 'order' in request.args and request.args['order'] == 'desc':
+                tracks = Track.query.order_by(Track.duration.desc()).offset(offset).limit(psize).all()
+            else:
+                tracks = Track.query.order_by(Track.duration).offset(offset).limit(psize).all()
+    else:
+        tracks = Track.query.offset(offset).limit(psize).all()
     
     # From the returned tracks format the data for the front-end
     for track in tracks:
