@@ -188,7 +188,6 @@ angular.module('controllers', ['ui.bootstrap'])
       $scope.pageNumber = 1;
       $scope.displayed_albums = $scope.all_albums.slice(0, $scope.numPerPage);
     }
-
 }])
 
 /**
@@ -231,24 +230,50 @@ angular.module('controllers', ['ui.bootstrap'])
     $scope.sortType = 'name';
     $scope.sortReverse = false;
     $scope.maxSize = 5;
-
-    // Change the page number if a new page is clicked
-    $scope.changePage = function() {
-        trackService.getTracks($scope.pageNumber).then(function(data) {
-            $scope.tracks = data.tracks;
-        });
-    }
+    $scope.numPerPage = 10;
 
     // Handle case where user just clicks on "Tracks"
     if(!$scope.pageNumber) {
         $scope.pageNumber = 1;
     }
 
-    // Get tracks upon page load
+    // Get albums upon page load
     trackService.getTracks($scope.pageNumber).then(function(data) {
-        $scope.tracks = data.tracks;
+        $scope.all_tracks = data.tracks;
         $scope.totalTracks = data.total_count;
+        $scope.displayed_tracks = $scope.all_tracks.slice(0, $scope.numPerPage);
     });
+
+    // Update displayed_tracks upon page change
+    $scope.changePage = function() {
+        var begin = (($scope.pageNumber - 1) * $scope.numPerPage);
+        var end = begin + $scope.numPerPage;
+        $scope.displayed_tracks = $scope.all_tracks.slice(begin, end);
+    }
+
+    // Sort based on sortType
+    $scope.sort = function() {
+      $scope.all_tracks.sort(function(x, y) {
+          // If the sortType is number of tracks, don't sort using string
+          // comparison, parse to integers and compare those instead
+          if(false) {
+              return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
+          }
+          // Case-insensitive string comparison
+          else {
+              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
+          }
+      });
+
+      // If reverse, reverse the rows
+      if($scope.sortReverse) {
+          $scope.all_tracks.reverse();
+      }
+
+      // Finally, reset page to 1 and update displayed_tracks
+      $scope.pageNumber = 1;
+      $scope.displayed_tracks = $scope.all_tracks.slice(0, $scope.numPerPage);
+    }
 }])
 
 /**

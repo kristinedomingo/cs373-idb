@@ -5,32 +5,32 @@
             <tr>
                 <th id="trackCoverHeader"></th>
                 <th>
-                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Track Title</a>
+                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse; sort()">Track Title</a>
                     <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
                 <th>
-                    <a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse">Artist Name</a>
+                    <a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse; sort()">Artist Name</a>
                     <span ng-show="sortType == 'artist_name' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'artist_name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
                 <th>
-                    <a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse">Release Date</a>
+                    <a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse; sort()">Release Date</a>
                     <span ng-show="sortType == 'release_date' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'release_date' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
                 <th>
-                    <a href="" ng-click="sortType = 'album_name' ; sortReverse = !sortReverse">Album</a>
+                    <a href="" ng-click="sortType = 'album_name' ; sortReverse = !sortReverse; sort()">Album</a>
                     <span ng-show="sortType == 'album_name' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'album_name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
                 <th>
-                    <a href="" ng-click="sortType = 'duration' ; sortReverse = !sortReverse">Duration</a>
+                    <a href="" ng-click="sortType = 'duration' ; sortReverse = !sortReverse; sort()">Duration</a>
                     <span ng-show="sortType == 'duration' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'duration' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-repeat="track in tracks | orderBy:sortType:sortReverse">
+            <tr ng-repeat="track in displayed_tracks">
                 <td>
                     <a href="#/tracks/{{track.id}}">
                         <img class="trackCover" ng-src={{track.col_img.url}}>
