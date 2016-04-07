@@ -35,8 +35,8 @@ angular.module('controllers', ['ui.bootstrap'])
        bio: "Fourth year computer science student. I'm from South Padre Island. Avid gamer, and moderate car enthusiast."
       },
       {name: "Kristine Domingo",
-       commits: 88,
-       issues: 28,
+       commits: 145,
+       issues: 26,
        unitTests: 0,
        imgSrc: "imgs/kristine.jpg",
        responsibilities: "Front-end, AngularJS, Wiki",
