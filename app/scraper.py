@@ -62,7 +62,7 @@ def scrape_artist():
                 tracks_queue.append(top_tracks[0]["id"])
 
         # Get and add most recent album, and add album to queue
-        albums = requests.get(this_artist["href"] + '/albums').json()["items"]
+        albums = requests.get(this_artist["href"] + '/albums?market=US&limit=50').json()["items"]
         last_album = albums[0]["name"]
         this_artist["last_album"] = {"name":last_album, "id": albums[0]["id"]}
         if albums[0]["id"] not in scraped_albums and len(scraped_albums) < 250:
