@@ -1,3 +1,867 @@
+commit ed870bc643bb512767a6d6d6e7e0ee3d2935e2ee
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:33:09 2016 -0500
+
+    Fixed closing curly brace
+
+commit 58cc6823247f4a982fa21e2a0dc474bfc07ff8ed
+Merge: 9a60f15 ccf3295
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:27:55 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 9a60f153a1ea7f0b78d6d510a96369ca4829255f
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:27:47 2016 -0500
+
+    Added coverage 3
+
+commit ccf32956fc3f43988ca4ba10b4293298d14a90c5
+Author: MicahRamirez <xaviermicahramirez@utexas.edu>
+Date:   Thu Apr 7 18:21:43 2016 -0500
+
+    fixed followers
+
+commit 55cc213c41728a64a861a07c9bf3c3e3c64dcc62
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:18:11 2016 -0500
+
+    Updated models.html
+
+commit e2311a6fbd81c1ba20331a4d82c2b2b7e37dc7a8
+Merge: 5d40005 aa025e2
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 18:06:39 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    merge
+
+commit 5d40005c4a29c6fe8e77602b0accc6ed6f0fe225
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 18:06:27 2016 -0500
+
+    change my profile
+
+commit aa025e2396072947670acfd44626c58d0eef4d0b
+Merge: 6f935f8 deaa2c1
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:02:40 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 6f935f897bf2afa1e6817347b8668506a19a12c0
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:02:32 2016 -0500
+
+    Removed dummy tools used
+
+commit deaa2c13576ed2e3aeeb476af7306c62cddb2e5a
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 18:02:03 2016 -0500
+
+    updated bio stats
+
+commit c685a75131442fd4176537374c4bf7894cec46c9
+Merge: 8ad5324 0ce6b57
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:00:44 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 8ad532401493303f2d9566c12dd8b6c2d67175a8
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 18:00:38 2016 -0500
+
+    Changed info
+
+commit 0ce6b57690e4318612659ad1f14de4267028b643
+Author: MicahRamirez <xaviermicahramirez@utexas.edu>
+Date:   Thu Apr 7 17:58:23 2016 -0500
+
+    Updated my commits
+
+commit 9c0f85d9203bed7d167df6abfd0cf385eaeb63a2
+Merge: 56ee78f fdd8e8a
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 17:45:41 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit 56ee78f67cae30cde82b8734f4ee910d2b0faa52
+Merge: f6c533b 4d34206
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 17:45:14 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit f6c533b74f38e4854fcb669a70cf90bc9b0ad925
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 17:45:07 2016 -0500
+
+    updated a few comments
+
+commit fdd8e8af9e8fceb3ea5376090f7a9af9d4a77595
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 17:45:05 2016 -0500
+
+    Added display of cover art for track details
+
+commit 4d342069450e6049f8f5c471d5fa9c22fd53e9d0
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 17:40:59 2016 -0500
+
+    Fixed widget loading for album details
+
+commit 5e0979f47054d516d14cbbbf3d0796f1b82d3b1d
+Merge: 8969ed2 cbc8a3d
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 17:15:04 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    merge db
+
+commit 8969ed2e1445212f7d40e8836b5bfc081214b918
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 17:14:25 2016 -0500
+
+    added the missing tracks
+
+commit cbc8a3d8dc36fa66ee3aa8b2fd8cdf92cfffa187
+Author: MicahRamirez <xaviermicahramirez@utexas.edu>
+Date:   Thu Apr 7 17:05:11 2016 -0500
+
+    Artist additional details finished
+
+commit f94692b5f76662c721a65d1c9253bf5cfaa5ec28
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 16:40:03 2016 -0500
+
+    updated artist json to include spotify ids for recent album and top track and a bigger image src
+
+commit 6e6032e3deeee3ff37772b8e682b50485fe41519
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 13:59:22 2016 -0500
+
+    Updated scraped files, limiting albums to US market
+
+commit bdc0574f94e65996afefaf1290cf24df03e6b23c
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 13:36:32 2016 -0500
+
+    Fixed alignment of details link on Tracks table
+
+commit 2038d5ad6116c6d59de063b2fb1a4324c02aab38
+Merge: ce88b7c 3260370
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 13:31:16 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit ce88b7c63465a25227777167388599c704ffa6d0
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 13:31:10 2016 -0500
+
+    Implemented sorting for Artists
+
+commit 3260370982b5586215720ae180d3060096730ed7
+Author: Daniel Abrego <dabrego@cs.utexas.edu>
+Date:   Thu Apr 7 12:35:39 2016 -0500
+
+    listed sort options so other groups know what they can sort by in Phase 3 if they decide to use the feature
+
+commit a8a586123096f59e36905474f449ad4e48529df8
+Author: Daniel Abrego <dabrego@cs.utexas.edu>
+Date:   Thu Apr 7 11:30:29 2016 -0500
+
+    updated apiary to reflect new optional parameters for table routes
+
+commit 3cb7ac6b68e236b57042b526442231d8b2cf8589
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 09:08:08 2016 -0500
+
+    removed duplicate sort by artist_name for album and changed to sort by length which was missing
+
+commit 05e01a340bef59727ded5c1197c441f96d89b9ae
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 01:28:56 2016 -0500
+
+    Revert "Added cache busting for angular css"
+    
+    This reverts commit 20c340ad34d10fab33e5a3568bdb78212e4f7928.
+
+commit 228509dfdba3d534f2f6d27edfe2dfedd16cbdf8
+Merge: cc7e77e d43a392
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 01:23:18 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit cc7e77e936ce6097f39d3608148ceaab4d6030c4
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 01:23:08 2016 -0500
+
+    Fixed sorting by album/track duration, close #86
+
+commit d43a3927069a984c011692b9bf4020823d43fe3b
+Merge: ca83284 df63411
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 01:05:36 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    for db
+
+commit df63411af40e2b37e550a51fd727122ed8e7f659
+Merge: 1ef8996 12d218a
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 01:05:21 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 1ef8996c5b8c592ea51b5ce93c4ecc888bfa8558
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 01:05:14 2016 -0500
+
+    Whoops had an if(false) lol
+
+commit ca8328405633cb3ce0b4c4a37911187f59986dc1
+Merge: c392c59 12d218a
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 01:05:04 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit c392c59aa5c1db24f83db3c9e7b1c548bcd80beb
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Thu Apr 7 01:04:39 2016 -0500
+
+    added the missing albums that had than more one artist
+
+commit 12d218a88eb12fa6a8a1d6286bd07a3d9aca8473
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Thu Apr 7 00:42:29 2016 -0500
+
+    added optional parameters to all table routes, they take sort and order by options
+
+commit 20c340ad34d10fab33e5a3568bdb78212e4f7928
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 00:35:19 2016 -0500
+
+    Added cache busting for angular css
+
+commit 61218de7c9fd16ac930fcf9eba7a63ba2a1c0ac9
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 00:26:25 2016 -0500
+
+    Added fixed table column widths for Tracks
+
+commit 8a7ad34560cd33f1a6bffd59326f5308fbe024a6
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 00:23:04 2016 -0500
+
+    Fixed table columns for Albums
+
+commit a70bea5493a79dd11bb97be34ca9faf6bb3cf023
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 00:09:49 2016 -0500
+
+    Added sorting across all rows for Tracks
+
+commit 20c701ad1fd626d93f19801391ac6876b40561d6
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Apr 7 00:01:06 2016 -0500
+
+    Fixed sorting across all rows for albums
+
+commit c366794b93b8017473191c14befd2c72679bd266
+Merge: 4f58a92 2ea5186
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Wed Apr 6 20:11:57 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit 4f58a921db94bb791acb2f56beb371fa02d39416
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Wed Apr 6 20:10:28 2016 -0500
+
+    updated apiary documentation to reflect the current API implementation
+
+commit 2ea518697670499677b55271bdb1c341819285fd
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Wed Apr 6 19:40:29 2016 -0500
+
+     added the methods for the apiary add_track and add_data
+
+commit d88c96a549b516356770f878f5c875bcccf8539d
+Merge: cd92abe 464008d
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Wed Apr 6 18:15:32 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    for db
+
+commit cd92abe251dec6f70e346da744077fbd56aa5ceb
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Wed Apr 6 18:14:59 2016 -0500
+
+     added the other tracks inside the albums
+
+commit 464008da5570e2cb29a8f826149108a23f2c90ca
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Wed Apr 6 17:22:47 2016 -0500
+
+    forgot to add imports
+
+commit c189ddaca9fe54e9203ca25d32a884c9ade2cff4
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Wed Apr 6 16:23:55 2016 -0500
+
+    moved helpers to separate file for readability
+
+commit 5e56a356d58d1f15bde46a7cfca9e6bf65c303c3
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Wed Apr 6 16:15:33 2016 -0500
+
+    updated DEFAULT_PAGE_SIZE to pull all db items for better sorting on the front end
+
+commit ea6f45ecc6ab4dd5a7af9315e24b6a42bdd4f385
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Tue Apr 5 21:52:20 2016 -0500
+
+    updated some points on track creation in db for lazy load
+
+commit 0dbba3017f4b9c3ab909e0af3b5ede6724b86505
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Tue Apr 5 17:09:14 2016 -0500
+
+    basic lazy loading for track ids works, does not commit to db yet will test further
+
+commit f11d13317ceed369d5f74158b0e9b19862a31870
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 14:44:20 2016 -0500
+
+    Organized directory structure a little
+
+commit ceed2dc0dc652addc562af98545085b9d24c566b
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 14:31:56 2016 -0500
+
+    Added UI Bootstrap to tools section
+
+commit 7bf896462370cf0536d4ccf52cdecee2126ba925
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 14:25:52 2016 -0500
+
+    Cleaned up/commented controllers.js
+
+commit dc09bccaa7b5dc0ca389fa860798c39cc85907b8
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 14:16:44 2016 -0500
+
+    Close #54 (mobile background fix)
+
+commit f852b25bf3541d2373a23627961961a444ac950d
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 14:01:57 2016 -0500
+
+    Changed total counts to actual (not hardcoded)
+
+commit a72059d99087a18faeee42511224ef5c42856155
+Merge: d2d8747 f4e05ba
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 13:57:13 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit d2d874789dc598db13470c195d6df514a0439cf7
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 13:57:06 2016 -0500
+
+    Added dynamic pagination for Artists
+
+commit f4e05ba9ccee0a74b39db55cd6a1d87fa3a88d23
+Merge: fc3e757 0c55b1a
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Tue Apr 5 13:54:31 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit fc3e757466c3ac1d39cce4f01c493fad898c3fae
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Tue Apr 5 13:53:30 2016 -0500
+
+    updated to include total_artists, total_albums and total_tracks to help with pagination for the tables
+
+commit 0c55b1a22c393c9b8af56734440d07df655a4201
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 13:53:28 2016 -0500
+
+    Added dynamic pagination for Tracks
+
+commit 01853e9e49063c9a7a6983234aa6d6809b01b653
+Merge: 7d9dffd f7a8b19
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 13:48:27 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 7d9dffd09765c6e036c57b7ddf1b86021a402553
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Apr 5 13:48:20 2016 -0500
+
+    Working dynamic pagination for albums
+
+commit f7a8b198ab0cdb7f34cf2f3618cdb63b658dd85b
+Author: Xavier Ramirez <alpha@wireless-10-147-38-99.public.utexas.edu>
+Date:   Tue Apr 5 13:23:28 2016 -0500
+
+    updated artist routes, controllers, and static files to conform to the structure of albums and tracks
+
+commit c1f3a01ccf1a7741b1679602f02dfe34893be3d3
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Mon Apr 4 21:53:50 2016 -0500
+
+    fix the split error
+
+commit c72ee433ab739b4e075232ba9d0276705ca122f0
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Mon Apr 4 21:35:22 2016 -0500
+
+    added the other artists to the many to many realtion ship
+
+commit b89b34d1a3b4684c96ef878a58c0c614f164a884
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 20:56:01 2016 -0500
+
+    Updated tests w/ new track model
+
+commit 0caea136384566b6933a73b4329f3dc17e9bcdcf
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 20:54:26 2016 -0500
+
+    Track details pages working, added array of artists in Track model
+
+commit 7ba7a06a5dd214932329688e731a3a041cc03d06
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 20:01:54 2016 -0500
+
+    Details pages for albums working
+
+commit 279e450deb704a1715f3319e2b2964bba5a38c54
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 19:20:31 2016 -0500
+
+    Added pagination for tracks
+
+commit ae39d01d538c09dbdb4bb4ce2c5dcab66c206cdc
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 18:12:36 2016 -0500
+
+    Fixed tests
+
+commit 2683ed7f4c82e00b850ebdd8fe1b36e0fff9a8ce
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 18:05:03 2016 -0500
+
+    Changed to not scrape every time
+
+commit ef31fb4325c051178742b06a04d6b12ee3d48940
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 18:00:45 2016 -0500
+
+    Working pagination for albums
+
+commit 358b4be417d40a43a9a25b5d2301632950b7fc39
+Merge: 717844d 8ac8c65
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 17:57:06 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 717844d535a5441cd79dffe9ae74741eb962de45
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 17:56:57 2016 -0500
+
+    Added scraped data files temporarily (scraping takes a long time)
+
+commit 8ac8c65338b8ecf350b1cb6b79266dac4d5390af
+Author: Xavier Ramirez <alpha@wireless-10-147-241-135.public.utexas.edu>
+Date:   Mon Apr 4 15:02:37 2016 -0500
+
+    Removed the root files and did not copy their old content into the correct files in the app/ directory :)
+
+commit e59d3bda5bb691752c0743c58e3b35b65540cb15
+Merge: 2b8381f c7a63a0
+Author: Xavier Ramirez <alpha@wireless-10-147-241-135.public.utexas.edu>
+Date:   Mon Apr 4 15:00:14 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit 2b8381f57f5513380419791e582bf4942943da2b
+Author: Xavier Ramirez <alpha@wireless-10-147-241-135.public.utexas.edu>
+Date:   Mon Apr 4 14:59:36 2016 -0500
+
+    Revert "copied models and tests into app and deleted root files"
+    
+    This reverts commit bd4873b45cb509dc4e6a62bdcbea210f01a4eadb.
+
+commit c7a63a02c9de772d24805b527792166d3e464182
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 14:43:46 2016 -0500
+
+    Fixed make check
+
+commit e0c739d480bc76de39e271952d894a3b44aab2d1
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 14:40:52 2016 -0500
+
+    Added flask testing to travis build file
+
+commit d5076ab08b219733606fe121c89b1113e76ae8f2
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Apr 4 14:38:51 2016 -0500
+
+    Added make test to travis build file
+
+commit bd4873b45cb509dc4e6a62bdcbea210f01a4eadb
+Author: Xavier Ramirez <alpha@wireless-10-147-241-135.public.utexas.edu>
+Date:   Mon Apr 4 14:27:49 2016 -0500
+
+    copied models and tests into app and deleted root files
+
+commit dce53c01a2952cc7ce40d814f5f6bba942ff7fb6
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 18:49:36 2016 -0500
+
+    fixes #77, tracks were incorrectly added to artists list for returning album json
+
+commit c5e4272d009d4d6df0cd0acfa6ab98b46c203965
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 18:14:57 2016 -0500
+
+    cleaned up code and unnecessary/wrong comments
+
+commit b98e52f7b4d16632aec1f24a84a1f444b285b912
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 18:12:32 2016 -0500
+
+    moved formatting to separate function and added artists and tracks in album lookup to the album json formatting
+
+commit 958d8a58e74cb8503058dee93154cc22268b8d90
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 16:23:53 2016 -0500
+
+    added href to Albums
+
+commit a3cf8dd5fcdd7556b6ba8402476c84aaa2325286
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 15:41:34 2016 -0500
+
+    added img link in albums and artists as well
+
+commit 7adbb781b3fecf0777871ca6b17205ee2ef944d8
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 15:37:33 2016 -0500
+
+    updated artist return format to include img key
+
+commit 72936ca2fc9a4deb6738475b169c273bb5102e8b
+Merge: eced81a 22cff36
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 15:35:59 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    merge db
+
+commit eced81a50ee806cf8f883ed4752788ab7f4d03f1
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 15:35:35 2016 -0500
+
+    Added the many to many realtionships and one to many realtionship to the table
+
+commit 22cff361cd1b333f5b14400d1c5372f22e430d46
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 13:43:34 2016 -0500
+
+    restructured logic for artists?ids lookup, which works now if id is in db but I still need to get spotify lookup working
+
+commit 3b1bfd2b43d6df4770222ba1b5188f47f2be96ad
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 13:27:20 2016 -0500
+
+    simple route for artists?ids=<list> works but only for artists and need to add funct for pulling from spotify if we dont have it
+
+commit 511f61e9a1dbf6bf40812e610350077a0418adbf
+Merge: 82904d3 e565a16
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 13:20:14 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit e565a16f56cded61108fcbb167023ee0665614c2
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 13:15:40 2016 -0500
+
+    fixed the test errors
+
+commit 82904d3f9b50748ebaa7c69ae21c4b73020aecbd
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Sat Apr 2 13:03:01 2016 -0500
+
+    updated the routes that generate the tables for artists, albums and tracks and tested against the new data model
+
+commit d912730be64cd6a946e97a3eef0b4e2aecc89eab
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 12:47:24 2016 -0500
+
+    took away json file added scraper into app to do it directly
+
+commit 52c6a77bd97b959f8acc801e115304bd3e796f6c
+Merge: 3d7f392 421a41c
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 11:45:53 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    for db
+
+commit 3d7f392caab7cbf62eb5e1993a00b47ec03ea423
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Sat Apr 2 11:45:26 2016 -0500
+
+    change artist model and initializing the databse. added the json into app for now
+
+commit 421a41c407cf7dbbe326d33266c11a2bf7015b5c
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Sat Apr 2 11:06:52 2016 -0500
+
+    Changed the imports based on the refactor
+
+commit 64e64affd1267445c936c9565858859fb62f6ee0
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Sat Apr 2 10:54:44 2016 -0500
+
+    Moved a copy of tests.py into app and changed the run test subprocess command to python3 tests.py
+
+commit 434789171460632d4180f297f7132df4a3b96f0c
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Sat Apr 2 10:32:22 2016 -0500
+
+    testing a makefile for app to see if different behavior on cluster
+
+commit c31c764649abb89758dd3c9d6feed82893483b60
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Fri Apr 1 18:32:15 2016 -0500
+
+    added FlaskTesting at a version that is supported by py3
+
+commit b0a142a53fcfb6b4d720b70e242bf96f23aa0489
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Fri Apr 1 18:20:39 2016 -0500
+
+    adding reqs and modified makefile comment
+
+commit a2d1abeac4b322e5a273e584e2bda79128eddd0d
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Fri Apr 1 16:57:08 2016 -0500
+
+    Added makefile command for db proxy creation
+
+commit 873cf5150a40d4f6524d0904e1c10a7909f51ccd
+Merge: 4002122 a3580ba
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Fri Apr 1 13:56:22 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit 4002122c6bae61bae1c671b1e118c4a3f4753db3
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Fri Apr 1 13:55:00 2016 -0500
+
+    modify tracks and album models and added func to add to database
+
+commit a3580ba3b4289e43faf2a66e3f9fcaf5a3354373
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Fri Apr 1 12:38:54 2016 -0500
+
+    Added scraped data
+
+commit 70f4f6af37f73db1efd45057e498d3c32f11243d
+Merge: 09dc68b a176133
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Fri Apr 1 11:55:49 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 09dc68bb294fdec032a9dc7acc9a5201c0c43cb3
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Fri Apr 1 11:44:33 2016 -0500
+
+    Added env attribute to app in a docker .yml file
+
+commit a176133b33e61ecc5ce61ce3cf4e347c319a6ea7
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Fri Apr 1 00:44:37 2016 -0500
+
+    made the code a little more readable and added a few comments
+
+commit e76a4165933ecee32910b651ceeed73e278430d0
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Fri Apr 1 00:14:41 2016 -0500
+
+    updated routes that return tables to call db, still need to get the formatting down
+
+commit 24b15a585b0b4122cb51184dee8eca5aa759a717
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Mar 31 15:44:32 2016 -0500
+
+    Fixed tests, they run again
+
+commit 9791de6ea0c7c1ec8f269153f3466dd56b20ed77
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Mar 31 12:54:36 2016 -0500
+
+    Put back cache sry
+
+commit 44151acd1a97da0dc3fe8f7b996507c86f814a6f
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Mar 31 12:46:33 2016 -0500
+
+    Movedd files in dbi to app folder
+
+commit 7c34141f99abfc21f4f3bdcab5e5f61abbbcd820
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Wed Mar 30 17:21:53 2016 -0500
+
+    added the cache for my spotify key
+
+commit 5d9cd7be1c2f8ef71e6926c69f2675ac067d833e
+Merge: f04ddba 38b3ac9
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Wed Mar 30 17:15:33 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    because we need it for the database
+
+commit f04ddbaf26896324e87a5bd7a6e29a7d7f27f4bd
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Wed Mar 30 17:14:56 2016 -0500
+
+    implemented the db run locally if you have mysql
+
+commit 38b3ac93ae1ca374e1e6213423bdb64433ebdbac
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Wed Mar 30 00:03:20 2016 -0500
+
+    Close #65 (run tests on about page)
+
+commit 8ac5ac879c9f5709f06eac1cd509f9aecb0b1172
+Merge: cdfc1a1 4246128
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Mar 29 23:24:31 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit cdfc1a12f04634da5f3c60745319c352ea211ef5
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Mar 29 23:24:24 2016 -0500
+
+    Fixed tests.py, all tests pass
+
+commit 4246128b9f230c284886bc46d624d3357cd5bebc
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Tue Mar 29 23:08:38 2016 -0500
+
+    removed db/ from gitignore and removed env var file creation in makefile
+
+commit b5410bc42b8503ebae4dc947aa4957df6e9e8103
+Merge: 4a428a3 8884c02
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Mar 29 22:20:18 2016 -0500
+
+    Merge branch 'master' into dev
+
+commit 4a428a318b5eb7af91e50e4ff03ec0eae92aa288
+Merge: 9151325 37ef964
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Mar 29 22:19:21 2016 -0500
+
+    Merge branch 'dev' of github.com:kristinedomingo/cs373-idb into dev
+
+commit 91513253faca493c3d9e146ecdc71b0d216a14f3
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Tue Mar 29 22:19:17 2016 -0500
+
+    Added scraper
+
+commit 37ef9648af378b410ba7815f6cfcc4fae7647bf7
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Tue Mar 29 21:31:48 2016 -0500
+
+    added some examples for the database. looks messy needs a real good clean up
+
+commit d2e4b2aa3944ba4ebb9f9459930655da22e20816
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Tue Mar 29 20:28:16 2016 -0500
+
+    Removed env var creation from makefile since already there, fixed small bug and added runserver command with appropriate vars
+
+commit ed5075d399e9c4caed1006534b7e104b93360490
+Merge: 191f01c 4680a21
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Tue Mar 29 20:06:08 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+
+commit 191f01c560f7729fb1fc98467e8dc8faaca00753
+Author: Xavier Ramirez <alpha@Xaviers-MacBook-Pro.local>
+Date:   Tue Mar 29 20:05:53 2016 -0500
+
+    Updated docker files, added Manager to create dbs on start up, and modified makefile to build the db image and a new makefile command that sets the env... This can be removed
+
+commit 4680a21f097066af5c60e22585c352a528febe9e
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Tue Mar 29 18:51:57 2016 -0500
+
+    added some mock api routes that can take a page number and optional page size for artists, albums and tracks
+
+commit 5a16b9fffd973db1c002a6db70cc40e5f9f26e89
+Author: Daniel Abrego <danielabrego@utexas.edu>
+Date:   Tue Mar 29 18:10:41 2016 -0500
+
+    reinserted static url path that was accidentally removed
+
+commit 3ac718190cb7995a5e3743dd0d21d2dd4ef3a722
+Merge: ca173ef 6611807
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Mon Mar 28 18:25:59 2016 -0500
+
+    Merge branch 'dev' of https://github.com/kristinedomingo/cs373-idb into dev
+    Combine to make database work
+
+commit ca173efaa376d9cf4b3998e86ebe909a34eddfb9
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Mon Mar 28 18:25:20 2016 -0500
+
+    create a database on my computer next step is collect data and put it inside the server to see how it works
+
+commit 661180705b52e9fe75fce0a250b8144f86175967
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Mon Mar 28 17:01:05 2016 -0500
+
+    Added front-end side of running unit tests on About page
+
+commit e60271304016eb2929aaeafa437b51c9cfee6088
+Author: Jorge Munoz <jorgmuno@cs.utexas.edu>
+Date:   Mon Mar 28 15:35:34 2016 -0500
+
+    added sample for starting database need to switch to mysql.
+
+commit 8884c02a643484fbb949cef2b4b9c465000aac6b
+Author: Kristine Domingo <kristine@cs.utexas.edu>
+Date:   Thu Mar 24 20:16:14 2016 -0500
+
+    Updated log
+
 commit ae96e3e7fdd2767c4a39f78eefc744b6a6b0801c
 Merge: 0799c93 38b8176
 Author: Xavier Ramirez <alpha@wireless-10-147-125-187.public.utexas.edu>
