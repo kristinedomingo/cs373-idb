@@ -32,7 +32,6 @@ class Album(db.Model) :
     name = db.Column(db.String(80))
     artist_name = db.Column(db.String(80))
     release_date = db.Column(db.String(80))
-    date = db.Column(db.String(100))
     length = db.Column(db.String(100))
     num_tracks = db.Column(db.Integer)
     spotify_uri= db.Column(String(100))
@@ -130,7 +129,7 @@ class Track(db.Model) :
     Has id, name, artist name, release, album, duration, and etc.
     """
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80))
+    title = db.Column(db.String(250))
     artist_name= db.Column(db.String(100))
     release_date = db.Column(db.String(100))
     album = db.Column(db.String(100))
