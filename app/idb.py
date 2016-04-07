@@ -177,11 +177,11 @@ def album_table(page):
                 albums = Album.query.order_by(Album.num_tracks.desc()).offset(offset).limit(psize).all()
             else:
                 albums = Album.query.order_by(Album.num_tracks).offset(offset).limit(psize).all()
-        elif request.args['sort'] == 'artist_name':
+        elif request.args['sort'] == 'length':
             if 'order' in request.args and request.args['order'] == 'desc':
-                albums = Album.query.order_by(Album.artist_name.desc()).offset(offset).limit(psize).all()
+                albums = Album.query.order_by(Album.length.desc()).offset(offset).limit(psize).all()
             else:
-                albums = Album.query.order_by(Album.artist_name).offset(offset).limit(psize).all()
+                albums = Album.query.order_by(Album.length).offset(offset).limit(psize).all()
     else:
         albums = Album.query.offset(offset).limit(psize).all()
 
