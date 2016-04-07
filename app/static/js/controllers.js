@@ -137,26 +137,37 @@ angular.module('controllers', ['ui.bootstrap'])
  * Artist Details Page Controller
  * Parses and stores information to be displayed on an Artist's details page.
  */
-.controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService', function($scope, $routeParams, artistBioService, artistNewsService) {
-    $scope.artists = JSON.parse(localStorage.getItem('artistTable'));
-    //finds the artist obj that was clicked on
-    $scope.currentArtist = $scope.artists.find(function(artist){
-        return artist.id == $routeParams.artistID;
-    });
-    artistBioService.getArtistDetails($scope.currentArtist.uri).then(function(data){
-      $scope.bios = data.response.biographies;
-      if(!$scope.bios[0]){
-        $scope.bios = {0:{text:"No data available!"}};
-      }
-    });
+.controller('ArtistDetailsCtrl', ['$scope', '$routeParams', 'artistBioService','artistNewsService','artistDetailsService', function($scope, $routeParams, artistBioService, artistNewsService, artistDetailsService) {
+    artistDetailsService.artistDetailsInfo($routeParams.artistID).then(function(data) {
+      
+        $scope.currentArtist = data.artists[0];
+        artistBioService.getArtistDetails($scope.currentArtist.spotify_uri).then(function(data){
+            $scope.bios = data.response.biographies;
+            if(!$scope.bios[0]){
+              $scope.bios = {0:{text:"No data available!"}};
+            }
+            var idx = 0;
+            var bioLength = false;
+            //Find a reasonably sized bio that is not null
+            while(idx < $scope.bios.length && $scope.bios[idx] && !bioLength){
+              //to short move on
+              if($scope.bios[idx].text.length < 100){
+                idx++;
+              }else{
+                //found a reasonably sized one so terminate loop
+                bioLength = true;
+                $scope.bios = [$scope.bios[idx]];
+              }
+            }
+        });
 
-    artistNewsService.getArtistDetails($scope.currentArtist.uri).then(function(data){
-      $scope.news = data.response.news;
+        artistNewsService.getArtistDetails($scope.currentArtist.spotify_uri).then(function(data){
+            $scope.news = data.response.news;
+        });
+        //grab the medium sized image
+        $scope.artistPhoto = $scope.currentArtist.artists_image;
+        $scope.name = $scope.currentArtist.name;
     });
-    //grab the medium sized image
-    $scope.artistPhoto = $scope.currentArtist.images[1].url;
-    $scope.name = $scope.currentArtist.name;
-
 }])
 
 /**

@@ -14,6 +14,15 @@ angular.module('services',[])
                 });
             }
         }})
+    .factory('artistDetailsService', function($http){
+        return {
+            artistDetailsInfo: function(artist_id){
+                return $http.get('/artists?ids=' + artist_id).then(function(result) {
+                        return result.data;
+                });
+            }
+        }
+    })
     .factory('albumService', function($http) {
         return {
             getAlbums: function(page) {
