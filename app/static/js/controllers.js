@@ -19,8 +19,8 @@ angular.module('controllers', ['ui.bootstrap'])
     // Team member information
     $scope.teamMembers =
      [{name: "Daniel Abrego",
-       commits: 13,
-       issues: 0,
+       commits: 44,
+       issues: 1,
        unitTests: 4,
        imgSrc: "imgs/dabrego-headshot.png",
        responsibilities: "Designed RESTful API, Documentation",
