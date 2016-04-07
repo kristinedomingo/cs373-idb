@@ -3,6 +3,7 @@
 /* App Module */
 var sweetMusicApp = angular.module('sweetMusicApp', [
     'controllers',
+    'filters',
     'services',
     'ngRoute',
     'door3.css'
