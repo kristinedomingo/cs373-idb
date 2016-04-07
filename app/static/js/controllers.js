@@ -43,8 +43,8 @@ angular.module('controllers', ['ui.bootstrap'])
        bio: "Get schwifty"
       },
       {name: "Jorge Munoz",
-       commits: 13,
-       issues: 4,
+       commits: 40,
+       issues: 11,
        unitTests: 5,
        imgSrc: "imgs/jorge_munoz.jpg",
        responsibilities: "Back end, SQLAcademy, Database",
