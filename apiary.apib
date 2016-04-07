@@ -4,7 +4,719 @@ HOST: http://sweetmusic.me/
 # SweetMusic
 Simple API for retrieving information regarding Artists, Albums and Tracks
 
-# Group Static Content
+# Group Artists
+## Artists [/artists/{page_num}{?psize}]
+**/artists/{page_num}?psize={psize}**<br>
+Request an arbitrary list of artists
+#### Parameters
+- **page_num** *(number, required)* - used as an offset to query by page
+- **psize** *(number, optional)* - used to specify the size of the list
+
+
++ Parameters
+    + page_num: 1 (number) - indicates the offset or page
+    + psize: 3 (number, optional) - indicates the number of artists per page
+
+### GET Artists [GET]
++ Response 200 (application/json)
+    + Attributes (object)
+        + col_img: {"url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"} (object) - list of img hrefs for the artist
+        + db_id: 1 (number) - database id
+        + id: 26T3LtbuGT1Fu9m0eRq5X3 (string) - spotify id for the artist
+        + name: Cage the Elephant (string) - name of the artist
+        + num_albums: 20 (number) - number of albums the artist has
+        + popularity: 76 (number) - popularity index of artist according to spotify
+        + recent_album: Tell Me I'm Pretty (string) - name of the most recent album
+        + spotify_uri: spotify:artist:26T3LtbuGT1Fu9m0eRq5X3 (string) - uri for spotify for the artist
+        + top_track: Ain't No Rest for the Wicked (string) - name of their top track
+                
+    + Body
+    
+            {
+              "artists": [
+                {
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"
+                  },
+                  "db_id": 1,
+                  "id": "26T3LtbuGT1Fu9m0eRq5X3",
+                  "name": "Cage The Elephant",
+                  "num_albums": 20,
+                  "popularity": 76,
+                  "recent_album": "Tell Me I'm Pretty",
+                  "spotify_uri": "spotify:artist:26T3LtbuGT1Fu9m0eRq5X3",
+                  "top_track": "Ain't No Rest for the Wicked"
+                },
+                {
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/cbbdfb209cc38b2999b1882f42ee642555316313"
+                  },
+                  "db_id": 2,
+                  "id": "4dpARuHxo51G3z768sgnrY",
+                  "name": "Adele",
+                  "num_albums": 20,
+                  "popularity": 91,
+                  "recent_album": "21",
+                  "spotify_uri": "spotify:artist:4dpARuHxo51G3z768sgnrY",
+                  "top_track": "Hello"
+                },
+                {
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/f4c6df387feebef2c94bde6117c38dd8dab69533"
+                  },
+                  "db_id": 3,
+                  "id": "25u4wHJWxCA9vO0CzxAbK7",
+                  "name": "Lukas Graham",
+                  "num_albums": 20,
+                  "popularity": 89,
+                  "recent_album": "Lukas Graham (Blue Album)",
+                  "spotify_uri": "spotify:artist:25u4wHJWxCA9vO0CzxAbK7",
+                  "top_track": "7 Years"
+                }
+              ],
+              "page": 1,
+              "psize": 3,
+              "total_artists": 124
+            }
+
+## Artist [/artists{?ids}]
+**/artists?ids={artists_ids}**<br>
+Request all information regarding specific artists related to **ids**
+#### Parameters
+- **artist_ids** *(string, required)* - comma separated list of spotify ids
+
+
++ Parameters
+    + ids: 25u4wHJWxCA9vO0CzxAbK7 (string, required) - comma separated list of spotify ids
+
+### GET Artist [GET]
++ Response 200 (application/json)
+    + Attributes (object)
+        + col_img: {"url": "https://i.scdn.co/image/f4c6df387feebef2c94bde6117c38dd8dab69533"} (object) - list of img hrefs for the artist
+        + db_id: 3 (number) - database id
+        + id: 25u4wHJWxCA9vO0CzxAbK7 (string) - spotify id for the artist
+        + name: Lukas Graham (string) - name of the artist
+        + num_albums: 20 (number) - number of albums the artist has
+        + popularity: 89 (number) - popularity index of artist according to spotify
+        + recent_album: Lukas Graham Blue Album (string) - name of the most recent album
+        + spotify_uri: spotify:artist:25u4wHJWxCA9vO0CzxAbK7 (string) - uri for spotify for the artist
+        + top_track: 7 Years (string) - name of their top track
+
+    + Body
+    
+            {
+              "artists": [
+                {
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/f4c6df387feebef2c94bde6117c38dd8dab69533"
+                  },
+                  "db_id": 3,
+                  "id": "25u4wHJWxCA9vO0CzxAbK7",
+                  "name": "Lukas Graham",
+                  "num_albums": 20,
+                  "popularity": 89,
+                  "recent_album": "Lukas Graham (Blue Album)",
+                  "spotify_uri": "spotify:artist:25u4wHJWxCA9vO0CzxAbK7",
+                  "top_track": "7 Years"
+                }
+              ]
+            }
+
+# Group Albums
+## Albums [/albums/{page_num}{?psize}]
+**/albums/{page_num}?psize={psize}**<br>
+Request an arbitrary list of albums
+
+#### Parameters
+- **page_num** *(number, required)* - used as an offset to query by page
+- **psize** *(number, optional)* - used to specify the size of the list
+
++ Parameters
+    + page_num: 1 (number) - indicates the offset or page
+    + psize: 3 (number, optional) - indicates the number of albums per page
+
+### Get Albums [GET]
++ Response 200 (application/json)
+
+    + Attributes
+        + artist_name: Cage The Elephant (string, required) - name of the artists
+        + artists: [] (array, required) - array of artists and their information
+        + col_img: {"url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"} (object, required) - contains url for img of album
+        + db_id: 1 (number, required) - id in database
+        + images: "https://i.scdn.co/image/a13016817c0496ee44a48adc80b5c345e8c8925e" (string, optional) - another way to find an image of the album
+        + length: "38:17" (string, required) - total length of the album formatted in minutes and seconds
+        + name: "Tell Me I'm Pretty" (string, required) - name of the album
+        + num_tracks: 10 (number, required) - number of tracks in the album
+        + release_date: `2015-12-18` (string, required) - date the album was released
+        + spotify_uri: spotify:album:0nW0w37lrQ87k7PLZvC4qJ (string, required) - uri to find this artist on spotify
+        + tracks: [] (array, required) - array of tracks on the album
+        
+    + Body
+    
+            {
+              "albums": [
+                {
+                  "artist_name": "Cage The Elephant",
+                  "artists": [
+                    {
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"
+                      },
+                      "db_id": 1,
+                      "id": "26T3LtbuGT1Fu9m0eRq5X3",
+                      "name": "Cage The Elephant",
+                      "num_albums": 20,
+                      "popularity": 76,
+                      "recent_album": "Tell Me I'm Pretty",
+                      "spotify_uri": "spotify:artist:26T3LtbuGT1Fu9m0eRq5X3",
+                      "top_track": "Ain't No Rest for the Wicked"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/d1b4e53b2f815ab43fb140c439d0dcae27c16e8a"
+                  },
+                  "db_id": 1,
+                  "id": "0nW0w37lrQ87k7PLZvC4qJ",
+                  "images": "https://i.scdn.co/image/a13016817c0496ee44a48adc80b5c345e8c8925e",
+                  "length": "38:17",
+                  "name": "Tell Me I'm Pretty",
+                  "num_tracks": 10,
+                  "release_date": "2015-12-18",
+                  "spotify_uri": "spotify:album:0nW0w37lrQ87k7PLZvC4qJ",
+                  "tracks": [
+                    {
+                      "album": "Tell Me I'm Pretty",
+                      "album_cover_url": "https://i.scdn.co/image/a13016817c0496ee44a48adc80b5c345e8c8925e",
+                      "album_name": "Tell Me I'm Pretty",
+                      "artist_name": "Cage The Elephant",
+                      "artists": [
+                        {
+                          "artist_id": "26T3LtbuGT1Fu9m0eRq5X3",
+                          "artist_name": "Cage The Elephant"
+                        }
+                      ]
+                  ]
+                },
+                {
+                  "artist_name": "Adele",
+                  "artists": [
+                    {
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/cbbdfb209cc38b2999b1882f42ee642555316313"
+                      },
+                      "db_id": 2,
+                      "id": "4dpARuHxo51G3z768sgnrY",
+                      "name": "Adele",
+                      "num_albums": 20,
+                      "popularity": 91,
+                      "recent_album": "21",
+                      "spotify_uri": "spotify:artist:4dpARuHxo51G3z768sgnrY",
+                      "top_track": "Hello"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/9cc65b0596960faa44a0328af13048573eefecb8"
+                  },
+                  "db_id": 2,
+                  "id": "1azUkThwd2HfUDdeNeT147",
+                  "images": "https://i.scdn.co/image/4e370e394e5b5ae0c4ab07fc0dcff31239c3da9c",
+                  "length": "48:00",
+                  "name": "21",
+                  "num_tracks": 11,
+                  "release_date": "2011-01-19",
+                  "spotify_uri": "spotify:album:1azUkThwd2HfUDdeNeT147",
+                  "tracks": [
+                    {
+                      "album": "21",
+                      "album_cover_url": "https://i.scdn.co/image/4e370e394e5b5ae0c4ab07fc0dcff31239c3da9c",
+                      "album_name": "21",
+                      "artist_name": "Adele",
+                      "artists": [
+                        {
+                          "artist_id": "4dpARuHxo51G3z768sgnrY",
+                          "artist_name": "Adele"
+                        }
+                      ],
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/9cc65b0596960faa44a0328af13048573eefecb8"
+                      },
+                      "db_id": 20,
+                      "duration": "3:48",
+                      "duration_ms": 228293,
+                      "id": "1CkvWZme3pRgbzaxZnTl5X",
+                      "name": "Rolling in the Deep",
+                      "release_date": "2011-01-19",
+                      "spotify_id": "1CkvWZme3pRgbzaxZnTl5X",
+                      "spotify_uri": "spotify:track:1CkvWZme3pRgbzaxZnTl5X"
+                    }
+                  ]
+                },
+                {
+                  "artist_name": "Lukas Graham",
+                  "artists": [
+                    {
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/f4c6df387feebef2c94bde6117c38dd8dab69533"
+                      },
+                      "db_id": 3,
+                      "id": "25u4wHJWxCA9vO0CzxAbK7",
+                      "name": "Lukas Graham",
+                      "num_albums": 20,
+                      "popularity": 89,
+                      "recent_album": "Lukas Graham (Blue Album)",
+                      "spotify_uri": "spotify:artist:25u4wHJWxCA9vO0CzxAbK7",
+                      "top_track": "7 Years"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/9df24b14adba7b4d9fd7de164390cca6bd97f9c8"
+                  },
+                  "db_id": 3,
+                  "id": "7kFmBZLF39JWv1OIRzWDkp",
+                  "images": "https://i.scdn.co/image/c5c91131c1725d05f4f26b3113799840c0de9255",
+                  "length": "46:02",
+                  "name": "Lukas Graham (Blue Album)",
+                  "num_tracks": 14,
+                  "release_date": "2015-10-30",
+                  "spotify_uri": "spotify:album:7kFmBZLF39JWv1OIRzWDkp",
+                  "tracks": [
+                    {
+                      "album": "Lukas Graham (Blue Album)",
+                      "album_cover_url": "https://i.scdn.co/image/c5c91131c1725d05f4f26b3113799840c0de9255",
+                      "album_name": "Lukas Graham (Blue Album)",
+                      "artist_name": "Lukas Graham",
+                      "artists": [
+                        {
+                          "artist_id": "25u4wHJWxCA9vO0CzxAbK7",
+                          "artist_name": "Lukas Graham"
+                        }
+                      ],
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/9df24b14adba7b4d9fd7de164390cca6bd97f9c8"
+                      },
+                      "db_id": 31,
+                      "duration": "3:57",
+                      "duration_ms": 237300,
+                      "id": "4dbV37qzkwZOnkGVpsR0Q7",
+                      "name": "7 Years",
+                      "release_date": "2015-10-30",
+                      "spotify_id": "4dbV37qzkwZOnkGVpsR0Q7",
+                      "spotify_uri": "spotify:track:4dbV37qzkwZOnkGVpsR0Q7"
+                    }
+                  ]
+                }
+              ],
+              "page": 1,
+              "psize": 3,
+              "total_albums": 106
+            }
+        
+
+## Album [/albums{?ids}]
+**/album?ids={album_ids}/**<br>
+Request all information regarding specific albums related to **ids**
+
+#### Parameters
+- **album_ids** *(string, required)* - comma separated string of spotify ids for albums
+
++ Parameters
+    + ids: `0nW0w37lrQ87k7PLZvC4qJ,1azUkThwd2HfUDdeNeT147,7kFmBZLF39JWv1OIRzWDkp` (string, required) - list of spotify ids for albums
+
+### GET Album [GET]
++ Response 200 (application/json)
+    + Attributes
+        + artist_name: Cage The Elephant (string, required) - name of the artists
+        + artists: [] (array, required) - array of artists and their information
+        + col_img: {"url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"} (object, required) - contains url for img of album
+        + db_id: 1 (number, required) - id in database
+        + images: "https://i.scdn.co/image/a13016817c0496ee44a48adc80b5c345e8c8925e" (string, optional) - another way to find an image of the album
+        + length: "38:17" (string, required) - total length of the album formatted in minutes and seconds
+        + name: "Tell Me I'm Pretty" (string, required) - name of the album
+        + num_tracks: 10 (number, required) - number of tracks in the album
+        + release_date: `2015-12-18` (string, required) - date the album was released
+        + spotify_uri: spotify:album:0nW0w37lrQ87k7PLZvC4qJ (string, required) - uri to find this artist on spotify
+        + tracks: [] (array, required) - array of tracks on the album
+
+    + Body
+    
+            {
+              "albums": [
+                {
+                  "artist_name": "Cage The Elephant",
+                  "artists": [
+                    {
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"
+                      },
+                      "db_id": 1,
+                      "id": "26T3LtbuGT1Fu9m0eRq5X3",
+                      "name": "Cage The Elephant",
+                      "num_albums": 20,
+                      "popularity": 76,
+                      "recent_album": "Tell Me I'm Pretty",
+                      "spotify_uri": "spotify:artist:26T3LtbuGT1Fu9m0eRq5X3",
+                      "top_track": "Ain't No Rest for the Wicked"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/d1b4e53b2f815ab43fb140c439d0dcae27c16e8a"
+                  },
+                  "db_id": 1,
+                  "id": "0nW0w37lrQ87k7PLZvC4qJ",
+                  "images": "https://i.scdn.co/image/a13016817c0496ee44a48adc80b5c345e8c8925e",
+                  "length": "38:17",
+                  "name": "Tell Me I'm Pretty",
+                  "num_tracks": 10,
+                  "release_date": "2015-12-18",
+                  "spotify_uri": "spotify:album:0nW0w37lrQ87k7PLZvC4qJ",
+                  "tracks": [
+                    {
+                      "album": "Tell Me I'm Pretty",
+                      "album_cover_url": "https://i.scdn.co/image/a13016817c0496ee44a48adc80b5c345e8c8925e",
+                      "album_name": "Tell Me I'm Pretty",
+                      "artist_name": "Cage The Elephant",
+                      "artists": [
+                        {
+                          "artist_id": "26T3LtbuGT1Fu9m0eRq5X3",
+                          "artist_name": "Cage The Elephant"
+                        }
+                      ]
+                  ]
+                },
+                {
+                  "artist_name": "Adele",
+                  "artists": [
+                    {
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/cbbdfb209cc38b2999b1882f42ee642555316313"
+                      },
+                      "db_id": 2,
+                      "id": "4dpARuHxo51G3z768sgnrY",
+                      "name": "Adele",
+                      "num_albums": 20,
+                      "popularity": 91,
+                      "recent_album": "21",
+                      "spotify_uri": "spotify:artist:4dpARuHxo51G3z768sgnrY",
+                      "top_track": "Hello"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/9cc65b0596960faa44a0328af13048573eefecb8"
+                  },
+                  "db_id": 2,
+                  "id": "1azUkThwd2HfUDdeNeT147",
+                  "images": "https://i.scdn.co/image/4e370e394e5b5ae0c4ab07fc0dcff31239c3da9c",
+                  "length": "48:00",
+                  "name": "21",
+                  "num_tracks": 11,
+                  "release_date": "2011-01-19",
+                  "spotify_uri": "spotify:album:1azUkThwd2HfUDdeNeT147",
+                  "tracks": [
+                    {
+                      "album": "21",
+                      "album_cover_url": "https://i.scdn.co/image/4e370e394e5b5ae0c4ab07fc0dcff31239c3da9c",
+                      "album_name": "21",
+                      "artist_name": "Adele",
+                      "artists": [
+                        {
+                          "artist_id": "4dpARuHxo51G3z768sgnrY",
+                          "artist_name": "Adele"
+                        }
+                      ],
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/9cc65b0596960faa44a0328af13048573eefecb8"
+                      },
+                      "db_id": 20,
+                      "duration": "3:48",
+                      "duration_ms": 228293,
+                      "id": "1CkvWZme3pRgbzaxZnTl5X",
+                      "name": "Rolling in the Deep",
+                      "release_date": "2011-01-19",
+                      "spotify_id": "1CkvWZme3pRgbzaxZnTl5X",
+                      "spotify_uri": "spotify:track:1CkvWZme3pRgbzaxZnTl5X"
+                    }
+                  ]
+                },
+                {
+                  "artist_name": "Lukas Graham",
+                  "artists": [
+                    {
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/f4c6df387feebef2c94bde6117c38dd8dab69533"
+                      },
+                      "db_id": 3,
+                      "id": "25u4wHJWxCA9vO0CzxAbK7",
+                      "name": "Lukas Graham",
+                      "num_albums": 20,
+                      "popularity": 89,
+                      "recent_album": "Lukas Graham (Blue Album)",
+                      "spotify_uri": "spotify:artist:25u4wHJWxCA9vO0CzxAbK7",
+                      "top_track": "7 Years"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/9df24b14adba7b4d9fd7de164390cca6bd97f9c8"
+                  },
+                  "db_id": 3,
+                  "id": "7kFmBZLF39JWv1OIRzWDkp",
+                  "images": "https://i.scdn.co/image/c5c91131c1725d05f4f26b3113799840c0de9255",
+                  "length": "46:02",
+                  "name": "Lukas Graham (Blue Album)",
+                  "num_tracks": 14,
+                  "release_date": "2015-10-30",
+                  "spotify_uri": "spotify:album:7kFmBZLF39JWv1OIRzWDkp",
+                  "tracks": [
+                    {
+                      "album": "Lukas Graham (Blue Album)",
+                      "album_cover_url": "https://i.scdn.co/image/c5c91131c1725d05f4f26b3113799840c0de9255",
+                      "album_name": "Lukas Graham (Blue Album)",
+                      "artist_name": "Lukas Graham",
+                      "artists": [
+                        {
+                          "artist_id": "25u4wHJWxCA9vO0CzxAbK7",
+                          "artist_name": "Lukas Graham"
+                        }
+                      ],
+                      "col_img": {
+                        "url": "https://i.scdn.co/image/9df24b14adba7b4d9fd7de164390cca6bd97f9c8"
+                      },
+                      "db_id": 31,
+                      "duration": "3:57",
+                      "duration_ms": 237300,
+                      "id": "4dbV37qzkwZOnkGVpsR0Q7",
+                      "name": "7 Years",
+                      "release_date": "2015-10-30",
+                      "spotify_id": "4dbV37qzkwZOnkGVpsR0Q7",
+                      "spotify_uri": "spotify:track:4dbV37qzkwZOnkGVpsR0Q7"
+                    }
+                  ]
+                }
+              ],
+              "ids": [
+                "0nW0w37lrQ87k7PLZvC4qJ",
+                "1azUkThwd2HfUDdeNeT147",
+                "7kFmBZLF39JWv1OIRzWDkp"
+              ]
+            }
+        
+# Group Tracks
+## Tracks [/tracks/{page_num}{?psize}]
+**/tracks/{page_num}?psize={psize}**<br>
+Request a list of albums for display
+#### Parameters
+- **page_num** *(number, required)* - used as an offset to query by page
+- **psize** *(number, optional)* - used to specify the size of the list
+
++ Parameters
+    + page_num: 1 (number, required) - indicates the offset or page
+    + psize: 3 (number, optional) - indicates the number of tracks per page
+
+### GET Tracks [GET]
++ Response 200 (application/json)
+    + Attributes
+        + album: "Cage The Elephant" (string, required) - name of the album the track is in
+        + album_cover_url: https://i.scdn.co/image/093f43760cd933c671cc2a6dd457ccdfc5f71373 (string, required) - url to the album cover
+        + album_name: "Cage The Elephant" (string, required) - name of the album
+        + artist_name: "Cage The Elephant" (string, required) - name of the artist
+        + artists: [] (array, required) - array of artists involved and their info
+        + col_img: {"url": "https://i.scdn.co/image/d4d346d1e17c5f9661cf0a76cf790b9f070c7f34"} (object, required) - href to the album cover
+        + db_id: 1 (number, required) - database id
+        + duration: "2:55" (string, required) - duration of track in minutes and seconds format
+        + id: "3kb72STxc2959ZqsTwu52i" (string, required) - spotify id for the track
+        + name: "Ain't No Rest for the Wicked" (string, required) - name of the specific track
+        + release_date: `2009-04-20` (string, required) - release date of the album/track
+        + spotify_id: "3kb72STxc2959ZqsTwu52i" (string, required) - spotify id for the track
+        + spotify_uri: "spotify:track:3kb72STxc2959ZqsTwu52i" (string, required) - uri of the track on spotify
+        
+    + Body
+    
+            {
+              "page": 1,
+              "psize": 3,
+              "total_count": 283,
+              "tracks": [
+                {
+                  "album": "Cage The Elephant",
+                  "album_cover_url": "https://i.scdn.co/image/093f43760cd933c671cc2a6dd457ccdfc5f71373",
+                  "album_name": "Cage The Elephant",
+                  "artist_name": "Cage The Elephant",
+                  "artists": [
+                    {
+                      "artist_id": "26T3LtbuGT1Fu9m0eRq5X3",
+                      "artist_name": "Cage The Elephant"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/d4d346d1e17c5f9661cf0a76cf790b9f070c7f34"
+                  },
+                  "db_id": 1,
+                  "duration": "2:55",
+                  "duration_ms": 175493,
+                  "id": "3kb72STxc2959ZqsTwu52i",
+                  "name": "Ain't No Rest for the Wicked",
+                  "release_date": "2009-04-20",
+                  "spotify_id": "3kb72STxc2959ZqsTwu52i",
+                  "spotify_uri": "spotify:track:3kb72STxc2959ZqsTwu52i"
+                },
+                {
+                  "album": "Hello",
+                  "album_cover_url": "https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7",
+                  "album_name": "Hello",
+                  "artist_name": "Adele",
+                  "artists": [
+                    {
+                      "artist_id": "4dpARuHxo51G3z768sgnrY",
+                      "artist_name": "Adele"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/220fe5804f244f41aa216c4e3de17eafbf552341"
+                  },
+                  "db_id": 2,
+                  "duration": "4:55",
+                  "duration_ms": 295493,
+                  "id": "0ENSn4fwAbCGeFGVUbXEU3",
+                  "name": "Hello",
+                  "release_date": "2015-10-23",
+                  "spotify_id": "0ENSn4fwAbCGeFGVUbXEU3",
+                  "spotify_uri": "spotify:track:0ENSn4fwAbCGeFGVUbXEU3"
+                },
+                {
+                  "album": "7 Years",
+                  "album_cover_url": "https://i.scdn.co/image/6eaeb0e59e50269f879d7e643ec0c4b5c16cb6bf",
+                  "album_name": "7 Years",
+                  "artist_name": "Lukas Graham",
+                  "artists": [
+                    {
+                      "artist_id": "25u4wHJWxCA9vO0CzxAbK7",
+                      "artist_name": "Lukas Graham"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/8eea6a88415940dbe2eff2a6275d6a4a3407eeee"
+                  },
+                  "db_id": 3,
+                  "duration": "3:57",
+                  "duration_ms": 237300,
+                  "id": "2vDT1uU6hZgdp3PbWGr0Xy",
+                  "name": "7 Years",
+                  "release_date": "2015-10-22",
+                  "spotify_id": "2vDT1uU6hZgdp3PbWGr0Xy",
+                  "spotify_uri": "spotify:track:2vDT1uU6hZgdp3PbWGr0Xy"
+                }
+              ]
+            }
+
+## Track [/tracks{?ids}]
+**/tracks?ids={track_ids}**
+Request all information regarding specific tracks related to **ids**
+#### Parameters
+- **track_ids** *(string, required)* - comma separated string of spotify ids for tracks
+
++ Parameters
+    + ids: `3kb72STxc2959ZqsTwu52i,0ENSn4fwAbCGeFGVUbXEU3,2vDT1uU6hZgdp3PbWGr0Xy` (number, required) - list of spotify ids for tracks
+
+### GET Track [GET]
++ Response 200 (application/json)
+    + Attributes
+        + album: `Hello` (string, required) - album associated with track
+        + album_cover_url: "https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7" (string, required) - url to the album cover
+        + album_name: `Hello` (string, required) - name of album
+        + artist_name: `Adele` (string, required) - name of the artist
+        + artists: [] (array, required) - array of artists involved and their info
+        + col_img: {"url": "https://i.scdn.co/image/220fe5804f244f41aa216c4e3de17eafbf552341"} (object, required) - url to img for the track
+        + db_id: 2 (number, required) - database id
+        + duration: `4:55` (string, required) - the duration of the track formatted in minutes and seconds
+        + duration_ms: 295493 (number, required) - the duration of the track in milliseconds
+        + id: `0ENSn4fwAbCGeFGVUbXEU3` (string, required) - the spotify id of the track
+        + name: `Hello` (string, required) - the name of the track
+        + release_date: `2015-10-23` (string, required) - the release date of the track
+        + spotify_id: `0ENSn4fwAbCGeFGVUbXEU3` (string, required) - the spotify id of the track
+        + spotify_uri: `spotify:track:0ENSn4fwAbCGeFGVUbXEU3` (string, required) - the uri of the track on spotify
+
+    + Body
+    
+            {
+              "ids": [
+                "3kb72STxc2959ZqsTwu52i",
+                "0ENSn4fwAbCGeFGVUbXEU3",
+                "2vDT1uU6hZgdp3PbWGr0Xy"
+              ],
+              "tracks": [
+                {
+                  "album": "Cage The Elephant",
+                  "album_cover_url": "https://i.scdn.co/image/093f43760cd933c671cc2a6dd457ccdfc5f71373",
+                  "album_name": "Cage The Elephant",
+                  "artist_name": "Cage The Elephant",
+                  "artists": [
+                    {
+                      "artist_id": "26T3LtbuGT1Fu9m0eRq5X3",
+                      "artist_name": "Cage The Elephant"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/d4d346d1e17c5f9661cf0a76cf790b9f070c7f34"
+                  },
+                  "db_id": 1,
+                  "duration": "2:55",
+                  "duration_ms": 175493,
+                  "id": "3kb72STxc2959ZqsTwu52i",
+                  "name": "Ain't No Rest for the Wicked",
+                  "release_date": "2009-04-20",
+                  "spotify_id": "3kb72STxc2959ZqsTwu52i",
+                  "spotify_uri": "spotify:track:3kb72STxc2959ZqsTwu52i"
+                },
+                {
+                  "album": "Hello",
+                  "album_cover_url": "https://i.scdn.co/image/f71517e8919892273de8d8677e42cdcf1b976aa7",
+                  "album_name": "Hello",
+                  "artist_name": "Adele",
+                  "artists": [
+                    {
+                      "artist_id": "4dpARuHxo51G3z768sgnrY",
+                      "artist_name": "Adele"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/220fe5804f244f41aa216c4e3de17eafbf552341"
+                  },
+                  "db_id": 2,
+                  "duration": "4:55",
+                  "duration_ms": 295493,
+                  "id": "0ENSn4fwAbCGeFGVUbXEU3",
+                  "name": "Hello",
+                  "release_date": "2015-10-23",
+                  "spotify_id": "0ENSn4fwAbCGeFGVUbXEU3",
+                  "spotify_uri": "spotify:track:0ENSn4fwAbCGeFGVUbXEU3"
+                },
+                {
+                  "album": "7 Years",
+                  "album_cover_url": "https://i.scdn.co/image/6eaeb0e59e50269f879d7e643ec0c4b5c16cb6bf",
+                  "album_name": "7 Years",
+                  "artist_name": "Lukas Graham",
+                  "artists": [
+                    {
+                      "artist_id": "25u4wHJWxCA9vO0CzxAbK7",
+                      "artist_name": "Lukas Graham"
+                    }
+                  ],
+                  "col_img": {
+                    "url": "https://i.scdn.co/image/8eea6a88415940dbe2eff2a6275d6a4a3407eeee"
+                  },
+                  "db_id": 3,
+                  "duration": "3:57",
+                  "duration_ms": 237300,
+                  "id": "2vDT1uU6hZgdp3PbWGr0Xy",
+                  "name": "7 Years",
+                  "release_date": "2015-10-22",
+                  "spotify_id": "2vDT1uU6hZgdp3PbWGr0Xy",
+                  "spotify_uri": "spotify:track:2vDT1uU6hZgdp3PbWGr0Xy"
+                }
+              ]
+            }
+
+# Group Static Content <DEPRECATED>
+**DEPRECATED: Please use the routes above**<br>
 This section was used in Part 1 of the Project using known id's for specific Artists, Albums and Tracks<br>
 Use Production Server to see Spotify's response and data structures for each request.
 
@@ -25,253 +737,3 @@ Uses request to Spotify's Web API to pull information about three specific album
 Uses request to Spotify's Web API to pull information about three specific tracks 
 ### GET Tracks [GET]
 + Response 200 (application/json)
-
-# Group Artists
-## Artists [/artists]
-**/artists**<br>
-Request a list of artists for display
-### GET Artists [GET]
-+ Response 200 (application/json)
-
-        {
-            "artists": [
-                {
-                    "id": 1,
-                    "name": "Atlas Bound",
-                    "numAlbums": 8,
-                    "mostRecentAlbum": "Lullaby",
-                    "topTrack": "Landed on Mars",
-                    "popularity": 42,
-                    "uri": "https://api.spotify.com/v1/artists/?ids=2Q0MyH5YMI5HPQjFjlq5g3",
-                    "spotify_id": "2Q0MyH5YMI5HPQjFjlq5g3"
-                },
-                {
-                    "id": 2,
-                    "name": "Chet Faker",
-                    "numAlbums": 20,
-                    "mostRecentAlbum": "1998 Melbourne Edition",
-                    "topTrack": "Drop the Game",
-                    "popularity": 76,
-                    "uri": "https://api.spotify.com/v1/artists/?ids=6107PIkQDuEUcdpZqSzQsu",
-                    "spotify_id": "6107PIkQDuEUcdpZqSzQsu",
-                },
-                {
-                    "id": 3,
-                    "name": "Jack U",
-                    "numAlbums": 14,
-                    "mostRecentAlbum": "Skrillex and Diplo present Jack U",
-                    "topTrack": "Where Are U Now (with Justin Bieber)",
-                    "popularity": 82,
-                    "uri": "https://api.spotify.com/v1/artists/?ids=1HxJeLhIuegM3KgvPn8sT",
-                    "spotify_id": "1HxJeLhIuegM3KgvPn8sT",
-                }
-            ]
-        }
-
-## Artist [/artist?ids={artists_ids}]
-**/artists?ids={artists_ids}**<br>
-Request all information regarding specific artists related to **ids**
-### GET Artist [GET]
-+ Response 200 (application/json)
-
-        {
-            "artists": [
-                {
-                    "id": 1,
-                    "name": "Atlas Bound",
-                    "numAlbums": 8,
-                    "mostRecentAlbum": "Lullaby",
-                    "topTrack": "Landed on Mars",
-                    "popularity": 42,
-                    "uri": "https://api.spotify.com/v1/artists/?ids=2Q0MyH5YMI5HPQjFjlq5g3",
-                    "spotify_id": "2Q0MyH5YMI5HPQjFjlq5g3"
-                },
-                {
-                    "id": 2,
-                    "name": "Chet Faker",
-                    "numAlbums": 20,
-                    "mostRecentAlbum": "1998 Melbourne Edition",
-                    "topTrack": "Drop the Game",
-                    "popularity": 76,
-                    "uri": "https://api.spotify.com/v1/artists/?ids=6107PIkQDuEUcdpZqSzQsu",
-                    "spotify_id": "6107PIkQDuEUcdpZqSzQsu",
-                },
-                {
-                    "id": 3,
-                    "name": "Jack U",
-                    "numAlbums": 14,
-                    "mostRecentAlbum": "Skrillex and Diplo present Jack U",
-                    "topTrack": "Where Are U Now (with Justin Bieber)",
-                    "popularity": 82,
-                    "uri": "https://api.spotify.com/v1/artists/?ids=1HxJeLhIuegM3KgvPn8sT",
-                    "spotify_id": "1HxJeLhIuegM3KgvPn8sT",
-                }
-            ]
-        }
-
-# Group Albums
-## Albums [/albums]
-**/albums**<br>
-Request a list of albums for display
-
-### Get Albums [GET]
-+ Response 200 (application/json)
-
-        {
-            "albums": [
-                {
-                    "id": 1,
-                    "album_name": "Skrillex and Diplo present Jack U",
-                    "artist_name": "Jack U, Skrillex, Diplo",
-                    "release_date": "2015-02-24",
-                    "numTracks": 10,
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/albums?ids=11wzEOXFI1wgBHxKcsbacJ",
-                    "spotify_id": "11wzEOXFI1wgBHxKcsbacJ"
-                },
-                {
-                    "id": 2,
-                    "album_name": "Talk",
-                    "artist_name": "Atlas Bound", 
-                    "release_date": "2015-04-18",
-                    "numTracks": 1,
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/albums?ids=3vNsiDEAnZRleKelEgdet1",
-                    "spotify_id": "3vNsiDEAnZRleKelEgdet1"
-                },
-                {
-                    "id": 3,
-                    "album_name": "Thinking in textures",
-                    "artist_name": "Chet Faker",
-                    "release_date": "2012-05-22",
-                    "numTracks": 7,
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/albums?ids=6bfkwBrGYKJFk6Z4QVyjxd",
-                    "spotify_id": "6bfkwBrGYKJFk6Z4QVyjxd"
-                }
-            ]
-        }
-
-## Album [/albums?ids={album_ids}]
-**/albums?ids={album_ids}/**<br>
-Request all information regarding specific albums related to **ids**
-### GET Album [GET]
-+ Response 200 (application/json)
-
-        {
-            "albums": [
-                {
-                    "id": 1,
-                    "album_name": "Skrillex and Diplo present Jack U",
-                    "artist_name": "Jack U, Skrillex, Diplo",
-                    "release_date": "2015-02-24",
-                    "numTracks": 10,
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/albums?ids=11wzEOXFI1wgBHxKcsbacJ",
-                    "spotify_id": "11wzEOXFI1wgBHxKcsbacJ"
-                },
-                {
-                    "id": 2,
-                    "album_name": "Talk",
-                    "artist_name": "Atlas Bound", 
-                    "release_date": "2015-04-18",
-                    "numTracks": 1,
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/albums?ids=3vNsiDEAnZRleKelEgdet1",
-                    "spotify_id": "3vNsiDEAnZRleKelEgdet1"
-                },
-                {
-                    "id": 3,
-                    "album_name": "Thinking in textures",
-                    "artist_name": "Chet Faker",
-                    "release_date": "2012-05-22",
-                    "numTracks": 7,
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/albums?ids=6bfkwBrGYKJFk6Z4QVyjxd",
-                    "spotify_id": "6bfkwBrGYKJFk6Z4QVyjxd"
-                }
-            ]
-        }
-        
-# Group Tracks
-## Tracks [/tracks]
-**/tracks**<br>
-Request a list of albums for display
-### GET Tracks [GET]
-+ Response 200 (application/json)
-
-        {
-            "tracks": [
-                {
-                    "id": 1,
-                    "title": "Drop the Game", 
-                    "artist_name": "Flume, Chet Faker",
-                    "release_date": "2013-11-22",
-                    "album": "Lockjaw"
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/tracks?ids=4KtrE35pTuqwNc22QP58RT",
-                    "spotify_id": "4KtrE35pTuqwNc22QP58RT"
-                },
-                {
-                    "id": 2,
-                    "title": "Landed on Mars",
-                    "artist_name": "Atlas Bound",
-                    "release_date": "2015-05-17",
-                    "album": "Landed on Mars"
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/tracks?ids=6SXRLE3kFht3wi0glxDueW",
-                    "spotify_id": "6SXRLE3kFht3wi0glxDueW"
-                },
-                {
-                    "id": 3,
-                    "title": "Where Are U Now (with Justin Bieber)",
-                    "artist_name": "Jack U, Skrillex, Diplo, Justin Bieber",
-                    "release_date": "2015-02-24", 
-                    "album": "Skrillex and Diplo present Jack U",
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/tracks?ids=66hayvUbTotekKU3H4ta1f",
-                    "spotify_id": "66hayvUbTotekKU3H4ta1f"
-                }
-            ]
-        }
-
-## Track [/tracks?ids={track_ids}]
-**/tracks?ids={track_ids}**<br>
-Request all information regarding specific tracks related to **ids**
-### GET Track [GET]
-+ Response 200 (application/json)
-
-        {
-            "tracks": [
-                {
-                    "id": 1,
-                    "title": "Drop the Game", 
-                    "artist_name": "Flume, Chet Faker",
-                    "release_date": "2013-11-22",
-                    "album": "Lockjaw"
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/tracks?ids=4KtrE35pTuqwNc22QP58RT",
-                    "spotify_id": "4KtrE35pTuqwNc22QP58RT"
-                },
-                {
-                    "id": 2,
-                    "title": "Landed on Mars",
-                    "artist_name": "Atlas Bound",
-                    "release_date": "2015-05-17",
-                    "album": "Landed on Mars"
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/tracks?ids=6SXRLE3kFht3wi0glxDueW",
-                    "spotify_id": "6SXRLE3kFht3wi0glxDueW"
-                },
-                {
-                    "id": 3,
-                    "title": "Where Are U Now (with Justin Bieber)",
-                    "artist_name": "Jack U, Skrillex, Diplo, Justin Bieber",
-                    "release_date": "2015-02-24", 
-                    "album": "Skrillex and Diplo present Jack U",
-                    "length": 0,
-                    "uri": "https://api.spotify.com/v1/tracks?ids=66hayvUbTotekKU3H4ta1f",
-                    "spotify_id": "66hayvUbTotekKU3H4ta1f"
-                }
-            ]
-        }
