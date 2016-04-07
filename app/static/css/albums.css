@@ -2,6 +2,7 @@
   border-radius: 25px;
   color: #5B097D;
   background-color: #fff;
+  table-layout: fixed;
 }
 
 #albumTable th {
@@ -19,6 +20,7 @@
 
 #albumCoverHeader {
   width: 64px;
+  text-align: center;
 }
 
 .albumCover {
@@ -34,4 +36,26 @@
 .detailsLink {
   font-size: 1rem;
   display: block;
+  margin-left: 7px;
+  text-align: center;
+}
+
+#albumCol {
+  width: 35%;
+}
+
+#artistCol {
+  width: 20%;
+}
+
+#releaseDateCol {
+  width: 15%;
+}
+
+#numTracksCol {
+  width: 12.5%;
+}
+
+#lengthCol {
+  width: 12.5%;
 }
