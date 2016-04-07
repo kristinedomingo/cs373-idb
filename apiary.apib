@@ -5,19 +5,23 @@ HOST: http://sweetmusic.me/
 Simple API for retrieving information regarding Artists, Albums and Tracks
 
 # Group Artists
-## Artists [/artists/{page_num}{?psize}]
-**/artists/{page_num}?psize={psize}**<br>
-Request an arbitrary list of artists
+## Arbitrary Artists [/artists/{page_num}{?psize,sort,order}]
+<code>/artists/{page_num}?psize={psize}&sort={col_attr}&order={asc_desc}</code><br>
+Request an arbitrary list of albums. You can specify the number of artists returned, using the page and optional psize as offset. <br>
+Optionally you can set to sort by a specific column attribute and determine if the order is ascending or descending.
 #### Parameters
-- **page_num** *(number, required)* - used as an offset to query by page
-- **psize** *(number, optional)* - used to specify the size of the list
-
+- <code>page_num</code> *(number, required)* - used as an offset to query by page
+- <code>psize</code> *(number, optional)* - used to specify the size of the list
+- <code>col_attr</code> *(string, optional)* - takes a specific column to sort the list of artists by
+- <code>asc_desc</code> *(string, optional)* - default ascending sort order when sort is set, can set to descending with 'desc'
 
 + Parameters
     + page_num: 1 (number) - indicates the offset or page
     + psize: 3 (number, optional) - indicates the number of artists per page
+    + sort: popularity (string, optional) - give it a column attribute to sort by
+    + order: desc (string, optional) - default is ascending when sort is set, can set to descending order with 'desc'
 
-### GET Artists [GET]
+### GET Arbritrary Artists [GET]
 + Response 200 (application/json)
     + Attributes (object)
         + col_img: {"url": "https://i.scdn.co/image/295f7e4e9cb73f559bbc14ee42097faaade17170"} (object) - list of img hrefs for the artist
@@ -79,17 +83,17 @@ Request an arbitrary list of artists
               "total_artists": 124
             }
 
-## Artist [/artists{?ids}]
-**/artists?ids={artists_ids}**<br>
+## Specific Artists [/artists{?ids}]
+<code>/artists?ids={artists_ids}</code><br>
 Request all information regarding specific artists related to **ids**
 #### Parameters
-- **artist_ids** *(string, required)* - comma separated list of spotify ids
+- <code>artist_ids</code> *(string, required)* - comma separated list of spotify ids
 
 
 + Parameters
     + ids: 25u4wHJWxCA9vO0CzxAbK7 (string, required) - comma separated list of spotify ids
 
-### GET Artist [GET]
+### GET Specific Artists [GET]
 + Response 200 (application/json)
     + Attributes (object)
         + col_img: {"url": "https://i.scdn.co/image/f4c6df387feebef2c94bde6117c38dd8dab69533"} (object) - list of img hrefs for the artist
@@ -123,17 +127,23 @@ Request all information regarding specific artists related to **ids**
             }
 
 # Group Albums
-## Albums [/albums/{page_num}{?psize}]
-**/albums/{page_num}?psize={psize}**<br>
-Request an arbitrary list of albums
+## Arbitrary Albums [/albums/{page_num}{?psize,sort,order}]
+<code>/albums/{page_num}?psize={psize}&sort={col_attr}&order={asc_desc}</code><br>
+Request an arbitrary list of albums. You can specify the number of albums returned, using the page and optional psize as offset. <br>
+Optionally you can set to sort by a specific column attribute and determine if the order is ascending or descending.
 
 #### Parameters
-- **page_num** *(number, required)* - used as an offset to query by page
-- **psize** *(number, optional)* - used to specify the size of the list
+- <code>page_num</code> *(number, required)* - used as an offset to query by page
+- <code>psize</code> *(number, optional)* - used to specify the size of the list
+- <code>col_attr</code> *(string, optional)* - takes a specific column to sort the list of albums by
+- <code>asc_desc</code> *(string, optional)* - default ascending sort order if sort is set, can set to descending with 'desc'
+
 
 + Parameters
     + page_num: 1 (number) - indicates the offset or page
     + psize: 3 (number, optional) - indicates the number of albums per page
+    + sort: album_name (string, optional) - takes a specific column to sort the list of albums by
+    + order: desc (string, optional) - default ascending sort order if sort is set, can set to descending with 'desc'
 
 ### Get Albums [GET]
 + Response 200 (application/json)
@@ -313,11 +323,11 @@ Request an arbitrary list of albums
         
 
 ## Album [/albums{?ids}]
-**/album?ids={album_ids}/**<br>
+<code>/album?ids={album_ids}/</code><br>
 Request all information regarding specific albums related to **ids**
 
 #### Parameters
-- **album_ids** *(string, required)* - comma separated string of spotify ids for albums
+- <code>album_ids</code> *(string, required)* - comma separated string of spotify ids for albums
 
 + Parameters
     + ids: `0nW0w37lrQ87k7PLZvC4qJ,1azUkThwd2HfUDdeNeT147,7kFmBZLF39JWv1OIRzWDkp` (string, required) - list of spotify ids for albums
@@ -500,18 +510,23 @@ Request all information regarding specific albums related to **ids**
             }
         
 # Group Tracks
-## Tracks [/tracks/{page_num}{?psize}]
-**/tracks/{page_num}?psize={psize}**<br>
-Request a list of albums for display
+## Arbitrary Tracks [/tracks/{page_num}{?psize,sort,order}]
+<code>/tracks/{page_num}?psize={psize}&sort={col_attr}&order={asc_desc}</code><br>
+Request an arbitrary list of albums. You can specify the number of tracks returned, using the page and optional psize as offset. <br>
+Optionally you can set to sort by a specific column attribute and determine if the order is ascending or descending.
 #### Parameters
-- **page_num** *(number, required)* - used as an offset to query by page
-- **psize** *(number, optional)* - used to specify the size of the list
+- <code>page_num</code> *(number, required)* - used as an offset to query by page
+- <code>psize</code> *(number, optional)* - used to specify the size of the list
+- <code>col_attr</code> *(string, optional)* - takes a specific column to sort the list of tracks by
+- <code>asc_desc</code> *(string, optional)* - default ascending sort order when sort is set, can set to descending with 'desc'
 
 + Parameters
     + page_num: 1 (number, required) - indicates the offset or page
     + psize: 3 (number, optional) - indicates the number of tracks per page
+    + sort: duration (string, optional) - takes a specific column to sort the list of tracks by
+    + order: desc (string, optional) - default ascending sort order when sort is set, can set to descending with 'desc'
 
-### GET Tracks [GET]
+### GET Arbitrary Tracks [GET]
 + Response 200 (application/json)
     + Attributes
         + album: "Cage The Elephant" (string, required) - name of the album the track is in
@@ -607,16 +622,16 @@ Request a list of albums for display
               ]
             }
 
-## Track [/tracks{?ids}]
-**/tracks?ids={track_ids}**
+## Specific Tracks [/tracks{?ids}]
+<code>/tracks?ids={track_ids}</code><br>
 Request all information regarding specific tracks related to **ids**
 #### Parameters
-- **track_ids** *(string, required)* - comma separated string of spotify ids for tracks
+- <code>track_ids</code> *(string, required)* - comma separated string of spotify ids for tracks
 
 + Parameters
     + ids: `3kb72STxc2959ZqsTwu52i,0ENSn4fwAbCGeFGVUbXEU3,2vDT1uU6hZgdp3PbWGr0Xy` (number, required) - list of spotify ids for tracks
 
-### GET Track [GET]
+### GET Specific Tracks [GET]
 + Response 200 (application/json)
     + Attributes
         + album: `Hello` (string, required) - album associated with track
@@ -721,19 +736,19 @@ This section was used in Part 1 of the Project using known id's for specific Art
 Use Production Server to see Spotify's response and data structures for each request.
 
 ## Spotify Artists [/get_artists]
-**/get_artists**<br>
+<code>/get_artists</code><br>
 Uses request to Spotify's Web API to pull information about three specific artists
 ### GET Artists [GET]
 + Response 200 (application/json)
 
 ## Spotify Albums [/get_albums]
-**/get_albums**<br>
+<code>/get_albums</code><br>
 Uses request to Spotify's Web API to pull information about three specific albums
 ### GET Albums [GET]
 + Response 200 (application/json)
 
 ## Spotify Tracks [/get_tracks]
-**/get_tracks**<br>
+<code>/get_tracks</code><br>
 Uses request to Spotify's Web API to pull information about three specific tracks 
 ### GET Tracks [GET]
 + Response 200 (application/json)
