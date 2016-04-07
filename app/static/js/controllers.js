@@ -90,7 +90,7 @@ angular.module('controllers', ['ui.bootstrap'])
     $scope.maxSize = 5;
 
     // Retrieve rows for the new page number
-    $scope.changePage = function(){
+    $scope.changePage = function() {
         artistService.getArtists($scope.pageNumber).then(function(data){
           $scope.artists = data.artists;
         });
@@ -144,13 +144,7 @@ angular.module('controllers', ['ui.bootstrap'])
     $scope.sortType = 'name';
     $scope.sortReverse = false;
     $scope.maxSize = 5;
-
-    // Change the page number if a new page is clicked
-    $scope.changePage = function() {
-        albumService.getAlbums($scope.pageNumber).then(function(data) {
-            $scope.albums = data.albums;
-        });
-    }
+    $scope.numPerPage = 10;
 
     // Handle case where user just clicks on "Albums"
     if(!$scope.pageNumber) {
@@ -159,9 +153,41 @@ angular.module('controllers', ['ui.bootstrap'])
 
     // Get albums upon page load
     albumService.getAlbums($scope.pageNumber).then(function(data) {
-        $scope.albums = data.albums;
+        $scope.all_albums = data.albums;
         $scope.totalAlbums = data.total_albums;
+        $scope.displayed_albums = $scope.all_albums.slice(0, $scope.numPerPage);
     });
+
+    // Update displayed_albums upon page change
+    $scope.changePage = function() {
+        var begin = (($scope.pageNumber - 1) * $scope.numPerPage);
+        var end = begin + $scope.numPerPage;
+        $scope.displayed_albums = $scope.all_albums.slice(begin, end);
+    }
+
+    // Sort based on sortType
+    $scope.sort = function() {
+      $scope.all_albums.sort(function(x, y) {
+          // If the sortType is number of tracks, don't sort using string
+          // comparison, parse to integers and compare those instead
+          if($scope.sortType == 'num_tracks') {
+              return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
+          }
+          // Case-insensitive string comparison
+          else {
+              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
+          }
+      });
+
+      // If reverse, reverse the rows
+      if($scope.sortReverse) {
+          $scope.all_albums.reverse();
+      }
+
+      // Finally, reset page to 1 and update displayed_albums
+      $scope.pageNumber = 1;
+      $scope.displayed_albums = $scope.all_albums.slice(0, $scope.numPerPage);
+    }
 }])
 
 /**
@@ -204,24 +230,50 @@ angular.module('controllers', ['ui.bootstrap'])
     $scope.sortType = 'name';
     $scope.sortReverse = false;
     $scope.maxSize = 5;
-
-    // Change the page number if a new page is clicked
-    $scope.changePage = function() {
-        trackService.getTracks($scope.pageNumber).then(function(data) {
-            $scope.tracks = data.tracks;
-        });
-    }
+    $scope.numPerPage = 10;
 
     // Handle case where user just clicks on "Tracks"
     if(!$scope.pageNumber) {
         $scope.pageNumber = 1;
     }
 
-    // Get tracks upon page load
+    // Get albums upon page load
     trackService.getTracks($scope.pageNumber).then(function(data) {
-        $scope.tracks = data.tracks;
+        $scope.all_tracks = data.tracks;
         $scope.totalTracks = data.total_count;
+        $scope.displayed_tracks = $scope.all_tracks.slice(0, $scope.numPerPage);
     });
+
+    // Update displayed_tracks upon page change
+    $scope.changePage = function() {
+        var begin = (($scope.pageNumber - 1) * $scope.numPerPage);
+        var end = begin + $scope.numPerPage;
+        $scope.displayed_tracks = $scope.all_tracks.slice(begin, end);
+    }
+
+    // Sort based on sortType
+    $scope.sort = function() {
+      $scope.all_tracks.sort(function(x, y) {
+          // If the sortType is number of tracks, don't sort using string
+          // comparison, parse to integers and compare those instead
+          if(false) {
+              return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
+          }
+          // Case-insensitive string comparison
+          else {
+              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
+          }
+      });
+
+      // If reverse, reverse the rows
+      if($scope.sortReverse) {
+          $scope.all_tracks.reverse();
+      }
+
+      // Finally, reset page to 1 and update displayed_tracks
+      $scope.pageNumber = 1;
+      $scope.displayed_tracks = $scope.all_tracks.slice(0, $scope.numPerPage);
+    }
 }])
 
 /**
