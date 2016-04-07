@@ -3,45 +3,46 @@
     <div class="artist-table-container" ng-controller="ArtistTableCtrl">
         <table class="table artistTable">
             <tr>
-                <th></th>
-                <th>
-                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse">Artist Name</a>
+                <th id="imgCol"></th>
+                <th id="artistCol">
+                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse; sort()">Artist Name</a>
                     <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up" </span>
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
-                    <a href="" ng-click="sortType = 'num_albums'; sortReverse = !sortReverse">Number of Albums Released</a>
+                <th id="numAlbumsCol">
+                    <a href="" ng-click="sortType = 'num_albums'; sortReverse = !sortReverse; sort()">Number of Albums Released</a>
                     <span ng-show="sortType == 'num_albums' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'num_albums' && !sortReverse" class="fa fa-caret-up" </span>
+                    <span ng-show="sortType == 'num_albums' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
-                    <a href="" ng-click="sortType = 'recent_album' ; sortReverse = !sortReverse">Most Recent Album</a>
+                <th id="recentAlbumCol">
+                    <a href="" ng-click="sortType = 'recent_album' ; sortReverse = !sortReverse; sort()">Most Recent Album</a>
                     <span ng-show="sortType == 'recent_album' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'recent_album' && !sortReverse" class="fa fa-caret-up" </span>
+                    <span ng-show="sortType == 'recent_album' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
-                    <a href="" ng-click="sortType = 'top_track' ; sortReverse = !sortReverse">Top Track</a>
+                <th id="topTrackCol">
+                    <a href="" ng-click="sortType = 'top_track' ; sortReverse = !sortReverse; sort()">Top Track</a>
                     <span ng-show="sortType == 'top_track' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'top_track' && !sortReverse" class="fa fa-caret-up" </span>
+                    <span ng-show="sortType == 'top_track' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
-                    <a href="" ng-click="sortType = 'popularity' ; sortReverse = !sortReverse">Popularity</a>
+                <th id="popularityCol">
+                    <a href="" ng-click="sortType = 'popularity' ; sortReverse = !sortReverse; sort()">Popularity</a>
                     <span ng-show="sortType == 'popularity' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'popularity' && !sortReverse" class="fa fa-caret-up" </span>
+                    <span ng-show="sortType == 'popularity' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <tr ng-repeat="artist in artists | orderBy:sortType:sortReverse">
-                    <td>
-                        <a ng-href="#/artists/{{artist.id}}">
-                            <img class="artistImg" ng-src={{artist.col_img.url}}>
-                            <span class="detailsLink">Details</span>
-                        </a>
-                    </td>
-                    <td>{{artist.name}}</td>
-                    <td>{{artist.num_albums}}</td>
-                    <td>{{artist.recent_album}}</td>
-                    <td>{{artist.top_track}}</td>
-                    <td>{{artist.popularity}}</td>
-                </tr>
+            </tr>
+            <tr ng-repeat="artist in displayed_artists">
+                <td>
+                    <a ng-href="#/artists/{{artist.id}}">
+                        <img class="artistImg" ng-src={{artist.col_img.url}}>
+                        <span class="detailsLink">Details</span>
+                    </a>
+                </td>
+                <td>{{artist.name}}</td>
+                <td>{{artist.num_albums}}</td>
+                <td>{{artist.recent_album}}</td>
+                <td>{{artist.top_track}}</td>
+                <td>{{artist.popularity}}</td>
+            </tr>
         </table>
         <uib-pagination
             ng-model="pageNumber"

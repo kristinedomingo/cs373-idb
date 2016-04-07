@@ -84,29 +84,53 @@ angular.module('controllers', ['ui.bootstrap'])
  * handle sorting and pagination in the table.
  */
 .controller('ArtistTableCtrl',['$scope', 'artistService', function($scope, artistService) {
-    //sorting by the name
     $scope.sortType = 'name';
     $scope.sortReverse = false;
     $scope.maxSize = 5;
+    $scope.numPerPage = 10;
 
-    // Retrieve rows for the new page number
-    $scope.changePage = function() {
-        artistService.getArtists($scope.pageNumber).then(function(data){
-          $scope.artists = data.artists;
-        });
-    }
-
-    //when just clicking albums nav anchor page number does not exist yet
-    if(!$scope.pageNumber){
-        //instantiate pageNumber with default of 1
+    // Handle case where user just clicks on "Artists"
+    if(!$scope.pageNumber) {
         $scope.pageNumber = 1;
     }
 
-    //for the first page case
-    artistService.getArtists($scope.pageNumber).then(function(data){
-        $scope.artists = data.artists;
+    // Get albums upon page load
+    artistService.getArtists($scope.pageNumber).then(function(data) {
+        $scope.all_artists = data.artists;
         $scope.totalArtists = data.total_artists;
+        $scope.displayed_artists = $scope.all_artists.slice(0, $scope.numPerPage);
     });
+
+    // Update displayed_artists upon page change
+    $scope.changePage = function() {
+        var begin = (($scope.pageNumber - 1) * $scope.numPerPage);
+        var end = begin + $scope.numPerPage;
+        $scope.displayed_artists = $scope.all_artists.slice(begin, end);
+    }
+
+    // Sort based on sortType
+    $scope.sort = function() {
+      $scope.all_artists.sort(function(x, y) {
+          // If the sortType is number of albums, don't sort using string
+          // comparison, parse to integers and compare those instead
+          if($scope.sortType == 'num_albums' || $scope.sortType == 'popularity') {
+              return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
+          }
+          // Case-insensitive string comparison
+          else {
+              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
+          }
+      });
+
+      // If reverse, reverse the rows
+      if($scope.sortReverse) {
+          $scope.all_artists.reverse();
+      }
+
+      // Finally, reset page to 1 and update displayed_artists
+      $scope.pageNumber = 1;
+      $scope.displayed_artists = $scope.all_artists.slice(0, $scope.numPerPage);
+    }
 }])
 
 /**

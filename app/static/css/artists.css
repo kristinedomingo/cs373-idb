@@ -59,3 +59,27 @@ th.artist-table-header:nth-child(6) {
   font-size: 1rem;
   display: block;
 }
+
+#imgCol {
+    width: 2.5%;
+}
+
+#artistCol {
+    width: 25%;
+}
+
+#numAlbumsCol {
+    width: 15%;
+}
+
+#recentAlbumCol {
+    width: 25%;
+}
+
+#topTrackCol {
+    width: 25%;
+}
+
+#popularityCol {
+    width: 7.5%;
+}
