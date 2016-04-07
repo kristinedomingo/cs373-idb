@@ -29,7 +29,7 @@ class Album(db.Model) :
     Has an id, name, date, length, number of tracks, artist
     """
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
+    name = db.Column(db.String(250))
     artist_name = db.Column(db.String(80))
     release_date = db.Column(db.String(80))
     length = db.Column(db.String(100))
