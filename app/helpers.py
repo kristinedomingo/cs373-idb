@@ -6,6 +6,7 @@ from models import Artist, Album, Track, artists, artists2
 import json
 import requests
 from datetime import timedelta
+import sys
 
 # ----------------
 # HELPER FUNCTIONS
@@ -75,6 +76,17 @@ def pull_spotify_tracks(spotify_ids):
     return tracks
 
 def artist_json(artist):
+    top_track = Track.query.filter(Track.title.like(artist.top_track)).all()
+    album = Album.query.filter(Album.name.like(artist.recent_album)).all()
+
+    top_track_id = None
+    if len(top_track) > 0:
+        top_track_id = top_track[0].spotify_id
+
+    recent_album_id = None
+    if len(album) > 0:
+        recent_album_id = album[0].spotify_id
+
     artist_json = {
         'id': artist.spotify_id,
         'name': artist.name,
@@ -84,7 +96,11 @@ def artist_json(artist):
         'popularity': artist.popularity,
         'spotify_uri': artist.spotify_uri,
         'db_id': artist.id,
-        'col_img': {'url': artist.col_img}
+        'col_img': {'url': artist.col_img},
+        'followers': artist.followers,
+        'artists_image': artist.images,
+        'album_id': recent_album_id,
+        'top_track_id': top_track_id
     }
 
     return artist_json
