@@ -103,7 +103,13 @@ def create_tracks_album(album_json):
 							tracks_model.artists2.append(artist)
 					db.session.add(tracks_model)
 					db.session.commit()
-
+def create_tracks_artist(artist_json):
+	for artist in artist_json['artists']:
+		if 'top_track' in artist:
+			top_track=artist['top_track']['name']
+			top_track=Track.query.filter(top_track == Track.title).first()
+			if top_track == None:
+				add_track(artist['top_track']['id'])
 def add_track(trackid):
 	track = requests.get('https://api.spotify.com/v1/tracks/' + trackid).json()
 	trackdb = Track.query.filter(track['name'] == Track.title).first()
@@ -114,9 +120,14 @@ def add_track(trackid):
 			track["col_img"] = track["album"]["images"][len(track["album"]["images"]) - 1]["url"]
 
 		# Get artist(s), and add to artist queue
+		count=0
 		names = ""
+
 		for artist in track["artists"]:
-			names += artist["name"] + ', '
+			if count >=1:
+				names+= ', '
+			names += artist["name"]
+			count = count + 1
 	
 
 # Get associated album
@@ -264,3 +275,4 @@ def create_sweetmusic_db():
 	tracks_json= track_data
 	create_tracks(tracks_json)
 	create_tracks_album(album_json)
+	create_tracks_artist(artist_json)
