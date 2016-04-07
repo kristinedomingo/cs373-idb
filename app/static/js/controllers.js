@@ -240,7 +240,6 @@ angular.module('controllers', ['ui.bootstrap'])
     // Find the correct album
     albumDetailsService.getAlbumDetails($routeParams.albumID).then(function(data) {
         $scope.targetAlbum = data.albums[0];
-        console.log($scope.targetAlbum);
 
         // Get 300px album cover
         $scope.albumCover = $scope.targetAlbum.images;
