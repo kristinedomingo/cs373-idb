@@ -2,6 +2,7 @@
   border-radius: 25px;
   color: #5B097D;
   background-color: #fff;
+  table-layout: fixed;
 }
 
 #trackTable th {
@@ -34,4 +35,24 @@
 .detailsLink {
   font-size: 1rem;
   display: block;
+}
+
+#trackCol {
+  width: 30%;
+}
+
+#artistCol {
+  width: 17.5%;
+}
+
+#releaseDateCol {
+  width: 15%;
+}
+
+#albumCol {
+  width: 25%;
+}
+
+#durationCol {
+  width: 12.5%;
 }

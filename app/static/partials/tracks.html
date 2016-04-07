@@ -4,27 +4,27 @@
         <table class="table" id="trackTable">
             <tr>
                 <th id="trackCoverHeader"></th>
-                <th>
+                <th id="trackCol">
                     <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse; sort()">Track Title</a>
                     <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
+                <th id="artistCol">
                     <a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse; sort()">Artist Name</a>
                     <span ng-show="sortType == 'artist_name' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'artist_name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
+                <th id="releaseDateCol">
                     <a href="" ng-click="sortType = 'release_date' ; sortReverse = !sortReverse; sort()">Release Date</a>
                     <span ng-show="sortType == 'release_date' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'release_date' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
+                <th id="albumCol">
                     <a href="" ng-click="sortType = 'album_name' ; sortReverse = !sortReverse; sort()">Album</a>
                     <span ng-show="sortType == 'album_name' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'album_name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
-                <th>
+                <th id="durationCol">
                     <a href="" ng-click="sortType = 'duration' ; sortReverse = !sortReverse; sort()">Duration</a>
                     <span ng-show="sortType == 'duration' && sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'duration' && !sortReverse" class="fa fa-caret-up"></span>
