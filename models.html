@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/kristine/cs373-idb/models.py">/home/kristine/cs373-idb/models.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/kristine/cs373-idb/app/models.py">/home/kristine/cs373-idb/app/models.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -45,23 +45,31 @@ Has&nbsp;an&nbsp;id,&nbsp;name,&nbsp;date,&nbsp;length,&nbsp;number&nbsp;of&nbsp
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Album-__init__"><strong>__init__</strong></a>(self, name, artist_name, date, length, num_tracks, spotify_uri, spotify_id)</dt></dl>
+<dl><dt><a name="Album-__init__"><strong>__init__</strong></a>(self, name, artist_name, release_date, length, num_tracks, spotify_uri, spotify_id, images, col_img, href)</dt></dl>
 
 <dl><dt><a name="Album-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
 
 <hr>
 Data descriptors defined here:<br>
+<dl><dt><strong>artist_name</strong></dt>
+</dl>
 <dl><dt><strong>artists</strong></dt>
 </dl>
-<dl><dt><strong>date</strong></dt>
+<dl><dt><strong>col_img</strong></dt>
+</dl>
+<dl><dt><strong>href</strong></dt>
 </dl>
 <dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>images</strong></dt>
 </dl>
 <dl><dt><strong>length</strong></dt>
 </dl>
 <dl><dt><strong>name</strong></dt>
 </dl>
 <dl><dt><strong>num_tracks</strong></dt>
+</dl>
+<dl><dt><strong>release_date</strong></dt>
 </dl>
 <dl><dt><strong>spotify_id</strong></dt>
 </dl>
@@ -71,20 +79,17 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fa657720278; Album&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f0bb8edf0f0; Album&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('album', MetaData(bind=None), Column('id',... String(length=100), table=&lt;album&gt;), schema=None)</dl>
+<dl><dt><strong>__table__</strong> = Table('album', MetaData(bind=None), Column('id',... String(length=250), table=&lt;album&gt;), schema=None)</dl>
 
 <dl><dt><strong>__tablename__</strong> = 'album'</dl>
 
 <hr>
-Methods inherited from flask_sqlalchemy.Model:<br>
-<dl><dt><strong>query</strong></dt>
-</dl>
-
-<hr>
 Data and other attributes inherited from flask_sqlalchemy.Model:<br>
 <dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query</strong> = &lt;flask_sqlalchemy.BaseQuery object&gt;</dl>
 
 <hr>
 Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>:<br>
@@ -121,7 +126,7 @@ Has&nbsp;id,&nbsp;name,&nbsp;num_albums,&nbsp;recent&nbsp;albums,&nbsp;top&nbsp;
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Artist-__init__"><strong>__init__</strong></a>(self, name, num_albums, recent_album, top_track, popularity, spotify_uri, spotify_id)</dt></dl>
+<dl><dt><a name="Artist-__init__"><strong>__init__</strong></a>(self, name, num_albums, recent_album, top_track, popularity, spotify_uri, spotify_id, images, col_img, followers)</dt></dl>
 
 <dl><dt><a name="Artist-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
 
@@ -129,7 +134,13 @@ Methods defined here:<br>
 Data descriptors defined here:<br>
 <dl><dt><strong>albums</strong></dt>
 </dl>
+<dl><dt><strong>col_img</strong></dt>
+</dl>
+<dl><dt><strong>followers</strong></dt>
+</dl>
 <dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>images</strong></dt>
 </dl>
 <dl><dt><strong>name</strong></dt>
 </dl>
@@ -149,20 +160,17 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fa657720780; Artist&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f0bb8edf7f0; Artist&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('artist', MetaData(bind=None), Column('id'...String(length=100), table=&lt;artist&gt;), schema=None)</dl>
+<dl><dt><strong>__table__</strong> = Table('artist', MetaData(bind=None), Column('id'...lowers', Integer(), table=&lt;artist&gt;), schema=None)</dl>
 
 <dl><dt><strong>__tablename__</strong> = 'artist'</dl>
 
 <hr>
-Methods inherited from flask_sqlalchemy.Model:<br>
-<dl><dt><strong>query</strong></dt>
-</dl>
-
-<hr>
 Data and other attributes inherited from flask_sqlalchemy.Model:<br>
 <dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query</strong> = &lt;flask_sqlalchemy.BaseQuery object&gt;</dl>
 
 <hr>
 Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>:<br>
@@ -199,7 +207,7 @@ Has&nbsp;id,&nbsp;name,&nbsp;artist&nbsp;name,&nbsp;release,&nbsp;album,&nbsp;du
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Track-__init__"><strong>__init__</strong></a>(self, title, artist_name, release, album, duration, spotify_uri, spotify_id)</dt></dl>
+<dl><dt><a name="Track-__init__"><strong>__init__</strong></a>(self, title, artist_name, release, album, album_cover_url, duration, spotify_uri, spotify_id, album_id, col_img, href)</dt></dl>
 
 <dl><dt><a name="Track-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
 
@@ -207,15 +215,23 @@ Methods defined here:<br>
 Data descriptors defined here:<br>
 <dl><dt><strong>album</strong></dt>
 </dl>
+<dl><dt><strong>album_cover_url</strong></dt>
+</dl>
 <dl><dt><strong>album_id</strong></dt>
 </dl>
 <dl><dt><strong>artist_name</strong></dt>
 </dl>
 <dl><dt><strong>artists2</strong></dt>
 </dl>
+<dl><dt><strong>col_img</strong></dt>
+</dl>
 <dl><dt><strong>duration</strong></dt>
 </dl>
+<dl><dt><strong>href</strong></dt>
+</dl>
 <dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>my_album</strong></dt>
 </dl>
 <dl><dt><strong>release_date</strong></dt>
 </dl>
@@ -227,20 +243,17 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fa657720da0; Track&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f0bb8edff98; Track&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('track', MetaData(bind=None), Column('id',...eignKey('album.id'), table=&lt;track&gt;), schema=None)</dl>
 
 <dl><dt><strong>__tablename__</strong> = 'track'</dl>
 
 <hr>
-Methods inherited from flask_sqlalchemy.Model:<br>
-<dl><dt><strong>query</strong></dt>
-</dl>
-
-<hr>
 Data and other attributes inherited from flask_sqlalchemy.Model:<br>
 <dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query</strong> = &lt;flask_sqlalchemy.BaseQuery object&gt;</dl>
 
 <hr>
 Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqlalchemy.Model</a>:<br>
@@ -268,7 +281,7 @@ standard&nbsp;query&nbsp;as&nbsp;well.</tt></dl>
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>artists</strong> = Table('artists', MetaData(bind=None), Column('ar...gnKey('album.id'), table=&lt;artists&gt;), schema=None)<br>
 <strong>artists2</strong> = Table('artists2', MetaData(bind=None), Column('a...nKey('track.id'), table=&lt;artists2&gt;), schema=None)<br>
-<strong>db</strong> = &lt;SQLAlchemy engine='sqlite://'&gt;<br>
+<strong>db</strong> = &lt;SQLAlchemy engine='mysql+pymysql://None:None@None/None'&gt;<br>
 <strong>func</strong> = &lt;sqlalchemy.sql.functions._FunctionGenerator object&gt;<br>
 <strong>modifier</strong> = &lt;sqlalchemy.sql.functions._FunctionGenerator object&gt;</td></tr></table>
 </body></html>
