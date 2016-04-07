@@ -19,7 +19,7 @@
 }
 
 #trackCoverHeader {
-  width: 64px;
+  width: 2.5%;
 }
 
 .trackCover {
@@ -35,6 +35,7 @@
 .detailsLink {
   font-size: 1rem;
   display: block;
+  margin-left: 14px;
 }
 
 #trackCol {
@@ -54,5 +55,5 @@
 }
 
 #durationCol {
-  width: 12.5%;
+  width: 10%;
 }
