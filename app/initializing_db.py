@@ -33,13 +33,14 @@ def create_artist(artist_json):
 def create_album(album_json):
 	for album in album_json['albums']:
 		#print(album['name'])
-		artist=Artist.query.filter(Artist.name==album['artist_name']).first()
-		if artist ==None:
-			i=0
-		else:
-			album_model= Album(album['name'],album['artist_name'], album['release_date'],album['length'],album['num_tracks'],album['uri'],album['id'],album['images'][1]['url'],album['col_img'], album['href'])
 		
-			album_model.artists.append(artist)
+			album_model= Album(album['name'],album['artist_name'], album['release_date'],album['length'],album['num_tracks'],album['uri'],album['id'],album['images'][1]['url'],album['col_img'], album['href'])
+			
+			artist_in_album= re.split(', ',album['artist_name'])
+			for artist_name in artist_in_album:
+				artist=Artist.query.filter(Artist.name==artist_name).first()
+				if artist:
+					album_model.artists.append(artist)
 			db.session.add(album_model)
 			db.session.commit()
 
@@ -68,6 +69,12 @@ def create_tracks(track_json):
 					tracks_model.artists2.append(artist)
 		db.session.add(tracks_model)
 		db.session.commit()
+		'''if album == None:
+
+			#add_album(track['album']['id'])
+			album= Album.query.filter(Album.name ==track['album_name']).first()
+			tracks_model.album_id=album.id
+		'''
 
 def create_tracks_album(album_json):
 	for album in album_json['albums']:
@@ -85,7 +92,7 @@ def create_tracks_album(album_json):
 					count=count+1
 				track_exist= Track.query.filter(Track.title == track['name']).first()
 				if track_exist ==None:
-					track['name']
+
 					tracks_model=Track(track['name'],artist_name,album_db.release_date,album_db.name,album_db.images,track['duration_ms'],track['uri'],track['id'],album_db.id,album_db.col_img,track['href'])
 					artist_in_track= re.split(', ', artist_name)
 					for art_tr in artist_in_track:
@@ -96,7 +103,7 @@ def create_tracks_album(album_json):
 							tracks_model.artists2.append(artist)
 					db.session.add(tracks_model)
 					db.session.commit()
-				
+
 def add_track(trackid):
 	track = requests.get('https://api.spotify.com/v1/tracks/' + trackid).json()
 	trackdb = Track.query.filter(track['name'] == Track.title).first()
@@ -167,13 +174,14 @@ def add_artist(artistid):
 
 # Add extra information (number of albums, album cover)
 		this_artist["num_albums"] = len(albums)
+		images=None
 		if this_artist["images"]:
 			this_artist["col_img"] = this_artist["images"][len(this_artist["images"]) - 1]["url"]
-
-		artist_model=Artist(this_artist['name'],this_artist['num_albums'],last_album,this_artist['top_track']['name'],this_artist['popularity'],this_artist['uri'],this_artist['id'],this_artist['images'][1]['url'], this_artist['col_img'],this_artist['followers']['total'])
-		db.session.add(artist_model)
-		db.session.commit()
-		add_album(this_artist['last_album']['id'])
+			images=this_artist['images'][1]['url']
+			artist_model=Artist(this_artist['name'],this_artist['num_albums'],last_album,this_artist['top_track']['name'],this_artist['popularity'],this_artist['uri'],this_artist['id'],images, this_artist['col_img'],this_artist['followers']['total'])
+			db.session.add(artist_model)
+			db.session.commit()
+			add_album(this_artist['last_album']['id'])
 
 def add_album(albumid):
 	this_album = requests.get('https://api.spotify.com/v1/albums/' + albumid).json()
@@ -188,7 +196,7 @@ def add_album(albumid):
 		names = ""
 		for artist in this_album["artists"]:
 			names += artist["name"] + ', '
-			add_artist(artist["id"])
+			#add_artist(artist["id"])
 		#if artist["id"] not in scraped_artists and len(scraped_artists) < 200:
 		#   scraped_artists.append(artist["id"])
 		#  artists_queue.append(artist["id"])
@@ -227,7 +235,6 @@ def add_album(albumid):
 		db.session.commit()
 		for track in this_album["tracks"]["items"]:
 			add_track(track["id"])
-
 
 def create_sweetmusic_db():
 	db.drop_all()
