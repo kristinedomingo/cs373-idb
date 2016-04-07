@@ -173,6 +173,13 @@ angular.module('controllers', ['ui.bootstrap'])
           if($scope.sortType == 'num_tracks') {
               return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
           }
+          // If the sortType is the album duration, compare converting the
+          // String length to a number representing seconds
+          else if($scope.sortType == 'length') {
+              var xTimes = x['length'].split(':');
+              var yTimes = y['length'].split(':');
+              return (xTimes[0] * 60 + xTimes[1]) - (yTimes[0] * 60 + yTimes[1]);
+          }
           // Case-insensitive string comparison
           else {
               return x[$scope.sortType].localeCompare(y[$scope.sortType]);
@@ -254,8 +261,14 @@ angular.module('controllers', ['ui.bootstrap'])
     // Sort based on sortType
     $scope.sort = function() {
       $scope.all_tracks.sort(function(x, y) {
+          // If the sortType is the track duration, compare using duration_ms
+          if($scope.sortType == 'duration') {
+              return parseInt(x['duration_ms']) - parseInt(y['duration_ms']);
+          }
           // Case-insensitive string comparison
-          return x[$scope.sortType].localeCompare(y[$scope.sortType]);
+          else {
+              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
+          }
       });
 
       // If reverse, reverse the rows
