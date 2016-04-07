@@ -326,7 +326,7 @@ angular.module('controllers', ['ui.bootstrap'])
         $scope.targetTrack = data.tracks[0];
 
         // Get iframe src
-        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.spotify_uri;
+        $scope.widget = 'https://embed.spotify.com/?uri=' + $scope.targetTrack.spotify_uri + "&view=coverart";
 
         // Get 300px album cover
         $scope.albumCover = $scope.targetTrack.album_cover_url;
