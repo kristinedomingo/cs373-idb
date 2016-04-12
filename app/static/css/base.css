@@ -1,59 +1,8 @@
-/*
- * Globals
- */
-
-/* Fifths */
-.col-xs-5ths,
-.col-sm-5ths,
-.col-md-5ths,
-.col-lg-5ths {
-  position: relative;
-  min-height: 1px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.col-xs-5ths {
-  width: 20%;
-  float: left;
-}
-
-@media (min-width: 768px) {
-  .col-sm-5ths {
-    width: 20%;
-    float: left;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-md-5ths {
-    width: 20%;
-    float: left;
-  }
-}
-
-@media (min-width: 1200px) {
-  .col-lg-5ths {
-    width: 20%;
-    float: left;
-  }
-}
-
 /* Links */
 a,
 a:focus,
 a:hover {
-  color: #fff;
-}
-
-/* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
-  color: #fff;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  color: #ee6e73;
 }
 
 
@@ -68,18 +17,12 @@ body {
   width: 100%;
   margin: 0px;
   padding: 0px;
-  background-color: #ddd;
-  background-image: url('../imgs/bg.png');
-  background-repeat: repeat-y;
-  background-size: 100%;
-  font-family: 'Fira Sans', sans-serif;
+  background-color: #fefefe;
+  color: rgba(0,0,0,0.71);
   overflow-x: hidden;
-}
-
-body {
-  color: #fff;
+  font-size: 8px;
   text-align: center;
-  }
+}
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -87,8 +30,6 @@ body {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -109,9 +50,14 @@ body {
  * Header
  */
 .masthead-brand {
+  color: #ee6e73;
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: 'Roboto Slab', serif;
+}
+
+.masthead-brand a{
+  color: #ee6e73;
 }
 
 .masthead-nav > li {
@@ -126,21 +72,21 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
+  color: #ee6e73;
+  color: rgba(238, 110, 115, 0.75);
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255, 255, 255,.25);
+  border-bottom-color: #ee6e73;
+  color: rgba(238, 110, 115, 1.0);
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: rgba(238, 110, 115, 1.0);
+  border-bottom-color: #ee6e73;
 }
 
 @media (min-width: 768px) {
@@ -204,22 +150,19 @@ body {
   }
 }
 
-@font-face {
-  font-family: AmericanCaptain;
-  src: url('../other/americancaptain.ttf');
-}
-
 .title {
-  font-family: AmericanCaptain;
-  letter-spacing: 1rem;
   font-size: 6rem;
-  display: inline-block;
-  position: relative;
+  font-weight: 700;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #ee6e73;
+  text-align: center;
+  display: block;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
   .title {
-    font-size: 8rem;
+    font-size: 7rem;
   }
 }
 
@@ -245,20 +188,68 @@ body {
 }
 
 .pagination > li > a {
-  color: #5B097D;
+  color: #26A69A;
 }
 
 .pagination > .active > a {
-  background-color: #5B097D;
-  border-color: #5B097D;
+  background-color: #26A69A;
+  border-color: #26A69A;
 }
 
 .pagination > .active > a:hover {
-  background-color: #6B158E;
-  border-color: #6B158E;
+  background-color: #1C867C;
+  border-color: #1C867C;
+  color: #26A69A;
 }
 
 .pagination > .active > a:focus {
-  background-color: #6B158E;
-  border-color: #6B158E;
+  background-color: #1C867C;
+  border-color: #1C867C;
+}
+
+/* 
+ * Fifths
+ */
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.col-xs-5ths {
+  width: 20%;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+hr {
+  height: 6px;
+  background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+  border: 0;
+  margin-top: 8rem;
+  margin-bottom: 8rem;
 }

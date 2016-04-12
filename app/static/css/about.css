@@ -1,9 +1,10 @@
 .headshot {
     border-radius: 50%;
-    background-color: #43DAAD;
+    background-color: #fff;
     width: 150px;
     height: 150px;
     margin-bottom: 2rem;
+    border: 10px double #ee6e73;
 }
 
 .name {
@@ -28,16 +29,6 @@
     }
 }
 
-.aboutSection {
-    margin-bottom: 6rem;
-}
-
-@media (min-width: 992px) {
-    .aboutSection {
-        margin-bottom: 12rem;
-    }
-}
-
 .innerRow {
     margin-bottom: 0rem;
 }
@@ -49,21 +40,26 @@
 }
 
 .clearBtn {
-    background-color: #6B158E;
-    border-color: #5B097D;
+    background-color: #26A69A;
     border-radius: 10px;
+    border: 0px;
     text-decoration: none !important;
 }
 
 .clearBtn:hover {
+    color: #26A69A;
     background-color: #fff;
-    color: #6B158E;
+    box-shadow: 0 0 0 1px #26A69A;
     text-decoration: none;
     -o-transition: .4s;
     -ms-transition: .4s;
     -moz-transition: .4s;
     -webkit-transition: .4s;
     transition: .4s;
+}
+
+.clearBtn:active {
+    background-color: #26A69A;
 }
 
 .col-margin {

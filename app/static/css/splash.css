@@ -5,10 +5,13 @@ body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    background-color: #fff;
-    background-image: url('../imgs/concert.jpg');
-    background-size: cover;
-    font-family: 'Fira Sans', sans-serif;
+    background-color: #ee6e73;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left bottom;
+    background-image: url('../imgs/splash.png');
+    background-size: contain;
+    font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -48,7 +51,6 @@ h1 {
 
 .title {
     padding: 5px 0;
-    font-family: 'Lobster', cursive;
     font-weight: 700;
     font-size: 9.5rem;
     display: inline-block;
@@ -56,23 +58,71 @@ h1 {
     position: relative;
 }
 
+#titleText {
+    color: #fff;
+    text-shadow: 5px 5px #9c484c;
+    /*font-weight: 700;*/
+    font-size: 15rem;
+    text-align: center;
+    font-family: 'Pacifico';
+}
+
 #smallText {
-    margin-top: 2rem;
-    font-weight: 700;
+    color: #fff;
+    font-family: 'Roboto Slab', sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
-#logo {
+#searchArea {
     width: 400px;
+    margin: auto;
 }
 
-@media (min-width: 768px) {
-    #logo {
-        width: 550px;
-    }
+.btn {
+    color: #fff;
+    background-color: #26A69A;
+    border-color: #1d8076;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
 }
 
-@media (min-width: 992px) {
-    #logo {
-        width: 600px;
-    }
+.btn:hover {
+    color: #fff;
+    background-color: #2ecabb;
+    border-color: #1d8076;
+}
+
+.dropdown-menu li a{
+    color: #1d8076;
+}
+
+.dropdown-menu li a:hover{
+    color: #1d8076;
+}
+
+input[type="text"]:focus {
+    border-color: rgba(156, 72, 76, 1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(156, 72, 76, 0.8);
+}
+
+.masthead-brand a {
+    color: #fff;
+}
+
+.masthead-nav > li > a {
+  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  border-bottom-color: #fff;
+  color: rgba(255, 255, 255, 1.0);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: rgba(255, 255, 255, 1.0);
+  color: rgba(255, 255, 255, 1.0);
 }

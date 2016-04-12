@@ -3,25 +3,6 @@
     /*border: 10px #fff solid;*/
 }
 
-.pagination > li > a {
-    color: #5B097D;
-}
-
-.pagination > .active > a {
-    background-color: #5B097D;
-    border-color: #5B097D;
-}
-
-.pagination > .active > a:hover {
-    background-color: #6B158E;
-    border-color: #6B158E;
-}
-
-.pagination > .active > a:focus {
-    background-color: #6B158E;
-    border-color: #6B158E;
-}
-
 th.artist-table-header:nth-child(1),
 th.artist-table-header:nth-child(6) {
     border-top: none;
@@ -29,7 +10,7 @@ th.artist-table-header:nth-child(6) {
 
 .artistTable {
     border-radius: 25px;
-    color: #5B097D;
+    color: rgba(0, 0, 0, 0.75);
     background-color: #fff;
 }
 
@@ -39,7 +20,7 @@ th.artist-table-header:nth-child(6) {
 }
 
 .artistTable a {
-    color: #5B097D;
+    color: #ee6e73;
 }
 
 .artistTable td {

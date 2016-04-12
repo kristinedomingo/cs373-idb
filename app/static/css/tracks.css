@@ -1,6 +1,6 @@
 #trackTable {
   border-radius: 25px;
-  color: #5B097D;
+  color: rgba(0, 0, 0, 0.75);
   background-color: #fff;
   table-layout: fixed;
 }
@@ -11,7 +11,7 @@
 }
 
 #trackTable a {
-  color: #5B097D;
+  color: #ee6e73;
 }
 
 #trackTable td {
