@@ -55,11 +55,6 @@ tr {
   color: #ee6e73;
 }
 
-#spotifyWidget {
-  width: 500px;
-  border: 0;
-}
-
 #widgetSection {
   overflow: hidden;
 }

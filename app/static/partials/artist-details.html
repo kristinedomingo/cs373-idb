@@ -1,6 +1,6 @@
 <link href="../css/artist-details.css" rel="stylesheet">
 <div class="bodyText">
-    <div ng-controller="ArtistDetailsCtrl" class="container">
+    <div ng-controller="ArtistDetailsCtrl">
         <div class="row">
             <div class="col-sm-4 col-md-4">
                 <div class="row">
@@ -54,7 +54,7 @@
                     <div class="boxSection col-sm-12 col-md-12">
                         <span id="artistTitle">Artist News</span>
                         <div class="newsSection" ng-repeat="new in news | limitTo:3">
-                            <span id="artistTitle">{{new.name}}</span>
+                            <span class="newsTitle">{{new.name}}</span>
                             <p>{{new.summary}}<br><br></p>
                         </div>
                     </div>

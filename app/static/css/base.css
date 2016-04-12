@@ -143,11 +143,11 @@ body {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 992px) {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 1000px;
+    width: 850px;
   }
 }
 

@@ -57,3 +57,10 @@ a.tableAnchor {
 tr {
   text-align: left;
 }
+
+.newsTitle {
+  font-size: 2rem;
+  font-family: 'Roboto Slab', sans-serif;
+  display: block;
+  color: #ee6e73;
+}

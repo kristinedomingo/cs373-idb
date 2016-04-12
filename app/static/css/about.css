@@ -1,10 +1,10 @@
 .headshot {
     border-radius: 50%;
     background-color: #fff;
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     margin-bottom: 2rem;
-    border: 10px double #ee6e73;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
 }
 
 .name {
