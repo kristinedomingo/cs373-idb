@@ -11,7 +11,7 @@ th.artist-table-header:nth-child(6) {
 .artistTable {
     border-radius: 25px;
     color: rgba(0, 0, 0, 0.75);
-    background-color: #fff;
+    background-color: #fdfdfd;
 }
 
 .artistTable th {

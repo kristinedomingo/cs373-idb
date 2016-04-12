@@ -1,20 +1,20 @@
-#albumTable {
+.albumTable {
   border-radius: 25px;
   color: rgba(0, 0, 0, 0.75);
-  background-color: #fff;
+  background-color: #fdfdfd;
   table-layout: fixed;
 }
 
-#albumTable th {
+.albumTable th {
   border: 0px !important;
   text-align: center !important;
 }
 
-#albumTable a {
+.albumTable a {
   color: #ee6e73;
 }
 
-#albumTable td {
+.albumTable td {
   vertical-align: middle;
 }
 
@@ -45,7 +45,7 @@
 }
 
 #artistCol {
-  width: 20%;
+  width: 22.5%;
 }
 
 #releaseDateCol {

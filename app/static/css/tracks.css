@@ -1,25 +1,25 @@
-#trackTable {
+.trackTable {
   border-radius: 25px;
   color: rgba(0, 0, 0, 0.75);
-  background-color: #fff;
+  background-color: #fdfdfd;
   table-layout: fixed;
 }
 
-#trackTable th {
+.trackTable th {
   border: 0px !important;
   text-align: center !important;
 }
 
-#trackTable a {
+.trackTable a {
   color: #ee6e73;
 }
 
-#trackTable td {
+.trackTable td {
   vertical-align: middle;
 }
 
 #trackCoverHeader {
-  width: 2.5%;
+  width: 64px;
 }
 
 .trackCover {

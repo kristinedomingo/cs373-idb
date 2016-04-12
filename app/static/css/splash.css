@@ -41,7 +41,7 @@ body {
     .masthead,
     .mastfoot,
     .cover-container {
-        width: 1100px;
+        width: 1000px;
     }
 }
 
@@ -62,22 +62,45 @@ h1 {
     color: #fff;
     text-shadow: 5px 5px #9c484c;
     /*font-weight: 700;*/
-    font-size: 15rem;
+    font-size: 10rem;
     text-align: center;
     font-family: 'Pacifico';
+}
+
+@media (min-width: 768px) {
+    #titleText {
+        font-size: 15rem;
+    }
 }
 
 #smallText {
     color: #fff;
     font-family: 'Roboto Slab', sans-serif;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    padding-left: 25px;
+    padding-right: 25px;
     margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    #smallText {
+        font-size: 2.5rem;
+        padding: 0;
+    }
 }
 
 #searchArea {
     width: 400px;
     margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+@media (min-width: 768px) {
+    #searchArea {
+        padding: 0;
+    }
 }
 
 .btn {
