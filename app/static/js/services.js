@@ -25,8 +25,11 @@ angular.module('services',[])
     })
     .factory('albumService', function($http) {
         return {
-            getAlbums: function(page) {
-                return $http.get('/get_albums/' + page).then(function(result) {
+            getAlbums: function(page, pageSize, sortBy, order) {
+                return $http.get('/albums/' + page +
+                                 '?psize=' + pageSize +
+                                 '&sort=' + sortBy +
+                                 '&order=' + order).then(function(result) {
                     return result.data;
                 });
             }

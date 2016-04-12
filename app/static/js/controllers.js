@@ -176,8 +176,9 @@ angular.module('controllers', ['ui.bootstrap'])
  * handle sorting and pagination in the table.
  */
 .controller('AlbumTableCtrl',['$scope', 'albumService', function($scope, albumService) {
-    $scope.sortType = 'name';
+    $scope.sortType = 'album_name';
     $scope.sortReverse = false;
+    $scope.sortOrder = $scope.sortReverse ? 'desc' : 'asc';
     $scope.maxSize = 5;
     $scope.numPerPage = 10;
 
@@ -187,48 +188,29 @@ angular.module('controllers', ['ui.bootstrap'])
     }
 
     // Get albums upon page load
-    albumService.getAlbums($scope.pageNumber).then(function(data) {
+    albumService.getAlbums($scope.pageNumber, $scope.numPerPage, $scope.sortType,
+                           $scope.sortOrder).then(function(data) {
         $scope.all_albums = data.albums;
         $scope.totalAlbums = data.total_albums;
-        $scope.displayed_albums = $scope.all_albums.slice(0, $scope.numPerPage);
     });
 
     // Update displayed_albums upon page change
     $scope.changePage = function() {
-        var begin = (($scope.pageNumber - 1) * $scope.numPerPage);
-        var end = begin + $scope.numPerPage;
-        $scope.displayed_albums = $scope.all_albums.slice(begin, end);
+        albumService.getAlbums($scope.pageNumber, $scope.numPerPage, $scope.sortType,
+                               $scope.sortOrder).then(function(data) {
+          $scope.all_albums = data.albums;
+          $scope.totalAlbums = data.total_albums;
+        });
     }
 
     // Sort based on sortType
     $scope.sort = function() {
-      $scope.all_albums.sort(function(x, y) {
-          // If the sortType is number of tracks, don't sort using string
-          // comparison, parse to integers and compare those instead
-          if($scope.sortType == 'num_tracks') {
-              return parseInt(x[$scope.sortType]) - parseInt(y[$scope.sortType]);
-          }
-          // If the sortType is the album duration, compare converting the
-          // String length to a number representing seconds
-          else if($scope.sortType == 'length') {
-              var xTimes = x['length'].split(':');
-              var yTimes = y['length'].split(':');
-              return (xTimes[0] * 60 + xTimes[1]) - (yTimes[0] * 60 + yTimes[1]);
-          }
-          // Case-insensitive string comparison
-          else {
-              return x[$scope.sortType].localeCompare(y[$scope.sortType]);
-          }
-      });
-
-      // If reverse, reverse the rows
-      if($scope.sortReverse) {
-          $scope.all_albums.reverse();
-      }
-
-      // Finally, reset page to 1 and update displayed_albums
-      $scope.pageNumber = 1;
-      $scope.displayed_albums = $scope.all_albums.slice(0, $scope.numPerPage);
+        $scope.sortOrder = $scope.sortReverse ? 'desc' : 'asc';
+        albumService.getAlbums($scope.pageNumber, $scope.numPerPage, $scope.sortType,
+                               $scope.sortOrder).then(function(data) {
+          $scope.all_albums = data.albums;
+          $scope.totalAlbums = data.total_albums;
+        });
     }
 }])
 
