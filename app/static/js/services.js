@@ -4,16 +4,16 @@
 angular.module('services',[])
     .factory('artistService', function($http) {
         return {
-            getArtists: function(page) {
-                //since $http.get returns a promise,
-                //and promise.then() also returns a promise
-                //that resolves to whatever value is returned in it's 
-                //callback argument, we can return that.
-                return $http.get('/get_artists/' + page).then(function(result) {
+            getArtists: function(page, pageSize, sortBy, order) {
+                return $http.get('/artists/' + page +
+                                 '?psize=' + pageSize +
+                                 '&sort=' + sortBy +
+                                 '&order=' + order).then(function(result) {
                     return result.data;
                 });
             }
-        }})
+        }
+    })
     .factory('artistDetailsService', function($http){
         return {
             artistDetailsInfo: function(artist_id){
@@ -46,8 +46,11 @@ angular.module('services',[])
     })
     .factory('trackService', function($http) {
         return {
-            getTracks: function(page) {
-                return $http.get('/get_tracks/' + page).then(function(result) {
+            getTracks: function(page, pageSize, sortBy, order) {
+                return $http.get('/tracks/' + page +
+                                 '?psize=' + pageSize +
+                                 '&sort=' + sortBy +
+                                 '&order=' + order).then(function(result) {
                     return result.data;
                 });
             }

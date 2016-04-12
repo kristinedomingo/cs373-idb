@@ -6,9 +6,9 @@
             <tr>
                 <th id="trackCoverHeader"></th>
                 <th id="trackCol">
-                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse; sort()">Track Title</a>
-                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
+                    <a href="" ng-click="sortType = 'track_title' ; sortReverse = !sortReverse; sort()">Track Title</a>
+                    <span ng-show="sortType == 'track_title' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'track_title' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
                 <th id="artistCol">
                     <a href="" ng-click="sortType = 'artist_name'; sortReverse = !sortReverse; sort()">Artist Name</a>
@@ -31,7 +31,7 @@
                     <span ng-show="sortType == 'duration' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-repeat="track in displayed_tracks">
+            <tr ng-repeat="track in all_tracks">
                 <td>
                     <a href="#/tracks/{{track.id}}">
                         <img class="trackCover" ng-src={{track.col_img.url}}>

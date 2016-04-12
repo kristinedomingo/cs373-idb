@@ -6,9 +6,9 @@
             <tr>
                 <th id="imgCol"></th>
                 <th id="artistCol">
-                    <a href="" ng-click="sortType = 'name' ; sortReverse = !sortReverse; sort()">Artist Name</a>
-                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
+                    <a href="" ng-click="sortType = 'artist_name' ; sortReverse = !sortReverse; sort()">Artist Name</a>
+                    <span ng-show="sortType == 'artist_name' && sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'artist_name' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
                 <th id="numAlbumsCol">
                     <a href="" ng-click="sortType = 'num_albums'; sortReverse = !sortReverse; sort()">Number of Albums Released</a>
@@ -31,7 +31,7 @@
                     <span ng-show="sortType == 'popularity' && !sortReverse" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-repeat="artist in displayed_artists">
+            <tr ng-repeat="artist in all_artists">
                 <td>
                     <a ng-href="#/artists/{{artist.id}}">
                         <img class="artistImg" ng-src={{artist.col_img.url}}>
