@@ -14,9 +14,10 @@ SQLALCHEMY_DATABASE_URI = \
         database=os.getenv('MYSQL_DATABASE'))
 
 app = Flask(__name__, static_url_path='')
-app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
-#if you want to run it locally if you have mySQL make sure you created a schema called sweetmusic or change it to a different database
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@127.0.0.1/sweetmusic'
+if SQLALCHEMY_DATABASE_URI == "mysql+pymysql://None:None@None/None":
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 manager = Manager(app)
