@@ -45,7 +45,7 @@
                     <div class="boxSection col-sm-12 col-md-12">
                         <span id="artistTitle">Artist Bio</span>
                         <div ng-repeat="bio in bios | limitTo:1">
-                            <p> {{bio.text}}</p>
+                            <p>{{bio.text}}</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <span id="artistTitle">Artist News</span>
                         <div class="newsSection" ng-repeat="new in news | limitTo:3">
                             <span id="artistTitle">{{new.name}}</span>
-                            <p> {{new.summary}} </p>
+                            <p>{{new.summary}}<br><br></p>
                         </div>
                     </div>
                 </div>

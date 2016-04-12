@@ -1,15 +1,17 @@
 .boxSection {
   background-color: #fff;
-  border-radius: 25px;
+  border-radius: 3px;
   padding: 10px;
-  color: #5B097D;
+  color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 }
 
 #albumTitle {
   font-size: 4rem;
-  font-family: AmericanCaptain;
-  letter-spacing: 0.5rem;
+  font-family: 'Roboto Slab', sans-serif;
   display: block;
+  margin-bottom: 10px;
+  color: #009688;
 }
 
 #albumCover {
@@ -17,13 +19,15 @@
   max-height: 100%;
   object-fit: cover;
   background-color: #5B097D;
+  margin-bottom: 10px;
 }
 
 .boxTitle {
   font-size: 4rem;
-  font-family: AmericanCaptain;
-  letter-spacing: 0.5rem;
+  font-family: 'Roboto Slab', sans-serif;
   display: block;
+  margin-bottom: 10px;
+  color: #009688;
 }
 
 .albumDetails {
@@ -49,7 +53,7 @@ tr {
 }
 
 .boxSection a {
-  color: #5B097D;
+  color: #ee6e73;
 }
 
 #spotifyWidget {
