@@ -6,15 +6,18 @@ body {
     padding: 0px;
     overflow-x: hidden;
     background-color: #ee6e73;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: left bottom;
-    background-image: url('../imgs/splash.png');
-    background-size: contain;
     font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 768px) {
+    body {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: left bottom;
+        background-image: url('../imgs/splash.png');
+        background-size: contain;
+    }
+
     /* Pull out the header and footer */
     .masthead {
         position: fixed;
