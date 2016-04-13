@@ -42,6 +42,7 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 30px;
+  padding-top:80px;
 }
 
 
@@ -57,7 +58,7 @@ body {
 }
 
 .masthead-brand a{
-  color: #ee6e73;
+  color: #FFFFFF;
 }
 
 .masthead-nav > li {
@@ -73,21 +74,20 @@ body {
   padding-left: 0;
   font-size: 16px;
   font-weight: 700;
-  color: #ee6e73;
-  color: rgba(238, 110, 115, 0.75);
+  color: #FFFFFF;
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
-  border-bottom-color: #ee6e73;
-  color: rgba(238, 110, 115, 1.0);
+  border-bottom-color: #FFFFFF;
+  color: #FFFFFF;
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: rgba(238, 110, 115, 1.0);
-  border-bottom-color: #ee6e73;
+  color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
 }
 
 @media (min-width: 768px) {
@@ -97,6 +97,20 @@ body {
   .masthead-nav {
     float: right;
   }
+}
+
+.nav-class{
+  background: #ee6e73;
+  border-color: #ee6e73;
+}
+
+.nav-container{
+  margin-top:18px;
+  margin-bottom:18px;
+}
+
+a.nav-a {
+  color:#FFFFFF;
 }
 
 
