@@ -2,7 +2,6 @@
   border-radius: 25px;
   color: rgba(0, 0, 0, 0.75);
   background-color: #fdfdfd;
-  table-layout: fixed;
 }
 
 .albumTable th {
