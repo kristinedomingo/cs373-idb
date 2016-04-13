@@ -6,7 +6,8 @@ var sweetMusicApp = angular.module('sweetMusicApp', [
     'filters',
     'services',
     'ngRoute',
-    'door3.css'
+    'door3.css',
+    'ngSanitize'
 ]);
 
 sweetMusicApp
