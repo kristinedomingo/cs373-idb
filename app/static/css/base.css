@@ -160,7 +160,8 @@ a.nav-a {
 @media (min-width: 992px) {
   .masthead,
   .mastfoot,
-  .cover-container {
+  .cover-container,
+  .container {
     width: 850px;
   }
 }
