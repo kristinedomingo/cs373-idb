@@ -295,6 +295,54 @@ def tracks_route():
     else:
         return jsonify({"tracks": []})
 
+# ------
+# Search
+# ------
+
+# Simple implementation
+@app.route('/search/<table>')
+def search(table):
+    req = {}
+
+    req['table'] = table
+    if table != 'artists' and table != 'albums' and table != 'tracks':
+        req['table'] = 'all'
+
+    req['searchterm'] = request.args['searchterm']
+    results = {}
+    results['artists'] = Artist.query.limit(5).all()
+    results['albums']  = Album.query.limit(5).all()
+    results['tracks']  = Track.query.limit(5).all()
+    # results = search_db(request.args['searchterm'])
+
+    json = {}
+
+    if table == 'artists' or table == 'all':
+        json['artists'] = []
+        for artist in results['artists']:
+            json['artists'].append({
+                'name': artist.name,
+                'img': artist.col_img
+                })
+
+    if table == 'albums' or table == 'all':
+        json['albums'] = []
+        for album in results['albums']:
+            json['albums'].append({
+                'name': album.name,
+                'img': album.col_img
+                })
+
+    if table == 'tracks' or table == 'all':
+        json['tracks'] = []
+        for track in results['tracks']:
+            json['tracks'].append({
+                'name': track.title,
+                'img': track.col_img
+                })
+
+    return jsonify(json)
+
 @manager.command
 def create_db():
     #logger.debug("create_db")

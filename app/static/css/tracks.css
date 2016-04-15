@@ -2,7 +2,6 @@
   border-radius: 25px;
   color: rgba(0, 0, 0, 0.75);
   background-color: #fdfdfd;
-  table-layout: fixed;
 }
 
 .trackTable th {
@@ -33,9 +32,9 @@
 }
 
 .detailsLink {
-  font-size: 1rem;
+  font-size: 1.5rem;
   display: block;
-  margin-left: 14px;
+  margin-left: 5px;
 }
 
 #trackCol {

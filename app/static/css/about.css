@@ -1,3 +1,6 @@
+html {
+    overflow-x: hidden;
+}
 .headshot {
     border-radius: 50%;
     background-color: #fff;
