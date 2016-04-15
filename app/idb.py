@@ -295,6 +295,25 @@ def tracks_route():
     else:
         return jsonify({"tracks": []})
 
+# ------
+# Search
+# ------
+
+# Simple implementation
+@app.route('/search/<table>')
+def search(table):
+    json = {}
+
+    json['table'] = table
+    if table != 'artist' and table != 'album' and table != 'track':
+        json['table'] = 'all'
+
+    json['searchterm'] = request.args['searchterm']
+
+    # results = search_db(reqDuest.args.get('searchterm'))
+
+    return jsonify(json)
+
 @manager.command
 def create_db():
     #logger.debug("create_db")
