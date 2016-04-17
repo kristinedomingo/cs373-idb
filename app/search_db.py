@@ -1,6 +1,7 @@
 import re
 from db import db 
 from models import Artist, Track, Album
+import collections
 
 def search_db(type, word):
 	words=re.split(' ', word)
@@ -11,25 +12,40 @@ def search_db(type, word):
 	combo= combo_words(words)
 
 	for i in combo:
-		items[i]=[]
+		items[i]={}
 		for word in combo[i]:
 			print("******")
 			print(word)
 			print("****|\n")
+			if 'artist' not in items[i]:
+					items[i]['artist']=[]
+			if 'track' not in items[i]:
+				items[i]['track']=[]
+			if 'album' not in items[i]:
+				items[i]['album']=[]
+
+			if i !=1:
+				artists=items[i-1]['artist']
+				tracks=items[i-1]['track']
+				albums=items[i-1]['album']
+
+
+			
 			for artist in artists:
 				x=find_word_artist(word, artist)
+				
 				if x != -1:
-					items[i].append(artist)
+					items[i]['artist'].append(artist)
 					print (artist)
 			for track in tracks:
 				x=find_word_track(word, track)
 				if x != -1:
-					items[i].append(track)
+					items[i]['track'].append(track)
 					print (track)
 			for album in albums:
 				x=find_word_album(word, album)
 				if x != -1:
-					items[i].append(album)
+					items[i]['album'].append(album)
 					print (album)
 	return items
 def find_word_artist(word, artist):
@@ -74,7 +90,7 @@ def find_word_track(word, track):
 		return x
 	return x
 def combo_words(words):
-	combo={}
+	combo=collections.OrderedDict()
 
 	for i in range(0, len(words)):
 		string=''
