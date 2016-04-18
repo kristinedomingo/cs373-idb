@@ -32,7 +32,8 @@
                     <div class="inner">
                         <nav class="nav-class navbar navbar-masthead navbar-default navbar-fixed-top" ng-controller="NavCtrl">
                             <div class="container nav-container">
-                                <h3 class="masthead-brand"><a href="#/">SWEet Music</a></h3>
+                                <div class="brand"><h3 class="masthead-brand"><a href="#/">SWEet Music</a></h3></div> 
+                                <div class="nav-div">
                                 <ul class="nav masthead-nav">
                                     <!-- http://stackoverflow.com/questions/16199418/how-do-i-
                                     implement-the-bootstrap-navbar-active-class-with-angular-js-->
@@ -40,7 +41,15 @@
                                     <li ng-class="{ active : isActive('/albums')}"><a class="nav-a" href="#/albums">Albums</a></li>
                                     <li ng-class="{ active : isActive('/artists')}"><a class="nav-a" href="#/artists">Artists</a></li>
                                     <li ng-class="{ active : isActive('/tracks')}"><a class="nav-a" href="#/tracks">Tracks</a></li>
-                                </ul>
+                                </ul></div> 
+                                <div class="search-div">
+                                <div class="input-group search-group">
+                                        <input type="text" class="form-control" placeholder="Search..."></input>
+                                        <span class="input-group-btn search-btn">
+                                            <button class="btn btn-default" type="button">Search</button>
+                                        </span>
+                                </div> 
+                                </div> 
                             </div>
                         </nav>
                     </div>

@@ -42,7 +42,6 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 30px;
-  padding-top:80px;
 }
 
 
@@ -90,14 +89,14 @@ body {
   border-bottom-color: #FFFFFF;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .masthead-brand {
     float: left;
   }
   .masthead-nav {
     float: right;
   }
-}
+}*/
 
 .nav-class {
   background: #ee6e73;
@@ -121,6 +120,7 @@ a.nav-a {
 
 .cover {
   padding: 0px 0px;
+  padding-top: 40px;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -165,8 +165,7 @@ a.nav-a {
 @media (min-width: 992px) {
   .masthead,
   .mastfoot,
-  .cover-container,
-  .container {
+  .cover-container{
     width: 850px;
   }
 }
@@ -274,6 +273,82 @@ hr {
   border: 0;
   margin-top: 8rem;
   margin-bottom: 8rem;
+}
+
+/**
+* Search Bar Styling
+*/
+
+@media(min-width: 768px){
+  .container{
+    display:table;
+  }
+  .brand{
+    display: table-cell;
+
+  }
+  .nav-div{
+    display: table-cell;
+  }
+
+  .search-div{
+    display: table-cell;
+  }
+}
+
+}
+
+@media(min-width: :992px){
+  .container{
+    display:table;
+  }
+  .brand{
+    display: table-cell;
+
+  }
+  .nav-div{
+    display: table-cell;
+  }
+
+  .search-div{
+    display: table-cell;
+  }
+}
+
+@media(min-width: 1200px){
+  .search-group {
+    position: relative;
+    top:5px;
+    left:200px;
+  }
+  .container{
+    display:table;
+  }
+  .brand{
+    display: table-cell;
+
+  }
+  .nav-div{
+    display: table-cell;
+  }
+
+  .search-div{
+    display: table-cell;
+  }
+
+  ul.nav.masthead-nav {
+    position: relative;
+    left:250px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 767px) {
+}
+
+
+.search-btn {
+  width:20px;
 }
 
 .dropdown-menu {
