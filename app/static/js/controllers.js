@@ -297,8 +297,44 @@ angular.module('controllers', ['ui.bootstrap'])
  * ILDB Page Controller
  * Exercises the API of the Internet Legislative Database project.
  */
-.controller('ILDBCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-    $scope.content = 'dummyText';
+.controller('ILDBCtrl', ['$scope', '$routeParams', 'ILDBService', function($scope, $routeParams, ILDBService) {
+    ILDBService.getLegislators().then(function(data) {
+        var allLegislators = data.legislators;
+
+        // Separate Legislators by state
+        var states = {};
+        allLegislators.forEach(function(person) {
+            if(person.state in states) {
+                states[person.state].push(person);
+            }
+            else {
+                states[person.state] = [];
+                states[person.state].push(person);
+            }
+        });
+
+        // Seaparate Legislators by party (within each state)
+        $scope.partiesByState = {};
+        for(var state in states) {
+            if(states.hasOwnProperty(state)) {
+                var state_legislators = states[state];
+                $scope.partiesByState[state] = {"Democrats": [], "Republicans": []};
+                state_legislators.forEach(function(person) {
+                    if(person.party === "Democrat") {
+                        $scope.partiesByState[state]["Democrats"].push(person);
+                    }
+                    if(person.party === "Republican") {
+                        $scope.partiesByState[state]["Republicans"].push(person);
+                    }
+                });
+            }
+        }
+
+        // A function that returns legislator information about a specific state
+        $scope.getStateLegislators = function(state) {
+            $scope.displayedInfo = $scope.partiesByState[state];
+        };
+    });
 }])
 
 /**

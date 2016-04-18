@@ -100,4 +100,13 @@ angular.module('services',[])
                 });
             }
         }
+    })
+    .factory('ILDBService', function($http) {
+        return {
+            getLegislators : function() {
+                return $http.get('/get_legislators').then(function(result) {
+                    return result.data;
+                });
+            }
+        }
     });

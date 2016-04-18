@@ -366,6 +366,20 @@ def run_tests():
     return json.dumps({'output': str(output)})
 
 
+# -------------
+# ILDB API call
+# -------------
+
+@app.route('/get_legislators')
+def get_legislators():
+    legislators = requests.get('http://ildb.me/api/legislators')
+    return json.dumps({'legislators': legislators.json()})
+
+
+# ---------------
+# Main page route
+# ---------------
+
 @app.route('/')
 def splash():
     return send_file('index.html')
@@ -373,6 +387,3 @@ def splash():
 
 if __name__ == "__main__":
     manager.run()
-    #Commenting out this for now based on what
-    # was in the Carina tutorial
-    # app.run(host='0.0.0.0', debug=True)
