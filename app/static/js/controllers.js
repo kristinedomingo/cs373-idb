@@ -335,6 +335,7 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
             $scope.currentState = state;
             $scope.displayedInfo = $scope.partiesByState[state];
             $scope.labels = ["Democrats", "Republicans"];
+            $scope.colors = ['#97BBCD', '#F7464A'];
 
             // Calculate donut percentages
             var totalDemocrats = $scope.displayedInfo["Democrats"].length;

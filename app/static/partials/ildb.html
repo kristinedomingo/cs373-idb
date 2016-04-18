@@ -18,10 +18,14 @@
     <!-- Information about the state -->
     <div id="stateInfo">
         <span class="title">{{currentState}}</span>
-        <canvas id="doughnut" class="chart chart-doughnut" chart-data="data"
-                chart-labels="labels">
-        </canvas>
+        <div id="graph">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-data="data"
+                    chart-labels="labels" chart-colours="colors">
+            </canvas>
+        </div>
     </div>
+
+    <hr ng-show="currentState">
 
     <!-- Information about the state's Legislators -->
     <div class="row" ng-show="currentState">
