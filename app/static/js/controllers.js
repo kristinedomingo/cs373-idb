@@ -283,7 +283,7 @@ angular.module('controllers', ['ui.bootstrap'])
 }])
 
 /**
- * Seach Results Page Controller
+ * Search Results Page Controller
  * Parses and displays search result information.
  */
 .controller('SearchCtrl', ['$scope', '$routeParams', 'searchService', function($scope, $routeParams, searchService) {
@@ -291,6 +291,14 @@ angular.module('controllers', ['ui.bootstrap'])
     searchService.performSearch($routeParams.table, $routeParams.searchTerm).then(function(data) {
         $scope.content = data;
     });
+}])
+
+/**
+ * ILDB Page Controller
+ * Exercises the API of the Internet Legislative Database project.
+ */
+.controller('ILDBCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    $scope.content = 'dummyText';
 }])
 
 /**

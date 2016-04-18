@@ -60,6 +60,11 @@ sweetMusicApp
                 controller : 'SearchCtrl',
                 css : 'css/search.css'
             }).
+            when('/ildb', {
+                templateUrl : 'partials/ildb.html',
+                controller : 'ILDBCtrl',
+                css : 'css/ildb.css'
+            }).
             otherwise({
                 redirectTo: '/'
             });
