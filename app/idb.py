@@ -11,7 +11,7 @@ from models import Artist, Album, Track, artists, artists2
 from helpers import pull_spotify_artists, pull_spotify_tracks, pull_spotify_albums, artist_json, album_json, track_json
 import sys
 
-DEFAULT_PAGE_SIZE = 1000000000
+DEFAULT_PAGE_SIZE = 20
 
 # ---------------
 # get_artist_data
