@@ -1,0 +1,79 @@
+.scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+}
+
+.selectStateBtn {
+    background-color: #26A69A;
+    border-radius: 10px;
+    border: 0px;
+    text-decoration: none !important;
+}
+
+.selectStateBtn:hover {
+    color: #26A69A;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #26A69A;
+    text-decoration: none;
+    -o-transition: .4s;
+    -ms-transition: .4s;
+    -moz-transition: .4s;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.selectStateBtn:active,
+.open>.dropdown-toggle.btn-primary,
+.open>.dropdown-toggle.btn-primary:focus,
+.open>.dropdown-toggle.btn-primary:hover {
+    background-color: #26A69A;
+}
+
+#stateInfo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: block;
+    text-align: center;
+}
+
+.legislator {
+    font-size: 1.5rem;
+    border: 5px double rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.name {
+   font-size: 4rem;
+   font-family: 'Roboto Slab', sans-serif;
+   display: block;
+   color: #009688;
+}
+
+.description {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: block;
+}
+
+.attribute {
+    font-weight: 700;
+}
+
+.photo {
+    border-radius: 3px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.personInfo {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

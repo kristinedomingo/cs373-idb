@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-angular.module('controllers', ['ui.bootstrap'])
+angular.module('controllers', ['ui.bootstrap', 'chart.js'])
 
 /**
  * Splash Page Controller
@@ -332,7 +332,14 @@ angular.module('controllers', ['ui.bootstrap'])
 
         // A function that returns legislator information about a specific state
         $scope.getStateLegislators = function(state) {
+            $scope.currentState = state;
             $scope.displayedInfo = $scope.partiesByState[state];
+            $scope.labels = ["Democrats", "Republicans"];
+
+            // Calculate donut percentages
+            var totalDemocrats = $scope.displayedInfo["Democrats"].length;
+            var totalRepublicans = $scope.displayedInfo["Republicans"].length;
+            $scope.data = [totalDemocrats, totalRepublicans];
         };
     });
 }])

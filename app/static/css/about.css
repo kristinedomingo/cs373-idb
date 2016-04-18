@@ -61,7 +61,10 @@ html {
     transition: .4s;
 }
 
-.clearBtn:active {
+.clearBtn:active,
+.open>.dropdown-toggle.btn-primary,
+.open>.dropdown-toggle.btn-primary:focus,
+.open>.dropdown-toggle.btn-primary:hover {
     background-color: #26A69A;
 }
 
