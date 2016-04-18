@@ -1,1 +1,72 @@
-{{content}}
+<link rel="stylesheet" href="../css/angular-chart.min.css">
+<link rel="stylesheet" href="../css/ildb.css?version=2.0">
+<div ng-controller="ILDBCtrl">
+    <!-- State selection -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle selectStateBtn"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select a State <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu scrollable-menu">
+            <li ng-repeat="(state, people) in partiesByState">
+                <a href="" ng-click="getStateLegislators(state)">{{state}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Information about the state -->
+    <div id="stateInfo">
+        <span class="title">{{currentState}}</span>
+        <div id="graph">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-data="data"
+                    chart-labels="labels" chart-colours="colors">
+            </canvas>
+        </div>
+    </div>
+
+    <hr ng-show="currentState">
+
+    <!-- Information about the state's Legislators -->
+    <div class="row" ng-show="currentState">
+        <div class="col-md-6">
+            <span class="title">Democrats</span>
+            <div class="col-md-12 legislator" ng-repeat="person in displayedInfo.Democrats">
+                <span class="name">{{person.firstname}} {{person.lastname}}</span>
+                <img src="{{person.photo_link}}" class="photo">
+                <span class="description">{{person.description}}</span>
+                <table class="personInfo">
+                    <tr>
+                        <td><span class="attribute">Birthday: </span>{{person.birthday}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="attribute">Start Date: </span>{{person.start_date}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="attribute">Title: </span>{{person.title}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span class="title">Republicans</span>
+            <div class="col-md-12 legislator" ng-repeat="person in displayedInfo.Republicans">
+                <span class="name">{{person.firstname}} {{person.lastname}}</span>
+                <img src="{{person.photo_link}}" class="photo">
+                <span class="description">{{person.description}}</span>
+                <table class="personInfo">
+                    <tr>
+                        <td><span class="attribute">Birthday: </span>{{person.birthday}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="attribute">Start Date: </span>{{person.start_date}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="attribute">Title: </span>{{person.title}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
