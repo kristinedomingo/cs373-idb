@@ -7,15 +7,15 @@
         Search and explore information about your favorite artists, albums, and tracks.
     </p>
     <div class="input-group" id="searchArea">
-        <input type="text" class="form-control" placeholder="Search the database" aria-label="...">
+        <input type="text" class="form-control" placeholder="Search the database" aria-label="..." ng-model="searchTerm">
         <div class="input-group-btn">
             <button type="button" class="btn btn-default droptown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search All Tables&nbsp;<span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#">Search All Tables</a></li>
+                <li><a href="#/results/all/{{searchTerm}}">Search All Tables</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Search Artists</a></li>
-                <li><a href="#">Search Albums</a></li>
-                <li><a href="#">Search Tracks</a></li>
+                <li><a href="#/results/artists/{{searchTerm}}">Search Artists</a></li>
+                <li><a href="#/results/albums/{{searchTerm}}">Search Albums</a></li>
+                <li><a href="#/results/tracks/{{searchTerm}}">Search Tracks</a></li>
             </ul>
         </div>
     </div>

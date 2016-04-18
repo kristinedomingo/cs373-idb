@@ -91,4 +91,13 @@ angular.module('services',[])
                 });
             }
         }
+    })
+    .factory('searchService', function($http) {
+        return {
+            performSearch : function(table, searchTerm) {
+                return $http.get('/search/' + table + '?searchterm=' + searchTerm).then(function(result){
+                    return result.data;
+                });
+            }
+        }
     });

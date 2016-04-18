@@ -283,6 +283,17 @@ angular.module('controllers', ['ui.bootstrap'])
 }])
 
 /**
+ * Seach Results Page Controller
+ * Parses and displays search result information.
+ */
+.controller('SearchCtrl', ['$scope', '$routeParams', 'searchService', function($scope, $routeParams, searchService) {
+    // Perform the search
+    searchService.performSearch($routeParams.table, $routeParams.searchTerm).then(function(data) {
+        $scope.content = data;
+    });
+}])
+
+/**
  * Navigation Controller
  * Underlines the link to the page the user is currently on.
  */

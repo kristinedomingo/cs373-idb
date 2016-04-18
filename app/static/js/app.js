@@ -55,6 +55,11 @@ sweetMusicApp
                 controller : 'AboutCtrl',
                 css : 'css/about.css'
             }).
+            when('/results/:table/:searchTerm', {
+                templateUrl : 'partials/search.html',
+                controller : 'SearchCtrl',
+                css : 'css/search.css'
+            }).
             otherwise({
                 redirectTo: '/'
             });
