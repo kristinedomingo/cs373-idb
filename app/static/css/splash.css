@@ -5,19 +5,11 @@ body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    background-color: #ee6e73;
+    background-color: #26A69A;
     font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 768px) {
-    body {
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: left bottom;
-        background-image: url('../imgs/splash.png');
-        background-size: contain;
-    }
-
     /* Pull out the header and footer */
     .masthead {
         position: fixed;
@@ -73,7 +65,7 @@ h1 {
 
 @media (min-width: 768px) {
     #titleText {
-        font-size: 15rem;
+        font-size: 12rem;
     }
 }
 
@@ -89,7 +81,7 @@ h1 {
 
 @media (min-width: 768px) {
     #smallText {
-        font-size: 2.5rem;
+        font-size: 2rem;
         padding: 0;
     }
 }
@@ -109,24 +101,24 @@ h1 {
 
 .btn {
     color: #fff;
-    background-color: #26A69A;
-    border-color: #1d8076;
+    background-color: #EE6E73;
+    border-color: #EF595E;
     border-top-right-radius: 4px !important;
     border-bottom-right-radius: 4px !important;
 }
 
 .btn:hover {
     color: #fff;
-    background-color: #2ecabb;
-    border-color: #1d8076;
+    background-color: #F09EA1;
+    border-color: #EF595E;
 }
 
 .dropdown-menu li a{
-    color: #1d8076;
+    color: #9C484C;
 }
 
 .dropdown-menu li a:hover{
-    color: #1d8076;
+    color: #9C484C;
 }
 
 input[type="text"]:focus {
@@ -152,4 +144,17 @@ input[type="text"]:focus {
 .masthead-nav > .active > a:focus {
   color: rgba(255, 255, 255, 1.0);
   color: rgba(255, 255, 255, 1.0);
+}
+
+
+#splashImg {
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    #splashImg {
+        padding: 0;
+    }
 }

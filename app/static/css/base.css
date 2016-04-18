@@ -102,6 +102,7 @@ body {
 .nav-class {
   background: #ee6e73;
   border-color: #ee6e73;
+  border-bottom: 5px double #fdfdfd;
 }
 
 .nav-container {
