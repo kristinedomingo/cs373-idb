@@ -90,21 +90,6 @@ body {
   border-bottom-color: #FFFFFF;
 }
 
-  .container{
-    display:table;
-  }
-  .brand{
-    display: table-cell;
-
-  }
-  .nav-div{
-    display: table-cell;
-  }
-
-  .search-div{
-    display: table-cell;
-  }
-
 .nav-class {
   background: #ee6e73;
   border-color: #ee6e73;
@@ -289,34 +274,61 @@ hr {
   }
 }
 
-/* Masthead and brand styling
+/**
+* Nav/Search Bar Styling
+* AND Masthead and brand positioning
+* Everything above 768px
 */
-ul.nav.masthead-nav {
-    position: relative;
-    left:250px;
+@media not all and (max-width:768px){
+  .container{
+    display:table;
+  }
+  .brand{
+    display: table-cell;
+
+  }
+  .nav-div{
+    display: table-cell;
   }
 
-h3.masthead-brand {
-  position:relative;
-  bottom: 2px;
-}
+  .search-div{
+    display: table-cell;
+  }
 
-/**
-* Search Bar Styling
-*/
-
-.search-group {
+  .search-group {
     position: relative;
     top:5px;
     left:200px;
+  }
+  .search-btn {
+    width:30px;
+  }
+
+  ul.nav.masthead-nav {
+      position: relative;
+      left:250px;
+    }
+
+  h3.masthead-brand {
+    position:relative;
+    bottom: 2px;
+  }
 }
 
-.search-btn {
-  width:30px;
+@media (max-width: 768px){
+  .search-group{
+    margin-top: 10px;
+    position: relative;
+    width: 200px;
+    left: 25%;
+  }
 }
+
+
 .search-icon{
   position:relative;
   right:5px;
+  color:white;
 }
 
 button.search-btn {
