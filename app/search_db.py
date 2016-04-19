@@ -70,7 +70,8 @@ def search_db(type, word):
 		search_and=temp
 
 	#print(search_and)
-	return ors
+	json={'and':search_and, 'or':ors}
+	return json
 	
 def find_word_artist(word, artist):
 	x=artist.name.find(word)
