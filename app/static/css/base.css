@@ -179,6 +179,12 @@ a.nav-a {
   }
 }
 
+@media(max-width: 768px){
+  .bodyText{
+    padding-top:50px;
+  }
+}
+
 .bodyText {
   margin-top: 0rem;
   font-size: 1.6rem;
@@ -321,6 +327,7 @@ hr {
     position: relative;
     width: 200px;
     left: 25%;
+    right:25%;
   }
 }
 
