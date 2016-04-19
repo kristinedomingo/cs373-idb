@@ -31,6 +31,7 @@ body {
   min-height: 100%;
 }
 .site-wrapper-inner {
+  padding-top: 50px;
   display: table-cell;
   vertical-align: top;
 }
@@ -89,14 +90,20 @@ body {
   border-bottom-color: #FFFFFF;
 }
 
-/*@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
+  .container{
+    display:table;
   }
-  .masthead-nav {
-    float: right;
+  .brand{
+    display: table-cell;
+
   }
-}*/
+  .nav-div{
+    display: table-cell;
+  }
+
+  .search-div{
+    display: table-cell;
+  }
 
 .nav-class {
   background: #ee6e73;
@@ -275,80 +282,45 @@ hr {
   margin-bottom: 8rem;
 }
 
+/* Portrait phones and smaller */
+@media(min-width: 768px){
+  .search-group {
+    top:5px;
+  }
+}
+
+/* Masthead and brand styling
+*/
+ul.nav.masthead-nav {
+    position: relative;
+    left:250px;
+  }
+
+h3.masthead-brand {
+  position:relative;
+  bottom: 2px;
+}
+
 /**
 * Search Bar Styling
 */
 
-@media(min-width: 768px){
-  .container{
-    display:table;
-  }
-  .brand{
-    display: table-cell;
-
-  }
-  .nav-div{
-    display: table-cell;
-  }
-
-  .search-div{
-    display: table-cell;
-  }
-}
-
-}
-
-@media(min-width: :992px){
-  .container{
-    display:table;
-  }
-  .brand{
-    display: table-cell;
-
-  }
-  .nav-div{
-    display: table-cell;
-  }
-
-  .search-div{
-    display: table-cell;
-  }
-}
-
-@media(min-width: 1200px){
-  .search-group {
+.search-group {
     position: relative;
     top:5px;
     left:200px;
-  }
-  .container{
-    display:table;
-  }
-  .brand{
-    display: table-cell;
-
-  }
-  .nav-div{
-    display: table-cell;
-  }
-
-  .search-div{
-    display: table-cell;
-  }
-
-  ul.nav.masthead-nav {
-    position: relative;
-    left:250px;
-  }
 }
-
-/* Portrait phones and smaller */
-@media (max-width: 767px) {
-}
-
 
 .search-btn {
-  width:20px;
+  width:30px;
+}
+.search-icon{
+  position:relative;
+  right:5px;
+}
+
+button.search-btn {
+  background-color: #26a69a;
 }
 
 .dropdown-menu {
