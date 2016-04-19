@@ -32,24 +32,26 @@
                     <div class="inner">
                         <nav class="nav-class navbar navbar-masthead navbar-default navbar-fixed-top" ng-controller="NavCtrl">
                             <div class="container nav-container">
-                                <div class="brand"><h3 class="masthead-brand"><a href="#/">SWEet Music</a></h3></div> 
+                                <div class="brand">
+                                    <h3 class="masthead-brand"><a href="#/">SWEet Music</a></h3></div>
                                 <div class="nav-div">
-                                <ul class="nav masthead-nav">
-                                    <!-- http://stackoverflow.com/questions/16199418/how-do-i-
-                                    implement-the-bootstrap-navbar-active-class-with-angular-js-->
-                                    <li ng-class="{ active : isActive('/about')}"><a class="nav-a" href="#/about">About</a></li>
-                                    <li ng-class="{ active : isActive('/albums')}"><a class="nav-a" href="#/albums">Albums</a></li>
-                                    <li ng-class="{ active : isActive('/artists')}"><a class="nav-a" href="#/artists">Artists</a></li>
-                                    <li ng-class="{ active : isActive('/tracks')}"><a class="nav-a" href="#/tracks">Tracks</a></li>
-                                </ul></div> 
+                                    <ul class="nav masthead-nav">
+                                        <!-- http://stackoverflow.com/questions/16199418/how-do-i-
+                                        implement-the-bootstrap-navbar-active-class-with-angular-js-->
+                                        <li ng-class="{ active : isActive('/about')}"><a class="nav-a" href="#/about">About</a></li>
+                                        <li ng-class="{ active : isActive('/albums')}"><a class="nav-a" href="#/albums">Albums</a></li>
+                                        <li ng-class="{ active : isActive('/artists')}"><a class="nav-a" href="#/artists">Artists</a></li>
+                                        <li ng-class="{ active : isActive('/tracks')}"><a class="nav-a" href="#/tracks">Tracks</a></li>
+                                    </ul>
+                                </div>
                                 <div class="search-div">
-                                <div class="input-group search-group">
+                                    <div class="input-group input-group-sm search-group">
                                         <input type="text" class="form-control" placeholder="Search..."></input>
                                         <span class="input-group-btn search-btn">
                                             <button class="search-btn btn btn-default" type="button"><span class="glyphicon glyphicon-search search-icon" aria-hidden="true"></span></button>
                                         </span>
-                                </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div>
                         </nav>
                     </div>
