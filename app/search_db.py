@@ -8,46 +8,70 @@ def search_db(type, word):
 	artists= Artist.query.all()
 	tracks = Track.query.all()
 	albums = Album.query.all()
-	items ={}
-	combo= combo_words(words)
+	ors ={}
+	ands=[]
 
-	for i in combo:
-		items[i]={}
-		for word in combo[i]:
-			print("******")
-			print(word)
-			print("****|\n")
-			if 'artist' not in items[i]:
-					items[i]['artist']=[]
-			if 'track' not in items[i]:
-				items[i]['track']=[]
-			if 'album' not in items[i]:
-				items[i]['album']=[]
-
-			if i !=1:
-				artists=items[i-1]['artist']
-				tracks=items[i-1]['track']
-				albums=items[i-1]['album']
-
-
+	for word in words:
+		print("******")
+		print(word)
+		print("****|\n")
+		if word not in ors:
+			ors[word]={}
+		if 'artists' not in ors[word]:
+			ors[word]['artists']=[]
+		if 'tracks' not in ors[word]:
+			ors[word]['tracks']=[]
+		if 'albums' not in ors[word]:
+			ors[word]['albums']=[]	
+		for artist in artists:
+			x=find_word_artist(word, artist)
 			
-			for artist in artists:
-				x=find_word_artist(word, artist)
-				
-				if x != -1:
-					items[i]['artist'].append(artist)
-					print (artist)
-			for track in tracks:
-				x=find_word_track(word, track)
-				if x != -1:
-					items[i]['track'].append(track)
-					print (track)
-			for album in albums:
-				x=find_word_album(word, album)
-				if x != -1:
-					items[i]['album'].append(album)
-					print (album)
-	return items
+			if x != -1:
+				ors[word]['artists'].append(artist)
+				print (artist)
+		for track in tracks:
+			x=find_word_track(word, track)
+			if x != -1:
+				ors[word]['tracks'].append(track)
+				print (track)
+		for album in albums:
+			x=find_word_album(word, album)
+			if x != -1:
+				ors[word]['albums'].append(album)
+				print (album)
+	and_words= iter(words)
+	search_and=ors[next(and_words)]
+	temp={}
+	
+	for word in and_words:
+		temp['artists']=[]
+		temp['tracks']=[]
+		temp['albums']=[]
+		for model in search_and:
+			for data in search_and[model]:
+				if model == 'artists':
+					x=find_word_artist(word, data)
+					print(data)
+					if x != -1:
+						temp['artists'].append(data)
+						#print (artist)
+				if model == 'tracks':
+					print(data)
+					x=find_word_track(word, data)
+					if x != -1:
+						temp['tracks'].append(data)
+						print (track)
+				if model == 'albums':
+					print(data)
+					x=find_word_album(word, data)
+					if x != -1:
+						temp['albums'].append(data)
+						#print (album)
+		search_and=temp
+
+	#print(search_and)
+	return ors
+	
 def find_word_artist(word, artist):
 	x=artist.name.find(word)
 	if x !=-1:
