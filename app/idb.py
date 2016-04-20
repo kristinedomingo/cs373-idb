@@ -10,6 +10,7 @@ from initializing_db import create_sweetmusic_db
 from models import Artist, Album, Track, artists, artists2
 from helpers import pull_spotify_artists, pull_spotify_tracks, pull_spotify_albums, artist_json, album_json, track_json
 import sys
+from search_db import search_db
 
 DEFAULT_PAGE_SIZE = 20
 
@@ -309,39 +310,9 @@ def search(table):
         req['table'] = 'all'
 
     req['searchterm'] = request.args['searchterm']
-    results = {}
-    results['artists'] = Artist.query.limit(5).all()
-    results['albums']  = Album.query.limit(5).all()
-    results['tracks']  = Track.query.limit(5).all()
-    # results = search_db(request.args['searchterm'])
+    results = search_db(request.args['searchterm'])
 
-    json = {}
-
-    if table == 'artists' or table == 'all':
-        json['artists'] = []
-        for artist in results['artists']:
-            json['artists'].append({
-                'name': artist.name,
-                'img': artist.col_img
-                })
-
-    if table == 'albums' or table == 'all':
-        json['albums'] = []
-        for album in results['albums']:
-            json['albums'].append({
-                'name': album.name,
-                'img': album.col_img
-                })
-
-    if table == 'tracks' or table == 'all':
-        json['tracks'] = []
-        for track in results['tracks']:
-            json['tracks'].append({
-                'name': track.title,
-                'img': track.col_img
-                })
-
-    return jsonify(json)
+    return jsonify(results)
 
 @manager.command
 def create_db():

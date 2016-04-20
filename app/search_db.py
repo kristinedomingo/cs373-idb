@@ -3,7 +3,7 @@ from db import db
 from models import Artist, Track, Album
 import collections
 
-def search_db(type, word):
+def search_db(word):
 	words=re.split(' ', word)
 	artists= Artist.query.all()
 	tracks = Track.query.all()
@@ -12,9 +12,6 @@ def search_db(type, word):
 	ands=[]
 
 	for word in words:
-		print("******")
-		print(word)
-		print("****|\n")
 		if word not in ors:
 			ors[word]={}
 		if 'artists' not in ors[word]:
@@ -27,17 +24,17 @@ def search_db(type, word):
 			x=find_word_artist(word, artist)
 			
 			if x != -1:
-				ors[word]['artists'].append(artist)
+				ors[word]['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id})
 				print (artist)
 		for track in tracks:
 			x=find_word_track(word, track)
 			if x != -1:
-				ors[word]['tracks'].append(track)
+				ors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
 				print (track)
 		for album in albums:
 			x=find_word_album(word, album)
 			if x != -1:
-				ors[word]['albums'].append(album)
+				ors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
 				print (album)
 	and_words= iter(words)
 	search_and=ors[next(and_words)]

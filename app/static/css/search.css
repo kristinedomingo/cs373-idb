@@ -1,0 +1,10 @@
+.searchTable th a {
+    text-align: center;
+}
+
+.tableTitle {
+    font-size: 4rem;
+    font-family: 'Roboto Slab', sans-serif;
+    display: block;
+    color: #009688;
+}

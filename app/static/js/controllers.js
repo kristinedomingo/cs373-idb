@@ -290,7 +290,8 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
 .controller('SearchCtrl', ['$scope', '$routeParams', 'searchService', function($scope, $routeParams, searchService) {
     // Perform the search
     searchService.performSearch($routeParams.table, $routeParams.searchTerm).then(function(data) {
-        $scope.content = data;
+        $scope.searchTerm = $routeParams.searchTerm;
+        $scope.results = data;
     });
 }])
 
@@ -356,7 +357,6 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
     }
 
     $scope.$on('$routeChangeSuccess', function(){
-      console.log("triggered");
       $scope.isSplash = function(){
         return !($location.path() == "/");
       }

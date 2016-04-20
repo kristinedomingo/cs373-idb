@@ -158,3 +158,19 @@ input[type="text"]:focus {
         padding: 0;
     }
 }
+
+.cover {
+    padding-top: 0;
+}
+
+.site-wrapper-inner {
+    padding: 0;
+}
+
+.brand h3 {
+    vertical-align: middle;
+}
+
+.masthead-brand {
+    margin-bottom: 0;
+}
