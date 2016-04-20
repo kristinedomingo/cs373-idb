@@ -47,8 +47,9 @@ def search_db(word):
 	json_and=ors[next_w]
 	temp={}
 	temp2={}
-	
+	print("ASDFASDFASDFASDFADF")
 	for word in and_words:
+		print(word)
 		temp['artists']=[]
 		temp['tracks']=[]
 		temp['albums']=[]
@@ -59,28 +60,30 @@ def search_db(word):
 			for data,json in zip(search_and[model],json_and[model]):
 				if model == 'artists':
 					x=find_word_artist(word, data)
-					print(data)
+					
 					if x != -1:
+						print(data)
 						temp['artists'].append(data)
 						temp2['artists'].append(json)
 						#print (artist)
 				if model == 'tracks':
-					print(data)
+					
 					x=find_word_track(word, data)
 					if x != -1:
+						print(data)
 						temp['tracks'].append(data)
 						temp2['tracks'].append(json)
 						print (track)
 				if model == 'albums':
-					print(data)
 					x=find_word_album(word, data)
 					if x != -1:
+						print(data)
 						temp['albums'].append(data)
 						temp2['albums'].append(json)
 						#print (album)
-		search_and=temp
-		json_and=temp2
-	print(json_and)
+		search_and=temp.copy()
+		json_and=temp2.copy()
+	#print(json_and)
 	json={'and':json_and, 'or':ors}
 	return json
 	
@@ -144,4 +147,4 @@ def combo_words(words):
 	return combo
 
 if __name__ == "__main__":
-    search_db( "Kanye West")
+    search_db( "All My Life")
