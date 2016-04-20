@@ -1,6 +1,6 @@
 <link href="../css/search.css" rel="stylesheet">
 <link href="../css/toggle-switch.css" rel="stylesheet">
-<div class="bodyText">
+<div class="bodyText" ng-controller="SearchCtrl">
     <span class="title">Search Results for '{{searchTerm}}'</span>
     <label class="switch-light" onclick="">
         <input type="checkbox">
@@ -10,11 +10,11 @@
             <a class="btn btn-primary switch-btn"></a>
         </span>
     </label>
-    <div ng-controller="SearchCtrl">
+    <div>
         <div ng-show="table == 'albums' || table == 'all'">
             <span class="tableTitle">Albums</span>
-            <p ng-show="results[switch].albums.length == 0">No albums found!</p>
-            <table class="table searchTable" ng-show="results[switch].albums.length != 0">
+            <p ng-show="displayed_albums.length == 0">No albums found!</p>
+            <table class="table searchTable" ng-show="displayed_albums.length != 0">
                 <tr>
                     <th class="imgCol"></th>
                     <th id="albumCol">
@@ -26,7 +26,7 @@
                         <a href="">Context</a>
                     </th>
                 </tr>
-                <tr ng-repeat="album in results[switch].albums">
+                <tr ng-repeat="album in displayed_albums">
                     <td>
                         <a href="#/albums/{{album.id}}">
                             <img class="colImg" ng-src={{album.img}}>
@@ -44,8 +44,8 @@
 
         <div ng-show="table == 'artists' || table == 'all'">
             <span class="tableTitle">Artists</span>
-            <p ng-show="results[switch].artists.length == 0">No artists found!</p>
-            <table class="table searchTable" ng-show="results[switch].artists.length != 0">
+            <p ng-show="displayed_artists.length == 0">No artists found!</p>
+            <table class="table searchTable" ng-show="displayed_artists.length != 0">
                 <tr>
                     <th class="imgCol"></th>
                     <th id="artistCol">
@@ -57,7 +57,7 @@
                         <a href="">Context</a>
                     </th>
                 </tr>
-                <tr ng-repeat="artist in results[switch].artists">
+                <tr ng-repeat="artist in displayed_artists">
                     <td>
                         <a href="#/artists/{{artist.id}}">
                             <img class="colImg" ng-src={{artist.img}}>
@@ -75,8 +75,8 @@
 
         <div ng-show="table == 'tracks' || table == 'all'">
             <span class="tableTitle">Tracks</span>
-            <p ng-show="results[switch].tracks.length == 0">No tracks found!</p>
-            <table class="table searchTable" ng-show="results[switch].tracks.length != 0">
+            <p ng-show="displayed_tracks.length == 0">No tracks found!</p>
+            <table class="table searchTable" ng-show="displayed_tracks.length != 0">
                 <tr>
                     <th class="imgCol"></th>
                     <th id="trackCol">
@@ -88,7 +88,7 @@
                         <a href="">Context</a>
                     </th>
                 </tr>
-                <tr ng-repeat="track in results[switch].tracks">
+                <tr ng-repeat="track in displayed_tracks">
                     <td>
                         <a href="#/tracks/{{track.id}}">
                             <img class="colImg" ng-src={{track.img}}>
