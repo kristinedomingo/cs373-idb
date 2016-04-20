@@ -10,16 +10,16 @@
 }
 
 .imgCol {
-    width: 20%
+    width: 10%
 }
 
 #albumCol, #artistCol, #trackCol {
-    width: 40%;
+    width: 45%;
     text-align: center;
 }
 
 .contextCol {
-    width: 40%;
+    width: 45%;
     text-align: center;
 }
 
