@@ -9,6 +9,33 @@
     color: #009688;
 }
 
+.imgCol {
+    width: 20%
+}
+
+#albumCol, #artistCol, #trackCol {
+    width: 40%;
+    text-align: center;
+}
+
+.contextCol {
+    width: 40%;
+    text-align: center;
+}
+
+.colImg {
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 50px;
+    object-fit: cover;
+}
+
+.detailsLink {
+    display: block;
+}
+
 label {
     margin: auto;
     text-align: center;
