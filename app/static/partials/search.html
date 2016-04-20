@@ -1,6 +1,15 @@
 <link href="../css/search.css" rel="stylesheet">
+<link href="../css/toggle-switch.css" rel="stylesheet">
 <div class="bodyText">
     <span class="title">Search Results for '{{searchTerm}}'</span>
+    <label class="switch-light" onclick="">
+        <input type="checkbox">
+        <span class="well" ng-click="toggleSwitch()">
+            <span>And</span>
+            <span>Or</span>
+            <a class="btn btn-primary switch-btn"></a>
+        </span>
+    </label>
     <div ng-controller="SearchCtrl">
         <span class="tableTitle">Albums</span>
         <table class="table searchTable">
@@ -12,7 +21,7 @@
                     <span ng-show="sortType == 'album_name' && !sortReverseAlbum" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-repeat="album in results.and.albums">
+            <tr ng-repeat="album in results[switch].albums">
                 <td>
                     <a href="#/albums/{{album.id}}">
                         <img class="albumCover" ng-src={{album.img}}>
@@ -33,7 +42,7 @@
                     <span ng-show="sortType == 'artist_name' && !sortReverseArtist" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-repeat="artist in results.and.artists">
+            <tr ng-repeat="artist in results[switch].artists">
                 <td>
                     <a href="#/artists/{{artist.id}}">
                         <img class="artistCover" ng-src={{artist.img}}>
@@ -54,7 +63,7 @@
                     <span ng-show="sortType == 'track_name' && !sortReverseTrack" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-repeat="track in results.and.tracks">
+            <tr ng-repeat="track in results[switch].tracks">
                 <td>
                     <a href="#/tracks/{{track.id}}">
                         <img class="trackCover" ng-src={{track.img}}>
