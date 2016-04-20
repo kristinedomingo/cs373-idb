@@ -30,20 +30,17 @@ def search_db(word):
 			if x != -1:
 				tempors[word]['artists'].append(artist)
 				ors[word]['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id})
-				print (artist)
 		for track in tracks:
 			x=find_word_track(word, track)
 			if x != -1:
-				tempors[word]['tracks'].append(track)
+				tempors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
 				ors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
-				print (track)
 		for album in albums:
 
 			x=find_word_album(word, album)
 			if x != -1:
-				tempors[word]['albums'].append(album)
+				tempors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
 				ors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
-				print (album)
 	and_words= iter(words)
 	next_w=next(and_words)
 	search_and=tempors[next_w]
