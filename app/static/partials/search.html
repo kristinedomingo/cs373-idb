@@ -12,7 +12,8 @@
     </label>
     <div ng-controller="SearchCtrl">
         <span class="tableTitle">Albums</span>
-        <table class="table searchTable">
+        <p ng-show="results[switch].albums.length == 0">No albums found!</p>
+        <table class="table searchTable" ng-show="results[switch].albums.length != 0">
             <tr>
                 <th class="imgCol"></th>
                 <th id="albumCol">
@@ -37,8 +38,11 @@
             </tr>
         </table>
 
+        <hr>
+
         <span class="tableTitle">Artists</span>
-        <table class="table searchTable">
+        <p ng-show="results[switch].artists.length == 0">No artists found!</p>
+        <table class="table searchTable" ng-show="results[switch].artists.length != 0">
             <tr>
                 <th class="imgCol"></th>
                 <th id="artistCol">
@@ -63,8 +67,11 @@
             </tr>
         </table>
 
+        <hr>
+
         <span class="tableTitle">Tracks</span>
-        <table class="table searchTable">
+        <p ng-show="results[switch].tracks.length == 0">No tracks found!</p>
+        <table class="table searchTable" ng-show="results[switch].tracks.length != 0">
             <tr>
                 <th class="imgCol"></th>
                 <th id="trackCol">
