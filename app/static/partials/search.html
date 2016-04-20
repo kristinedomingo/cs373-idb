@@ -1,7 +1,8 @@
 <link href="../css/search.css" rel="stylesheet">
 <link href="../css/toggle-switch.css" rel="stylesheet">
 <div class="bodyText" ng-controller="SearchCtrl">
-    <span class="title">Search Results for '{{searchTerm}}'</span>
+    <span class="title" ng-show="!searchTerm">Searching...</span>
+    <span class="title" ng-show="searchTerm">Search Results for '{{searchTerm}}'</span>
     <label class="switch-light" onclick="">
         <input type="checkbox">
         <span class="well" ng-click="toggleSwitch()">
