@@ -33,13 +33,13 @@ def search_db(word):
 		for track in tracks:
 			x=find_word_track(word, track)
 			if x != -1:
-				tempors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
+				tempors[word]['tracks'].append(track)
 				ors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
 		for album in albums:
 
 			x=find_word_album(word, album)
 			if x != -1:
-				tempors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
+				tempors[word]['albums'].append(album)
 				ors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
 	and_words= iter(words)
 	next_w=next(and_words)
@@ -56,31 +56,31 @@ def search_db(word):
 		temp2['tracks']=[]
 		temp2['albums']=[]
 		for model in search_and:
-			for data in search_and[model]:
+			for data,json in zip(search_and[model],json_and[model]):
 				if model == 'artists':
 					x=find_word_artist(word, data)
 					print(data)
 					if x != -1:
 						temp['artists'].append(data)
-						temp2['artists'].append(json_and[model])
+						temp2['artists'].append(json)
 						#print (artist)
 				if model == 'tracks':
 					print(data)
 					x=find_word_track(word, data)
 					if x != -1:
 						temp['tracks'].append(data)
-						temp2['tracks'].append(json_and[model])
+						temp2['tracks'].append(json)
 						print (track)
 				if model == 'albums':
 					print(data)
 					x=find_word_album(word, data)
 					if x != -1:
 						temp['albums'].append(data)
-						temp2['albums'].append(json_and[model])
+						temp2['albums'].append(json)
 						#print (album)
 		search_and=temp
 		json_and=temp2
-	#print(search_and)
+	print(json_and)
 	json={'and':json_and, 'or':ors}
 	return json
 	
