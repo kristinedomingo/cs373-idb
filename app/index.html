@@ -46,9 +46,11 @@
                                 </div>
                                 <div class="search-div" ng-show="isSplash()">
                                     <div class="input-group input-group-sm search-group">
-                                        <input type="text" class="form-control" placeholder="Search..."></input>
+                                        <input type="text" class="form-control" placeholder="Search..." ng-model="searchTerm"></input>
                                         <span class="input-group-btn search-btn">
-                                            <button class="search-btn btn btn-default" type="button"><span class="glyphicon glyphicon-search search-icon" aria-hidden="true"></span></button>
+                                            <a class="search-btn btn btn-default" type="button" href="#/results/all/{{searchTerm}}">
+                                                <span class="glyphicon glyphicon-search search-icon" aria-hidden="true"></span>
+                                            </a>
                                         </span>
                                     </div>
                                 </div>

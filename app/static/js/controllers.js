@@ -292,6 +292,12 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
     searchService.performSearch($routeParams.table, $routeParams.searchTerm).then(function(data) {
         $scope.searchTerm = $routeParams.searchTerm;
         $scope.results = data;
+        $scope.switch = 'and';
+
+        $scope.toggleSwitch = function() {
+            $scope.switch = ($scope.switch == 'and') ? 'or' : 'and';
+            console.log($scope.switch);
+        }
     });
 }])
 

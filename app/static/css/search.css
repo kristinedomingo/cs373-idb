@@ -8,3 +8,49 @@
     display: block;
     color: #009688;
 }
+
+.imgCol {
+    width: 10%
+}
+
+#albumCol, #artistCol, #trackCol {
+    width: 45%;
+    text-align: center;
+}
+
+.contextCol {
+    width: 45%;
+    text-align: center;
+}
+
+.colImg {
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 50px;
+    object-fit: cover;
+}
+
+.detailsLink {
+    display: block;
+}
+
+label {
+    margin: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.switch-light {
+    width: 100px;
+}
+
+.switch-btn {
+    background-color: #009688;
+    border-color: #009688;
+}
+
+.well {
+    background-color: #75BAB3;
+}
