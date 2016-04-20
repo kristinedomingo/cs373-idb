@@ -291,6 +291,7 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
     // Perform the search
     searchService.performSearch($routeParams.table, $routeParams.searchTerm).then(function(data) {
         $scope.searchTerm = $routeParams.searchTerm;
+        $scope.table = $routeParams.table;
         $scope.results = data;
         $scope.switch = 'and';
 
