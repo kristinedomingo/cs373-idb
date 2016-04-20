@@ -82,9 +82,9 @@ def search_db(word):
 						temp2['albums'].append(json_and[model])
 						#print (album)
 		search_and=temp
-
+		json_and=temp2
 	#print(search_and)
-	json={'and':search_and, 'or':ors}
+	json={'and':json_and, 'or':ors}
 	return json
 	
 def find_word_artist(word, artist):
@@ -128,6 +128,7 @@ def find_word_track(word, track):
 	if x !=-1:
 		return x
 	return x
+
 def combo_words(words):
 	combo=collections.OrderedDict()
 
