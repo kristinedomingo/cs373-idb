@@ -198,6 +198,7 @@ a.nav-a {
 .bodyText {
     margin-top: 0rem;
     font-size: 1.6rem;
+    padding-top: 50px;
 }
 
 .bodyText a {
@@ -295,7 +296,6 @@ hr {
 * Everything above 768px
 */
 
-@media (min-width: 1200px) {}
 
 @media (min-width: 768px) {
     .container {
@@ -310,6 +310,16 @@ hr {
     .search-div {
         display: inline-block;
     }
+
+    .bodyText {
+        margin-top: 0rem;
+        font-size: 1.6rem;
+        padding-top: 0px;
+    }
+}
+
+.search-div {
+    padding-top: 10px;
 }
 
 .search-group {
