@@ -17,7 +17,7 @@ def search_db(word):
 			tempors[word]={}
 		if 'artists' not in ors[word]:
 			ors[word]['artists']=[]
-			tempors[word]['artist']=[]
+			tempors[word]['artists']=[]
 		if 'tracks' not in ors[word]:
 			ors[word]['tracks']=[]
 			tempors[word]['tracks']=[]
@@ -28,7 +28,7 @@ def search_db(word):
 			x=find_word_artist(word, artist)
 			
 			if x != -1:
-				tempors[word]['artist'].append(artist)
+				tempors[word]['artists'].append(artist)
 				ors[word]['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id})
 				print (artist)
 		for track in tracks:
