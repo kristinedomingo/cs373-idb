@@ -8,7 +8,8 @@
         Search and explore information about your favorite artists, albums, and tracks.
     </p>
     <div class="input-group input-group-sm" id="searchArea">
-        <input type="text" class="form-control" placeholder="Search the database" aria-label="..." ng-model="searchTerm">
+        <input type="text" class="form-control" placeholder="Search the database"
+               aria-label="..." ng-model="searchTerm" ng-keydown="$event.which === 13 && search()">
         <div class="input-group-btn">
             <button type="button" class="btn btn-default droptown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search All Tables&nbsp;<span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
