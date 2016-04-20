@@ -296,8 +296,11 @@ hr {
 * Everything above 768px
 */
 
-
 @media (min-width: 768px) {
+    .masthead-brand {
+        position: relative;
+        bottom: 10px;
+    }
     .container {
         display: table;
     }
@@ -310,7 +313,6 @@ hr {
     .search-div {
         display: inline-block;
     }
-
     .bodyText {
         margin-top: 0rem;
         font-size: 1.6rem;
