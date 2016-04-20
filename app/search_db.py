@@ -65,7 +65,7 @@ def search_db(word):
 					print(data)
 					if x != -1:
 						temp['artists'].append(data)
-						temp2['artist'].append(json_and[model])
+						temp2['artists'].append(json_and[model])
 						#print (artist)
 				if model == 'tracks':
 					print(data)
