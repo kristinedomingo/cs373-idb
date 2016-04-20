@@ -1,6 +1,6 @@
 <link href="../css/search.css" rel="stylesheet">
 <link href="../css/toggle-switch.css" rel="stylesheet">
-<div class="bodyText">
+<div class="bodyText" ng-controller="SearchCtrl">
     <span class="title">Search Results for '{{searchTerm}}'</span>
     <label class="switch-light" onclick="">
         <input type="checkbox">
@@ -10,90 +10,96 @@
             <a class="btn btn-primary switch-btn"></a>
         </span>
     </label>
-    <div ng-controller="SearchCtrl">
-        <span class="tableTitle">Albums</span>
-        <p ng-show="results[switch].albums.length == 0">No albums found!</p>
-        <table class="table searchTable" ng-show="results[switch].albums.length != 0">
-            <tr>
-                <th class="imgCol"></th>
-                <th id="albumCol">
-                    <a href="" ng-click="sortType = 'album_name' ; sortReverseAlbum = !sortReverseAlbum; sort()">Album Name</a>
-                    <span ng-show="sortType == 'album_name' && sortReverseAlbum" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'album_name' && !sortReverseAlbum" class="fa fa-caret-up"></span>
-                </th>
-                <th class="contextCol">
-                    <a href="">Context</a>
-                </th>
-            </tr>
-            <tr ng-repeat="album in results[switch].albums">
-                <td>
-                    <a href="#/albums/{{album.id}}">
-                        <img class="colImg" ng-src={{album.img}}>
-                        <span class="detailsLink">Details</span>
-                    </a>
-                </td>
-                <td>{{album.name}}</td>
-                <td>This is some context of the search with some <b>bolded</b>
-                words!</td>
-            </tr>
-        </table>
+    <div>
+        <div ng-show="table == 'albums' || table == 'all'">
+            <span class="tableTitle">Albums</span>
+            <p ng-show="displayed_albums.length == 0">No albums found!</p>
+            <table class="table searchTable" ng-show="displayed_albums.length != 0">
+                <tr>
+                    <th class="imgCol"></th>
+                    <th id="albumCol">
+                        <a href="" ng-click="sortType = 'album_name' ; sortReverseAlbum = !sortReverseAlbum; sort()">Album Name</a>
+                        <span ng-show="sortType == 'album_name' && sortReverseAlbum" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'album_name' && !sortReverseAlbum" class="fa fa-caret-up"></span>
+                    </th>
+                    <th class="contextCol">
+                        <a href="">Context</a>
+                    </th>
+                </tr>
+                <tr ng-repeat="album in displayed_albums">
+                    <td>
+                        <a href="#/albums/{{album.id}}">
+                            <img class="colImg" ng-src={{album.img}}>
+                            <span class="detailsLink">Details</span>
+                        </a>
+                    </td>
+                    <td>{{album.name}}</td>
+                    <td>This is some context of the search with some <b>bolded</b>
+                    words!</td>
+                </tr>
+            </table>
 
-        <hr>
+            <hr>
+        </div>
 
-        <span class="tableTitle">Artists</span>
-        <p ng-show="results[switch].artists.length == 0">No artists found!</p>
-        <table class="table searchTable" ng-show="results[switch].artists.length != 0">
-            <tr>
-                <th class="imgCol"></th>
-                <th id="artistCol">
-                    <a href="" ng-click="sortType = 'artist_name' ; sortReverseArtist = !sortReverseArtist; sort()">Artist Name</a>
-                    <span ng-show="sortType == 'artist_name' && sortReverseArtist" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'artist_name' && !sortReverseArtist" class="fa fa-caret-up"></span>
-                </th>
-                <th class="contextCol">
-                    <a href="">Context</a>
-                </th>
-            </tr>
-            <tr ng-repeat="artist in results[switch].artists">
-                <td>
-                    <a href="#/artists/{{artist.id}}">
-                        <img class="colImg" ng-src={{artist.img}}>
-                        <span class="detailsLink">Details</span>
-                    </a>
-                </td>
-                <td>{{artist.name}}</td>
-                <td>This is some context of the search with some <b>bolded</b>
-                words!</td>
-            </tr>
-        </table>
+        <div ng-show="table == 'artists' || table == 'all'">
+            <span class="tableTitle">Artists</span>
+            <p ng-show="displayed_artists.length == 0">No artists found!</p>
+            <table class="table searchTable" ng-show="displayed_artists.length != 0">
+                <tr>
+                    <th class="imgCol"></th>
+                    <th id="artistCol">
+                        <a href="" ng-click="sortType = 'artist_name' ; sortReverseArtist = !sortReverseArtist; sort()">Artist Name</a>
+                        <span ng-show="sortType == 'artist_name' && sortReverseArtist" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'artist_name' && !sortReverseArtist" class="fa fa-caret-up"></span>
+                    </th>
+                    <th class="contextCol">
+                        <a href="">Context</a>
+                    </th>
+                </tr>
+                <tr ng-repeat="artist in displayed_artists">
+                    <td>
+                        <a href="#/artists/{{artist.id}}">
+                            <img class="colImg" ng-src={{artist.img}}>
+                            <span class="detailsLink">Details</span>
+                        </a>
+                    </td>
+                    <td>{{artist.name}}</td>
+                    <td>This is some context of the search with some <b>bolded</b>
+                    words!</td>
+                </tr>
+            </table>
 
-        <hr>
+            <hr>
+        </div>
 
-        <span class="tableTitle">Tracks</span>
-        <p ng-show="results[switch].tracks.length == 0">No tracks found!</p>
-        <table class="table searchTable" ng-show="results[switch].tracks.length != 0">
-            <tr>
-                <th class="imgCol"></th>
-                <th id="trackCol">
-                    <a href="" ng-click="sortType = 'track_name' ; sortReverseTrack = !sortReverseTrack; sort()">Track Name</a>
-                    <span ng-show="sortType == 'track_name' && sortReverseTrack" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'track_name' && !sortReverseTrack" class="fa fa-caret-up"></span>
-                </th>
-                <th class="contextCol">
-                    <a href="">Context</a>
-                </th>
-            </tr>
-            <tr ng-repeat="track in results[switch].tracks">
-                <td>
-                    <a href="#/tracks/{{track.id}}">
-                        <img class="colImg" ng-src={{track.img}}>
-                        <span class="detailsLink">Details</span>
-                    </a>
-                </td>
-                <td>{{track.name}}</td>
-                <td>This is some context of the search with some <b>bolded</b>
-                words!</td>
-            </tr>
-        </table>
+        <div ng-show="table == 'tracks' || table == 'all'">
+            <span class="tableTitle">Tracks</span>
+            <p ng-show="displayed_tracks.length == 0">No tracks found!</p>
+            <table class="table searchTable" ng-show="displayed_tracks.length != 0">
+                <tr>
+                    <th class="imgCol"></th>
+                    <th id="trackCol">
+                        <a href="" ng-click="sortType = 'track_name' ; sortReverseTrack = !sortReverseTrack; sort()">Track Name</a>
+                        <span ng-show="sortType == 'track_name' && sortReverseTrack" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'track_name' && !sortReverseTrack" class="fa fa-caret-up"></span>
+                    </th>
+                    <th class="contextCol">
+                        <a href="">Context</a>
+                    </th>
+                </tr>
+                <tr ng-repeat="track in displayed_tracks">
+                    <td>
+                        <a href="#/tracks/{{track.id}}">
+                            <img class="colImg" ng-src={{track.img}}>
+                            <span class="detailsLink">Details</span>
+                        </a>
+                    </td>
+                    <td>{{track.name}}</td>
+                    <td>This is some context of the search with some <b>bolded</b>
+                    words!</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
