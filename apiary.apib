@@ -4,6 +4,273 @@ HOST: http://sweetmusic.me/
 # SweetMusic
 Simple API for retrieving information regarding Artists, Albums and Tracks
 
+# Group Search
+
+## Search All Tables [/search/all{?searchterm}]
+<code>/search/all?searchterm={terms}</code><br>
+
+#### Parameters
+- <code>searchterm</code> *(string, required)* - terms to search the database
+
++ Parameters
+    + searchterm: Kanye (string) - terms to search the database
+
+### GET Search All Tables [GET]
++ Response 200
+
+        {
+            "and": {
+                "albums": [
+                  {
+                    "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "Dark Sky Paradise"
+                  },
+                  ...
+                ],
+                "artists": [
+                  {
+                    "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                    "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                    "name": "Kanye West"
+                  }
+                ],
+                "tracks": [
+                  {
+                    "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "All Your Fault"
+                  },
+                  ...
+                ]
+            },
+            "or": {
+                         "Kanye": {
+                  "albums": [
+                    {
+                      "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "Dark Sky Paradise"
+                    },
+                    ...
+                  ],
+                  "artists": [
+                    {
+                      "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                      "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                      "name": "Kanye West"
+                    }
+                  ],
+                  "tracks": [
+                    {
+                      "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "All Your Fault"
+                    },
+                    ...
+                  ]
+            }
+        }
+
+## Search Artists [/search/artists{?searchterm}]
+<code>/search/artists?searchterm={terms}</code><br>
+
+#### Parameters
+- <code>searchterm</code> *(string, required)* - terms to search the database
+
++ Parameters
+    + searchterm: Kanye (string) - terms to search the database
+
+
+### GET Search Artists [GET]
++ Response 200
+
+        {
+            "and": {
+                "albums": [
+                  {
+                    "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "Dark Sky Paradise"
+                  },
+                  ...
+                ],
+                "artists": [
+                  {
+                    "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                    "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                    "name": "Kanye West"
+                  }
+                ],
+                "tracks": [
+                  {
+                    "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "All Your Fault"
+                  },
+                  ...
+                ]
+            },
+            "or": {
+                         "Kanye": {
+                  "albums": [
+                    {
+                      "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "Dark Sky Paradise"
+                    },
+                    ...
+                  ],
+                  "artists": [
+                    {
+                      "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                      "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                      "name": "Kanye West"
+                    }
+                  ],
+                  "tracks": [
+                    {
+                      "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "All Your Fault"
+                    },
+                    ...
+                  ]
+            }
+        }
+
+## Search Albums [/search/albums{?searchterm}]
+<code>/search/albums?searchterm={terms}</code><br>
+
+#### Parameters
+- <code>searchterm</code> *(string, required)* - terms to search the database
+
++ Parameters
+    + searchterm: Kanye (string) - terms to search the database
+
+### GET Search Albums [GET]
++ Response 200
+
+        {
+            "and": {
+                "albums": [
+                  {
+                    "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "Dark Sky Paradise"
+                  },
+                  ...
+                ],
+                "artists": [
+                  {
+                    "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                    "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                    "name": "Kanye West"
+                  }
+                ],
+                "tracks": [
+                  {
+                    "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "All Your Fault"
+                  },
+                  ...
+                ]
+            },
+            "or": {
+                         "Kanye": {
+                  "albums": [
+                    {
+                      "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "Dark Sky Paradise"
+                    },
+                    ...
+                  ],
+                  "artists": [
+                    {
+                      "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                      "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                      "name": "Kanye West"
+                    }
+                  ],
+                  "tracks": [
+                    {
+                      "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "All Your Fault"
+                    },
+                    ...
+                  ]
+            }
+        }
+
+## Search Tracks [/search/tracks{?searchterm}]
+<code>/search/tracks?searchterm={terms}</code><br>
+
+#### Parameters
+- <code>searchterm</code> *(string, required)* - terms to search the database
+
++ Parameters
+    + searchterm: Kanye (string) - terms to search the database
+
+### GET Search Tracks [GET]
++ Response 200
+
+        {
+            "and": {
+                "albums": [
+                  {
+                    "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "Dark Sky Paradise"
+                  },
+                  ...
+                ],
+                "artists": [
+                  {
+                    "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                    "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                    "name": "Kanye West"
+                  }
+                ],
+                "tracks": [
+                  {
+                    "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                    "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                    "name": "All Your Fault"
+                  },
+                  ...
+                ]
+            },
+            "or": {
+                         "Kanye": {
+                  "albums": [
+                    {
+                      "id": "1j2x7FJXTgUT0X5hZ8TDXE",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "Dark Sky Paradise"
+                    },
+                    ...
+                  ],
+                  "artists": [
+                    {
+                      "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                      "img": "https://i.scdn.co/image/a2fe02386dcb76d7ecda994db995c3fb12694690",
+                      "name": "Kanye West"
+                    }
+                  ],
+                  "tracks": [
+                    {
+                      "id": "30CZcZ0NpTXjVJJa5X5nwf",
+                      "img": "https://i.scdn.co/image/dc3b00d6525ae23335f64768436002bd1bb8863b",
+                      "name": "All Your Fault"
+                    },
+                    ...
+                  ]
+            }
+        }
+
 # Group Artists
 ## Arbitrary Artists [/artists/{page_num}{?psize,sort,order}]
 <code>/artists/{page_num}?psize={psize}&sort={col_attr}&order={asc_desc}</code><br>
@@ -755,20 +1022,35 @@ Request all information regarding specific tracks related to **ids**
 This section was used in Part 1 of the Project using known id's for specific Artists, Albums and Tracks<br>
 Use Production Server to see Spotify's response and data structures for each request.
 
-## Spotify Artists [/get_artists]
-<code>/get_artists</code><br>
-Uses request to Spotify's Web API to pull information about three specific artists
+## Spotify Artists [/get_artists/{page_num}]
+<code>/get_artists/{page_num}</code><br>
+<strike>Uses request to Spotify's Web API to pull information about three specific artists</strike><br>
+This now calls `artists/{page_num}` and returns the top 20 artists from the database
+
++ Parameters
+    + page_num: 1 (number, required) - indicates the offset or page
+
 ### GET Artists [GET]
 + Response 200 (application/json)
 
-## Spotify Albums [/get_albums]
-<code>/get_albums</code><br>
-Uses request to Spotify's Web API to pull information about three specific albums
+## Spotify Albums [/get_albums/{page_num}]
+<code>/get_albums/{page_num}</code><br>
+<strike>Uses request to Spotify's Web API to pull information about three specific albums</strike><br>
+This now calls `albums/{page_num}` and returns the top 20 albums from the database
+
++ Parameters
+    + page_num: 1 (number, required) - indicates the offset or page
+
 ### GET Albums [GET]
 + Response 200 (application/json)
 
-## Spotify Tracks [/get_tracks]
-<code>/get_tracks</code><br>
-Uses request to Spotify's Web API to pull information about three specific tracks 
+## Spotify Tracks [/get_tracks/{page_num}]
+<code>/get_tracks/{page_num}</code><br>
+<strike>Uses request to Spotify's Web API to pull information about three specific tracks</strike><br>
+This now calls `tracks/{page_num}` and returns the top 20 tracks from the database
+
++ Parameters
+    + page_num: 1 (number, required) - indicates the offset or page
+
 ### GET Tracks [GET]
 + Response 200 (application/json)
