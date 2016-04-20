@@ -83,3 +83,7 @@
     margin-right: auto;
     text-align: center;
 }
+
+#error {
+    font-size: 2rem;
+}

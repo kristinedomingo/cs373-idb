@@ -331,6 +331,8 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
     ILDBService.getLegislators().then(function(data) {
         var allLegislators = data.legislators;
 
+        $scope.error = (allLegislators.message != "") ? "It looks like ILDB's API is down." : "";
+
         // Separate Legislators by state
         var states = {};
         allLegislators.forEach(function(person) {
