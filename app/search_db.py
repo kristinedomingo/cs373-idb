@@ -10,40 +10,54 @@ def search_db(word):
 	albums = Album.query.all()
 	ors ={}
 	ands=[]
-
+	tempors={}
 	for word in words:
 		if word not in ors:
 			ors[word]={}
+			tempors[word]={}
 		if 'artists' not in ors[word]:
 			ors[word]['artists']=[]
+			tempors[word]['artist']=[]
 		if 'tracks' not in ors[word]:
 			ors[word]['tracks']=[]
+			tempors[word]['tracks']=[]
 		if 'albums' not in ors[word]:
 			ors[word]['albums']=[]	
+			tempors[word]['albums']=[]	
 		for artist in artists:
 			x=find_word_artist(word, artist)
 			
 			if x != -1:
+				tempors[word]['artist'].append(artist)
 				ors[word]['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id})
 				print (artist)
 		for track in tracks:
 			x=find_word_track(word, track)
 			if x != -1:
+				tempors[word]['tracks'].append(track)
 				ors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
 				print (track)
 		for album in albums:
+
 			x=find_word_album(word, album)
 			if x != -1:
+				tempors[word]['albums'].append(album)
 				ors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
 				print (album)
 	and_words= iter(words)
-	search_and=ors[next(and_words)]
+	next_w=next(and_words)
+	search_and=tempors[next_w]
+	json_and=ors[next_w]
 	temp={}
+	temp2={}
 	
 	for word in and_words:
 		temp['artists']=[]
 		temp['tracks']=[]
 		temp['albums']=[]
+		temp2['artists']=[]
+		temp2['tracks']=[]
+		temp2['albums']=[]
 		for model in search_and:
 			for data in search_and[model]:
 				if model == 'artists':
@@ -51,18 +65,21 @@ def search_db(word):
 					print(data)
 					if x != -1:
 						temp['artists'].append(data)
+						temp2['artist'].append(json_and[model])
 						#print (artist)
 				if model == 'tracks':
 					print(data)
 					x=find_word_track(word, data)
 					if x != -1:
 						temp['tracks'].append(data)
+						temp2['tracks'].append(json_and[model])
 						print (track)
 				if model == 'albums':
 					print(data)
 					x=find_word_album(word, data)
 					if x != -1:
 						temp['albums'].append(data)
+						temp2['albums'].append(json_and[model])
 						#print (album)
 		search_and=temp
 
@@ -129,4 +146,4 @@ def combo_words(words):
 	return combo
 
 if __name__ == "__main__":
-    search_db("all", "Kanye West")
+    search_db( "Kanye West")
