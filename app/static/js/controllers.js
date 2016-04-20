@@ -16,6 +16,7 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
  * a function to run the unit tests on the About page.
  */
 .controller('AboutCtrl', ['$scope', 'unitTestService', function($scope, unitTestService) {
+
     // Team member information
     $scope.teamMembers =
      [{name: "Daniel Abrego",
@@ -352,5 +353,15 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
 .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
     $scope.isActive = function(viewLocation) {
         return $location.path().indexOf(viewLocation) == 0;
+    }
+
+    $scope.$on('$routeChangeSuccess', function(){
+      console.log("triggered");
+      $scope.isSplash = function(){
+        return !($location.path() == "/");
+      }
+    });
+    $scope.isSplash = function(){
+        return !($location.path() == "/");
     }
 }]);
