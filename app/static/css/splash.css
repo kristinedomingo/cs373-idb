@@ -117,7 +117,7 @@ h1 {
     color: #9C484C;
 }
 
-.dropdown-menu li a:hover{
+.dropdown-menu li a:hover {
     color: #9C484C;
 }
 
@@ -126,39 +126,10 @@ input[type="text"]:focus {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(156, 72, 76, 0.8);
 }
 
-.masthead-brand a {
-    color: #fff;
-}
-
-.masthead-nav > li > a {
-  color: #fff;
-  color: rgba(255, 255, 255, 0.75);
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  border-bottom-color: #fff;
-  color: rgba(255, 255, 255, 1.0);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: rgba(255, 255, 255, 1.0);
-  color: rgba(255, 255, 255, 1.0);
-}
-
-
 #splashImg {
     max-width: 100%;
     height: auto;
     padding: 20px;
-    padding: 60px;
-}
-
-@media (min-width: 768px) {
-    #splashImg {
-        padding: 0px;
-        padding-top: 25px;
-    }
 }
 
 .cover {
@@ -167,26 +138,4 @@ input[type="text"]:focus {
 
 .site-wrapper-inner {
     padding: 0;
-}
-
-.brand h3 {
-    vertical-align: middle;
-}
-
-.masthead-brand {
-    margin-bottom: 0;
-}
-
-@media (min-width: 768px){
-    .masthead-brand {
-        position:relative;
-        bottom: 10px;
-    }
-
-    .nav{
-        float: right;
-        position: relative;
-        top: 6px;
-        right:60px;
-    }
 }
