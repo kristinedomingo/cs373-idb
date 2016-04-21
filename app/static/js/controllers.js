@@ -6,7 +6,10 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
 /**
  * Splash Page Controller
  */
-.controller('SplashCtrl', ['$scope', function($scope) {
+.controller('SplashCtrl', ['$scope', '$location', function($scope, $location) {
+    $scope.search = function() {
+        $location.path("/results/all/" + $scope.searchTerm);
+    }
 }])
 
 /**
@@ -331,6 +334,8 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
     ILDBService.getLegislators().then(function(data) {
         var allLegislators = data.legislators;
 
+        $scope.error = (allLegislators.message != "") ? "It looks like ILDB's API is down." : "";
+
         // Separate Legislators by state
         var states = {};
         allLegislators.forEach(function(person) {
@@ -379,7 +384,7 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
  * Navigation Controller
  * Underlines the link to the page the user is currently on.
  */
-.controller('NavCtrl', ['$scope', '$location', function($scope, $location){
+.controller('NavCtrl', ['$scope', '$location', function($scope, $location) {
     $scope.isActive = function(viewLocation) {
         return $location.path().indexOf(viewLocation) == 0;
     }
@@ -389,7 +394,12 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
         return !($location.path() == "/");
       }
     });
+
     $scope.isSplash = function(){
         return !($location.path() == "/");
+    }
+
+    $scope.search = function() {
+        $location.path("/results/all/" + $scope.searchTerm);
     }
 }]);
