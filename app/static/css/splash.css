@@ -151,11 +151,13 @@ input[type="text"]:focus {
     max-width: 100%;
     height: auto;
     padding: 20px;
+    padding: 60px;
 }
 
 @media (min-width: 768px) {
     #splashImg {
-        padding: 0;
+        padding: 0px;
+        padding-top: 25px;
     }
 }
 
@@ -178,6 +180,13 @@ input[type="text"]:focus {
 @media (min-width: 768px){
     .masthead-brand {
         position:relative;
-        bottom: 2px;
+        bottom: 10px;
+    }
+
+    .nav{
+        float: right;
+        position: relative;
+        top: 6px;
+        right:60px;
     }
 }
