@@ -11,7 +11,6 @@ def search_db(word):
 	albums = Album.query.all()
 	ors ={}
 	ands={}
-	tempors={}
 	ors['artists']=[]
 	ands['artists']=[]
 
@@ -20,6 +19,8 @@ def search_db(word):
 
 	ors['albums']=[]	
 	ands['albums']=[]	
+
+	#check to see if the artist has all the words in it if not check to see if atleast one them is in there
 	for artist in artists:
 		if all(find_word_artist(word,artist)!=-1 for word in words):
 			context=bold_artist(artist,words)
@@ -27,14 +28,19 @@ def search_db(word):
 		elif any(find_word_artist(word,artist)!=-1 for word in words):
 			context=bold_artist(artist,words)
 			ors['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id,'context':context})
+	#check to see if the track has all the words in it if not check to see if at least one them is in there
 	for track in tracks:
 		if all(find_word_track(word,track)!=-1 for word in words):
-			cotext=bold_track(track,words)
+
+			context=bold_track(track,words)
+
+
 			ands['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id,'context':context})
 		elif any(find_word_track(word,track)!=-1 for word in words):
 		
 			context=bold_track(track,words)
 			ors['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id,'context':context})
+	#check to see if the track has all the words in it if not check to see if at least one them is in there
 	for album in albums:
 		if all(find_word_album(word,album)!=-1 for word in words):
 			context=bold_album(album,words)
@@ -114,21 +120,21 @@ def bold_artist(artist, words):
 			ls=s.lower()
 			x=ls.find(lw)
 			if x!=-1:
-				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]
+				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]+' '
 				counter=counter+1
 		if counter ==0:
 			detail=artist.name
 			ld=detail.lower()
 			x= ld.find(lw)
 			if x != -1:
-				s=s+"By: "+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+"By: "+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+ ' '
 				counter=counter+1
 			detail=artist.recent_album
 			ld=detail.lower()
 			x= ld.find(lw)
 			if x != -1 and counter==0:
 				
-				s=s+'Most Recent Album: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Most Recent Album: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 			detail=artist.top_track
 			ld=detail.lower()
@@ -137,7 +143,7 @@ def bold_artist(artist, words):
 			if x !=-1 and counter==0:
 				
 
-				s=s+'Top Track: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Top Track: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 
 		counter=0
 		
@@ -153,7 +159,7 @@ def bold_track(track, words):
 			ls=s.lower()
 			x=ls.find(lw)
 			if x!=-1:
-				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]
+				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]+' '
 				counter=counter+1
 		
 		if counter==0:
@@ -161,14 +167,14 @@ def bold_track(track, words):
 			ld=detail.lower()
 			x= ld.find(lw)
 			if x != -1:
-				s=s+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 			detail=track.artist_name
 			ld=detail.lower()
 			x= ld.find(lw)
 			if x != -1 and counter==0:
 				
-				s=s+'By: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'By: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 			detail=track.album
 			ld=detail.lower()
@@ -176,7 +182,7 @@ def bold_track(track, words):
 			if x !=-1 and counter==0:
 				
 
-				s=s+'Album: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Album: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 		counter=0
 	return s
@@ -191,21 +197,21 @@ def bold_album(album, words):
 			ls=s.lower()
 			x=ls.find(lw)
 			if x!=-1:
-				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]
+				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]+' '
 				counter=counter+1
 		if counter==0:
 			detail=album.name
 			ld=detail.lower()
 			x= ld.find(lw)
 			if x != -1 and counter==0:
-				s=s+"Album : "+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+"Album : "+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 			detail=album.artist_name
 			ld=detail.lower()
 			x= ld.find(lw)
 			if x != -1 and counter==0:
 				
-				s=s+'By : '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'By : '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 			detail=album.release_date
 			ld=detail.lower()
@@ -213,7 +219,7 @@ def bold_album(album, words):
 			if x !=-1 and counter==0:
 				
 				counter=counter+1
-				s=s+'Release : '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Release : '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]+' '
 				counter=counter+1
 			if counter==0:
 				tracks=Track.query.filter(Track.album_id== album.id).all()
@@ -226,5 +232,5 @@ def bold_album(album, words):
 	return s
 
 if __name__ == "__main__":
-	search_db( 'Wolves Kanye')
+	search_db( 'Guard')
 
