@@ -304,6 +304,7 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
 
         // Switch between displaying "and" and "or" results
         $scope.toggleSwitch = function() {
+          console.log("tottle");
             $scope.switch = ($scope.switch == 'and') ? 'or' : 'and';
             $scope.displayed_artists = [];
             $scope.displayed_albums = [];

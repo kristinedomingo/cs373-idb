@@ -5,9 +5,9 @@
     <span class="title" ng-show="searchTerm">Search Results for '{{searchTerm}}'</span>
     <label class="switch-light" onclick="">
         <input type="checkbox">
-        <span class="well" ng-click="toggleSwitch()">
-            <span>And</span>
-            <span>Or</span>
+        <span class="well">
+            <span ng-click="toggleSwitch()">And</span>
+            <span ng-click="toggleSwitch()">Or</span>
             <a class="btn btn-primary switch-btn"></a>
         </span>
     </label>
