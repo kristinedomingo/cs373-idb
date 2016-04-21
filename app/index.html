@@ -44,7 +44,7 @@
                                         <li ng-class="{ active : isActive('/tracks')}"><a class="nav-a" href="#/tracks">Tracks</a></li>
                                     </ul>
                                 </div>
-                                <div class="search-div" ng-show="isSplash()">
+                                <div class="search-div" ng-if="isSplash()">
                                     <div class="input-group input-group-sm search-group">
                                         <input type="text" class="form-control" placeholder="Search..."
                                                ng-model="searchTerm"

@@ -174,3 +174,10 @@ input[type="text"]:focus {
 .masthead-brand {
     margin-bottom: 0;
 }
+
+@media (min-width: 768px){
+    .masthead-brand {
+        position:relative;
+        bottom: 2px;
+    }
+}

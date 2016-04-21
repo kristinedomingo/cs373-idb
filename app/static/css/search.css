@@ -13,7 +13,9 @@
     width: 10%
 }
 
-#albumCol, #artistCol, #trackCol {
+#albumCol,
+#artistCol,
+#trackCol {
     width: 45%;
     text-align: center;
 }
@@ -70,6 +72,22 @@ label {
     margin-bottom: 20px;
 }
 
-.btn:focus, .btn:hover {
+.btn:focus,
+.btn:hover {
     color: #fff;
+}
+
+@media (min-width: 768px) {
+    .masthead-brand {
+        position: relative;
+        bottom: 16px;
+    }
+    .nav {
+        float: right;
+    }
+    .search-div {
+        float: right;
+        position: relative;
+        top: 10px;
+    }
 }
