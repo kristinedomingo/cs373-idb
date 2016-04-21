@@ -1,16 +1,11 @@
 <link href="../css/search.css" rel="stylesheet">
-<link href="../css/toggle-switch.css" rel="stylesheet">
 <div class="bodyText" ng-controller="SearchCtrl">
     <span class="title" ng-show="!searchTerm">Searching...</span>
     <span class="title" ng-show="searchTerm">Search Results for '{{searchTerm}}'</span>
-    <label class="switch-light" onclick="">
-        <input type="checkbox">
-        <span class="well">
-            <span ng-click="toggleSwitch()">And</span>
-            <span ng-click="toggleSwitch()">Or</span>
-            <a class="btn btn-primary switch-btn"></a>
-        </span>
-    </label>
+    <button class="btn btn-sm" ng-click="toggleSwitch('and')"
+            ng-class="{'switch-btn' : (switch == 'and')}">And</button>
+    <button class="btn btn-sm" ng-click="toggleSwitch('or')"
+            ng-class="{'switch-btn' : (switch == 'or')}">Or</button>
     <div>
         <div ng-show="table == 'albums' || table == 'all'">
             <span class="tableTitle">Albums</span>
