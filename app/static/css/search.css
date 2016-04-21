@@ -63,3 +63,13 @@ label {
     font-weight: 700;
     color: #ee6e73;
 }
+
+.btn {
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn:focus, .btn:hover {
+    color: #fff;
+}
