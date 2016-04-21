@@ -51,6 +51,7 @@ def search_db(word):
 	json_and=ors[next_w]
 	temp={}
 	temp2={}
+	print(ors)
 	print("ASDFASDFASDFASDFADF")
 	for word in and_words:
 		print(word)
@@ -100,32 +101,39 @@ def search_db(word):
 			if model == 'albums':
 				json['context']=bold_album(data,words)
 				print(json['context'])
-
+	print(json_and)
 	print(ors)
 
 	json={'and':json_and, 'or':ors}
 	return json
 	
 def find_word_artist(word, artist):
-	x=artist.name.find(word)
+	s=artist.name.lower()
+	lw=word.lower()
+	x=s.find(word.lower())
 	if x !=-1:
 		return x
-	x= artist.recent_album.find(word)
+	s=artist.recent_album.lower()
+	x= s.find(lw)
 	if x !=-1:
 		return x
-	x= artist.top_track.find(word)
-
+	s=artist.top_track.lower()
+	x= s.find(lw)
 	if x !=-1:
 		return x
 	return x
 
 def find_word_album(word, album):
-	x= album.name.find(word)
+	s= album.name.lower()
+	lw=word.lower()
+	x= s.find(lw)
 	if x != -1:
 		return x
-	x= album.artist_name.find(word)
+	s=album.artist_name.lower()
+	x= s.find(lw)
 	if x !=-1:
 		return x
+
 	x= album.release_date.find(word)
 	if x !=-1:
 		return x
@@ -137,13 +145,19 @@ def find_word_album(word, album):
 	return x
 
 def find_word_track(word, track):
-	x= track.title.find(word)
+	lw=word.lower()
+	s= track.title.lower()
+	x= s.find(lw)
 	if x !=-1:
 		return x
-	x= track.artist_name.find(word)
+	s= track.artist_name.lower()
+	x= s.find(lw)
+
 	if  x!=-1:
 		return x
-	x= track.album.find(word)
+	s=track.album.lower()
+
+	x= s.find(lw)
 	if x !=-1:
 		return x
 	return x
@@ -152,28 +166,35 @@ def bold_artist(artist, words):
 	x=-1
 	counter=0
 	for word in words:
+		lw=word.lower()
 		if len(s)!=0:
-			x=s.find(word)
+			ls=s.lower()
+			x=ls.find(lw)
 			if x!=-1:
-				s=s[0:x]+' <span class="context"> '+word+'</span>'+ s[x+len(word):len(s)]
+				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]
 				counter=counter+1
 		if counter ==0:
 			detail=artist.name
-			x= artist.name.find(word)
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x != -1:
-				s=s+"By: "+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+"By: "+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
-			x= artist.recent_album.find(word)
+			detail=artist.recent_album
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x != -1 and counter==0:
-				detail=artist.recent_album
-				s=s+'Most Recent Album: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				
+				s=s+'Most Recent Album: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
-			x= artist.top_track.find(word)
+			detail=artist.top_track
+			ld=detail.lower()
+			x= ld.find(lw)
 
 			if x !=-1 and counter==0:
-				detail=artist.recent_album
+				
 
-				s=s+'Top Track: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Top Track: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 
 		counter=0
 		
@@ -184,28 +205,35 @@ def bold_track(track, words):
 	counter=0
 	x=-1
 	for word in words:
+		lw=word.lower()
 		if len(s)!=0:
-			x=s.find(word)
+			ls=s.lower()
+			x=ls.find(lw)
 			if x!=-1:
-				s=s[0:x]+' <span class="context"> '+word+'</span>'+ s[x+len(word):len(s)]
+				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]
 				counter=counter+1
 		
 		if counter==0:
 			detail=track.title
-			x= track.title.find(word)
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x != -1:
-				s=s+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
-			x= track.artist_name.find(word)
+			detail=track.artist_name
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x != -1 and counter==0:
-				detail=track.artist_name
-				s=s+'By: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				
+				s=s+'By: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
-			x= track.album.find(word)
+			detail=track.album
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x !=-1 and counter==0:
-				detail=track.album
+				
 
-				s=s+'Album: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Album: '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
 		counter=0
 	return s
@@ -215,27 +243,34 @@ def bold_album(album, words):
 	counter=0
 	x=-1
 	for word in words:
+		lw=word.lower()
 		if len(s)!=0:
-			x=s.find(word)
+			ls=s.lower()
+			x=ls.find(lw)
 			if x!=-1:
-				s=s[0:x]+' <span class="context"> '+word+'</span>'+ s[x+len(word):len(s)]
+				s=s[0:x]+' <span class="context"> '+s[x:x+len(word)]+'</span>'+ s[x+len(word):len(s)]
 				counter=counter+1
 		if counter==0:
 			detail=album.name
-			x= album.name.find(word)
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x != -1 and counter==0:
-				s=s+"Album : "+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+"Album : "+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
-			x= album.artist_name.find(word)
+			detail=album.artist_name
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x != -1 and counter==0:
-				detail=album.artist_name
-				s=s+'By : '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				
+				s=s+'By : '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
-			x= album.release_date.find(word)
+			detail=album.release_date
+			ld=detail.lower()
+			x= ld.find(lw)
 			if x !=-1 and counter==0:
-				detail=album.release_date(word)
+				
 				counter=counter+1
-				s=s+'Release : '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				s=s+'Release : '+detail[0:x]+' <span class="context"> '+detail[x:x+len(word)]+'</span>'+ detail[x+len(word):len(detail)]
 				counter=counter+1
 			if counter==0:
 				tracks=Track.query.filter(Track.album_id== album.id).all()
@@ -262,6 +297,10 @@ def combo_words(words):
 			combo[count].append(string)
 	print(combo)
 	return combo
-
+def s():
+	s="1 2 3 4 5"
+	w=re.split(' ',s)
+	return w
 if __name__ == "__main__":
-    search_db( "Adele Hello")
+	search_db( 'Wolves')
+
