@@ -35,8 +35,7 @@
                         </a>
                     </td>
                     <td>{{album.name}}</td>
-                    <td>This is some context of the search with some <b>bolded</b>
-                    words!</td>
+                    <td ng-bind-html="album.context"></td>
                 </tr>
             </table>
 
@@ -66,8 +65,7 @@
                         </a>
                     </td>
                     <td>{{artist.name}}</td>
-                    <td>This is some context of the search with some <b>bolded</b>
-                    words!</td>
+                    <td ng-bind-html="artist.context"></td>
                 </tr>
             </table>
 
@@ -97,8 +95,7 @@
                         </a>
                     </td>
                     <td>{{track.name}}</td>
-                    <td>This is some context of the search with some <b>bolded</b>
-                    words!</td>
+                    <td ng-bind-html="track.context"></td>
                 </tr>
             </table>
         </div>

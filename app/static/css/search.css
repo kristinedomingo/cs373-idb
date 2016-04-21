@@ -54,3 +54,7 @@ label {
 .well {
     background-color: #75BAB3;
 }
+
+.context {
+    font-weight: 700;
+}
