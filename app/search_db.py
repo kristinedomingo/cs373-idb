@@ -29,18 +29,22 @@ def search_db(word):
 			
 			if x != -1:
 				tempors[word]['artists'].append(artist)
-				ors[word]['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id})
+				context=bold_artist(artist,[word])
+				ors[word]['artists'].append({'name': artist.name, 'img': artist.col_img, 'id': artist.spotify_id,'context':context})
 		for track in tracks:
 			x=find_word_track(word, track)
 			if x != -1:
+
 				tempors[word]['tracks'].append(track)
-				ors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id})
+				context=bold_track(track,[word])
+				ors[word]['tracks'].append({'name': track.title, 'img': track.col_img, 'id': track.spotify_id,'context':context})
 		for album in albums:
 
 			x=find_word_album(word, album)
 			if x != -1:
 				tempors[word]['albums'].append(album)
-				ors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id})
+				context=bold_album(album,[word])
+				ors[word]['albums'].append({'name': album.name, 'img': album.col_img, 'id': album.spotify_id, 'context':context})
 	and_words= iter(words)
 	next_w=next(and_words)
 	search_and=tempors[next_w]
@@ -64,6 +68,7 @@ def search_db(word):
 					if x != -1:
 						print(data)
 						temp['artists'].append(data)
+
 						temp2['artists'].append(json)
 						#print (artist)
 				if model == 'tracks':
@@ -83,7 +88,21 @@ def search_db(word):
 						#print (album)
 		search_and=temp.copy()
 		json_and=temp2.copy()
-	#print(json_and)
+
+	for model in search_and:
+		for data,json in zip(search_and[model],json_and[model]):
+			if model == 'artists':
+				json['context']=bold_artist(data, words)
+				print(json['context'])
+			if model == 'tracks':
+				json['context']=bold_track(data,words)
+				print(json['context'])
+			if model == 'albums':
+				json['context']=bold_album(data,words)
+				print(json['context'])
+
+	print(ors)
+
 	json={'and':json_and, 'or':ors}
 	return json
 	
@@ -128,7 +147,105 @@ def find_word_track(word, track):
 	if x !=-1:
 		return x
 	return x
+def bold_artist(artist, words):
+	s=''
+	x=-1
+	counter=0
+	for word in words:
+		if len(s)!=0:
+			x=s.find(word)
+			if x!=-1:
+				s=s[0:x]+' <span class="context"> '+word+'</span>'+ s[x+len(word):len(s)]
+				counter=counter+1
+		if counter ==0:
+			detail=artist.name
+			x= artist.name.find(word)
+			if x != -1:
+				s=s+"By: "+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			x= artist.recent_album.find(word)
+			if x != -1 and counter==0:
+				detail=artist.recent_album
+				s=s+'Most Recent Album: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			x= artist.top_track.find(word)
 
+			if x !=-1 and counter==0:
+				detail=artist.recent_album
+
+				s=s+'Top Track: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+
+		counter=0
+		
+
+	return s
+def bold_track(track, words):
+	s=''
+	counter=0
+	x=-1
+	for word in words:
+		if len(s)!=0:
+			x=s.find(word)
+			if x!=-1:
+				s=s[0:x]+' <span class="context"> '+word+'</span>'+ s[x+len(word):len(s)]
+				counter=counter+1
+		
+		if counter==0:
+			detail=track.title
+			x= track.title.find(word)
+			if x != -1:
+				s=s+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			x= track.artist_name.find(word)
+			if x != -1 and counter==0:
+				detail=track.artist_name
+				s=s+'By: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			x= track.album.find(word)
+			if x !=-1 and counter==0:
+				detail=track.album
+
+				s=s+'Album: '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+		counter=0
+	return s
+
+def bold_album(album, words):
+	s=''
+	counter=0
+	x=-1
+	for word in words:
+		if len(s)!=0:
+			x=s.find(word)
+			if x!=-1:
+				s=s[0:x]+' <span class="context"> '+word+'</span>'+ s[x+len(word):len(s)]
+				counter=counter+1
+		if counter==0:
+			detail=album.name
+			x= album.name.find(word)
+			if x != -1 and counter==0:
+				s=s+"Album : "+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			x= album.artist_name.find(word)
+			if x != -1 and counter==0:
+				detail=album.artist_name
+				s=s+'By : '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			x= album.release_date.find(word)
+			if x !=-1 and counter==0:
+				detail=album.release_date(word)
+				counter=counter+1
+				s=s+'Release : '+detail[0:x]+' <span class="context"> '+word+'</span>'+ detail[x+len(word):len(detail)]
+				counter=counter+1
+			if counter==0:
+				tracks=Track.query.filter(Track.album_id== album.id).all()
+				for track in tracks:
+					x=find_word_track(word,track)
+					if x!=-1 and counter==0:
+						s=s+bold_track(track,[word])
+						counter=counter+1
+		counter=0
+	return s
 def combo_words(words):
 	combo=collections.OrderedDict()
 
@@ -147,4 +264,4 @@ def combo_words(words):
 	return combo
 
 if __name__ == "__main__":
-    search_db( "All My Life")
+    search_db( "Adele Hello")
