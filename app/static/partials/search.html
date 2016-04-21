@@ -19,12 +19,10 @@
                 <tr>
                     <th class="imgCol"></th>
                     <th id="albumCol">
-                        <a href="" ng-click="sortType = 'album_name' ; sortReverseAlbum = !sortReverseAlbum; sort()">Album Name</a>
-                        <span ng-show="sortType == 'album_name' && sortReverseAlbum" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'album_name' && !sortReverseAlbum" class="fa fa-caret-up"></span>
+                        <span class="colHeader">Album Name</span>
                     </th>
                     <th class="contextCol">
-                        <a href="">Context</a>
+                        <span class="colHeader">Context</span>
                     </th>
                 </tr>
                 <tr ng-repeat="album in displayed_albums">
@@ -49,12 +47,10 @@
                 <tr>
                     <th class="imgCol"></th>
                     <th id="artistCol">
-                        <a href="" ng-click="sortType = 'artist_name' ; sortReverseArtist = !sortReverseArtist; sort()">Artist Name</a>
-                        <span ng-show="sortType == 'artist_name' && sortReverseArtist" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'artist_name' && !sortReverseArtist" class="fa fa-caret-up"></span>
+                        <span class="colHeader">Artist Name</span>
                     </th>
                     <th class="contextCol">
-                        <a href="">Context</a>
+                        <span class="colHeader">Context</span>
                     </th>
                 </tr>
                 <tr ng-repeat="artist in displayed_artists">
@@ -79,12 +75,10 @@
                 <tr>
                     <th class="imgCol"></th>
                     <th id="trackCol">
-                        <a href="" ng-click="sortType = 'track_name' ; sortReverseTrack = !sortReverseTrack; sort()">Track Name</a>
-                        <span ng-show="sortType == 'track_name' && sortReverseTrack" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'track_name' && !sortReverseTrack" class="fa fa-caret-up"></span>
+                        <span class="colHeader">Track Name</span>
                     </th>
                     <th class="contextCol">
-                        <a href="">Context</a>
+                        <span class="colHeader">Context</span>
                     </th>
                 </tr>
                 <tr ng-repeat="track in displayed_tracks">

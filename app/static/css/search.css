@@ -58,3 +58,8 @@ label {
 .context {
     font-weight: 700;
 }
+
+.colHeader {
+    font-weight: 700;
+    color: #ee6e73;
+}
