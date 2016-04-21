@@ -317,10 +317,12 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
  * Exercises the API of the Internet Legislative Database project.
  */
 .controller('ILDBCtrl', ['$scope', '$routeParams', 'ILDBService', function($scope, $routeParams, ILDBService) {
+    $scope.error = "It looks like ILDB's API is down.";
     ILDBService.getLegislators().then(function(data) {
         var allLegislators = data.legislators;
-
-        $scope.error = (allLegislators.message != "") ? "It looks like ILDB's API is down." : "";
+        if(allLegislators) {
+            $scope.error = undefined;
+        }
 
         // Separate Legislators by state
         var states = {};
