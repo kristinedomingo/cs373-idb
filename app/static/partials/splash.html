@@ -11,7 +11,7 @@
         <input type="text" class="form-control" placeholder="Search the database"
                aria-label="..." ng-model="searchTerm" ng-keydown="$event.which === 13 && search()">
         <div class="input-group-btn">
-            <button type="button" class="btn btn-default droptown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search All Tables&nbsp;<span class="caret"></span></button>
+            <button type="button" id="dropdown-search" class="btn btn-default droptown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search All Tables&nbsp;<span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right">
                 <li><a href="#/results/all/{{searchTerm}}">Search All Tables</a></li>
                 <li role="separator" class="divider"></li>

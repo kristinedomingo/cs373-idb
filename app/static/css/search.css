@@ -77,17 +77,18 @@ label {
     color: #fff;
 }
 
-@media (min-width: 768px) {
-    .masthead-brand {
-        position: relative;
-        bottom: 16px;
-    }
-    .nav {
-        float: right;
-    }
-    .search-div {
-        float: right;
-        position: relative;
-        top: 10px;
-    }
+.nav-container {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.nav-div {
+    vertical-align: top;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.nav-div ul {
+    margin: auto;
+    width: 100%;
 }
