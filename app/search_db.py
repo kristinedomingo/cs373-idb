@@ -49,7 +49,7 @@ def search_db(word):
 	print(ands['tracks'])
 
 	json={'and':ands, 'or':ors}
-	return 5
+	return json
 	
 def find_word_artist(word, artist):
 	s=artist.name.lower()
