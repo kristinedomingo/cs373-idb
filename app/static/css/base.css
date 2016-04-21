@@ -299,7 +299,7 @@ hr {
 @media (min-width: 768px) {
     .masthead-brand {
         position: relative;
-        bottom: 10px;
+        bottom: 6px;
     }
     .container {
         display: table;
@@ -317,6 +317,16 @@ hr {
         margin-top: 0rem;
         font-size: 1.6rem;
         padding-top: 0px;
+    }
+    .nav {
+        float:right;
+        position: relative;
+        top:11px;
+    }
+    .search-group {
+        float: right;
+        position: relative;
+        top:2px;
     }
 }
 
