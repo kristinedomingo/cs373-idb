@@ -3,7 +3,7 @@
 <div ng-controller="ILDBCtrl">
     <p id="error">{{error}}</p>
     <!-- State selection -->
-    <div class="btn-group" ng-show="error == ''">
+    <div class="btn-group" ng-show="!error">
         <button type="button" class="btn btn-primary dropdown-toggle selectStateBtn"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Select a State <span class="caret"></span>
