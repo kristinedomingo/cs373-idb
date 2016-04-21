@@ -2,6 +2,7 @@ import re
 from db import db 
 from models import Artist, Track, Album
 import collections
+#This is the search method for search bar the db
 
 def search_db(word):
 	words=re.split(' ', word)
@@ -11,16 +12,14 @@ def search_db(word):
 	ors ={}
 	ands={}
 	tempors={}
-	if 'artists' not in ors:
-		ors['artists']=[]
-		ands['artists']=[]
-	if 'tracks' not in ors:
-		ors['tracks']=[]
-		ands['tracks']=[]
-	if 'albums' not in ors:
-		ors['albums']=[]	
-		ands['albums']=[]	
-	x=-1
+	ors['artists']=[]
+	ands['artists']=[]
+
+	ors['tracks']=[]
+	ands['tracks']=[]
+
+	ors['albums']=[]	
+	ands['albums']=[]	
 	for artist in artists:
 		if all(find_word_artist(word,artist)!=-1 for word in words):
 			context=bold_artist(artist,words)
@@ -226,11 +225,6 @@ def bold_album(album, words):
 		counter=0
 	return s
 
-def s():
-	artist=Artist.query.filter(Artist.name=='Kanye West').first()
-	s="Kanye Adele West"
-	w=re.split(' ',s)
-	print(bold_artist(artist,w))
 if __name__ == "__main__":
 	search_db( 'Wolves Kanye')
 
