@@ -305,29 +305,9 @@ angular.module('controllers', ['ui.bootstrap', 'chart.js'])
         // Switch between displaying "and" and "or" results
         $scope.toggleSwitch = function(toggle) {
             $scope.switch = toggle;
-            $scope.displayed_artists = [];
-            $scope.displayed_albums = [];
-            $scope.displayed_tracks = [];
-            if($scope.switch == 'or') {
-                for(var word in $scope.results['or']) {
-                    if($scope.results['or'].hasOwnProperty(word)) {
-                        $scope.results['or'][word].albums.forEach(function(result) {
-                            $scope.displayed_albums.push(result);
-                        });
-                        $scope.results['or'][word].artists.forEach(function(result) {
-                            $scope.displayed_artists.push(result);
-                        });
-                        $scope.results['or'][word].tracks.forEach(function(result) {
-                            $scope.displayed_tracks.push(result);
-                        });
-                    }
-                }
-            }
-            else {
-                $scope.displayed_artists = $scope.results['and']['artists'];
-                $scope.displayed_albums = $scope.results['and']['albums'];
-                $scope.displayed_tracks = $scope.results['and']['tracks'];
-            }
+            $scope.displayed_artists = $scope.results[$scope.switch]['artists'];
+            $scope.displayed_albums = $scope.results[$scope.switch]['albums'];
+            $scope.displayed_tracks = $scope.results[$scope.switch]['tracks'];
         }
     });
 }])
