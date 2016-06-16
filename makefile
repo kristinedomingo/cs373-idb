@@ -1,7 +1,7 @@
 IMAGE_NAME_APP := sweetmusic_app
 IMAGE_NAME_LB := sweetmusic_lb
 IMAGE_NAME_DB := sweetmusic_db
-DOCKER_HUB_USERNAME := swetifygroupmembers
+DOCKER_HUB_USERNAME := kristineadomingo
 FILES :=        \
     .gitignore  \
     .travis.yml \
