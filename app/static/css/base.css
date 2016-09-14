@@ -147,7 +147,7 @@ body {
 }
 
 
-/* 
+/*
  * Fifths
  */
 
@@ -188,11 +188,15 @@ body {
 }
 
 hr {
-    height: 6px;
-    background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
-    border: 0;
-    margin-top: 8rem;
-    margin-bottom: 8rem;
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
+}
+hr:after {
+	content: '';
+	display: block;
+	margin-top: 2px;
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
 }
 
 .search-div {
